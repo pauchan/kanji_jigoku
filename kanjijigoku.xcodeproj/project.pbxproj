@@ -1,0 +1,521 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FB67D6E31A861B8A00926E38 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB67D6E21A861B8A00926E38 /* AppDelegate.swift */; };
+		FB67D6E61A861B8A00926E38 /* kanjijigoku.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FB67D6E41A861B8A00926E38 /* kanjijigoku.xcdatamodeld */; };
+		FB67D6E81A861B8A00926E38 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB67D6E71A861B8A00926E38 /* ViewController.swift */; };
+		FB67D6EB1A861B8A00926E38 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB67D6E91A861B8A00926E38 /* Main.storyboard */; };
+		FB67D6ED1A861B8A00926E38 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB67D6EC1A861B8A00926E38 /* Images.xcassets */; };
+		FB67D6F01A861B8A00926E38 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB67D6EE1A861B8A00926E38 /* LaunchScreen.xib */; };
+		FB67D6FC1A861B8B00926E38 /* kanjijigokuTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB67D6FB1A861B8B00926E38 /* kanjijigokuTests.swift */; };
+		FB67D7061A86224900926E38 /* PRDbHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB67D7051A86224900926E38 /* PRDbHelper.swift */; };
+		FB67D7091A86232E00926E38 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FB67D7081A86232E00926E38 /* libsqlite3.dylib */; };
+		FB67D70C1A86255500926E38 /* PRDatabaseHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = FB67D70B1A86255500926E38 /* PRDatabaseHelper.m */; };
+		FBB1FF681A8724CE00F323D0 /* Kunyomi.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB1FF671A8724CE00F323D0 /* Kunyomi.swift */; };
+		FBB1FF6A1A8724CE00F323D0 /* Onyomi.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB1FF691A8724CE00F323D0 /* Onyomi.swift */; };
+		FBB1FF6C1A8724CE00F323D0 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB1FF6B1A8724CE00F323D0 /* Character.swift */; };
+		FBB1FF6E1A8724CF00F323D0 /* Example.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB1FF6D1A8724CF00F323D0 /* Example.swift */; };
+		FBB1FF701A8724CF00F323D0 /* Reading.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB1FF6F1A8724CF00F323D0 /* Reading.swift */; };
+		FBB1FF721A8724CF00F323D0 /* Radical.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB1FF711A8724CF00F323D0 /* Radical.swift */; };
+		FBB1FF741A8724CF00F323D0 /* Sentence.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB1FF731A8724CF00F323D0 /* Sentence.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FB67D6F61A861B8B00926E38 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FB67D6D51A861B8A00926E38 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FB67D6DC1A861B8A00926E38;
+			remoteInfo = kanjijigoku;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		FB67D6DD1A861B8A00926E38 /* kanjijigoku.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = kanjijigoku.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB67D6E11A861B8A00926E38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FB67D6E21A861B8A00926E38 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		FB67D6E51A861B8A00926E38 /* kanjijigoku.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = kanjijigoku.xcdatamodel; sourceTree = "<group>"; };
+		FB67D6E71A861B8A00926E38 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		FB67D6EA1A861B8A00926E38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		FB67D6EC1A861B8A00926E38 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		FB67D6EF1A861B8A00926E38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		FB67D6F51A861B8B00926E38 /* kanjijigokuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = kanjijigokuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB67D6FA1A861B8B00926E38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FB67D6FB1A861B8B00926E38 /* kanjijigokuTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kanjijigokuTests.swift; sourceTree = "<group>"; };
+		FB67D7051A86224900926E38 /* PRDbHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRDbHelper.swift; sourceTree = "<group>"; };
+		FB67D7071A8622F400926E38 /* kanjijigoku-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "kanjijigoku-Bridging-Header.h"; sourceTree = "<group>"; };
+		FB67D7081A86232E00926E38 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		FB67D70A1A86255500926E38 /* PRDatabaseHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PRDatabaseHelper.h; sourceTree = "<group>"; };
+		FB67D70B1A86255500926E38 /* PRDatabaseHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PRDatabaseHelper.m; sourceTree = "<group>"; };
+		FBB1FF671A8724CE00F323D0 /* Kunyomi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Kunyomi.swift; path = Source/Kunyomi.swift; sourceTree = "<group>"; };
+		FBB1FF691A8724CE00F323D0 /* Onyomi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Onyomi.swift; path = Source/Onyomi.swift; sourceTree = "<group>"; };
+		FBB1FF6B1A8724CE00F323D0 /* Character.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Character.swift; path = Source/Character.swift; sourceTree = "<group>"; };
+		FBB1FF6D1A8724CF00F323D0 /* Example.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Example.swift; path = Source/Example.swift; sourceTree = "<group>"; };
+		FBB1FF6F1A8724CF00F323D0 /* Reading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Reading.swift; path = Source/Reading.swift; sourceTree = "<group>"; };
+		FBB1FF711A8724CF00F323D0 /* Radical.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Radical.swift; path = Source/Radical.swift; sourceTree = "<group>"; };
+		FBB1FF731A8724CF00F323D0 /* Sentence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Sentence.swift; path = Source/Sentence.swift; sourceTree = "<group>"; };
+		FBB1FF791A872BDF00F323D0 /* kanjijigoku-swift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "kanjijigoku-swift.h"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FB67D6DA1A861B8A00926E38 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FB67D7091A86232E00926E38 /* libsqlite3.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FB67D6F21A861B8B00926E38 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FB67D6D41A861B8A00926E38 = {
+			isa = PBXGroup;
+			children = (
+				FB67D7081A86232E00926E38 /* libsqlite3.dylib */,
+				FB67D6DF1A861B8A00926E38 /* kanjijigoku */,
+				FB67D6F81A861B8B00926E38 /* kanjijigokuTests */,
+				FB67D6DE1A861B8A00926E38 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FB67D6DE1A861B8A00926E38 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FB67D6DD1A861B8A00926E38 /* kanjijigoku.app */,
+				FB67D6F51A861B8B00926E38 /* kanjijigokuTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FB67D6DF1A861B8A00926E38 /* kanjijigoku */ = {
+			isa = PBXGroup;
+			children = (
+				FBB1FF781A87252700F323D0 /* Helper */,
+				FBB1FF771A87250700F323D0 /* View */,
+				FBB1FF761A8724FC00F323D0 /* Controller */,
+				FBB1FF751A8724DD00F323D0 /* Model */,
+				FB67D6E01A861B8A00926E38 /* Supporting Files */,
+			);
+			path = kanjijigoku;
+			sourceTree = "<group>";
+		};
+		FB67D6E01A861B8A00926E38 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FB67D6EC1A861B8A00926E38 /* Images.xcassets */,
+				FB67D6E91A861B8A00926E38 /* Main.storyboard */,
+				FB67D6E21A861B8A00926E38 /* AppDelegate.swift */,
+				FB67D6E11A861B8A00926E38 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FB67D6F81A861B8B00926E38 /* kanjijigokuTests */ = {
+			isa = PBXGroup;
+			children = (
+				FB67D6FB1A861B8B00926E38 /* kanjijigokuTests.swift */,
+				FB67D6F91A861B8B00926E38 /* Supporting Files */,
+			);
+			path = kanjijigokuTests;
+			sourceTree = "<group>";
+		};
+		FB67D6F91A861B8B00926E38 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FB67D6FA1A861B8B00926E38 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FBB1FF751A8724DD00F323D0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FB67D6E41A861B8A00926E38 /* kanjijigoku.xcdatamodeld */,
+				FBB1FF731A8724CF00F323D0 /* Sentence.swift */,
+				FBB1FF711A8724CF00F323D0 /* Radical.swift */,
+				FBB1FF6F1A8724CF00F323D0 /* Reading.swift */,
+				FBB1FF6D1A8724CF00F323D0 /* Example.swift */,
+				FBB1FF6B1A8724CE00F323D0 /* Character.swift */,
+				FBB1FF691A8724CE00F323D0 /* Onyomi.swift */,
+				FBB1FF671A8724CE00F323D0 /* Kunyomi.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		FBB1FF761A8724FC00F323D0 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FB67D6E71A861B8A00926E38 /* ViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		FBB1FF771A87250700F323D0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FB67D6EE1A861B8A00926E38 /* LaunchScreen.xib */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		FBB1FF781A87252700F323D0 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				FB67D7071A8622F400926E38 /* kanjijigoku-Bridging-Header.h */,
+				FB67D70A1A86255500926E38 /* PRDatabaseHelper.h */,
+				FB67D70B1A86255500926E38 /* PRDatabaseHelper.m */,
+				FB67D7051A86224900926E38 /* PRDbHelper.swift */,
+				FBB1FF791A872BDF00F323D0 /* kanjijigoku-swift.h */,
+			);
+			name = Helper;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FB67D6DC1A861B8A00926E38 /* kanjijigoku */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FB67D6FF1A861B8B00926E38 /* Build configuration list for PBXNativeTarget "kanjijigoku" */;
+			buildPhases = (
+				FB67D6D91A861B8A00926E38 /* Sources */,
+				FB67D6DA1A861B8A00926E38 /* Frameworks */,
+				FB67D6DB1A861B8A00926E38 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = kanjijigoku;
+			productName = kanjijigoku;
+			productReference = FB67D6DD1A861B8A00926E38 /* kanjijigoku.app */;
+			productType = "com.apple.product-type.application";
+		};
+		FB67D6F41A861B8B00926E38 /* kanjijigokuTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FB67D7021A861B8B00926E38 /* Build configuration list for PBXNativeTarget "kanjijigokuTests" */;
+			buildPhases = (
+				FB67D6F11A861B8B00926E38 /* Sources */,
+				FB67D6F21A861B8B00926E38 /* Frameworks */,
+				FB67D6F31A861B8B00926E38 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FB67D6F71A861B8B00926E38 /* PBXTargetDependency */,
+			);
+			name = kanjijigokuTests;
+			productName = kanjijigokuTests;
+			productReference = FB67D6F51A861B8B00926E38 /* kanjijigokuTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FB67D6D51A861B8A00926E38 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "Pawel Rusin";
+				TargetAttributes = {
+					FB67D6DC1A861B8A00926E38 = {
+						CreatedOnToolsVersion = 6.1;
+					};
+					FB67D6F41A861B8B00926E38 = {
+						CreatedOnToolsVersion = 6.1;
+						TestTargetID = FB67D6DC1A861B8A00926E38;
+					};
+				};
+			};
+			buildConfigurationList = FB67D6D81A861B8A00926E38 /* Build configuration list for PBXProject "kanjijigoku" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FB67D6D41A861B8A00926E38;
+			productRefGroup = FB67D6DE1A861B8A00926E38 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FB67D6DC1A861B8A00926E38 /* kanjijigoku */,
+				FB67D6F41A861B8B00926E38 /* kanjijigokuTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FB67D6DB1A861B8A00926E38 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FB67D6EB1A861B8A00926E38 /* Main.storyboard in Resources */,
+				FB67D6F01A861B8A00926E38 /* LaunchScreen.xib in Resources */,
+				FB67D6ED1A861B8A00926E38 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FB67D6F31A861B8B00926E38 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FB67D6D91A861B8A00926E38 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FBB1FF6A1A8724CE00F323D0 /* Onyomi.swift in Sources */,
+				FB67D6E81A861B8A00926E38 /* ViewController.swift in Sources */,
+				FB67D6E61A861B8A00926E38 /* kanjijigoku.xcdatamodeld in Sources */,
+				FB67D6E31A861B8A00926E38 /* AppDelegate.swift in Sources */,
+				FB67D7061A86224900926E38 /* PRDbHelper.swift in Sources */,
+				FBB1FF681A8724CE00F323D0 /* Kunyomi.swift in Sources */,
+				FB67D70C1A86255500926E38 /* PRDatabaseHelper.m in Sources */,
+				FBB1FF721A8724CF00F323D0 /* Radical.swift in Sources */,
+				FBB1FF6C1A8724CE00F323D0 /* Character.swift in Sources */,
+				FBB1FF701A8724CF00F323D0 /* Reading.swift in Sources */,
+				FBB1FF741A8724CF00F323D0 /* Sentence.swift in Sources */,
+				FBB1FF6E1A8724CF00F323D0 /* Example.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FB67D6F11A861B8B00926E38 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FB67D6FC1A861B8B00926E38 /* kanjijigokuTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FB67D6F71A861B8B00926E38 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FB67D6DC1A861B8A00926E38 /* kanjijigoku */;
+			targetProxy = FB67D6F61A861B8B00926E38 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		FB67D6E91A861B8A00926E38 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FB67D6EA1A861B8A00926E38 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		FB67D6EE1A861B8A00926E38 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FB67D6EF1A861B8A00926E38 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FB67D6FD1A861B8B00926E38 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		FB67D6FE1A861B8B00926E38 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FB67D7001A861B8B00926E38 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = kanjijigoku/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "kanjijigoku/kanjijigoku-Bridging-Header.h";
+			};
+			name = Debug;
+		};
+		FB67D7011A861B8B00926E38 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = kanjijigoku/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "kanjijigoku/kanjijigoku-Bridging-Header.h";
+			};
+			name = Release;
+		};
+		FB67D7031A861B8B00926E38 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = kanjijigokuTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/kanjijigoku.app/kanjijigoku";
+			};
+			name = Debug;
+		};
+		FB67D7041A861B8B00926E38 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = kanjijigokuTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/kanjijigoku.app/kanjijigoku";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FB67D6D81A861B8A00926E38 /* Build configuration list for PBXProject "kanjijigoku" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FB67D6FD1A861B8B00926E38 /* Debug */,
+				FB67D6FE1A861B8B00926E38 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FB67D6FF1A861B8B00926E38 /* Build configuration list for PBXNativeTarget "kanjijigoku" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FB67D7001A861B8B00926E38 /* Debug */,
+				FB67D7011A861B8B00926E38 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FB67D7021A861B8B00926E38 /* Build configuration list for PBXNativeTarget "kanjijigokuTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FB67D7031A861B8B00926E38 /* Debug */,
+				FB67D7041A861B8B00926E38 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		FB67D6E41A861B8A00926E38 /* kanjijigoku.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				FB67D6E51A861B8A00926E38 /* kanjijigoku.xcdatamodel */,
+			);
+			currentVersion = FB67D6E51A861B8A00926E38 /* kanjijigoku.xcdatamodel */;
+			path = kanjijigoku.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = FB67D6D51A861B8A00926E38 /* Project object */;
+}
