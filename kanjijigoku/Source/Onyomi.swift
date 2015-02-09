@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-class Onyomi: NSManagedObject {
+class Onyomi: Reading {
 
 
 }
