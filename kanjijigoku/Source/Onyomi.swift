@@ -2,8 +2,8 @@
 //  Onyomi.swift
 //  kanjijigoku
 //
-//  Created by Pawel Rusin on 2/8/15.
-//  Copyright (c) 2015 Pawel Rusin. All rights reserved.
+//  Created by Paweł Rusin on 2015/02/09.
+//  Copyright (c) 2015年 Pawel Rusin. All rights reserved.
 //
 
 import Foundation

@@ -15,6 +15,14 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
          let db = PRDatabaseHelper();
+        if db.dowloadDbFile()
+        {
+            db.parseDb()
+        }
+        else
+        {
+            println("failed to download file!")
+        }
     }
 
     override func didReceiveMemoryWarning() {

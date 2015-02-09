@@ -1,26 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6252" systemVersion="13E28" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="Character" syncable="YES">
-        <attribute name="alternativeRadical" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="code" optional="YES" attributeType="Integer 16" syncable="YES"/>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6254" systemVersion="13F34" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Character" representedClassName="kanjijigoku.Character" syncable="YES">
+        <attribute name="alternativeKanji" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="alternativeRadical" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="code" optional="YES" attributeType="Integer 32" syncable="YES"/>
         <attribute name="kanji" attributeType="String" syncable="YES"/>
-        <attribute name="kanjiId" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="lesson" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="level" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="kanjiId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="lesson" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="level" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="meaning" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="note" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="radical" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="realatedKanji" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="strokeCount" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="radical" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="relatedKanji" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="strokeCount" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <relationship name="examples" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Example" inverseName="character" inverseEntity="Example" syncable="YES"/>
         <relationship name="radicals" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Radical" inverseName="character" inverseEntity="Radical" syncable="YES"/>
         <relationship name="readings" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Reading" inverseName="character" inverseEntity="Reading" syncable="YES"/>
         <relationship name="sentences" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Sentence" inverseName="character" inverseEntity="Sentence" syncable="YES"/>
     </entity>
-    <entity name="Example" syncable="YES">
-        <attribute name="code" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+    <entity name="Example" representedClassName="Example" syncable="YES">
+        <attribute name="code" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="example" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="exampleId" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="exampleId" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="kanji" attributeType="String" syncable="YES"/>
         <attribute name="meaning" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="note" optional="YES" attributeType="String" syncable="YES"/>
@@ -28,42 +29,42 @@
         <relationship name="character" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Character" inverseName="examples" inverseEntity="Character" syncable="YES"/>
         <relationship name="sentences" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Sentence" inverseName="examples" inverseEntity="Sentence" syncable="YES"/>
     </entity>
-    <entity name="Kunyomi" parentEntity="Reading" syncable="YES">
-        <attribute name="speechPart" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+    <entity name="Kunyomi" representedClassName="Kunyomi" parentEntity="Reading" syncable="YES">
+        <attribute name="speechPart" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
     </entity>
-    <entity name="Onyomi" parentEntity="Reading" syncable="YES"/>
-    <entity name="Radical" syncable="YES">
+    <entity name="Onyomi" representedClassName="Onyomi" parentEntity="Reading" syncable="YES"/>
+    <entity name="Radical" representedClassName="Radical" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="number" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="number" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="radical" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="character" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Character" inverseName="radicals" inverseEntity="Character" syncable="YES"/>
     </entity>
-    <entity name="Reading" syncable="YES">
-        <attribute name="code" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+    <entity name="Reading" representedClassName="Reading" syncable="YES">
+        <attribute name="code" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="kanji" attributeType="String" syncable="YES"/>
         <attribute name="meaning" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="note" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="reading" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="readingId" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="readingId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <relationship name="character" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Character" inverseName="readings" inverseEntity="Character" syncable="YES"/>
     </entity>
-    <entity name="Sentence" syncable="YES">
-        <attribute name="code" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+    <entity name="Sentence" representedClassName="Sentence" syncable="YES">
+        <attribute name="code" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="example" attributeType="String" syncable="YES"/>
         <attribute name="kanji" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="meaning" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="sentence" attributeType="String" syncable="YES"/>
-        <attribute name="sentenceId" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="sentenceId" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <relationship name="character" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Character" inverseName="sentences" inverseEntity="Character" syncable="YES"/>
         <relationship name="examples" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Example" inverseName="sentences" inverseEntity="Example" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Character" positionX="-5760" positionY="-2133" width="128" height="268"/>
-        <element name="Reading" positionX="-5517" positionY="-2133" width="128" height="148"/>
-        <element name="Onyomi" positionX="-5330" positionY="-2052" width="128" height="43"/>
-        <element name="Kunyomi" positionX="-5330" positionY="-2124" width="128" height="58"/>
+        <element name="Character" positionX="-5787" positionY="-2133" width="128" height="283"/>
         <element name="Example" positionX="-5411" positionY="-1971" width="128" height="178"/>
+        <element name="Kunyomi" positionX="-5330" positionY="-2124" width="128" height="58"/>
+        <element name="Onyomi" positionX="-5330" positionY="-2052" width="128" height="43"/>
+        <element name="Radical" positionX="-5600" positionY="-1789" width="128" height="103"/>
+        <element name="Reading" positionX="-5517" positionY="-2133" width="128" height="148"/>
         <element name="Sentence" positionX="-5249" positionY="-1789" width="128" height="163"/>
-        <element name="Radical" positionX="-5663" positionY="-1789" width="128" height="103"/>
     </elements>
 </model>
