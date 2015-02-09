@@ -13,10 +13,48 @@ import CoreData
 class PRDatabaseHelper
 {
     
-    func dowloadDbFile() -> Bool
+    //func parseCharacters(database : FMDatabase) -> Bool
+    var _timestamp : NSString = NSString()
+    
+    func syncDatabase()
+    {
+        if downloadDbFile()
+        {
+            let documentsFolder = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
+            let path = documentsFolder.stringByAppendingPathComponent("clientDB.db")
+            
+            let database = FMDatabase(path: path)
+            
+            if database.open()
+            {
+                if parseDb(database)
+                {
+                    println("parsed db succesfully")
+                }
+                else
+                {
+                    println("db parse failed")
+                }
+                database.close()
+            }
+            else
+            {
+                println("Unable to open database")
+            }
+        }
+        else
+        {
+            println("Download db file failed")
+        }
+    }
+    
+    func downloadDbFile() -> Bool
     {
         
         let stringURL : String = "http://serwer1456650.home.pl/clientDB.db"
+        
+        // FIX!!!!  "!" operator works for now, but there should be some sort of nil-validation
+        // why does the " if let url : ... {}" not working ???
         let url : NSURL = NSURL(string: stringURL)!
 
         let urlData : NSData = NSData(contentsOfURL: url)!
@@ -28,109 +66,314 @@ class PRDatabaseHelper
             
         return  urlData.writeToFile(filePath, atomically: true)
         
-        
-        //return false
-
     }
     
-    
-    
-    func parseDb() -> Bool
+    func shouldUpdateDb(database : FMDatabase) -> Bool
     {
-        let documentsFolder = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
-        let path = documentsFolder.stringByAppendingPathComponent("clientDB.db")
         
-        let database = FMDatabase(path: path)
+        if let appDbUpdate : NSString = NSUserDefaults.standardUserDefaults().objectForKey("PRKanjiJigokuDbUpdate") as? NSString
+        {
+            if let rs = database.executeQuery("select * from update_time", withArgumentsInArray: nil) {
+                while rs.next() {
+                    
+                    _timestamp = rs.stringForColumnIndex(0)
+                    //println(rs.stringForColumnIndex(0))
+                    if(appDbUpdate.isEqualToString(_timestamp)){
+                        
+                        return false
+                    }
+                }
+            } else {
+                println("select failed: \(database.lastErrorMessage())")
+                return false
+            }
+            
+        }
+        return true
+    }
+    
+    func parseDb(database : FMDatabase) -> Bool
+    {
         
-        if !database.open() {
-            println("Unable to open database")
+        
+        if(!shouldUpdateDb(database))
+        {
+            println("database up to date")
+            return true
+        }
+        
+        deleteObjects("Character")
+        deleteObjects("Kunyomi")
+        deleteObjects("Onyomi")
+        deleteObjects("Sentence")
+        deleteObjects("Example")
+        deleteObjects("Radical")
+        
+        if !parseCharacters(database)
+        {
+            println("failed to parse characters")
             return false
         }
         
-        if parseCharacters(database)
+        if !parseKunyomi(database)
         {
-            let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
-            let managedContext = appDelegate.managedObjectContext!
-            let fetchRequest = NSFetchRequest(entityName: "Character")
-            
-            var error : NSError?
-            let fetchedRequest = managedContext.executeFetchRequest(fetchRequest, error: &error) as [NSManagedObject]?
-            
-            if let results = fetchedRequest as? [Character]
-            {
-                println("succeeded")
-                println(results.count)
-                for ch in results
-                {
-                    println(ch.kanji)
-                }
-            }
+            println("failed to parse kunyomi")
+            return false
         }
-        else
+        if !parseOnyomi(database)
         {
-            println("failed to parse characters")
+            println("failed to parse onyomi")
+            return false
         }
+        if !parseExamples(database)
+        {
+            println("failed to parse examples")
+            return false
+        }
+        if !parseSentences(database)
+        {
+            println("failed to parse sentences")
+            return false
+        }
+        if !parseRadicals(database)
+        {
+            println("failed to parse radicals")
+            return false
+        }
+        NSUserDefaults.standardUserDefaults().setObject(_timestamp, forKey: "PRKanjiJigokuDbUpdate")
+        println("Update successful")
         
         return true
     }
-
-    
-    func parseCharacters(database : FMDatabase) -> Bool
-    {
-    let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
-    let managedContext = appDelegate.managedObjectContext!
-    
-    let entity = NSEntityDescription.entityForName("Character", inManagedObjectContext: managedContext)!
-    
-    if let rs = database.executeQuery("select * from znaki", withArgumentsInArray: nil) {
-        while rs.next() {
+        
+        func parseCharacters(database : FMDatabase) -> Bool
+        {
+            let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+            let managedContext = appDelegate.managedObjectContext!
             
-            let character = NSManagedObject(entity: entity, insertIntoManagedObjectContext: managedContext) as Character
+            let entity = NSEntityDescription.entityForName("Character", inManagedObjectContext: managedContext)!
             
-            character.kanji = rs.stringForColumnIndex(0)
-            character.alternativeKanji = rs.stringForColumnIndex(1)
-            character.strokeCount = rs.intForColumnIndex(2)
-            character.radical = rs.intForColumnIndex(3)
-            character.alternativeRadical = rs.intForColumnIndex(4)
-            character.meaning = rs.stringForColumnIndex(5)
-            // skipping columns with index 6 (pinyin) and index 7 (nonori)
-            character.note = rs.stringForColumnIndex(8)
-            character.relatedKanji = rs.intForColumnIndex(9)
-            character.lesson = rs.intForColumnIndex(10)
-            character.level = rs.intForColumnIndex(11)
-            character.kanjiId = rs.intForColumnIndex(12)
-        }
-    } else {
-        println("select failed: \(database.lastErrorMessage())")
-        return false
-    }
-        var error: NSError?
-        if !managedContext.save(&error) {
-            println("Could not save \(error), \(error?.userInfo)")
-            return false
+            if let rs = database.executeQuery("select * from znaki", withArgumentsInArray: nil) {
+                while rs.next() {
+                    
+                    let character = NSManagedObject(entity: entity, insertIntoManagedObjectContext: managedContext) as Character
+                    
+                    character.kanji = rs.stringForColumnIndex(0)
+                    character.alternativeKanji = rs.stringForColumnIndex(1)
+                    character.strokeCount = rs.intForColumnIndex(2)
+                    character.radical = rs.intForColumnIndex(3)
+                    character.alternativeRadical = rs.intForColumnIndex(4)
+                    character.meaning = rs.stringForColumnIndex(5)
+                    // skipping columns with index 6 (pinyin) and index 7 (nonori)
+                    character.note = rs.stringForColumnIndex(8)
+                    character.relatedKanji = rs.intForColumnIndex(9)
+                    character.lesson = rs.intForColumnIndex(10)
+                    character.level = rs.intForColumnIndex(11)
+                    character.kanjiId = rs.intForColumnIndex(12)
+                    
+                }
+            } else {
+                println("select failed: \(database.lastErrorMessage())")
+                return false
+            }
+            var error: NSError?
+            if !managedContext.save(&error) {
+                println("Could not save \(error), \(error?.userInfo)")
+                return false
+            }
+            
+            return true
+            
         }
         
-    return true
+        func parseSentences(database : FMDatabase) -> Bool
+        {
+            let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+            let managedContext = appDelegate.managedObjectContext!
+            
+            let entity = NSEntityDescription.entityForName("Sentence", inManagedObjectContext: managedContext)!
+            
+            if let rs = database.executeQuery("select * from zdania", withArgumentsInArray: nil) {
+                while rs.next() {
+                    
+                    let sentence = NSManagedObject(entity: entity, insertIntoManagedObjectContext: managedContext) as Sentence
+                    
+                    sentence.kanji = rs.stringForColumnIndex(0)
+                    sentence.example = rs.stringForColumnIndex(1)
+                    sentence.sentence = rs.stringForColumnIndex(2)
+                    sentence.meaning = rs.stringForColumnIndex(3)
+                    sentence.code = rs.intForColumnIndex(4)
+                    sentence.sentenceId = rs.intForColumnIndex(5)
+                }
+            } else {
+                println("select failed: \(database.lastErrorMessage())")
+                return false
+            }
+            var error: NSError?
+            if !managedContext.save(&error) {
+                println("Could not save \(error), \(error?.userInfo)")
+                return false
+            }
+            
+            return true
+            
+        }
+        
+        func parseKunyomi(database : FMDatabase) -> Bool
+        {
+            let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+            let managedContext = appDelegate.managedObjectContext!
+            
+            let entity = NSEntityDescription.entityForName("Kunyomi", inManagedObjectContext: managedContext)!
+            
+            if let rs = database.executeQuery("select * from kunyomi", withArgumentsInArray: nil) {
+                while rs.next() {
+                    
+                    let kunyomi = NSManagedObject(entity: entity, insertIntoManagedObjectContext: managedContext) as Kunyomi
+                    
+                    kunyomi.kanji = rs.stringForColumnIndex(0)
+                    kunyomi.reading = rs.stringForColumnIndex(1)
+                    kunyomi.meaning = rs.stringForColumnIndex(2)
+                    kunyomi.readingId = rs.intForColumnIndex(3)
+                    kunyomi.code = rs.intForColumnIndex(4)
+                    kunyomi.note = rs.stringForColumnIndex(5)
+                }
+            } else {
+                println("select failed: \(database.lastErrorMessage())")
+                return false
+            }
+            var error: NSError?
+            if !managedContext.save(&error) {
+                println("Could not save \(error), \(error?.userInfo)")
+                return false
+            }
+            
+            return true
+            
+        }
+        
+        func parseOnyomi(database : FMDatabase) -> Bool
+        {
+            let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+            let managedContext = appDelegate.managedObjectContext!
+            
+            let entity = NSEntityDescription.entityForName("Onyomi", inManagedObjectContext: managedContext)!
+            
+            if let rs = database.executeQuery("select * from onyomi", withArgumentsInArray: nil) {
+                while rs.next() {
+                    
+                    let onyomi = NSManagedObject(entity: entity, insertIntoManagedObjectContext: managedContext) as Onyomi
+                    
+                    onyomi.kanji = rs.stringForColumnIndex(0)
+                    onyomi.reading = rs.stringForColumnIndex(1)
+                    onyomi.meaning = rs.stringForColumnIndex(2)
+                    onyomi.readingId = rs.intForColumnIndex(3)
+                    onyomi.code = rs.intForColumnIndex(4)
+                    onyomi.note = rs.stringForColumnIndex(5)
+                }
+            } else {
+                println("select failed: \(database.lastErrorMessage())")
+                return false
+            }
+            var error: NSError?
+            if !managedContext.save(&error) {
+                println("Could not save \(error), \(error?.userInfo)")
+                return false
+            }
+            
+            return true
+            
+        }
+        
+        func parseExamples(database : FMDatabase) -> Bool
+        {
+            let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+            let managedContext = appDelegate.managedObjectContext!
+            
+            let entity = NSEntityDescription.entityForName("Example", inManagedObjectContext: managedContext)!
+            
+            if let rs = database.executeQuery("select * from zlozenia", withArgumentsInArray: nil) {
+                while rs.next() {
+                    
+                    let example = NSManagedObject(entity: entity, insertIntoManagedObjectContext: managedContext) as Example
+                    
+                    example.kanji = rs.stringForColumnIndex(0)
+                    example.example = rs.stringForColumnIndex(1)
+                    example.reading = rs.stringForColumnIndex(2)
+                    example.meaning = rs.stringForColumnIndex(3)
+                    example.note = rs.stringForColumnIndex(4)
+                    example.exampleId = rs.intForColumnIndex(5)
+                    example.code = rs.intForColumnIndex(6)
+                    
+                }
+            } else {
+                println("select failed: \(database.lastErrorMessage())")
+                return false
+            }
+            var error: NSError?
+            if !managedContext.save(&error) {
+                println("Could not save \(error), \(error?.userInfo)")
+                return false
+            }
+            
+            return true
+        }
+        
+        func parseRadicals(database : FMDatabase) -> Bool
+        {
+            let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+            let managedContext = appDelegate.managedObjectContext!
+            
+            let entity = NSEntityDescription.entityForName("Radical", inManagedObjectContext: managedContext)!
+            
+            if let rs = database.executeQuery("select * from pierwiastki", withArgumentsInArray: nil) {
+                while rs.next() {
+                    
+                    let radical = NSManagedObject(entity: entity, insertIntoManagedObjectContext: managedContext) as Radical
+                    
+                    radical.number = rs.intForColumnIndex(0)
+                    radical.radical = rs.stringForColumnIndex(1)
+                    radical.name = rs.stringForColumnIndex(2)
+                    
+                }
+            } else {
+                println("select failed: \(database.lastErrorMessage())")
+                return false
+            }
+            var error: NSError?
+            if !managedContext.save(&error) {
+                println("Could not save \(error), \(error?.userInfo)")
+                return false
+            }
+            
+            return true
+        }
     
+    func deleteObjects(description: String)
+    {
+        //var fetchRequest : NSFetchRequest = NSFetchRequest()
+        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let managedContext = appDelegate.managedObjectContext!
+        
+        //let entity : NSEntityDescription = NSEntityDescription.entityForName(description, inManagedObjectContext: managedContext)!
+        
+        let fetchRequest = NSFetchRequest(entityName: description)
+        
+        var error : NSError?
+        let fetchedRequest = managedContext.executeFetchRequest(fetchRequest, error: &error) as [NSManagedObject]
+        
+        //let objects = fetchedRequest as? [NSManagedObjects]
+        
+        for object in fetchedRequest
+        {
+        
+            managedContext.deleteObject(object)
+        }
+        
+
+        if !managedContext.save(&error) {
+            println("Could not save \(error), \(error?.userInfo)")
+        }
     }
+    
 }
-
-
-
-//if !database.executeUpdate("create table test(x text, y text, z text)", withArgumentsInArray: nil) {
-//    println("create table failed: \(database.lastErrorMessage())")
-//}
-//
-//if !database.executeUpdate("insert into test (x, y, z) values (?, ?, ?)", withArgumentsInArray: ["a", "b", "c"]) {
-//    println("insert 1 table failed: \(database.lastErrorMessage())")
-//}
-//
-//if !database.executeUpdate("insert into test (x, y, z) values (?, ?, ?)", withArgumentsInArray: ["e", "f", "g"]) {
-//    println("insert 2 table failed: \(database.lastErrorMessage())")
-//}
-//
-
-//
-//
-//
-//}

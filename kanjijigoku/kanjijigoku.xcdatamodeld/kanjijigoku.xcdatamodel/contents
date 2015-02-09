@@ -18,7 +18,7 @@
         <relationship name="readings" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Reading" inverseName="character" inverseEntity="Reading" syncable="YES"/>
         <relationship name="sentences" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Sentence" inverseName="character" inverseEntity="Sentence" syncable="YES"/>
     </entity>
-    <entity name="Example" representedClassName="Example" syncable="YES">
+    <entity name="Example" representedClassName="kanjijigoku.Example" syncable="YES">
         <attribute name="code" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="example" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="exampleId" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
@@ -29,17 +29,17 @@
         <relationship name="character" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Character" inverseName="examples" inverseEntity="Character" syncable="YES"/>
         <relationship name="sentences" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Sentence" inverseName="examples" inverseEntity="Sentence" syncable="YES"/>
     </entity>
-    <entity name="Kunyomi" representedClassName="Kunyomi" parentEntity="Reading" syncable="YES">
+    <entity name="Kunyomi" representedClassName="kanjijigoku.Kunyomi" parentEntity="Reading" syncable="YES">
         <attribute name="speechPart" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
     </entity>
-    <entity name="Onyomi" representedClassName="Onyomi" parentEntity="Reading" syncable="YES"/>
-    <entity name="Radical" representedClassName="Radical" syncable="YES">
+    <entity name="Onyomi" representedClassName="kanjijigoku.Onyomi" parentEntity="Reading" syncable="YES"/>
+    <entity name="Radical" representedClassName="kanjijigoku.Radical" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="number" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="radical" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="character" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Character" inverseName="radicals" inverseEntity="Character" syncable="YES"/>
     </entity>
-    <entity name="Reading" representedClassName="Reading" syncable="YES">
+    <entity name="Reading" representedClassName="kanjijigoku.Reading" syncable="YES">
         <attribute name="code" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="kanji" attributeType="String" syncable="YES"/>
         <attribute name="meaning" optional="YES" attributeType="String" syncable="YES"/>
@@ -48,7 +48,7 @@
         <attribute name="readingId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <relationship name="character" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Character" inverseName="readings" inverseEntity="Character" syncable="YES"/>
     </entity>
-    <entity name="Sentence" representedClassName="Sentence" syncable="YES">
+    <entity name="Sentence" representedClassName="kanjijigoku.Sentence" syncable="YES">
         <attribute name="code" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="example" attributeType="String" syncable="YES"/>
         <attribute name="kanji" optional="YES" attributeType="String" syncable="YES"/>

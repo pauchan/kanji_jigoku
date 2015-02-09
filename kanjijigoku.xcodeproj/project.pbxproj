@@ -10,11 +10,11 @@
 		18D26D9B1A883ED800A8908C /* PRDatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D26D9A1A883ED800A8908C /* PRDatabaseHelper.swift */; };
 		18D26D9F1A8856CF00A8908C /* Radical.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D26D9E1A8856CF00A8908C /* Radical.swift */; };
 		18D26DA11A8856CF00A8908C /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D26DA01A8856CF00A8908C /* Character.swift */; };
-		18D26DA31A8856CF00A8908C /* Onyomi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D26DA21A8856CF00A8908C /* Onyomi.swift */; };
 		18D26DA51A8856CF00A8908C /* Reading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D26DA41A8856CF00A8908C /* Reading.swift */; };
 		18D26DA71A8856CF00A8908C /* Kunyomi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D26DA61A8856CF00A8908C /* Kunyomi.swift */; };
 		18D26DA91A8856CF00A8908C /* Sentence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D26DA81A8856CF00A8908C /* Sentence.swift */; };
 		18D26DAB1A8856CF00A8908C /* Example.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D26DAA1A8856CF00A8908C /* Example.swift */; };
+		18D26DB11A8888C500A8908C /* Onyomi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D26DB01A8888C500A8908C /* Onyomi.swift */; };
 		9890196ACBA1DBB36C220747 /* libPods-kanjijigoku.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16ED305BDA73EF495F1CC7A3 /* libPods-kanjijigoku.a */; };
 		DDA8FCCE07D8A23426327FF9 /* libPods-kanjijigokuTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 48DDE60AB133AD9253EF4C92 /* libPods-kanjijigokuTests.a */; };
 		FB67D6E31A861B8A00926E38 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB67D6E21A861B8A00926E38 /* AppDelegate.swift */; };
@@ -42,11 +42,11 @@
 		18D26D9A1A883ED800A8908C /* PRDatabaseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRDatabaseHelper.swift; sourceTree = "<group>"; };
 		18D26D9E1A8856CF00A8908C /* Radical.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Radical.swift; path = Source/Radical.swift; sourceTree = "<group>"; };
 		18D26DA01A8856CF00A8908C /* Character.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Character.swift; path = Source/Character.swift; sourceTree = "<group>"; };
-		18D26DA21A8856CF00A8908C /* Onyomi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Onyomi.swift; path = Source/Onyomi.swift; sourceTree = "<group>"; };
 		18D26DA41A8856CF00A8908C /* Reading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Reading.swift; path = Source/Reading.swift; sourceTree = "<group>"; };
 		18D26DA61A8856CF00A8908C /* Kunyomi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Kunyomi.swift; path = Source/Kunyomi.swift; sourceTree = "<group>"; };
 		18D26DA81A8856CF00A8908C /* Sentence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Sentence.swift; path = Source/Sentence.swift; sourceTree = "<group>"; };
 		18D26DAA1A8856CF00A8908C /* Example.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Example.swift; path = Source/Example.swift; sourceTree = "<group>"; };
+		18D26DB01A8888C500A8908C /* Onyomi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Onyomi.swift; path = Source/Onyomi.swift; sourceTree = "<group>"; };
 		48DDE60AB133AD9253EF4C92 /* libPods-kanjijigokuTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-kanjijigokuTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		94CC88092ADA2AB93CF98660 /* Pods-kanjijigoku.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kanjijigoku.debug.xcconfig"; path = "Pods/Target Support Files/Pods-kanjijigoku/Pods-kanjijigoku.debug.xcconfig"; sourceTree = "<group>"; };
 		A6263FED85E89D9DE53C6A64 /* Pods-kanjijigokuTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kanjijigokuTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-kanjijigokuTests/Pods-kanjijigokuTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -172,11 +172,11 @@
 		FBB1FF751A8724DD00F323D0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				18D26DB01A8888C500A8908C /* Onyomi.swift */,
 				18D26DAA1A8856CF00A8908C /* Example.swift */,
 				18D26DA81A8856CF00A8908C /* Sentence.swift */,
 				18D26DA61A8856CF00A8908C /* Kunyomi.swift */,
 				18D26DA41A8856CF00A8908C /* Reading.swift */,
-				18D26DA21A8856CF00A8908C /* Onyomi.swift */,
 				18D26DA01A8856CF00A8908C /* Character.swift */,
 				18D26D9E1A8856CF00A8908C /* Radical.swift */,
 				FB67D6E41A861B8A00926E38 /* kanjijigoku.xcdatamodeld */,
@@ -379,7 +379,7 @@
 				18D26D9B1A883ED800A8908C /* PRDatabaseHelper.swift in Sources */,
 				FB67D6E81A861B8A00926E38 /* ViewController.swift in Sources */,
 				18D26DA51A8856CF00A8908C /* Reading.swift in Sources */,
-				18D26DA31A8856CF00A8908C /* Onyomi.swift in Sources */,
+				18D26DB11A8888C500A8908C /* Onyomi.swift in Sources */,
 				18D26DA11A8856CF00A8908C /* Character.swift in Sources */,
 				18D26D9F1A8856CF00A8908C /* Radical.swift in Sources */,
 				18D26DA91A8856CF00A8908C /* Sentence.swift in Sources */,
