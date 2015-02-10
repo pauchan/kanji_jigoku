@@ -17,6 +17,51 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        let db = PRDatabaseHelper()
+        db.syncDatabase()
+        
+        
+        let stateSingleton : PRStateSingleton = PRStateSingleton.sharedInstance
+        stateSingleton.levelArray = db.getLevelArray()
+        stateSingleton.lessonArray = db.getLessonArray(stateSingleton.currentLevel)
+        
+        let tabBarController : UITabBarController = UITabBarController()
+        let kanjiNavigationController : UINavigationController = UINavigationController(rootViewController: PRKanjiMenuViewController())
+        let testsNavigationController : UINavigationController = UINavigationController(rootViewController: PRTestMenuViewController())
+        let flashcardController : UINavigationController = UINavigationController(rootViewController: PRFlashcardMenuViewController(style: UITableViewStyle.Plain))
+        
+        kanjiNavigationController.tabBarItem.title = "Lekcja"
+        testsNavigationController.tabBarItem.title = "Testy"
+        flashcardController.tabBarItem.title = "Fiszki"
+        
+        tabBarController.viewControllers = [kanjiNavigationController, testsNavigationController, flashcardController]
+        
+        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)  
+        
+        self.window?.rootViewController = tabBarController
+        
+        self.window?.makeKeyAndVisible()
+        
+
+        
+        
+////        var kanjiItem : UITabBarItem = UITabBarItem(title: "Lekcja", image: <#UIImage?#>, tag: 0)
+//        var kanjiItem : UITabBarItem = UITabBarItem(tabBarSystemItem: UITabBarSystemItem.Bookmarks, tag: 0)
+//        kanjiItem.title = "Lekcja"
+//        
+//        var kanjiItem2 : UITabBarItem = UITabBarItem(tabBarSystemItem: UITabBarSystemItem.History, tag: 1)
+//        kanjiItem.title = "Testy"
+//
+//        var kanjiItem3 : UITabBarItem = UITabBarItem(tabBarSystemItem: UITabBarSystemItem.MostRecent, tag: 2)
+//        kanjiItem.title = "Fiszki"
+//
+//        
+//        var tabBar : UITabBar = UITabBar()
+//        tabBar.items = [kanjiItem, kanjiItem2, kanjiItem3]
+//        tabBarController.tabB
+        
+        
         return true
     }
 
@@ -105,6 +150,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 abort()
             }
         }
+    }
+    
+    func settings()
+    {
+    
+    
     }
 
 }

@@ -376,4 +376,39 @@ class PRDatabaseHelper
         }
     }
     
+    func getLessonArray(level: Int) -> NSArray
+    {
+        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let managedContext = appDelegate.managedObjectContext!
+        
+        let fetchRequest :NSFetchRequest = NSFetchRequest(entityName: "Character")
+        let entity = NSEntityDescription.entityForName("Character", inManagedObjectContext: managedContext)!
+        //fetchRequest.resultType =
+        fetchRequest.propertiesToFetch = ["lesson"]
+        fetchRequest.returnsDistinctResults = true
+        fetchRequest.predicate = NSPredicate(format: "level=%d",level)
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "lesson", ascending: true)]
+        fetchRequest.resultType = .DictionaryResultType;
+        let outArray: NSArray = managedContext.executeFetchRequest(fetchRequest, error: nil)!
+        return outArray
+    
+    }
+    
+    func getLevelArray() -> NSArray
+    {
+        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let managedContext = appDelegate.managedObjectContext!
+        
+        let fetchRequest :NSFetchRequest = NSFetchRequest(entityName: "Character")
+        let entity = NSEntityDescription.entityForName("Character", inManagedObjectContext: managedContext)!
+        //fetchRequest.resultType =
+        fetchRequest.propertiesToFetch = ["level"]
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "level", ascending: true)]
+        fetchRequest.returnsDistinctResults = true
+        fetchRequest.resultType = .DictionaryResultType;
+        let outArray: NSArray = managedContext.executeFetchRequest(fetchRequest, error: nil)!
+        return outArray
+    
+    }
+    
 }

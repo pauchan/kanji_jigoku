@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="PRHeaderViewCell" customModule="kanjijigoku" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="90"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Kmc-pN-hhZ">
+                    <rect key="frame" x="15" y="15" width="130" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RbS-7W-LAB">
+                    <rect key="frame" x="175" y="15" width="130" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="viC-Md-AAx">
+                    <rect key="frame" x="15" y="53" width="51" height="31"/>
+                </switch>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Material nadobowiazkowy" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7QD-oX-036">
+                    <rect key="frame" x="79" y="60" width="178" height="18"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="viC-Md-AAx" firstAttribute="top" secondItem="Kmc-pN-hhZ" secondAttribute="bottom" constant="8" id="3lj-UO-h6u"/>
+                <constraint firstItem="Kmc-pN-hhZ" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="centerX" constant="-15" id="EpP-Lj-fcH"/>
+                <constraint firstItem="Kmc-pN-hhZ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="G1a-cr-8k0"/>
+                <constraint firstAttribute="trailing" secondItem="RbS-7W-LAB" secondAttribute="trailing" constant="15" id="S2v-jR-bIh"/>
+                <constraint firstItem="7QD-oX-036" firstAttribute="leading" secondItem="viC-Md-AAx" secondAttribute="trailing" constant="15" id="e18-yD-Hfa"/>
+                <constraint firstItem="RbS-7W-LAB" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="centerX" constant="15" id="eoB-xL-lAa"/>
+                <constraint firstItem="RbS-7W-LAB" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="fw0-9E-r6V"/>
+                <constraint firstItem="Kmc-pN-hhZ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="huf-PI-oKm"/>
+                <constraint firstItem="viC-Md-AAx" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="vUH-zA-SCV"/>
+                <constraint firstItem="viC-Md-AAx" firstAttribute="centerY" secondItem="7QD-oX-036" secondAttribute="centerY" id="z2B-XM-VGT"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="extraMaterialSwitch" destination="viC-Md-AAx" id="5mo-8g-LKy"/>
+            </connections>
+            <point key="canvasLocation" x="567" y="95"/>
+        </view>
+    </objects>
+</document>

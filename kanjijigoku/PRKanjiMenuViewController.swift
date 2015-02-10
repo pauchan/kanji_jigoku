@@ -8,14 +8,16 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class PRKanjiMenuViewController: UITableViewController
+{
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Action, target: self, action: "settings")
+        self.navigationItem.title = "Kanji Jigoku"
         
-         let db = PRDatabaseHelper()
-        db.syncDatabase()
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -25,6 +27,8 @@ class ViewController: UIViewController {
 
 
 }
+
+
 
 //let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
 //let managedContext = appDelegate.managedObjectContext!

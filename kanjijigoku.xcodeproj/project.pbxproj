@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18D1705E1A8997C700672203 /* PRFlashcardMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D1705D1A8997C700672203 /* PRFlashcardMenuViewController.swift */; };
+		18D170601A8997D700672203 /* PRTestsMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D1705F1A8997D700672203 /* PRTestsMenuViewController.swift */; };
+		18D170621A89A0B000672203 /* PRHeaderViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18D170611A89A0B000672203 /* PRHeaderViewCell.xib */; };
+		18D170641A89A49B00672203 /* PRHeaderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D170631A89A49B00672203 /* PRHeaderViewCell.swift */; };
+		18D170661A89A5C200672203 /* PRComboBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D170651A89A5C200672203 /* PRComboBox.swift */; };
+		18D1706A1A89BBE800672203 /* flashcardItems.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18D170691A89BBE800672203 /* flashcardItems.plist */; };
+		18D1706E1A89D77B00672203 /* PRStateSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D1706D1A89D77B00672203 /* PRStateSingleton.swift */; };
+		18D170721A89F03100672203 /* PRFlashcardPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D170711A89F03100672203 /* PRFlashcardPageViewController.swift */; };
+		18D170741A89F13100672203 /* PRFlashcardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18D170731A89F13100672203 /* PRFlashcardViewController.xib */; };
+		18D170761A89F3E200672203 /* PRFlashcardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D170751A89F3E200672203 /* PRFlashcardViewController.swift */; };
 		18D26D9B1A883ED800A8908C /* PRDatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D26D9A1A883ED800A8908C /* PRDatabaseHelper.swift */; };
 		18D26D9F1A8856CF00A8908C /* Radical.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D26D9E1A8856CF00A8908C /* Radical.swift */; };
 		18D26DA11A8856CF00A8908C /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D26DA01A8856CF00A8908C /* Character.swift */; };
@@ -19,8 +29,7 @@
 		DDA8FCCE07D8A23426327FF9 /* libPods-kanjijigokuTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 48DDE60AB133AD9253EF4C92 /* libPods-kanjijigokuTests.a */; };
 		FB67D6E31A861B8A00926E38 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB67D6E21A861B8A00926E38 /* AppDelegate.swift */; };
 		FB67D6E61A861B8A00926E38 /* kanjijigoku.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FB67D6E41A861B8A00926E38 /* kanjijigoku.xcdatamodeld */; };
-		FB67D6E81A861B8A00926E38 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB67D6E71A861B8A00926E38 /* ViewController.swift */; };
-		FB67D6EB1A861B8A00926E38 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB67D6E91A861B8A00926E38 /* Main.storyboard */; };
+		FB67D6E81A861B8A00926E38 /* PRKanjiMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB67D6E71A861B8A00926E38 /* PRKanjiMenuViewController.swift */; };
 		FB67D6ED1A861B8A00926E38 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB67D6EC1A861B8A00926E38 /* Images.xcassets */; };
 		FB67D6F01A861B8A00926E38 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB67D6EE1A861B8A00926E38 /* LaunchScreen.xib */; };
 		FB67D6FC1A861B8B00926E38 /* kanjijigokuTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB67D6FB1A861B8B00926E38 /* kanjijigokuTests.swift */; };
@@ -39,6 +48,16 @@
 
 /* Begin PBXFileReference section */
 		16ED305BDA73EF495F1CC7A3 /* libPods-kanjijigoku.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-kanjijigoku.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		18D1705D1A8997C700672203 /* PRFlashcardMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRFlashcardMenuViewController.swift; sourceTree = "<group>"; };
+		18D1705F1A8997D700672203 /* PRTestsMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRTestsMenuViewController.swift; sourceTree = "<group>"; };
+		18D170611A89A0B000672203 /* PRHeaderViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PRHeaderViewCell.xib; path = Source/PRHeaderViewCell.xib; sourceTree = "<group>"; };
+		18D170631A89A49B00672203 /* PRHeaderViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRHeaderViewCell.swift; path = Source/PRHeaderViewCell.swift; sourceTree = "<group>"; };
+		18D170651A89A5C200672203 /* PRComboBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRComboBox.swift; path = Source/PRComboBox.swift; sourceTree = "<group>"; };
+		18D170691A89BBE800672203 /* flashcardItems.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = flashcardItems.plist; sourceTree = "<group>"; };
+		18D1706D1A89D77B00672203 /* PRStateSingleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRStateSingleton.swift; path = Source/PRStateSingleton.swift; sourceTree = "<group>"; };
+		18D170711A89F03100672203 /* PRFlashcardPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRFlashcardPageViewController.swift; path = Source/PRFlashcardPageViewController.swift; sourceTree = "<group>"; };
+		18D170731A89F13100672203 /* PRFlashcardViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PRFlashcardViewController.xib; path = Source/PRFlashcardViewController.xib; sourceTree = "<group>"; };
+		18D170751A89F3E200672203 /* PRFlashcardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRFlashcardViewController.swift; path = Source/PRFlashcardViewController.swift; sourceTree = "<group>"; };
 		18D26D9A1A883ED800A8908C /* PRDatabaseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRDatabaseHelper.swift; sourceTree = "<group>"; };
 		18D26D9E1A8856CF00A8908C /* Radical.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Radical.swift; path = Source/Radical.swift; sourceTree = "<group>"; };
 		18D26DA01A8856CF00A8908C /* Character.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Character.swift; path = Source/Character.swift; sourceTree = "<group>"; };
@@ -56,8 +75,7 @@
 		FB67D6E11A861B8A00926E38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FB67D6E21A861B8A00926E38 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FB67D6E51A861B8A00926E38 /* kanjijigoku.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = kanjijigoku.xcdatamodel; sourceTree = "<group>"; };
-		FB67D6E71A861B8A00926E38 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		FB67D6EA1A861B8A00926E38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		FB67D6E71A861B8A00926E38 /* PRKanjiMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PRKanjiMenuViewController.swift; sourceTree = "<group>"; };
 		FB67D6EC1A861B8A00926E38 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		FB67D6EF1A861B8A00926E38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		FB67D6F51A861B8B00926E38 /* kanjijigokuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = kanjijigokuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -145,9 +163,9 @@
 			isa = PBXGroup;
 			children = (
 				FB67D6EC1A861B8A00926E38 /* Images.xcassets */,
-				FB67D6E91A861B8A00926E38 /* Main.storyboard */,
 				FB67D6E21A861B8A00926E38 /* AppDelegate.swift */,
 				FB67D6E11A861B8A00926E38 /* Info.plist */,
+				18D170691A89BBE800672203 /* flashcardItems.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -187,7 +205,12 @@
 		FBB1FF761A8724FC00F323D0 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				FB67D6E71A861B8A00926E38 /* ViewController.swift */,
+				FB67D6E71A861B8A00926E38 /* PRKanjiMenuViewController.swift */,
+				18D1705D1A8997C700672203 /* PRFlashcardMenuViewController.swift */,
+				18D1705F1A8997D700672203 /* PRTestsMenuViewController.swift */,
+				18D170711A89F03100672203 /* PRFlashcardPageViewController.swift */,
+				18D170731A89F13100672203 /* PRFlashcardViewController.xib */,
+				18D170751A89F3E200672203 /* PRFlashcardViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -196,6 +219,9 @@
 			isa = PBXGroup;
 			children = (
 				FB67D6EE1A861B8A00926E38 /* LaunchScreen.xib */,
+				18D170611A89A0B000672203 /* PRHeaderViewCell.xib */,
+				18D170631A89A49B00672203 /* PRHeaderViewCell.swift */,
+				18D170651A89A5C200672203 /* PRComboBox.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -205,6 +231,7 @@
 			children = (
 				FB67D7071A8622F400926E38 /* kanjijigoku-Bridging-Header.h */,
 				18D26D9A1A883ED800A8908C /* PRDatabaseHelper.swift */,
+				18D1706D1A89D77B00672203 /* PRStateSingleton.swift */,
 			);
 			name = Helper;
 			sourceTree = "<group>";
@@ -293,9 +320,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FB67D6EB1A861B8A00926E38 /* Main.storyboard in Resources */,
+				18D1706A1A89BBE800672203 /* flashcardItems.plist in Resources */,
 				FB67D6F01A861B8A00926E38 /* LaunchScreen.xib in Resources */,
 				FB67D6ED1A861B8A00926E38 /* Images.xcassets in Resources */,
+				18D170621A89A0B000672203 /* PRHeaderViewCell.xib in Resources */,
+				18D170741A89F13100672203 /* PRFlashcardViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -376,15 +405,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18D170721A89F03100672203 /* PRFlashcardPageViewController.swift in Sources */,
 				18D26D9B1A883ED800A8908C /* PRDatabaseHelper.swift in Sources */,
-				FB67D6E81A861B8A00926E38 /* ViewController.swift in Sources */,
+				FB67D6E81A861B8A00926E38 /* PRKanjiMenuViewController.swift in Sources */,
+				18D170761A89F3E200672203 /* PRFlashcardViewController.swift in Sources */,
 				18D26DA51A8856CF00A8908C /* Reading.swift in Sources */,
+				18D170601A8997D700672203 /* PRTestsMenuViewController.swift in Sources */,
+				18D1705E1A8997C700672203 /* PRFlashcardMenuViewController.swift in Sources */,
 				18D26DB11A8888C500A8908C /* Onyomi.swift in Sources */,
 				18D26DA11A8856CF00A8908C /* Character.swift in Sources */,
+				18D1706E1A89D77B00672203 /* PRStateSingleton.swift in Sources */,
 				18D26D9F1A8856CF00A8908C /* Radical.swift in Sources */,
 				18D26DA91A8856CF00A8908C /* Sentence.swift in Sources */,
 				FB67D6E61A861B8A00926E38 /* kanjijigoku.xcdatamodeld in Sources */,
 				18D26DAB1A8856CF00A8908C /* Example.swift in Sources */,
+				18D170641A89A49B00672203 /* PRHeaderViewCell.swift in Sources */,
+				18D170661A89A5C200672203 /* PRComboBox.swift in Sources */,
 				FB67D6E31A861B8A00926E38 /* AppDelegate.swift in Sources */,
 				18D26DA71A8856CF00A8908C /* Kunyomi.swift in Sources */,
 			);
@@ -409,14 +445,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		FB67D6E91A861B8A00926E38 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FB67D6EA1A861B8A00926E38 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		FB67D6EE1A861B8A00926E38 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
