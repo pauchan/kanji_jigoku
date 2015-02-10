@@ -11,6 +11,8 @@ import UIKit
 class PRHeaderViewCell : UITableViewCell
 {
 
+    @IBOutlet weak var levelComboBox: PRComboBox!
+    @IBOutlet weak var lessonComboBox: PRComboBox!
     @IBOutlet weak var extraMaterialSwitch: UISwitch!
     
 }

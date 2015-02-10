@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PRFlashcardMenuViewController : UITableViewController, UITableViewDataSource, UITableViewDelegate
+class PRFlashcardMenuViewController : UITableViewController, UITableViewDataSource, UITableViewDelegate, UIPickerViewDataSource, UIPickerViewDelegate
 {
     var _tableItems : NSArray
 
@@ -85,8 +85,15 @@ override func viewDidLoad() {
     if(indexPath.section == 0)
     {
         let cell = tableView.dequeueReusableCellWithIdentifier("PRHeaderViewCell", forIndexPath: indexPath) as PRHeaderViewCell
-
+        cell.levelComboBox.pickerView.delegate = self;
+        cell.lessonComboBox.pickerView.delegate = self;
         
+        cell.levelComboBox.tag = 11
+        cell.lessonComboBox.tag = 12
+        
+        cell.levelComboBox.text = NSString(format:"Poziom: %d", PRStateSingleton.sharedInstance.currentLevel)
+        cell.lessonComboBox.text = NSString(format:"Lekcja: %d", PRStateSingleton.sharedInstance.currentLesson)
+    
         return cell
         
     }
@@ -130,5 +137,28 @@ override func viewDidLoad() {
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 2
     }
+    
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return 1
+    }
+    
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+        
+        return 1
+    }
+    
+    
+//    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
+//        if(pickerView.tag == 11)
+//        {
+//            let ret : NSString = NSString(format: "Poziom %d", arguments: PRStateSingleton.sharedInstance.currentLevel)
+//            return String
+//        }
+//        else
+//        {
+//        
+//            return CString(format: "Poziom %d", arguments: PRStateSingleton.sharedInstance.currentLevel)
+//        }
+//    }
     
 }
