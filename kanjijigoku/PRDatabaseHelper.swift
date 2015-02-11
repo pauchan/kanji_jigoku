@@ -376,39 +376,19 @@ class PRDatabaseHelper
         }
     }
     
-    func getLessonArray(level: Int) -> NSArray
+    func getSelectedObjectsArray(objectsClass: String, level: Int, lesson: Int)
     {
         let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         let managedContext = appDelegate.managedObjectContext!
         
-        let fetchRequest :NSFetchRequest = NSFetchRequest(entityName: "Character")
-        let entity = NSEntityDescription.entityForName("Character", inManagedObjectContext: managedContext)!
+        let fetchRequest : NSFetchRequest = NSFetchRequest(entityName: objectsClass)
+        let entity = NSEntityDescription.entityForName(objectsClass, inManagedObjectContext: managedContext)!
         //fetchRequest.resultType =
-        fetchRequest.propertiesToFetch = ["lesson"]
-        fetchRequest.returnsDistinctResults = true
-        fetchRequest.predicate = NSPredicate(format: "level=%d",level)
+        fetchRequest.predicate = NSPredicate(fromMetadataQueryString: "level=\(currentLevel)")
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "lesson", ascending: true)]
         fetchRequest.resultType = .DictionaryResultType;
         let outArray: NSArray = managedContext.executeFetchRequest(fetchRequest, error: nil)!
         return outArray
-    
-    }
-    
-    func getLevelArray() -> NSArray
-    {
-        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
-        let managedContext = appDelegate.managedObjectContext!
-        
-        let fetchRequest :NSFetchRequest = NSFetchRequest(entityName: "Character")
-        let entity = NSEntityDescription.entityForName("Character", inManagedObjectContext: managedContext)!
-        //fetchRequest.resultType =
-        fetchRequest.propertiesToFetch = ["level"]
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "level", ascending: true)]
-        fetchRequest.returnsDistinctResults = true
-        fetchRequest.resultType = .DictionaryResultType;
-        let outArray: NSArray = managedContext.executeFetchRequest(fetchRequest, error: nil)!
-        return outArray
-    
     }
     
 }

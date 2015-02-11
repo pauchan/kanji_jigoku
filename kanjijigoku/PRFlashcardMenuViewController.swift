@@ -100,7 +100,7 @@ override func viewDidLoad() {
         else
     {
         let cell = tableView.dequeueReusableCellWithIdentifier("PRFlashcardCell", forIndexPath: indexPath) as UITableViewCell
-        cell.textLabel?.text = _tableItems[indexPath.row] as? String
+        cell.textLabel.text = _tableItems[indexPath.row] as? String
         return cell
     }
     }
