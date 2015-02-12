@@ -22,7 +22,7 @@ class PRFlashcardPageViewController : UIPageViewController, UIPageViewController
         
         //let flashcard =
 
-        let vc = PRFlashcardViewController()
+        let vc = PRFlashcardViewController(nibName: "PRFlashcardViewController", bundle: nil)
         vc.view.backgroundColor = UIColor.whiteColor()
         let character = _flashcardSet[0] as Character
         vc.name  = character.kanji
@@ -46,7 +46,7 @@ class PRFlashcardPageViewController : UIPageViewController, UIPageViewController
         else
         {
             _selectedIndex--
-            let vc = PRFlashcardViewController()
+            let vc = PRFlashcardViewController(nibName: "PRFlashcardViewController", bundle: nil)
             //vc.flashcard = _flashcardSet[_selectedIndex] as Character
             
             //let vc = PRFlashcardViewController()
@@ -67,8 +67,9 @@ class PRFlashcardPageViewController : UIPageViewController, UIPageViewController
         else
         {
             _selectedIndex++
-            let vc = PRFlashcardViewController()
+            let vc = PRFlashcardViewController(nibName: "PRFlashcardViewController", bundle: nil)
             var character = _flashcardSet[_selectedIndex] as Character
+            println("test test \(character.kanji)")
             vc.characterLabel.text  = character.kanji
             return vc
         }

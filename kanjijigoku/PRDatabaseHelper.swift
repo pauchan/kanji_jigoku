@@ -201,7 +201,7 @@ class PRDatabaseHelper
             
             var outSet : NSMutableSet = NSMutableSet()
             
-            if let rs = database.executeQuery("select * from zdania where kanji=\(character)", withArgumentsInArray: nil) {
+            if let rs = database.executeQuery("select * from zdania where kanji='\(character)'", withArgumentsInArray: nil) {
                 while rs.next() {
                     
                     let sentence = NSManagedObject(entity: entity, insertIntoManagedObjectContext: managedContext) as Sentence
@@ -232,7 +232,7 @@ class PRDatabaseHelper
             
             var outSet : NSMutableSet = NSMutableSet()
             
-            if let rs = database.executeQuery("select * from kunyomi where kanji=\(character)", withArgumentsInArray: nil) {
+            if let rs = database.executeQuery("select * from kunyomi where kanji='\(character)'", withArgumentsInArray: nil) {
                 while rs.next() {
                     
                     let kunyomi = NSManagedObject(entity: entity, insertIntoManagedObjectContext: managedContext) as Kunyomi
@@ -263,7 +263,7 @@ class PRDatabaseHelper
             
             var outSet : NSMutableSet = NSMutableSet()
             
-            if let rs = database.executeQuery("select * from onyomi where kanji=\(character)", withArgumentsInArray: nil) {
+            if let rs = database.executeQuery("select * from onyomi where kanji='\(character)'", withArgumentsInArray: nil) {
                 while rs.next() {
                     
                     let onyomi = NSManagedObject(entity: entity, insertIntoManagedObjectContext: managedContext) as Onyomi
@@ -295,7 +295,7 @@ class PRDatabaseHelper
             
             var outSet : NSMutableSet = NSMutableSet()
             
-            if let rs = database.executeQuery("select * from zlozenia where kanji=\(character)", withArgumentsInArray: nil) {
+            if let rs = database.executeQuery("select * from zlozenia where kanji='\(character)'", withArgumentsInArray: nil) {
                 while rs.next() {
                     
                     let example = NSManagedObject(entity: entity, insertIntoManagedObjectContext: managedContext) as Example

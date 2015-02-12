@@ -26,10 +26,10 @@ class PRFlashcardViewController : UIViewController {
     
     override func viewDidLoad() {
         
-        characterLabel?.text = name
-        readingLabel?.text = reading
+        characterLabel?.text = "test" //name
+        readingLabel?.text = "test" //name
         meaningLabel?.text = meaning
-        super.viewDidLoad()
+        //super.viewDidLoad()
 
     }
     
