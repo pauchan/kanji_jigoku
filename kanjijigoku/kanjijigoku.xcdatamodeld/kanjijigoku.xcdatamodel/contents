@@ -14,39 +14,36 @@
         <attribute name="relatedKanji" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="strokeCount" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <relationship name="examples" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Example" inverseName="character" inverseEntity="Example" syncable="YES"/>
+        <relationship name="kunyomis" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Kunyomi" inverseName="character" inverseEntity="Kunyomi" syncable="YES"/>
+        <relationship name="onyomis" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Onyomi" inverseName="character" inverseEntity="Onyomi" syncable="YES"/>
         <relationship name="radicals" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Radical" inverseName="character" inverseEntity="Radical" syncable="YES"/>
-        <relationship name="readings" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Reading" inverseName="character" inverseEntity="Reading" syncable="YES"/>
         <relationship name="sentences" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Sentence" inverseName="character" inverseEntity="Sentence" syncable="YES"/>
     </entity>
-    <entity name="Example" representedClassName="kanjijigoku.Example" syncable="YES">
+    <entity name="Example" representedClassName="kanjijigoku.Example" parentEntity="Testable" syncable="YES">
         <attribute name="code" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="example" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="exampleId" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="kanji" attributeType="String" syncable="YES"/>
-        <attribute name="meaning" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="note" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="reading" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="character" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Character" inverseName="examples" inverseEntity="Character" syncable="YES"/>
         <relationship name="sentences" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Sentence" inverseName="examples" inverseEntity="Sentence" syncable="YES"/>
     </entity>
     <entity name="Kunyomi" representedClassName="kanjijigoku.Kunyomi" parentEntity="Reading" syncable="YES">
         <attribute name="speechPart" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="character" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Character" inverseName="kunyomis" inverseEntity="Character" syncable="YES"/>
     </entity>
-    <entity name="Onyomi" representedClassName="kanjijigoku.Onyomi" parentEntity="Reading" syncable="YES"/>
+    <entity name="Onyomi" representedClassName="kanjijigoku.Onyomi" parentEntity="Reading" syncable="YES">
+        <relationship name="character" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Character" inverseName="onyomis" inverseEntity="Character" syncable="YES"/>
+    </entity>
     <entity name="Radical" representedClassName="kanjijigoku.Radical" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="number" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="radical" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="character" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Character" inverseName="radicals" inverseEntity="Character" syncable="YES"/>
     </entity>
-    <entity name="Reading" representedClassName="kanjijigoku.Reading" syncable="YES">
+    <entity name="Reading" representedClassName="kanjijigoku.Reading" isAbstract="YES" parentEntity="Testable" syncable="YES">
         <attribute name="code" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="kanji" attributeType="String" syncable="YES"/>
-        <attribute name="meaning" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="note" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="reading" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="readingId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <relationship name="character" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Character" inverseName="readings" inverseEntity="Character" syncable="YES"/>
     </entity>
     <entity name="Sentence" representedClassName="kanjijigoku.Sentence" syncable="YES">
         <attribute name="code" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
@@ -58,13 +55,19 @@
         <relationship name="character" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Character" inverseName="sentences" inverseEntity="Character" syncable="YES"/>
         <relationship name="examples" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Example" inverseName="sentences" inverseEntity="Example" syncable="YES"/>
     </entity>
+    <entity name="Testable" representedClassName="kanjijigoku.Testable" isAbstract="YES" syncable="YES">
+        <attribute name="kanji" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="meaning" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="reading" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <elements>
-        <element name="Character" positionX="-5787" positionY="-2133" width="128" height="283"/>
-        <element name="Example" positionX="-5411" positionY="-1971" width="128" height="178"/>
-        <element name="Kunyomi" positionX="-5330" positionY="-2124" width="128" height="58"/>
-        <element name="Onyomi" positionX="-5330" positionY="-2052" width="128" height="43"/>
-        <element name="Radical" positionX="-5600" positionY="-1789" width="128" height="103"/>
-        <element name="Reading" positionX="-5517" positionY="-2133" width="128" height="148"/>
-        <element name="Sentence" positionX="-5249" positionY="-1789" width="128" height="163"/>
+        <element name="Character" positionX="-6012" positionY="-2182" width="128" height="298"/>
+        <element name="Example" positionX="-5258" positionY="-1906" width="128" height="133"/>
+        <element name="Kunyomi" positionX="-5285" positionY="-2178" width="128" height="73"/>
+        <element name="Onyomi" positionX="-5276" positionY="-2052" width="128" height="58"/>
+        <element name="Radical" positionX="-5841" positionY="-1678" width="128" height="103"/>
+        <element name="Reading" positionX="-5519" positionY="-2182" width="128" height="88"/>
+        <element name="Sentence" positionX="-5463" positionY="-1765" width="128" height="163"/>
+        <element name="Testable" positionX="-5780" positionY="-2178" width="128" height="88"/>
     </elements>
 </model>

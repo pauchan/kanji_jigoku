@@ -4,7 +4,13 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PRFlashcardViewController" customModule="kanjijigoku" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PRFlashcardViewController" customModule="kanjijigoku" customModuleProvider="target">
+            <connections>
+                <outlet property="characterLabel" destination="LZe-it-cXK" id="ErA-zS-miy"/>
+                <outlet property="meaningLabel" destination="IMk-Kd-H5Y" id="UPP-f7-cSl"/>
+                <outlet property="readingLabel" destination="4J4-Rb-umg" id="yDZ-gF-GXB"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
@@ -16,13 +22,13 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4J4-Rb-umg">
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4J4-Rb-umg">
                     <rect key="frame" x="279" y="344" width="42" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IMk-Kd-H5Y">
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IMk-Kd-H5Y">
                     <rect key="frame" x="279" y="388" width="42" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -30,6 +36,7 @@
                 </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <gestureRecognizers/>
             <constraints>
                 <constraint firstItem="LZe-it-cXK" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="D0m-q9-0mQ"/>
                 <constraint firstItem="IMk-Kd-H5Y" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="aux-aa-bAo"/>
@@ -38,7 +45,15 @@
                 <constraint firstItem="IMk-Kd-H5Y" firstAttribute="top" secondItem="4J4-Rb-umg" secondAttribute="bottom" constant="15" id="sIX-yy-NRw"/>
                 <constraint firstItem="4J4-Rb-umg" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="xSx-83-Qhy"/>
             </constraints>
+            <connections>
+                <outletCollection property="gestureRecognizers" destination="qZM-dQ-Xfn" appends="YES" id="jt1-RJ-wBS"/>
+            </connections>
             <point key="canvasLocation" x="174" y="174"/>
         </view>
+        <tapGestureRecognizer id="qZM-dQ-Xfn">
+            <connections>
+                <action selector="tapReceived:" destination="-1" id="EK4-UX-7eU"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
 </document>

@@ -1,5 +1,5 @@
 //
-//  Reading.swift
+//  Testable.swift
 //  kanjijigoku
 //
 //  Created by Paweł Rusin on 2015/02/12.
@@ -9,10 +9,10 @@
 import Foundation
 import CoreData
 
-class Reading: Testable {
+class Testable: NSManagedObject {
 
-    @NSManaged var code: Int32
-    @NSManaged var note: String
-    @NSManaged var readingId: Int32
+    @NSManaged var kanji: String
+    @NSManaged var meaning: String
+    @NSManaged var reading: String
 
 }

@@ -28,6 +28,12 @@ class PRComboBox : UITextField
         
     }
     
+    func setPickerTag(tag : Int)
+    {
+    
+        pickerView.tag = tag
+    }
+    
 }
 
 

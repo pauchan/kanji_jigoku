@@ -115,31 +115,31 @@ class PRDatabaseHelper
             return false
         }
         
-        if !parseKunyomi(database)
-        {
-            println("failed to parse kunyomi")
-            return false
-        }
-        if !parseOnyomi(database)
-        {
-            println("failed to parse onyomi")
-            return false
-        }
-        if !parseExamples(database)
-        {
-            println("failed to parse examples")
-            return false
-        }
-        if !parseSentences(database)
-        {
-            println("failed to parse sentences")
-            return false
-        }
-        if !parseRadicals(database)
-        {
-            println("failed to parse radicals")
-            return false
-        }
+//        if !parseKunyomi(database)
+//        {
+//            println("failed to parse kunyomi")
+//            return false
+//        }
+//        if !parseOnyomi(database)
+//        {
+//            println("failed to parse onyomi")
+//            return false
+//        }
+//        if !parseExamples(database)
+//        {
+//            println("failed to parse examples")
+//            return false
+//        }
+//        if !parseSentences(database)
+//        {
+//            println("failed to parse sentences")
+//            return false
+//        }
+//        if !parseRadicals(database)
+//        {
+//            println("failed to parse radicals")
+//            return false
+//        }
         NSUserDefaults.standardUserDefaults().setObject(_timestamp, forKey: "PRKanjiJigokuDbUpdate")
         println("Update successful")
         
@@ -171,6 +171,12 @@ class PRDatabaseHelper
                     character.level = rs.intForColumnIndex(11)
                     character.kanjiId = rs.intForColumnIndex(12)
                     
+                    character.kunyomis = parseKunyomi(database, character: character.kanji)
+                    character.onyomis = parseOnyomi(database, character: character.kanji)
+                    character.examples = parseExamples(database, character: character.kanji)
+                    character.sentences = parseSentences(database, character: character.kanji)
+                    character.radicals = parseRadicals(database, number: Int(character.radical))
+                    
                 }
             } else {
                 println("select failed: \(database.lastErrorMessage())")
@@ -186,14 +192,16 @@ class PRDatabaseHelper
             
         }
         
-        func parseSentences(database : FMDatabase) -> Bool
+        func parseSentences(database : FMDatabase, character : String) -> NSSet
         {
             let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
             let managedContext = appDelegate.managedObjectContext!
             
             let entity = NSEntityDescription.entityForName("Sentence", inManagedObjectContext: managedContext)!
             
-            if let rs = database.executeQuery("select * from zdania", withArgumentsInArray: nil) {
+            var outSet : NSMutableSet = NSMutableSet()
+            
+            if let rs = database.executeQuery("select * from zdania where kanji=\(character)", withArgumentsInArray: nil) {
                 while rs.next() {
                     
                     let sentence = NSManagedObject(entity: entity, insertIntoManagedObjectContext: managedContext) as Sentence
@@ -204,29 +212,27 @@ class PRDatabaseHelper
                     sentence.meaning = rs.stringForColumnIndex(3)
                     sentence.code = rs.intForColumnIndex(4)
                     sentence.sentenceId = rs.intForColumnIndex(5)
+                    
+                    outSet.addObject(sentence)
                 }
             } else {
                 println("select failed: \(database.lastErrorMessage())")
-                return false
-            }
-            var error: NSError?
-            if !managedContext.save(&error) {
-                println("Could not save \(error), \(error?.userInfo)")
-                return false
             }
             
-            return true
+            return outSet.copy() as NSSet
             
         }
         
-        func parseKunyomi(database : FMDatabase) -> Bool
+        func parseKunyomi(database : FMDatabase, character : String) -> NSSet
         {
             let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
             let managedContext = appDelegate.managedObjectContext!
             
             let entity = NSEntityDescription.entityForName("Kunyomi", inManagedObjectContext: managedContext)!
             
-            if let rs = database.executeQuery("select * from kunyomi", withArgumentsInArray: nil) {
+            var outSet : NSMutableSet = NSMutableSet()
+            
+            if let rs = database.executeQuery("select * from kunyomi where kanji=\(character)", withArgumentsInArray: nil) {
                 while rs.next() {
                     
                     let kunyomi = NSManagedObject(entity: entity, insertIntoManagedObjectContext: managedContext) as Kunyomi
@@ -237,29 +243,27 @@ class PRDatabaseHelper
                     kunyomi.readingId = rs.intForColumnIndex(3)
                     kunyomi.code = rs.intForColumnIndex(4)
                     kunyomi.note = rs.stringForColumnIndex(5)
+                    
+                    outSet.addObject(kunyomi)
                 }
             } else {
                 println("select failed: \(database.lastErrorMessage())")
-                return false
-            }
-            var error: NSError?
-            if !managedContext.save(&error) {
-                println("Could not save \(error), \(error?.userInfo)")
-                return false
             }
             
-            return true
+            return outSet.copy() as NSSet
             
         }
         
-        func parseOnyomi(database : FMDatabase) -> Bool
+    func parseOnyomi(database : FMDatabase, character : String) -> NSSet
         {
             let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
             let managedContext = appDelegate.managedObjectContext!
             
             let entity = NSEntityDescription.entityForName("Onyomi", inManagedObjectContext: managedContext)!
             
-            if let rs = database.executeQuery("select * from onyomi", withArgumentsInArray: nil) {
+            var outSet : NSMutableSet = NSMutableSet()
+            
+            if let rs = database.executeQuery("select * from onyomi where kanji=\(character)", withArgumentsInArray: nil) {
                 while rs.next() {
                     
                     let onyomi = NSManagedObject(entity: entity, insertIntoManagedObjectContext: managedContext) as Onyomi
@@ -270,29 +274,28 @@ class PRDatabaseHelper
                     onyomi.readingId = rs.intForColumnIndex(3)
                     onyomi.code = rs.intForColumnIndex(4)
                     onyomi.note = rs.stringForColumnIndex(5)
+                    
+                    outSet.addObject(onyomi)
                 }
             } else {
                 println("select failed: \(database.lastErrorMessage())")
-                return false
-            }
-            var error: NSError?
-            if !managedContext.save(&error) {
-                println("Could not save \(error), \(error?.userInfo)")
-                return false
+                //return outSet
             }
             
-            return true
+            return outSet.copy() as NSSet
             
         }
         
-        func parseExamples(database : FMDatabase) -> Bool
+        func parseExamples(database : FMDatabase, character : String) -> NSSet
         {
             let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
             let managedContext = appDelegate.managedObjectContext!
             
             let entity = NSEntityDescription.entityForName("Example", inManagedObjectContext: managedContext)!
             
-            if let rs = database.executeQuery("select * from zlozenia", withArgumentsInArray: nil) {
+            var outSet : NSMutableSet = NSMutableSet()
+            
+            if let rs = database.executeQuery("select * from zlozenia where kanji=\(character)", withArgumentsInArray: nil) {
                 while rs.next() {
                     
                     let example = NSManagedObject(entity: entity, insertIntoManagedObjectContext: managedContext) as Example
@@ -305,28 +308,25 @@ class PRDatabaseHelper
                     example.exampleId = rs.intForColumnIndex(5)
                     example.code = rs.intForColumnIndex(6)
                     
+                    outSet.addObject(example)
                 }
             } else {
                 println("select failed: \(database.lastErrorMessage())")
-                return false
-            }
-            var error: NSError?
-            if !managedContext.save(&error) {
-                println("Could not save \(error), \(error?.userInfo)")
-                return false
             }
             
-            return true
+            return outSet.copy() as NSSet
         }
         
-        func parseRadicals(database : FMDatabase) -> Bool
+        func parseRadicals(database : FMDatabase, number : Int) -> NSSet
         {
             let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
             let managedContext = appDelegate.managedObjectContext!
             
             let entity = NSEntityDescription.entityForName("Radical", inManagedObjectContext: managedContext)!
             
-            if let rs = database.executeQuery("select * from pierwiastki", withArgumentsInArray: nil) {
+            var outSet : NSMutableSet = NSMutableSet()
+            
+            if let rs = database.executeQuery("select * from pierwiastki where numer=\(number)", withArgumentsInArray: nil) {
                 while rs.next() {
                     
                     let radical = NSManagedObject(entity: entity, insertIntoManagedObjectContext: managedContext) as Radical
@@ -335,18 +335,13 @@ class PRDatabaseHelper
                     radical.radical = rs.stringForColumnIndex(1)
                     radical.name = rs.stringForColumnIndex(2)
                     
+                    outSet.addObject(radical)
                 }
             } else {
                 println("select failed: \(database.lastErrorMessage())")
-                return false
-            }
-            var error: NSError?
-            if !managedContext.save(&error) {
-                println("Could not save \(error), \(error?.userInfo)")
-                return false
             }
             
-            return true
+            return outSet.copy() as NSSet
         }
     
     func deleteObjects(description: String)
@@ -376,19 +371,68 @@ class PRDatabaseHelper
         }
     }
     
-    func getSelectedObjectsArray(objectsClass: String, level: Int, lesson: Int)
+    func getSelectedCharacters(level: Int, lesson: Int) -> NSArray
     {
         let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         let managedContext = appDelegate.managedObjectContext!
         
-        let fetchRequest : NSFetchRequest = NSFetchRequest(entityName: objectsClass)
-        let entity = NSEntityDescription.entityForName(objectsClass, inManagedObjectContext: managedContext)!
+        let fetchRequest : NSFetchRequest = NSFetchRequest(entityName: "Character")
+        let entity = NSEntityDescription.entityForName("Character", inManagedObjectContext: managedContext)!
         //fetchRequest.resultType =
-        fetchRequest.predicate = NSPredicate(fromMetadataQueryString: "level=\(currentLevel)")
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "lesson", ascending: true)]
-        fetchRequest.resultType = .DictionaryResultType;
+        //let predicate : NSPredicate =
+        fetchRequest.predicate = NSPredicate(format: "level=\(level) AND lesson=\(lesson)")!
+        //fetchRequest.sortDescriptors = [NSSortDescriptor(key: "lesson", ascending: true)]
+        //fetchRequest.resultType = .DictionaryResultType;
         let outArray: NSArray = managedContext.executeFetchRequest(fetchRequest, error: nil)!
         return outArray
+    }
+    
+    func getLessonArray(currentLevel : Int) -> NSArray
+    {
+
+            let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+            let managedContext = appDelegate.managedObjectContext!
+            
+            let fetchRequest : NSFetchRequest = NSFetchRequest(entityName: "Character")
+            let entity = NSEntityDescription.entityForName("Character", inManagedObjectContext: managedContext)!
+            //fetchRequest.resultType =
+            fetchRequest.propertiesToFetch = ["lesson"]
+            fetchRequest.returnsDistinctResults = true
+            fetchRequest.predicate = NSPredicate(format: "level=\(currentLevel)")
+            fetchRequest.sortDescriptors = [NSSortDescriptor(key: "lesson", ascending: true)]
+            fetchRequest.resultType = .DictionaryResultType;
+            let outResponse: NSArray = managedContext.executeFetchRequest(fetchRequest, error: nil)!
+        
+            var outArray = [Int]()
+            for object in outResponse
+            {
+                outArray += [object["lesson"] as Int]
+            }
+
+            return outArray
+    }
+    
+
+        func getLevelArray() -> [Int] {
+            
+            let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+            let managedContext = appDelegate.managedObjectContext!
+            
+            let fetchRequest :NSFetchRequest = NSFetchRequest(entityName: "Character")
+            let entity = NSEntityDescription.entityForName("Character", inManagedObjectContext: managedContext)!
+            //fetchRequest.resultType =
+            fetchRequest.propertiesToFetch = ["level"]
+            fetchRequest.sortDescriptors = [NSSortDescriptor(key: "level", ascending: true)]
+            fetchRequest.returnsDistinctResults = true
+            fetchRequest.resultType = .DictionaryResultType;
+            let outResponse : NSArray = managedContext.executeFetchRequest(fetchRequest, error: nil)!
+            var outArray = [Int]()
+            for object in outResponse
+            {
+                 outArray += [object["level"] as Int]
+            }
+            return outArray
+            
     }
     
 }

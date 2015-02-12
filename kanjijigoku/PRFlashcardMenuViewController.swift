@@ -11,6 +11,7 @@ import UIKit
 class PRFlashcardMenuViewController : UITableViewController, UITableViewDataSource, UITableViewDelegate, UIPickerViewDataSource, UIPickerViewDelegate
 {
     var _tableItems : NSArray
+    var _flashcardItems = ["Onyomi", "Kunyomi", "Example", "Sentence"]
 
     override init(style: UITableViewStyle) {
         
@@ -75,6 +76,13 @@ override func viewDidLoad() {
     self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "PRFlashcardCell")
     self.tableView.tableFooterView = UIView()
     
+    let test = PRStateSingleton.sharedInstance.levelArray
+    for bla in test
+    {
+        println("test: \(bla)")
+    }
+    
+    
 
     
 }
@@ -88,11 +96,17 @@ override func viewDidLoad() {
         cell.levelComboBox.pickerView.delegate = self;
         cell.lessonComboBox.pickerView.delegate = self;
         
+        cell.levelComboBox.pickerView.dataSource = self;
+        cell.lessonComboBox.pickerView.dataSource = self;
+        
         cell.levelComboBox.tag = 11
         cell.lessonComboBox.tag = 12
         
-        cell.levelComboBox.text = NSString(format:"Poziom: %d", PRStateSingleton.sharedInstance.currentLevel)
-        cell.lessonComboBox.text = NSString(format:"Lekcja: %d", PRStateSingleton.sharedInstance.currentLesson)
+        cell.levelComboBox.setPickerTag(11)
+        cell.lessonComboBox.setPickerTag(12)
+        
+        cell.levelComboBox.text = "Poziom: \(PRStateSingleton.sharedInstance.currentLevel)"
+        cell.lessonComboBox.text = "Lekcja: \(PRStateSingleton.sharedInstance.currentLesson)"
     
         return cell
         
@@ -100,14 +114,25 @@ override func viewDidLoad() {
         else
     {
         let cell = tableView.dequeueReusableCellWithIdentifier("PRFlashcardCell", forIndexPath: indexPath) as UITableViewCell
-        cell.textLabel.text = _tableItems[indexPath.row] as? String
+        cell.textLabel?.text = _tableItems[indexPath.row] as? String
         return cell
     }
     }
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
-        
+        if indexPath.section != 0
+        {
+            if indexPath.row < 4 // just for now, I need to think about custom flashcards
+            {
+                var dbHelp = PRDatabaseHelper()
+                let flashcardsArray = dbHelp.getSelectedCharacters(PRStateSingleton.sharedInstance.currentLevel, lesson: PRStateSingleton.sharedInstance.currentLesson)
+                var vc = PRFlashcardPageViewController()
+                vc._flashcardSet = flashcardsArray
+                navigationController?.pushViewController(vc, animated: false)
+            }
+            
+        }
         
     }
     
@@ -115,7 +140,7 @@ override func viewDidLoad() {
         
         if(indexPath.section == 0)
         {
-            return 80.0
+            return 90.0
         }
         else
         {
@@ -139,7 +164,14 @@ override func viewDidLoad() {
     }
     
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return 1
+        if pickerView.tag == 11
+        {
+            return PRStateSingleton.sharedInstance.levelArray.count
+        }
+        else
+        {
+            return PRStateSingleton.sharedInstance.lessonArray.count
+        }
     }
     
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
@@ -148,17 +180,35 @@ override func viewDidLoad() {
     }
     
     
-//    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
-//        if(pickerView.tag == 11)
-//        {
-//            let ret : NSString = NSString(format: "Poziom %d", arguments: PRStateSingleton.sharedInstance.currentLevel)
-//            return String
-//        }
-//        else
-//        {
-//        
-//            return CString(format: "Poziom %d", arguments: PRStateSingleton.sharedInstance.currentLevel)
-//        }
-//    }
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
+        if pickerView.tag == 11
+        {
+            let bla = PRStateSingleton.sharedInstance.levelArray
+            return "Poziom \(PRStateSingleton.sharedInstance.levelArray[row])"
+        }
+        else
+        {
+        
+            return "Lekcja \(PRStateSingleton.sharedInstance.lessonArray[row])"
+        }
+    }
     
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
+    {
+        let cell : PRHeaderViewCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as PRHeaderViewCell
+        
+        if pickerView.tag == 11
+        {
+            PRStateSingleton.sharedInstance.currentLevel = PRStateSingleton.sharedInstance.levelArray[row] as Int
+            cell.levelComboBox.text = "Poziom: \(PRStateSingleton.sharedInstance.currentLevel)"
+            cell.lessonComboBox.becomeFirstResponder()
+        }
+        else
+        {
+            PRStateSingleton.sharedInstance.currentLesson = PRStateSingleton.sharedInstance.lessonArray[row] as Int
+            cell.lessonComboBox.text = "Lekcja: \(PRStateSingleton.sharedInstance.currentLesson)"
+            cell.lessonComboBox.resignFirstResponder()
+            
+        }
+    }
 }

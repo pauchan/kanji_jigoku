@@ -42,25 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.rootViewController = tabBarController
         
         self.window?.makeKeyAndVisible()
-        
 
-        
-        
-////        var kanjiItem : UITabBarItem = UITabBarItem(title: "Lekcja", image: <#UIImage?#>, tag: 0)
-//        var kanjiItem : UITabBarItem = UITabBarItem(tabBarSystemItem: UITabBarSystemItem.Bookmarks, tag: 0)
-//        kanjiItem.title = "Lekcja"
-//        
-//        var kanjiItem2 : UITabBarItem = UITabBarItem(tabBarSystemItem: UITabBarSystemItem.History, tag: 1)
-//        kanjiItem.title = "Testy"
-//
-//        var kanjiItem3 : UITabBarItem = UITabBarItem(tabBarSystemItem: UITabBarSystemItem.MostRecent, tag: 2)
-//        kanjiItem.title = "Fiszki"
-//
-//        
-//        var tabBar : UITabBar = UITabBar()
-//        tabBar.items = [kanjiItem, kanjiItem2, kanjiItem3]
-//        tabBarController.tabB
-        
         
         return true
     }

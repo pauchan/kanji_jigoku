@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18C23D3E1A8C734C00AB5817 /* Kunyomi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C23D3D1A8C734C00AB5817 /* Kunyomi.swift */; };
+		18C23D401A8C734D00AB5817 /* Testable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C23D3F1A8C734D00AB5817 /* Testable.swift */; };
+		18C23D421A8C734D00AB5817 /* Sentence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C23D411A8C734D00AB5817 /* Sentence.swift */; };
+		18C23D441A8C734D00AB5817 /* Example.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C23D431A8C734D00AB5817 /* Example.swift */; };
+		18C23D461A8C734D00AB5817 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C23D451A8C734D00AB5817 /* Character.swift */; };
+		18C23D481A8C734D00AB5817 /* Reading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C23D471A8C734D00AB5817 /* Reading.swift */; };
+		18C23D4A1A8C734D00AB5817 /* Onyomi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C23D491A8C734D00AB5817 /* Onyomi.swift */; };
+		18C23D4C1A8C734D00AB5817 /* Radical.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C23D4B1A8C734D00AB5817 /* Radical.swift */; };
 		18D1705E1A8997C700672203 /* PRFlashcardMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D1705D1A8997C700672203 /* PRFlashcardMenuViewController.swift */; };
 		18D170601A8997D700672203 /* PRTestsMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D1705F1A8997D700672203 /* PRTestsMenuViewController.swift */; };
 		18D170621A89A0B000672203 /* PRHeaderViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18D170611A89A0B000672203 /* PRHeaderViewCell.xib */; };
@@ -18,13 +26,6 @@
 		18D170741A89F13100672203 /* PRFlashcardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18D170731A89F13100672203 /* PRFlashcardViewController.xib */; };
 		18D170761A89F3E200672203 /* PRFlashcardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D170751A89F3E200672203 /* PRFlashcardViewController.swift */; };
 		18D26D9B1A883ED800A8908C /* PRDatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D26D9A1A883ED800A8908C /* PRDatabaseHelper.swift */; };
-		18D26D9F1A8856CF00A8908C /* Radical.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D26D9E1A8856CF00A8908C /* Radical.swift */; };
-		18D26DA11A8856CF00A8908C /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D26DA01A8856CF00A8908C /* Character.swift */; };
-		18D26DA51A8856CF00A8908C /* Reading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D26DA41A8856CF00A8908C /* Reading.swift */; };
-		18D26DA71A8856CF00A8908C /* Kunyomi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D26DA61A8856CF00A8908C /* Kunyomi.swift */; };
-		18D26DA91A8856CF00A8908C /* Sentence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D26DA81A8856CF00A8908C /* Sentence.swift */; };
-		18D26DAB1A8856CF00A8908C /* Example.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D26DAA1A8856CF00A8908C /* Example.swift */; };
-		18D26DB11A8888C500A8908C /* Onyomi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D26DB01A8888C500A8908C /* Onyomi.swift */; };
 		9890196ACBA1DBB36C220747 /* libPods-kanjijigoku.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16ED305BDA73EF495F1CC7A3 /* libPods-kanjijigoku.a */; };
 		DDA8FCCE07D8A23426327FF9 /* libPods-kanjijigokuTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 48DDE60AB133AD9253EF4C92 /* libPods-kanjijigokuTests.a */; };
 		FB67D6E31A861B8A00926E38 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB67D6E21A861B8A00926E38 /* AppDelegate.swift */; };
@@ -48,6 +49,14 @@
 
 /* Begin PBXFileReference section */
 		16ED305BDA73EF495F1CC7A3 /* libPods-kanjijigoku.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-kanjijigoku.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		18C23D3D1A8C734C00AB5817 /* Kunyomi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Kunyomi.swift; path = Source/Kunyomi.swift; sourceTree = "<group>"; };
+		18C23D3F1A8C734D00AB5817 /* Testable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Testable.swift; path = Source/Testable.swift; sourceTree = "<group>"; };
+		18C23D411A8C734D00AB5817 /* Sentence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Sentence.swift; path = Source/Sentence.swift; sourceTree = "<group>"; };
+		18C23D431A8C734D00AB5817 /* Example.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Example.swift; path = Source/Example.swift; sourceTree = "<group>"; };
+		18C23D451A8C734D00AB5817 /* Character.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Character.swift; path = Source/Character.swift; sourceTree = "<group>"; };
+		18C23D471A8C734D00AB5817 /* Reading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Reading.swift; path = Source/Reading.swift; sourceTree = "<group>"; };
+		18C23D491A8C734D00AB5817 /* Onyomi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Onyomi.swift; path = Source/Onyomi.swift; sourceTree = "<group>"; };
+		18C23D4B1A8C734D00AB5817 /* Radical.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Radical.swift; path = Source/Radical.swift; sourceTree = "<group>"; };
 		18D1705D1A8997C700672203 /* PRFlashcardMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRFlashcardMenuViewController.swift; sourceTree = "<group>"; };
 		18D1705F1A8997D700672203 /* PRTestsMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRTestsMenuViewController.swift; sourceTree = "<group>"; };
 		18D170611A89A0B000672203 /* PRHeaderViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PRHeaderViewCell.xib; path = Source/PRHeaderViewCell.xib; sourceTree = "<group>"; };
@@ -59,13 +68,6 @@
 		18D170731A89F13100672203 /* PRFlashcardViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PRFlashcardViewController.xib; path = Source/PRFlashcardViewController.xib; sourceTree = "<group>"; };
 		18D170751A89F3E200672203 /* PRFlashcardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRFlashcardViewController.swift; path = Source/PRFlashcardViewController.swift; sourceTree = "<group>"; };
 		18D26D9A1A883ED800A8908C /* PRDatabaseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRDatabaseHelper.swift; sourceTree = "<group>"; };
-		18D26D9E1A8856CF00A8908C /* Radical.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Radical.swift; path = Source/Radical.swift; sourceTree = "<group>"; };
-		18D26DA01A8856CF00A8908C /* Character.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Character.swift; path = Source/Character.swift; sourceTree = "<group>"; };
-		18D26DA41A8856CF00A8908C /* Reading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Reading.swift; path = Source/Reading.swift; sourceTree = "<group>"; };
-		18D26DA61A8856CF00A8908C /* Kunyomi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Kunyomi.swift; path = Source/Kunyomi.swift; sourceTree = "<group>"; };
-		18D26DA81A8856CF00A8908C /* Sentence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Sentence.swift; path = Source/Sentence.swift; sourceTree = "<group>"; };
-		18D26DAA1A8856CF00A8908C /* Example.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Example.swift; path = Source/Example.swift; sourceTree = "<group>"; };
-		18D26DB01A8888C500A8908C /* Onyomi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Onyomi.swift; path = Source/Onyomi.swift; sourceTree = "<group>"; };
 		48DDE60AB133AD9253EF4C92 /* libPods-kanjijigokuTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-kanjijigokuTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		94CC88092ADA2AB93CF98660 /* Pods-kanjijigoku.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kanjijigoku.debug.xcconfig"; path = "Pods/Target Support Files/Pods-kanjijigoku/Pods-kanjijigoku.debug.xcconfig"; sourceTree = "<group>"; };
 		A6263FED85E89D9DE53C6A64 /* Pods-kanjijigokuTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kanjijigokuTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-kanjijigokuTests/Pods-kanjijigokuTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -190,14 +192,15 @@
 		FBB1FF751A8724DD00F323D0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				18D26DB01A8888C500A8908C /* Onyomi.swift */,
-				18D26DAA1A8856CF00A8908C /* Example.swift */,
-				18D26DA81A8856CF00A8908C /* Sentence.swift */,
-				18D26DA61A8856CF00A8908C /* Kunyomi.swift */,
-				18D26DA41A8856CF00A8908C /* Reading.swift */,
-				18D26DA01A8856CF00A8908C /* Character.swift */,
-				18D26D9E1A8856CF00A8908C /* Radical.swift */,
 				FB67D6E41A861B8A00926E38 /* kanjijigoku.xcdatamodeld */,
+				18C23D4B1A8C734D00AB5817 /* Radical.swift */,
+				18C23D491A8C734D00AB5817 /* Onyomi.swift */,
+				18C23D471A8C734D00AB5817 /* Reading.swift */,
+				18C23D451A8C734D00AB5817 /* Character.swift */,
+				18C23D431A8C734D00AB5817 /* Example.swift */,
+				18C23D411A8C734D00AB5817 /* Sentence.swift */,
+				18C23D3F1A8C734D00AB5817 /* Testable.swift */,
+				18C23D3D1A8C734C00AB5817 /* Kunyomi.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -406,23 +409,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				18D170721A89F03100672203 /* PRFlashcardPageViewController.swift in Sources */,
+				18C23D4C1A8C734D00AB5817 /* Radical.swift in Sources */,
 				18D26D9B1A883ED800A8908C /* PRDatabaseHelper.swift in Sources */,
 				FB67D6E81A861B8A00926E38 /* PRKanjiMenuViewController.swift in Sources */,
 				18D170761A89F3E200672203 /* PRFlashcardViewController.swift in Sources */,
-				18D26DA51A8856CF00A8908C /* Reading.swift in Sources */,
+				18C23D3E1A8C734C00AB5817 /* Kunyomi.swift in Sources */,
+				18C23D401A8C734D00AB5817 /* Testable.swift in Sources */,
 				18D170601A8997D700672203 /* PRTestsMenuViewController.swift in Sources */,
+				18C23D461A8C734D00AB5817 /* Character.swift in Sources */,
 				18D1705E1A8997C700672203 /* PRFlashcardMenuViewController.swift in Sources */,
-				18D26DB11A8888C500A8908C /* Onyomi.swift in Sources */,
-				18D26DA11A8856CF00A8908C /* Character.swift in Sources */,
 				18D1706E1A89D77B00672203 /* PRStateSingleton.swift in Sources */,
-				18D26D9F1A8856CF00A8908C /* Radical.swift in Sources */,
-				18D26DA91A8856CF00A8908C /* Sentence.swift in Sources */,
+				18C23D481A8C734D00AB5817 /* Reading.swift in Sources */,
 				FB67D6E61A861B8A00926E38 /* kanjijigoku.xcdatamodeld in Sources */,
-				18D26DAB1A8856CF00A8908C /* Example.swift in Sources */,
 				18D170641A89A49B00672203 /* PRHeaderViewCell.swift in Sources */,
 				18D170661A89A5C200672203 /* PRComboBox.swift in Sources */,
+				18C23D421A8C734D00AB5817 /* Sentence.swift in Sources */,
 				FB67D6E31A861B8A00926E38 /* AppDelegate.swift in Sources */,
-				18D26DA71A8856CF00A8908C /* Kunyomi.swift in Sources */,
+				18C23D4A1A8C734D00AB5817 /* Onyomi.swift in Sources */,
+				18C23D441A8C734D00AB5817 /* Example.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -2,7 +2,7 @@
 //  Character.swift
 //  kanjijigoku
 //
-//  Created by Paweł Rusin on 2015/02/09.
+//  Created by Paweł Rusin on 2015/02/12.
 //  Copyright (c) 2015年 Pawel Rusin. All rights reserved.
 //
 
@@ -11,6 +11,7 @@ import CoreData
 
 class Character: NSManagedObject {
 
+    @NSManaged var alternativeKanji: String
     @NSManaged var alternativeRadical: Int32
     @NSManaged var code: Int32
     @NSManaged var kanji: String
@@ -22,10 +23,10 @@ class Character: NSManagedObject {
     @NSManaged var radical: Int32
     @NSManaged var relatedKanji: Int32
     @NSManaged var strokeCount: Int32
-    @NSManaged var alternativeKanji: String
     @NSManaged var examples: NSSet
     @NSManaged var radicals: NSSet
-    @NSManaged var readings: NSSet
     @NSManaged var sentences: NSSet
+    @NSManaged var kunyomis: NSSet
+    @NSManaged var onyomis: NSSet
 
 }

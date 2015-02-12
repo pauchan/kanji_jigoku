@@ -2,7 +2,7 @@
 //  Sentence.swift
 //  kanjijigoku
 //
-//  Created by Paweł Rusin on 2015/02/09.
+//  Created by Paweł Rusin on 2015/02/12.
 //  Copyright (c) 2015年 Pawel Rusin. All rights reserved.
 //
 
@@ -18,6 +18,6 @@ class Sentence: NSManagedObject {
     @NSManaged var sentence: String
     @NSManaged var sentenceId: Int32
     @NSManaged var character: Character
-    @NSManaged var examples: NSManagedObject
+    @NSManaged var examples: Example
 
 }
