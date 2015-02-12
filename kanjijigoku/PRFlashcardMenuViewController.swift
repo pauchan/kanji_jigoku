@@ -127,6 +127,10 @@ override func viewDidLoad() {
             {
                 var dbHelp = PRDatabaseHelper()
                 let flashcardsArray = dbHelp.getSelectedCharacters(PRStateSingleton.sharedInstance.currentLevel, lesson: PRStateSingleton.sharedInstance.currentLesson)
+                
+                //let bla = flashcardsArray[1] as Character
+                //println("test \(bla.kanji)")
+                
                 var vc = PRFlashcardPageViewController()
                 vc._flashcardSet = flashcardsArray
                 navigationController?.pushViewController(vc, animated: false)

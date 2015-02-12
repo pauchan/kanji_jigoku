@@ -7,23 +7,30 @@
 //
 
 import UIKit
+import CoreData
 
 class PRFlashcardViewController : UIViewController {
 
+    var name = ""
+    var reading = ""
+    var meaning = ""
+    
     
     @IBOutlet weak var characterLabel: UILabel!
     @IBOutlet weak var readingLabel: UILabel!
     @IBOutlet weak var meaningLabel: UILabel!
     
-    var flashcard : Character = Character()
+    //var flashcard : Character = Character()
     
     var tapCount : Int = 0;
     
     override func viewDidLoad() {
         
-        characterLabel?.text = flashcard.kanji
-        readingLabel?.text = "test"//flashcard.reading
-        meaningLabel?.text = "test" //flashcard.meaning
+        characterLabel?.text = name
+        readingLabel?.text = reading
+        meaningLabel?.text = meaning
+        super.viewDidLoad()
+
     }
     
     @IBAction func tapReceived(sender: UITapGestureRecognizer) {

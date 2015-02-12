@@ -15,15 +15,27 @@ class PRFlashcardPageViewController : UIPageViewController, UIPageViewController
     
     override func viewDidLoad() {
         
+        let bla = _flashcardSet[0] as Character
+        println("test \(bla.kanji)")
+        
+        self.dataSource = self
+        
         //let flashcard =
 
         let vc = PRFlashcardViewController()
-        vc.flashcard  = _flashcardSet[0] as Character
+        vc.view.backgroundColor = UIColor.whiteColor()
+        let character = _flashcardSet[0] as Character
+        vc.name  = character.kanji
+        
+
+        
         var vcArray = [vc] as [AnyObject]
         self.setViewControllers(vcArray, direction: .Forward, animated: false, completion: nil)
         
         
     }
+    
+    //func viewCo
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
         
@@ -35,7 +47,12 @@ class PRFlashcardPageViewController : UIPageViewController, UIPageViewController
         {
             _selectedIndex--
             let vc = PRFlashcardViewController()
-            vc.flashcard = _flashcardSet[_selectedIndex] as Character
+            //vc.flashcard = _flashcardSet[_selectedIndex] as Character
+            
+            //let vc = PRFlashcardViewController()
+            var character = _flashcardSet[_selectedIndex] as Character
+            vc.characterLabel.text  = character.kanji
+            
             return vc
         }
         
@@ -51,10 +68,13 @@ class PRFlashcardPageViewController : UIPageViewController, UIPageViewController
         {
             _selectedIndex++
             let vc = PRFlashcardViewController()
-            vc.flashcard = _flashcardSet[_selectedIndex] as Character
+            var character = _flashcardSet[_selectedIndex] as Character
+            vc.characterLabel.text  = character.kanji
             return vc
         }
     }
+    
+    //func page
     
     func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
         
