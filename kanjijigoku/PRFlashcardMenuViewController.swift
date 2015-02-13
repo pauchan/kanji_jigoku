@@ -8,6 +8,12 @@
 
 import UIKit
 
+let kOnyomiOption : Int = 0
+let kKunyomiOption : Int = 1
+let kExamplesOption : Int = 2
+let kSentenceOption : Int = 3
+let kCustomFlashCardOption : Int = 4
+
 class PRFlashcardMenuViewController : UITableViewController, UITableViewDataSource, UITableViewDelegate, UIPickerViewDataSource, UIPickerViewDelegate
 {
     var _tableItems : NSArray
@@ -114,7 +120,7 @@ override func viewDidLoad() {
         else
     {
         let cell = tableView.dequeueReusableCellWithIdentifier("PRFlashcardCell", forIndexPath: indexPath) as UITableViewCell
-        cell.textLabel.text = _tableItems[indexPath.row] as? String
+        cell.textLabel?.text = _tableItems[indexPath.row] as? String
         return cell
     }
     }
@@ -123,14 +129,24 @@ override func viewDidLoad() {
     {
         if indexPath.section != 0
         {
-            if indexPath.row < 4 // just for now, I need to think about custom flashcards
+            if indexPath.row < kCustomFlashCardOption // just for now, I need to think about custom flashcards
             {
-                var dbHelp = PRDatabaseHelper()
-                let flashcardsArray = dbHelp.getSelectedCharacters(PRStateSingleton.sharedInstance.currentLevel, lesson: PRStateSingleton.sharedInstance.currentLesson)
-                
-                //let bla = flashcardsArray[1] as Character
-                //println("test \(bla.kanji)")
-                
+                //var dbHelp =
+                let charactersArray = PRDatabaseHelper().getSelectedObjects("Character", level: PRStateSingleton.sharedInstance.currentLevel, lesson: PRStateSingleton.sharedInstance.currentLesson)
+                var flashcardsArray : [Flashcard]
+                if(indexPath.row == kKunyomiOption || indexPath.row == kOnyomiOption)
+                {
+                    flashcardsArray = self.generateFlashcardsArrayForReadings(charactersArray as [Character], option: indexPath.row)
+                }
+                else if(indexPath.row == kExamplesOption || indexPath.row == kSentenceOption)
+                {
+                    flashcardsArray = self.generateFlashcardsArrayForExamples(charactersArray as [Character], option: indexPath.row)
+                }
+                else // customFlashcardToImplement
+                {
+                    flashcardsArray = []
+                }
+
                 var vc = PRFlashcardPageViewController()
                 vc._flashcardSet = flashcardsArray
                 navigationController?.pushViewController(vc, animated: false)
@@ -215,4 +231,51 @@ override func viewDidLoad() {
             
         }
     }
+    
+    func generateFlashcardsArrayForReadings(characters: [Character], option: Int) -> [Flashcard]
+    {
+        
+        var returnArray : [Flashcard] = [Flashcard]()
+        for kanjiCharacter in characters
+        {
+            if(option == kOnyomiOption){
+                returnArray.append(Flashcard(text: kanjiCharacter.kanji, reading: kanjiCharacter.generateReadingString(kanjiCharacter.onyomis), meaning: kanjiCharacter.meaning))
+            }
+            else // option == kKunyomiOption
+            {
+                returnArray.append(Flashcard(text: kanjiCharacter.kanji, reading: kanjiCharacter.generateReadingString(kanjiCharacter.kunyomis), meaning: kanjiCharacter.meaning))
+            }
+        }
+        return returnArray
+    }
+    
+    func generateFlashcardsArrayForExamples(characters: [Character], option : Int) -> [Flashcard]
+    {
+        
+        var returnArray : [Flashcard] = [Flashcard]()
+        for character in characters
+        {
+            if(option == kExamplesOption)
+            {
+                for e in character.examples
+                {
+                    let example = e as Example
+                    returnArray.append(Flashcard(text: example.example, reading: example.reading, meaning: example.meaning))
+                }
+            }
+            else
+            {
+                for s in character.sentences
+                {
+                    let sentence = s as Sentence
+                    returnArray.append(Flashcard(text: sentence.sentence, reading: sentence.sentence, meaning: sentence.meaning))
+                }
+            }
+        }
+        return returnArray
+    }
+    
+
+
 }
+

@@ -9,40 +9,37 @@
 import UIKit
 import CoreData
 
-class PRFlashcardViewController : UIViewController {
-
-    var name = ""
-    var reading = ""
-    var meaning = ""
-    
+class PRFlashcardViewController : UIViewController, UIGestureRecognizerDelegate {
     
     @IBOutlet weak var characterLabel: UILabel!
     @IBOutlet weak var readingLabel: UILabel!
     @IBOutlet weak var meaningLabel: UILabel!
     
-    //var flashcard : Character = Character()
+    var flashcard : Flashcard! 
     
     var tapCount : Int = 0;
     
     override func viewDidLoad() {
         
-        characterLabel?.text = "test" //name
-        readingLabel?.text = "test" //name
-        meaningLabel?.text = meaning
-        //super.viewDidLoad()
+        let tap : UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "tapReceived:")
+        tap.delegate = self
+        self.view.addGestureRecognizer(tap)
+        characterLabel?.text = flashcard.text
+        readingLabel?.text = flashcard.reading
+        meaningLabel?.text = flashcard.meaning
 
     }
     
-    @IBAction func tapReceived(sender: UITapGestureRecognizer) {
+    func tapReceived(sender: UITapGestureRecognizer) {
         
         tapCount++
         if tapCount == 1
         {
-            readingLabel.hidden = false
+            readingLabel?.hidden = false
         }
         else if tapCount == 2
         {
-            readingLabel.hidden = false
+            meaningLabel?.hidden = false
         }
         else
         {

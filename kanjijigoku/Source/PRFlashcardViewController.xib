@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PRFlashcardViewController" customModule="kanjijigoku" customModuleProvider="target">
@@ -46,15 +46,7 @@
                 <constraint firstItem="IMk-Kd-H5Y" firstAttribute="top" secondItem="4J4-Rb-umg" secondAttribute="bottom" constant="15" id="sIX-yy-NRw"/>
                 <constraint firstItem="4J4-Rb-umg" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="xSx-83-Qhy"/>
             </constraints>
-            <connections>
-                <outletCollection property="gestureRecognizers" destination="qZM-dQ-Xfn" appends="YES" id="jt1-RJ-wBS"/>
-            </connections>
             <point key="canvasLocation" x="174" y="174"/>
         </view>
-        <tapGestureRecognizer id="qZM-dQ-Xfn">
-            <connections>
-                <action selector="tapReceived:" destination="-1" id="EK4-UX-7eU"/>
-            </connections>
-        </tapGestureRecognizer>
     </objects>
 </document>

@@ -10,32 +10,30 @@ import UIKit
 
 class PRFlashcardPageViewController : UIPageViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource
 {
-    var _flashcardSet : NSArray = [Character]()
+    var _flashcardSet : NSArray = [Flashcard]()
     var _selectedIndex : Int = 0
     
-    override func viewDidLoad() {
-        
-        let bla = _flashcardSet[0] as Character
-        println("test \(bla.kanji)")
+    override func viewDidLoad()
+    {
         
         self.dataSource = self
         
-        //let flashcard =
-
-        let vc = PRFlashcardViewController(nibName: "PRFlashcardViewController", bundle: nil)
-        vc.view.backgroundColor = UIColor.whiteColor()
-        let character = _flashcardSet[0] as Character
-        vc.name  = character.kanji
-        
-
-        
-        var vcArray = [vc] as [AnyObject]
-        self.setViewControllers(vcArray, direction: .Forward, animated: false, completion: nil)
-        
+        if _flashcardSet.count == 0
+        {
+            let vc = UIViewController()
+            var vcArray = [vc] as [AnyObject]
+            self.setViewControllers(vcArray, direction: .Forward, animated: false, completion: nil)
+        }
+        else
+        {
+            let vc = PRFlashcardViewController(nibName: "PRFlashcardViewController", bundle: nil)
+            vc.flashcard = _flashcardSet[0] as Flashcard
+            var vcArray = [vc] as [AnyObject]
+            self.setViewControllers(vcArray, direction: .Forward, animated: false, completion: nil)
+        }
         
     }
     
-    //func viewCo
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
         
@@ -47,12 +45,7 @@ class PRFlashcardPageViewController : UIPageViewController, UIPageViewController
         {
             _selectedIndex--
             let vc = PRFlashcardViewController(nibName: "PRFlashcardViewController", bundle: nil)
-            //vc.flashcard = _flashcardSet[_selectedIndex] as Character
-            
-            //let vc = PRFlashcardViewController()
-            var character = _flashcardSet[_selectedIndex] as Character
-            vc.characterLabel.text  = character.kanji
-            
+            vc.flashcard  = _flashcardSet[_selectedIndex] as Flashcard
             return vc
         }
         
@@ -60,7 +53,7 @@ class PRFlashcardPageViewController : UIPageViewController, UIPageViewController
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
         
-        if _selectedIndex == _flashcardSet.count
+        if _selectedIndex == _flashcardSet.count - 1 
         {
             return nil
         }
@@ -68,9 +61,7 @@ class PRFlashcardPageViewController : UIPageViewController, UIPageViewController
         {
             _selectedIndex++
             let vc = PRFlashcardViewController(nibName: "PRFlashcardViewController", bundle: nil)
-            var character = _flashcardSet[_selectedIndex] as Character
-            println("test test \(character.kanji)")
-            vc.characterLabel.text  = character.kanji
+            vc.flashcard  = _flashcardSet[_selectedIndex] as Flashcard
             return vc
         }
     }

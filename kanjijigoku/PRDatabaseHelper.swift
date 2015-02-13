@@ -371,13 +371,13 @@ class PRDatabaseHelper
         }
     }
     
-    func getSelectedCharacters(level: Int, lesson: Int) -> NSArray
+    func getSelectedObjects(name: String, level: Int, lesson: Int) -> NSArray
     {
         let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         let managedContext = appDelegate.managedObjectContext!
         
-        let fetchRequest : NSFetchRequest = NSFetchRequest(entityName: "Character")
-        let entity = NSEntityDescription.entityForName("Character", inManagedObjectContext: managedContext)!
+        let fetchRequest : NSFetchRequest = NSFetchRequest(entityName: name)
+        let entity = NSEntityDescription.entityForName(name, inManagedObjectContext: managedContext)!
         //fetchRequest.resultType =
         //let predicate : NSPredicate =
         fetchRequest.predicate = NSPredicate(format: "level=\(level) AND lesson=\(lesson)")!

@@ -26,6 +26,9 @@
 		18D170741A89F13100672203 /* PRFlashcardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18D170731A89F13100672203 /* PRFlashcardViewController.xib */; };
 		18D170761A89F3E200672203 /* PRFlashcardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D170751A89F3E200672203 /* PRFlashcardViewController.swift */; };
 		18D26D9B1A883ED800A8908C /* PRDatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D26D9A1A883ED800A8908C /* PRDatabaseHelper.swift */; };
+		18E4E6871A8D81B30038F86B /* Flashcard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E4E6861A8D81B30038F86B /* Flashcard.swift */; };
+		18E4E6891A8D8B330038F86B /* PRCharacterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E4E6881A8D8B330038F86B /* PRCharacterExtension.swift */; };
+		18E4E68B1A8D8EFE0038F86B /* PRCharacterHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E4E68A1A8D8EFE0038F86B /* PRCharacterHelper.swift */; };
 		9890196ACBA1DBB36C220747 /* libPods-kanjijigoku.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16ED305BDA73EF495F1CC7A3 /* libPods-kanjijigoku.a */; };
 		DDA8FCCE07D8A23426327FF9 /* libPods-kanjijigokuTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 48DDE60AB133AD9253EF4C92 /* libPods-kanjijigokuTests.a */; };
 		FB67D6E31A861B8A00926E38 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB67D6E21A861B8A00926E38 /* AppDelegate.swift */; };
@@ -68,6 +71,9 @@
 		18D170731A89F13100672203 /* PRFlashcardViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PRFlashcardViewController.xib; path = Source/PRFlashcardViewController.xib; sourceTree = "<group>"; };
 		18D170751A89F3E200672203 /* PRFlashcardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRFlashcardViewController.swift; path = Source/PRFlashcardViewController.swift; sourceTree = "<group>"; };
 		18D26D9A1A883ED800A8908C /* PRDatabaseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRDatabaseHelper.swift; sourceTree = "<group>"; };
+		18E4E6861A8D81B30038F86B /* Flashcard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Flashcard.swift; path = Source/Flashcard.swift; sourceTree = "<group>"; };
+		18E4E6881A8D8B330038F86B /* PRCharacterExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRCharacterExtension.swift; path = Source/PRCharacterExtension.swift; sourceTree = "<group>"; };
+		18E4E68A1A8D8EFE0038F86B /* PRCharacterHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRCharacterHelper.swift; path = Source/PRCharacterHelper.swift; sourceTree = "<group>"; };
 		48DDE60AB133AD9253EF4C92 /* libPods-kanjijigokuTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-kanjijigokuTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		94CC88092ADA2AB93CF98660 /* Pods-kanjijigoku.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kanjijigoku.debug.xcconfig"; path = "Pods/Target Support Files/Pods-kanjijigoku/Pods-kanjijigoku.debug.xcconfig"; sourceTree = "<group>"; };
 		A6263FED85E89D9DE53C6A64 /* Pods-kanjijigokuTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kanjijigokuTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-kanjijigokuTests/Pods-kanjijigokuTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -117,6 +123,13 @@
 				A6263FED85E89D9DE53C6A64 /* Pods-kanjijigokuTests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		18E4E68C1A8D925C0038F86B /* Flashcard */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Flashcard;
 			sourceTree = "<group>";
 		};
 		D8DE428794ABFD26C4A868BF /* Frameworks */ = {
@@ -201,6 +214,7 @@
 				18C23D411A8C734D00AB5817 /* Sentence.swift */,
 				18C23D3F1A8C734D00AB5817 /* Testable.swift */,
 				18C23D3D1A8C734C00AB5817 /* Kunyomi.swift */,
+				18E4E6861A8D81B30038F86B /* Flashcard.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -208,10 +222,11 @@
 		FBB1FF761A8724FC00F323D0 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				18E4E68C1A8D925C0038F86B /* Flashcard */,
 				FB67D6E71A861B8A00926E38 /* PRKanjiMenuViewController.swift */,
-				18D1705D1A8997C700672203 /* PRFlashcardMenuViewController.swift */,
 				18D1705F1A8997D700672203 /* PRTestsMenuViewController.swift */,
 				18D170711A89F03100672203 /* PRFlashcardPageViewController.swift */,
+				18D1705D1A8997C700672203 /* PRFlashcardMenuViewController.swift */,
 				18D170731A89F13100672203 /* PRFlashcardViewController.xib */,
 				18D170751A89F3E200672203 /* PRFlashcardViewController.swift */,
 			);
@@ -235,6 +250,8 @@
 				FB67D7071A8622F400926E38 /* kanjijigoku-Bridging-Header.h */,
 				18D26D9A1A883ED800A8908C /* PRDatabaseHelper.swift */,
 				18D1706D1A89D77B00672203 /* PRStateSingleton.swift */,
+				18E4E6881A8D8B330038F86B /* PRCharacterExtension.swift */,
+				18E4E68A1A8D8EFE0038F86B /* PRCharacterHelper.swift */,
 			);
 			name = Helper;
 			sourceTree = "<group>";
@@ -410,11 +427,14 @@
 			files = (
 				18D170721A89F03100672203 /* PRFlashcardPageViewController.swift in Sources */,
 				18C23D4C1A8C734D00AB5817 /* Radical.swift in Sources */,
+				18E4E6891A8D8B330038F86B /* PRCharacterExtension.swift in Sources */,
 				18D26D9B1A883ED800A8908C /* PRDatabaseHelper.swift in Sources */,
 				FB67D6E81A861B8A00926E38 /* PRKanjiMenuViewController.swift in Sources */,
 				18D170761A89F3E200672203 /* PRFlashcardViewController.swift in Sources */,
+				18E4E6871A8D81B30038F86B /* Flashcard.swift in Sources */,
 				18C23D3E1A8C734C00AB5817 /* Kunyomi.swift in Sources */,
 				18C23D401A8C734D00AB5817 /* Testable.swift in Sources */,
+				18E4E68B1A8D8EFE0038F86B /* PRCharacterHelper.swift in Sources */,
 				18D170601A8997D700672203 /* PRTestsMenuViewController.swift in Sources */,
 				18C23D461A8C734D00AB5817 /* Character.swift in Sources */,
 				18D1705E1A8997C700672203 /* PRFlashcardMenuViewController.swift in Sources */,
