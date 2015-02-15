@@ -25,7 +25,7 @@ class PRFlashcardViewController : UIViewController, UIGestureRecognizerDelegate 
         tap.delegate = self
         self.view.addGestureRecognizer(tap)
         characterLabel?.text = flashcard.text
-        readingLabel?.text = flashcard.reading
+        readingLabel?.attributedText = flashcard.furiganaReading
         meaningLabel?.text = flashcard.meaning
 
     }

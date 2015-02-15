@@ -14,6 +14,7 @@ class Flashcard
     var text : String = ""
     var reading : String = ""
     var meaning : String = ""
+    var furiganaReading : NSAttributedString!
 
     init(text :String, reading: String, meaning: String)
     {
@@ -21,6 +22,7 @@ class Flashcard
         self.text = text
         self.reading = reading
         self.meaning = meaning
+        self.furiganaReading = NSAttributedString(string: self.reading)
     }
     
 
