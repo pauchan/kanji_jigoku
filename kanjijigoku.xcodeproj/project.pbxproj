@@ -16,6 +16,11 @@
 		18C23D4A1A8C734D00AB5817 /* Onyomi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C23D491A8C734D00AB5817 /* Onyomi.swift */; };
 		18C23D4C1A8C734D00AB5817 /* Radical.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C23D4B1A8C734D00AB5817 /* Radical.swift */; };
 		18C64F1C1A917AC5000F5641 /* PRFuriganaLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C64F1B1A917AC5000F5641 /* PRFuriganaLabel.swift */; };
+		18C64F1F1A91F0E3000F5641 /* PRPickerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C64F1E1A91F0E3000F5641 /* PRPickerDataSource.swift */; };
+		18C64F211A92012B000F5641 /* testItems.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18C64F201A92012B000F5641 /* testItems.plist */; };
+		18C64F261A9203C1000F5641 /* PRTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C64F251A9203C1000F5641 /* PRTestViewController.swift */; };
+		18C64F291A920400000F5641 /* PRTestPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C64F271A920400000F5641 /* PRTestPageViewController.swift */; };
+		18C64F2A1A920400000F5641 /* PRTestPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18C64F281A920400000F5641 /* PRTestPageViewController.xib */; };
 		18D1705E1A8997C700672203 /* PRFlashcardMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D1705D1A8997C700672203 /* PRFlashcardMenuViewController.swift */; };
 		18D170601A8997D700672203 /* PRTestsMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D1705F1A8997D700672203 /* PRTestsMenuViewController.swift */; };
 		18D170621A89A0B000672203 /* PRHeaderViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18D170611A89A0B000672203 /* PRHeaderViewCell.xib */; };
@@ -62,6 +67,11 @@
 		18C23D491A8C734D00AB5817 /* Onyomi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Onyomi.swift; path = Source/Onyomi.swift; sourceTree = "<group>"; };
 		18C23D4B1A8C734D00AB5817 /* Radical.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Radical.swift; path = Source/Radical.swift; sourceTree = "<group>"; };
 		18C64F1B1A917AC5000F5641 /* PRFuriganaLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRFuriganaLabel.swift; path = Source/PRFuriganaLabel.swift; sourceTree = "<group>"; };
+		18C64F1E1A91F0E3000F5641 /* PRPickerDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRPickerDataSource.swift; path = Source/PRPickerDataSource.swift; sourceTree = "<group>"; };
+		18C64F201A92012B000F5641 /* testItems.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = testItems.plist; sourceTree = "<group>"; };
+		18C64F251A9203C1000F5641 /* PRTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRTestViewController.swift; path = Source/PRTestViewController.swift; sourceTree = "<group>"; };
+		18C64F271A920400000F5641 /* PRTestPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRTestPageViewController.swift; path = Source/PRTestPageViewController.swift; sourceTree = "<group>"; };
+		18C64F281A920400000F5641 /* PRTestPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PRTestPageViewController.xib; path = Source/PRTestPageViewController.xib; sourceTree = "<group>"; };
 		18D1705D1A8997C700672203 /* PRFlashcardMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRFlashcardMenuViewController.swift; sourceTree = "<group>"; };
 		18D1705F1A8997D700672203 /* PRTestsMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRTestsMenuViewController.swift; sourceTree = "<group>"; };
 		18D170611A89A0B000672203 /* PRHeaderViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PRHeaderViewCell.xib; path = Source/PRHeaderViewCell.xib; sourceTree = "<group>"; };
@@ -127,9 +137,32 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		18C64F1D1A91F0D2000F5641 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				18C64F1E1A91F0E3000F5641 /* PRPickerDataSource.swift */,
+			);
+			name = DataSource;
+			sourceTree = "<group>";
+		};
+		18C64F221A92034E000F5641 /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				18D1705F1A8997D700672203 /* PRTestsMenuViewController.swift */,
+				18C64F251A9203C1000F5641 /* PRTestViewController.swift */,
+				18C64F271A920400000F5641 /* PRTestPageViewController.swift */,
+				18C64F281A920400000F5641 /* PRTestPageViewController.xib */,
+			);
+			name = Test;
+			sourceTree = "<group>";
+		};
 		18E4E68C1A8D925C0038F86B /* Flashcard */ = {
 			isa = PBXGroup;
 			children = (
+				18D170711A89F03100672203 /* PRFlashcardPageViewController.swift */,
+				18D1705D1A8997C700672203 /* PRFlashcardMenuViewController.swift */,
+				18D170731A89F13100672203 /* PRFlashcardViewController.xib */,
+				18D170751A89F3E200672203 /* PRFlashcardViewController.swift */,
 			);
 			name = Flashcard;
 			sourceTree = "<group>";
@@ -183,6 +216,7 @@
 				FB67D6E21A861B8A00926E38 /* AppDelegate.swift */,
 				FB67D6E11A861B8A00926E38 /* Info.plist */,
 				18D170691A89BBE800672203 /* flashcardItems.plist */,
+				18C64F201A92012B000F5641 /* testItems.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -224,13 +258,10 @@
 		FBB1FF761A8724FC00F323D0 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				18C64F221A92034E000F5641 /* Test */,
+				18C64F1D1A91F0D2000F5641 /* DataSource */,
 				18E4E68C1A8D925C0038F86B /* Flashcard */,
 				FB67D6E71A861B8A00926E38 /* PRKanjiMenuViewController.swift */,
-				18D1705F1A8997D700672203 /* PRTestsMenuViewController.swift */,
-				18D170711A89F03100672203 /* PRFlashcardPageViewController.swift */,
-				18D1705D1A8997C700672203 /* PRFlashcardMenuViewController.swift */,
-				18D170731A89F13100672203 /* PRFlashcardViewController.xib */,
-				18D170751A89F3E200672203 /* PRFlashcardViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -346,6 +377,8 @@
 				18D1706A1A89BBE800672203 /* flashcardItems.plist in Resources */,
 				FB67D6F01A861B8A00926E38 /* LaunchScreen.xib in Resources */,
 				FB67D6ED1A861B8A00926E38 /* Images.xcassets in Resources */,
+				18C64F211A92012B000F5641 /* testItems.plist in Resources */,
+				18C64F2A1A920400000F5641 /* PRTestPageViewController.xib in Resources */,
 				18D170621A89A0B000672203 /* PRHeaderViewCell.xib in Resources */,
 				18D170741A89F13100672203 /* PRFlashcardViewController.xib in Resources */,
 			);
@@ -429,7 +462,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				18D170721A89F03100672203 /* PRFlashcardPageViewController.swift in Sources */,
+				18C64F291A920400000F5641 /* PRTestPageViewController.swift in Sources */,
 				18C23D4C1A8C734D00AB5817 /* Radical.swift in Sources */,
+				18C64F261A9203C1000F5641 /* PRTestViewController.swift in Sources */,
 				18E4E6891A8D8B330038F86B /* PRCharacterExtension.swift in Sources */,
 				18D26D9B1A883ED800A8908C /* PRDatabaseHelper.swift in Sources */,
 				FB67D6E81A861B8A00926E38 /* PRKanjiMenuViewController.swift in Sources */,
@@ -441,6 +476,7 @@
 				18C64F1C1A917AC5000F5641 /* PRFuriganaLabel.swift in Sources */,
 				18D170601A8997D700672203 /* PRTestsMenuViewController.swift in Sources */,
 				18C23D461A8C734D00AB5817 /* Character.swift in Sources */,
+				18C64F1F1A91F0E3000F5641 /* PRPickerDataSource.swift in Sources */,
 				18D1705E1A8997C700672203 /* PRFlashcardMenuViewController.swift in Sources */,
 				18D1706E1A89D77B00672203 /* PRStateSingleton.swift in Sources */,
 				18C23D481A8C734D00AB5817 /* Reading.swift in Sources */,
@@ -568,9 +604,11 @@
 			baseConfigurationReference = 94CC88092ADA2AB93CF98660 /* Pods-kanjijigoku.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Pawel Rusin (CMRU8R2N3V)";
 				INFOPLIST_FILE = kanjijigoku/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "aee5bfb1-f82f-4710-865d-238d7510cd8c";
 				SWIFT_OBJC_BRIDGING_HEADER = "kanjijigoku/kanjijigoku-Bridging-Header.h";
 			};
 			name = Debug;
@@ -580,9 +618,11 @@
 			baseConfigurationReference = A827BE30AC2E4D1D915162FD /* Pods-kanjijigoku.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Pawel Rusin (CMRU8R2N3V)";
 				INFOPLIST_FILE = kanjijigoku/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "aee5bfb1-f82f-4710-865d-238d7510cd8c";
 				SWIFT_OBJC_BRIDGING_HEADER = "kanjijigoku/kanjijigoku-Bridging-Header.h";
 			};
 			name = Release;

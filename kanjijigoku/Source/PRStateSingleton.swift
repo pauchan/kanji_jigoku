@@ -16,7 +16,7 @@ class PRStateSingleton {
     var currentLevel = 1
     
     var levelArray = [Int]()
-    var lessonArray = NSArray()
+    var lessonArray = [Int]()
     
     class var sharedInstance: PRStateSingleton {
         struct Static {

@@ -387,7 +387,7 @@ class PRDatabaseHelper
         return outArray
     }
     
-    func getLessonArray(currentLevel : Int) -> NSArray
+    func getLessonArray(currentLevel : Int) -> [Int]
     {
 
             let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
