@@ -12,7 +12,11 @@ import CoreData
 class PRFlashcardViewController : UIViewController, UIGestureRecognizerDelegate {
     
     @IBOutlet weak var characterLabel: UILabel!
-    @IBOutlet weak var readingLabel: UILabel!
+    
+    
+    @IBOutlet weak var readingLabel: PRFuriganaLabel!
+    
+    
     @IBOutlet weak var meaningLabel: UILabel!
     
     var flashcard : Flashcard! 
@@ -25,7 +29,7 @@ class PRFlashcardViewController : UIViewController, UIGestureRecognizerDelegate 
         tap.delegate = self
         self.view.addGestureRecognizer(tap)
         characterLabel?.text = flashcard.text
-        readingLabel?.attributedText = flashcard.furiganaReading
+        readingLabel?.furiganaText = flashcard.furiganaReading
         meaningLabel?.text = flashcard.meaning
 
     }

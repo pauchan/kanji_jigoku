@@ -15,6 +15,7 @@
 		18C23D481A8C734D00AB5817 /* Reading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C23D471A8C734D00AB5817 /* Reading.swift */; };
 		18C23D4A1A8C734D00AB5817 /* Onyomi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C23D491A8C734D00AB5817 /* Onyomi.swift */; };
 		18C23D4C1A8C734D00AB5817 /* Radical.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C23D4B1A8C734D00AB5817 /* Radical.swift */; };
+		18C64F1C1A917AC5000F5641 /* PRFuriganaLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C64F1B1A917AC5000F5641 /* PRFuriganaLabel.swift */; };
 		18D1705E1A8997C700672203 /* PRFlashcardMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D1705D1A8997C700672203 /* PRFlashcardMenuViewController.swift */; };
 		18D170601A8997D700672203 /* PRTestsMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D1705F1A8997D700672203 /* PRTestsMenuViewController.swift */; };
 		18D170621A89A0B000672203 /* PRHeaderViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18D170611A89A0B000672203 /* PRHeaderViewCell.xib */; };
@@ -60,6 +61,7 @@
 		18C23D471A8C734D00AB5817 /* Reading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Reading.swift; path = Source/Reading.swift; sourceTree = "<group>"; };
 		18C23D491A8C734D00AB5817 /* Onyomi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Onyomi.swift; path = Source/Onyomi.swift; sourceTree = "<group>"; };
 		18C23D4B1A8C734D00AB5817 /* Radical.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Radical.swift; path = Source/Radical.swift; sourceTree = "<group>"; };
+		18C64F1B1A917AC5000F5641 /* PRFuriganaLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRFuriganaLabel.swift; path = Source/PRFuriganaLabel.swift; sourceTree = "<group>"; };
 		18D1705D1A8997C700672203 /* PRFlashcardMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRFlashcardMenuViewController.swift; sourceTree = "<group>"; };
 		18D1705F1A8997D700672203 /* PRTestsMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRTestsMenuViewController.swift; sourceTree = "<group>"; };
 		18D170611A89A0B000672203 /* PRHeaderViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PRHeaderViewCell.xib; path = Source/PRHeaderViewCell.xib; sourceTree = "<group>"; };
@@ -240,6 +242,7 @@
 				18D170611A89A0B000672203 /* PRHeaderViewCell.xib */,
 				18D170631A89A49B00672203 /* PRHeaderViewCell.swift */,
 				18D170651A89A5C200672203 /* PRComboBox.swift */,
+				18C64F1B1A917AC5000F5641 /* PRFuriganaLabel.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -435,6 +438,7 @@
 				18C23D3E1A8C734C00AB5817 /* Kunyomi.swift in Sources */,
 				18C23D401A8C734D00AB5817 /* Testable.swift in Sources */,
 				18E4E68B1A8D8EFE0038F86B /* PRCharacterHelper.swift in Sources */,
+				18C64F1C1A917AC5000F5641 /* PRFuriganaLabel.swift in Sources */,
 				18D170601A8997D700672203 /* PRTestsMenuViewController.swift in Sources */,
 				18C23D461A8C734D00AB5817 /* Character.swift in Sources */,
 				18D1705E1A8997C700672203 /* PRFlashcardMenuViewController.swift in Sources */,

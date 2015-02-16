@@ -35,12 +35,31 @@ extension Sentence
 {
     func generateFuriganaString(baseString: String, furiganaString: String) -> NSAttributedString
     {
+        
+        let test1 = baseString as NSString
+        let test2 = furiganaString as NSString
     
-        var text = [.passRetained(furiganaString) as Unmanaged<CFStringRef>?, .None, .None, .None]
+        var text = [.passRetained(test2) as Unmanaged<CFStringRef>?, .None, .None, .None]
         let annotation = CTRubyAnnotationCreate(.Auto, .Auto, 0.5, &text)
         
-        return NSAttributedString(string: baseString, attributes: [
+//        CTParagraphStyleSetting alignmentSetting;
+//        alignmentSetting.spec = kCTParagraphStyleSpecifierAlignment;
+//        alignmentSetting.valueSize = sizeof(CTTextAlignment);
+//        alignmentSetting.value = &alignment;
+
+//        var alignment = CTTextAlignment.TextAlignmentLeft
+//        let alignmentSetting = [CTParagraphStyleSetting(spec: .Alignment, valueSize: UInt(sizeofValue(alignment)), value: &alignment)]
+//        let paragraphStyle = CTParagraphStyleCreate(alignmentSetting, 1)
+//        CFAttributedStringSetAttribute(attrStr, CFRangeMake(0, CFAttributedStringGetLength(attrStr)), kCTParagraphStyleAttributeName, paragraphStyle)
+        
+        var alignment = CTTextAlignment.TextAlignmentCenter
+        var settings = [CTParagraphStyleSetting(spec: .Alignment, valueSize: UInt(sizeofValue(alignment)), value: &alignment)]
+        let style = CTParagraphStyleCreate(settings, 1)
+        
+        
+        return NSAttributedString(string: test1, attributes: [
             kCTRubyAnnotationAttributeName: annotation.takeUnretainedValue(),
+            kCTParagraphStyleAttributeName: style
             ])
     
     }
@@ -48,7 +67,7 @@ extension Sentence
     func replaceExplainedSentence(sentence: String) -> NSAttributedString
     {
         var parsedSentence : NSString = NSString(string: sentence)
-        let range = NSMakeRange(0, countElements(sentence))
+        var range = NSMakeRange(0, countElements(sentence))
         var attributedString = NSMutableAttributedString(string: parsedSentence)
         let regex = NSRegularExpression(pattern:"\\{(.*?);(.*?)\\}", options: nil, error: nil)
         
@@ -60,6 +79,7 @@ extension Sentence
             attributedString.replaceCharactersInRange(group.range, withAttributedString: generateFuriganaString(parsedSentence.substringWithRange(group.rangeAtIndex(1)), furiganaString: parsedSentence.substringWithRange(group.rangeAtIndex(2))))
             parsedSentence = NSString(string: attributedString.string)
             sentence2 = String(parsedSentence)
+            range = NSMakeRange(0, countElements(sentence2))
             
         }
         
@@ -74,7 +94,6 @@ extension Sentence
         }
         }
         return attributedString
-        
-            
     }
+
 }

@@ -120,7 +120,7 @@ override func viewDidLoad() {
         else
     {
         let cell = tableView.dequeueReusableCellWithIdentifier("PRFlashcardCell", forIndexPath: indexPath) as UITableViewCell
-        cell.textLabel.text = _tableItems[indexPath.row] as? String
+        cell.textLabel?.text = _tableItems[indexPath.row] as? String
         return cell
     }
     }
@@ -270,6 +270,7 @@ override func viewDidLoad() {
                     let sentence = s as Sentence
                     let flashcard = Flashcard(text: sentence.sentence, reading: sentence.sentence, meaning: sentence.meaning)
                     flashcard.furiganaReading = sentence.replaceExplainedSentence(sentence.sentence)
+                    flashcard.text = (sentence.replaceExplainedSentence(sentence.sentence)).string
                     returnArray.append(flashcard)
                 }
             }
