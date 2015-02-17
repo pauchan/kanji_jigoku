@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<array>
+		<string>Character</string>
+		<string>Onyomi</string>
+	</array>
+	<array>
+		<string>Character</string>
+		<string>Onyomi</string>
+	</array>
+	<array/>
+	<string>Onyomi</string>
+	<string>Character</string>
+	<array>
+		<string>Kunyomi</string>
+		<string>Character</string>
+	</array>
+	<array/>
+	<string>Kanji</string>
+	<string>Meaning</string>
+	<array/>
+	<string>Kanji &gt; znaczenie</string>
+	<string>kun&apos;yomi &gt; znaczenie</string>
+	<string>Zlozenie &gt; znaczenie</string>
+	<string>Znaczenie &gt; zlozenie</string>
+	<string>Czytanie slow</string>
+</array>
+</plist>

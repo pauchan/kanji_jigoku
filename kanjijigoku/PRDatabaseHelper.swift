@@ -378,11 +378,16 @@ class PRDatabaseHelper
         
         let fetchRequest : NSFetchRequest = NSFetchRequest(entityName: name)
         let entity = NSEntityDescription.entityForName(name, inManagedObjectContext: managedContext)!
-        //fetchRequest.resultType =
-        //let predicate : NSPredicate =
-        fetchRequest.predicate = NSPredicate(format: "level=\(level) AND lesson=\(lesson)")!
-        //fetchRequest.sortDescriptors = [NSSortDescriptor(key: "lesson", ascending: true)]
-        //fetchRequest.resultType = .DictionaryResultType;
+        
+        if name == "Character"
+        {
+            fetchRequest.predicate = NSPredicate(format: "level=\(level) AND lesson=\(lesson)")!
+        }
+        else
+        {
+            fetchRequest.predicate = NSPredicate(format: "character.level=\(level) AND character.lesson=\(lesson)")!
+        }
+        
         let outArray: NSArray = managedContext.executeFetchRequest(fetchRequest, error: nil)!
         return outArray
     }
@@ -435,4 +440,46 @@ class PRDatabaseHelper
             
     }
     
+    func fetchFalseAnswers(object: String, property: String, maxLevel: Int, maxLesson: Int) -> [String]
+    {
+        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let managedContext = appDelegate.managedObjectContext!
+        
+        let fetchRequest :NSFetchRequest = NSFetchRequest(entityName: object)
+        let entity = NSEntityDescription.entityForName(object, inManagedObjectContext: managedContext)!
+    
+        let predicate = NSPredicate(format: "character.level <= \(maxLevel) AND character.lesson <= \(maxLesson)")
+        
+        fetchRequest.propertiesToFetch = [property]
+        fetchRequest.predicate = predicate
+        let outResponse = managedContext.executeFetchRequest(fetchRequest, error: nil)! //as [String]
+        let idsArray = generateRandomIdsArray(3, arrayCount: outResponse.count)
+        
+        var newResponse: [String] = [String]()
+        for selectedId in idsArray
+        {
+            let object = outResponse[selectedId] as NSManagedObject
+            newResponse.append(object.valueForKey(property) as String)
+        }
+        return newResponse
+    
+    }
+    
+    
+    
+    func generateRandomIdsArray(limit: Int, arrayCount: Int) -> [Int]
+    {
+        var bla = [Int]()
+        var count : UInt32 = UInt32(arrayCount)
+        while bla.count < limit
+        {
+            let randomId = Int(arc4random_uniform(count))
+            if !(contains(bla, randomId))
+            {
+                bla.append(randomId)
+            }
+        }
+        
+        return bla
+    }
 }

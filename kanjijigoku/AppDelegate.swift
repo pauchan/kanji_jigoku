@@ -21,6 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let db = PRDatabaseHelper()
         db.syncDatabase()
         
+        let arr = db.fetchFalseAnswers("Example", property: "example", maxLevel: 7, maxLesson: 7)
+        let arr2 = db.fetchFalseAnswers("Example", property: "example", maxLevel: 7, maxLesson: 7)
+
         
         let stateSingleton : PRStateSingleton = PRStateSingleton.sharedInstance
         stateSingleton.levelArray = db.getLevelArray()
