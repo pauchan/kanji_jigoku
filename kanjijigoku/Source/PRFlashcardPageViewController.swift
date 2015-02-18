@@ -15,6 +15,7 @@ class PRFlashcardPageViewController : UIPageViewController, UIPageViewController
     
     override func viewDidLoad()
     {
+        self.navigationItem.title = "Fiszki"
         
         self.dataSource = self
         

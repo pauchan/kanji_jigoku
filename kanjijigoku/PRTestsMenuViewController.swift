@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 enum TestOptions: Int {
 
@@ -23,13 +24,15 @@ class PRTestMenuViewController : UITableViewController, UITextFieldDelegate
         
         super.viewDidLoad()
         
-        if let path = NSBundle.mainBundle().pathForResource("testItems", ofType: "plist") {
+        if let path = NSBundle.mainBundle().pathForResource("testPairing", ofType: "plist") {
             self._tableItems = NSArray(contentsOfFile: path)!
         }
         else
         {
             self._tableItems = []
         }
+        
+        
         
         _levelDataSource = PRPickerDataSource()
         _lessonDataSource = PRPickerDataSource()
@@ -77,7 +80,8 @@ class PRTestMenuViewController : UITableViewController, UITextFieldDelegate
         else
         {
             let cell = tableView.dequeueReusableCellWithIdentifier("PRFlashcardCell", forIndexPath: indexPath) as UITableViewCell
-            cell.textLabel?.text = _tableItems[indexPath.row] as? String
+            let testDict = _tableItems[indexPath.row] as [String: String]
+            cell.textLabel?.text = testDict["label"]
             return cell
         }
     }
@@ -87,9 +91,10 @@ class PRTestMenuViewController : UITableViewController, UITextFieldDelegate
         if indexPath.section != 0
         {
     
-                var vc = PRTestViewController()
-                vc.questions = generateTest(indexPath.row)
-                //vc._flashcardSet = flashcardsArray
+                var vc = PRTestViewController(nibName: "PRTestViewController", bundle: nil)
+                let testDict : [String: String] = _tableItems[indexPath.row] as [String: String]
+                vc.questions = generateTest(testDict)
+                vc.descriptionText = testDict["label"]!
                 navigationController?.pushViewController(vc, animated: false)
         }
         
@@ -156,68 +161,31 @@ class PRTestMenuViewController : UITableViewController, UITextFieldDelegate
     }
 
     
-    func generateCrossTableTest(questionType: String, answerType: String) -> [Question]
+    func generateTest(testDict: [String:String]) -> [Question]
     {
-    
         // 1. fetch all the objects for the given lesson
+        var wideArray = PRDatabaseHelper().getSelectedObjects(testDict["questionObject"]!, level: PRStateSingleton.sharedInstance.currentLevel, lesson: PRStateSingleton.sharedInstance.currentLesson)
         
-        var wideArray = PRDatabaseHelper().getSelectedObjects(questionType, level: PRStateSingleton.sharedInstance.currentLevel, lesson: PRStateSingleton.sharedInstance.currentLesson)
-        
+        // 2. randomly select 10 of them
         let idsArray = PRDatabaseHelper().generateRandomIdsArray(10, arrayCount: wideArray.count)
         
         var newResponse: [Question] = [Question]()
         for selectedId in idsArray
         {
             let object: AnyObject = wideArray[selectedId]
-            let falseAnswers = PRDatabaseHelper().fetchFalseAnswers(questionType, property: answerType, maxLevel: PRStateSingleton.sharedInstance.currentLevel, maxLesson: PRStateSingleton.sharedInstance.currentLesson)
+            let questionString : String = object.valueForKey(testDict["questionProperty"]!) as String
             
-            let questionString : String = object.valueForKey(answerType) as String
-            
-            let question = Question(question: questionString, options: falseAnswers, properAnswerIndex: Int(arc4random_uniform(3)))
+            // 3. for each assign 3 wrong answer for each type
+            let falseAnswers = PRDatabaseHelper().fetchFalseAnswers(testDict["questionObject"]!, property: testDict["answerProperty"]!, maxLevel: PRStateSingleton.sharedInstance.currentLevel, maxLesson: PRStateSingleton.sharedInstance.currentLesson)
+    
+            let properAnswer = object.valueForKey(testDict["answerProperty"]!) as String
+            let meaning = object.valueForKey("meaning") as String
+            let question = Question(question: questionString, correctOption: properAnswer,  falseOptions: falseAnswers, meaning: meaning)
             newResponse.append(question)
             //newResponse.append(object.valueForKey(property) as String)
         }
         return newResponse
-        // 2. randomly select 10 of them
-        // 3. assign 3 wrong answer for each type
-        // 4 return 
         
-        
-        
-    }
-    
-    func generateWithinTableTest(questionType: String, answerType: String) -> [Question]
-    {
-        return [Question]()
-    }
-    
-    func generateTest(option: Int) -> [Question]
-    {
-        switch(option)
-        {
-        case TestOptions.kKanjiOnyomiTest.rawValue:
-            return generateCrossTableTest("Character", answerType: "Onyomi")
-        case TestOptions.kKanjiKunyomiTest.rawValue:
-            return generateCrossTableTest("Character", answerType: "Kunyomi")
-        case TestOptions.kKanjiKunyomiTest.rawValue:
-            return generateCrossTableTest("Kunyomi", answerType: "Character")
-        case TestOptions.kKanjiKunyomiTest.rawValue:
-            return generateCrossTableTest("Onyomi", answerType: "Character")
-        case TestOptions.kKanjiKunyomiTest.rawValue:
-            return generateWithinTableTest("Character", answerType: "Meaning")
-        case TestOptions.kKanjiKunyomiTest.rawValue:
-            return generateWithinTableTest("Character", answerType: "Kunoymi")
-        case TestOptions.kKanjiKunyomiTest.rawValue:
-            return generateWithinTableTest("Example", answerType: "meaning")
-        case TestOptions.kKanjiKunyomiTest.rawValue:
-            return generateWithinTableTest("Example", answerType: "example")
-        default:
-            return [Question]()
-        
-        
-        }
-    
-    
     }
     
     

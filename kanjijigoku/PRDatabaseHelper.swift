@@ -448,8 +448,15 @@ class PRDatabaseHelper
         let fetchRequest :NSFetchRequest = NSFetchRequest(entityName: object)
         let entity = NSEntityDescription.entityForName(object, inManagedObjectContext: managedContext)!
     
-        let predicate = NSPredicate(format: "character.level <= \(maxLevel) AND character.lesson <= \(maxLesson)")
-        
+        var predicate : NSPredicate
+        if object == "Character"
+        {
+            predicate = NSPredicate(format: "level <= \(maxLevel) AND lesson <= \(maxLesson)")!
+        }
+        else
+        {
+            predicate = NSPredicate(format: "character.level <= \(maxLevel) AND character.lesson <= \(maxLesson)")!
+        }
         fetchRequest.propertiesToFetch = [property]
         fetchRequest.predicate = predicate
         let outResponse = managedContext.executeFetchRequest(fetchRequest, error: nil)! //as [String]
@@ -464,6 +471,7 @@ class PRDatabaseHelper
         return newResponse
     
     }
+
     
     
     

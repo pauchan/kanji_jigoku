@@ -19,10 +19,10 @@
 		18C5DA271A9314EC007FF4A3 /* testPairing.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18C5DA261A9314EC007FF4A3 /* testPairing.plist */; };
 		18C64F1C1A917AC5000F5641 /* PRFuriganaLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C64F1B1A917AC5000F5641 /* PRFuriganaLabel.swift */; };
 		18C64F1F1A91F0E3000F5641 /* PRPickerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C64F1E1A91F0E3000F5641 /* PRPickerDataSource.swift */; };
-		18C64F211A92012B000F5641 /* testItems.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18C64F201A92012B000F5641 /* testItems.plist */; };
 		18C64F261A9203C1000F5641 /* PRTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C64F251A9203C1000F5641 /* PRTestViewController.swift */; };
 		18C64F291A920400000F5641 /* PRTestResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C64F271A920400000F5641 /* PRTestResultsViewController.swift */; };
 		18C64F2A1A920400000F5641 /* PRTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18C64F281A920400000F5641 /* PRTestViewController.xib */; };
+		18C6AFF21A9463DC003C5208 /* PRColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C6AFF11A9463DC003C5208 /* PRColor.swift */; };
 		18D1705E1A8997C700672203 /* PRFlashcardMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D1705D1A8997C700672203 /* PRFlashcardMenuViewController.swift */; };
 		18D170601A8997D700672203 /* PRTestsMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D1705F1A8997D700672203 /* PRTestsMenuViewController.swift */; };
 		18D170621A89A0B000672203 /* PRHeaderViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18D170611A89A0B000672203 /* PRHeaderViewCell.xib */; };
@@ -72,10 +72,10 @@
 		18C5DA261A9314EC007FF4A3 /* testPairing.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = testPairing.plist; path = Source/testPairing.plist; sourceTree = "<group>"; };
 		18C64F1B1A917AC5000F5641 /* PRFuriganaLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRFuriganaLabel.swift; path = Source/PRFuriganaLabel.swift; sourceTree = "<group>"; };
 		18C64F1E1A91F0E3000F5641 /* PRPickerDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRPickerDataSource.swift; path = Source/PRPickerDataSource.swift; sourceTree = "<group>"; };
-		18C64F201A92012B000F5641 /* testItems.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = testItems.plist; sourceTree = "<group>"; };
 		18C64F251A9203C1000F5641 /* PRTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRTestViewController.swift; path = Source/PRTestViewController.swift; sourceTree = "<group>"; };
 		18C64F271A920400000F5641 /* PRTestResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRTestResultsViewController.swift; path = Source/PRTestResultsViewController.swift; sourceTree = "<group>"; };
 		18C64F281A920400000F5641 /* PRTestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PRTestViewController.xib; path = Source/PRTestViewController.xib; sourceTree = "<group>"; };
+		18C6AFF11A9463DC003C5208 /* PRColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRColor.swift; path = Source/PRColor.swift; sourceTree = "<group>"; };
 		18D1705D1A8997C700672203 /* PRFlashcardMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRFlashcardMenuViewController.swift; sourceTree = "<group>"; };
 		18D1705F1A8997D700672203 /* PRTestsMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRTestsMenuViewController.swift; sourceTree = "<group>"; };
 		18D170611A89A0B000672203 /* PRHeaderViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PRHeaderViewCell.xib; path = Source/PRHeaderViewCell.xib; sourceTree = "<group>"; };
@@ -220,7 +220,6 @@
 				FB67D6E21A861B8A00926E38 /* AppDelegate.swift */,
 				FB67D6E11A861B8A00926E38 /* Info.plist */,
 				18D170691A89BBE800672203 /* flashcardItems.plist */,
-				18C64F201A92012B000F5641 /* testItems.plist */,
 				18C5DA261A9314EC007FF4A3 /* testPairing.plist */,
 			);
 			name = "Supporting Files";
@@ -292,6 +291,7 @@
 				18D1706D1A89D77B00672203 /* PRStateSingleton.swift */,
 				18E4E6881A8D8B330038F86B /* PRCharacterExtension.swift */,
 				18E4E68A1A8D8EFE0038F86B /* PRCharacterHelper.swift */,
+				18C6AFF11A9463DC003C5208 /* PRColor.swift */,
 			);
 			name = Helper;
 			sourceTree = "<group>";
@@ -383,7 +383,6 @@
 				18D1706A1A89BBE800672203 /* flashcardItems.plist in Resources */,
 				FB67D6F01A861B8A00926E38 /* LaunchScreen.xib in Resources */,
 				FB67D6ED1A861B8A00926E38 /* Images.xcassets in Resources */,
-				18C64F211A92012B000F5641 /* testItems.plist in Resources */,
 				18C64F2A1A920400000F5641 /* PRTestViewController.xib in Resources */,
 				18C5DA271A9314EC007FF4A3 /* testPairing.plist in Resources */,
 				18D170621A89A0B000672203 /* PRHeaderViewCell.xib in Resources */,
@@ -473,6 +472,7 @@
 				18C23D4C1A8C734D00AB5817 /* Radical.swift in Sources */,
 				18C64F261A9203C1000F5641 /* PRTestViewController.swift in Sources */,
 				18E4E6891A8D8B330038F86B /* PRCharacterExtension.swift in Sources */,
+				18C6AFF21A9463DC003C5208 /* PRColor.swift in Sources */,
 				18D26D9B1A883ED800A8908C /* PRDatabaseHelper.swift in Sources */,
 				FB67D6E81A861B8A00926E38 /* PRKanjiMenuViewController.swift in Sources */,
 				18D170761A89F3E200672203 /* PRFlashcardViewController.swift in Sources */,

@@ -23,6 +23,8 @@ class PRFlashcardMenuViewController : UITableViewController, UITableViewDataSour
 override func viewDidLoad() {
     super.viewDidLoad()
     
+    self.navigationItem.title = "Fiszki"
+    
     if let path = NSBundle.mainBundle().pathForResource("flashcardItems", ofType: "plist") {
         self._tableItems = NSArray(contentsOfFile: path)!
     }
