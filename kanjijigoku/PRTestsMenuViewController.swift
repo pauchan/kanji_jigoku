@@ -14,11 +14,10 @@ enum TestOptions: Int {
     case kKanjiOnyomiTest = 0, kKanjiKunyomiTest, kOnyomiKanjiTest, kKunyomiKanjiTest, kKanjiMeaningTest, kKunyomiMeaningTest, kExampleMeaningTest, kMeaningExampleTest
 }
 
-class PRTestMenuViewController : UITableViewController, UITextFieldDelegate
+class PRTestMenuViewController : UITableViewController
 {
     var _tableItems : NSArray!
-    var _levelDataSource : PRPickerDataSource!
-    var _lessonDataSource : PRPickerDataSource!
+    var _headerCoordinator : PRHeaderCoordinator!
     
     override func viewDidLoad() {
         
@@ -31,18 +30,7 @@ class PRTestMenuViewController : UITableViewController, UITextFieldDelegate
         {
             self._tableItems = []
         }
-        
-        
-        
-        _levelDataSource = PRPickerDataSource()
-        _lessonDataSource = PRPickerDataSource()
-        
-        _levelDataSource.sourceArray = PRStateSingleton.sharedInstance.levelArray
-        _lessonDataSource.sourceArray = PRStateSingleton.sharedInstance.lessonArray
-        
-        _levelDataSource.additionalLabel = "Poziom"
-        _lessonDataSource.additionalLabel = "Lekcja"
-        
+
         self.tableView.keyboardDismissMode = .Interactive
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Action, target: self, action: "settings")
@@ -61,19 +49,7 @@ class PRTestMenuViewController : UITableViewController, UITextFieldDelegate
         if(indexPath.section == 0)
         {
             let cell = tableView.dequeueReusableCellWithIdentifier("PRHeaderViewCell", forIndexPath: indexPath) as PRHeaderViewCell
-            
-            cell.levelComboBox.pickerView.delegate = _levelDataSource
-            cell.lessonComboBox.pickerView.delegate = _lessonDataSource
-            
-            cell.levelComboBox.pickerView.dataSource = _levelDataSource
-            cell.lessonComboBox.pickerView.dataSource = _lessonDataSource
-            
-            cell.levelComboBox.delegate = self
-            cell.lessonComboBox.delegate = self
-            
-            cell.levelComboBox.text = "Poziom: \(PRStateSingleton.sharedInstance.currentLevel)"
-            cell.lessonComboBox.text = "Lekcja: \(PRStateSingleton.sharedInstance.currentLesson)"
-            
+            _headerCoordinator = PRHeaderCoordinator(headerCell: cell)
             return cell
             
         }
@@ -100,21 +76,6 @@ class PRTestMenuViewController : UITableViewController, UITextFieldDelegate
         
     }
     
-    func textFieldDidEndEditing(textField: UITextField) {
-        
-        let cell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as PRHeaderViewCell
-        
-        if textField == cell.levelComboBox
-        {
-            PRStateSingleton.sharedInstance.currentLevel = _levelDataSource.selectedItem
-            cell.levelComboBox.text = "Poziom: \(PRStateSingleton.sharedInstance.currentLevel)"
-        }
-        else
-        {
-            PRStateSingleton.sharedInstance.currentLesson = _lessonDataSource.selectedItem
-            cell.lessonComboBox.text = "Lekcja: \(PRStateSingleton.sharedInstance.currentLesson)"
-        }
-    }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         

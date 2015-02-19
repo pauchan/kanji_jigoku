@@ -10,6 +10,9 @@
 import UIKit
 import CoreData
 
+let kPRKanjiJigokuDBUpdateRequest = "http://serwer1456650.home.pl/getUpdateTime.php"
+let kPRKanjiJigokuDBLocation = "http://serwer1456650.home.pl/clientDB.db"
+
 class PRDatabaseHelper
 {
     
@@ -51,46 +54,48 @@ class PRDatabaseHelper
     func downloadDbFile() -> Bool
     {
         
-        let stringURL : String = "http://serwer1456650.home.pl/clientDB.db"
+        let stringURL : String = kPRKanjiJigokuDBLocation
         
-        // FIX!!!!  "!" operator works for now, but there should be some sort of nil-validation
-        // why does the " if let url : ... {}" not working ???
-        let url : NSURL = NSURL(string: stringURL)!
-
-        let urlData : NSData = NSData(contentsOfURL: url)!
-        
-        var paths : NSArray = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
-        let documentsDirectory = (paths[0] as? String)!
-        
-        let filePath : String = documentsDirectory.stringByAppendingPathComponent("clientDB.db")
-            
-        return  urlData.writeToFile(filePath, atomically: true)
-        
+        if let url : NSURL = NSURL(string: stringURL)
+        {
+            if let urlData : NSData = NSData(contentsOfURL: url)
+            {
+                var paths : NSArray = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+                if let documentsDirectory = (paths[0] as? String)
+                {
+                    let filePath : String = documentsDirectory.stringByAppendingPathComponent("clientDB.db")
+                    return  urlData.writeToFile(filePath, atomically: true)
+                }
+            }
+        }
+        return false
     }
     
     func shouldUpdateDb(database : FMDatabase) -> Bool
     {
         
-        if let appDbUpdate : NSString = NSUserDefaults.standardUserDefaults().objectForKey("PRKanjiJigokuDbUpdate") as? NSString
+        if let appDbUpdate : NSString = NSUserDefaults.standardUserDefaults().objectForKey("PRKanjiJigokuDbUpdate") as? String
         {
-            if let rs = database.executeQuery("select * from update_time", withArgumentsInArray: nil) {
-                while rs.next() {
-                    
-                    _timestamp = rs.stringForColumnIndex(0)
-                    //println(rs.stringForColumnIndex(0))
-                    if(appDbUpdate.isEqualToString(_timestamp)){
-                        
-                        return false
+            
+            if let url : NSURL = NSURL(string: kPRKanjiJigokuDBUpdateRequest)
+            {
+                if let urlData : NSData = NSData(contentsOfURL: url)
+                {
+                    if var _timestamp = NSString(data: urlData, encoding: NSUTF8StringEncoding)
+                    {
+                        if(appDbUpdate.isEqualToString(_timestamp))
+                        {
+                            
+                            return false
+                        }
                     }
                 }
-            } else {
-                println("select failed: \(database.lastErrorMessage())")
-                return false
             }
-            
         }
+        
         return true
     }
+
     
     func parseDb(database : FMDatabase) -> Bool
     {
@@ -115,31 +120,6 @@ class PRDatabaseHelper
             return false
         }
         
-//        if !parseKunyomi(database)
-//        {
-//            println("failed to parse kunyomi")
-//            return false
-//        }
-//        if !parseOnyomi(database)
-//        {
-//            println("failed to parse onyomi")
-//            return false
-//        }
-//        if !parseExamples(database)
-//        {
-//            println("failed to parse examples")
-//            return false
-//        }
-//        if !parseSentences(database)
-//        {
-//            println("failed to parse sentences")
-//            return false
-//        }
-//        if !parseRadicals(database)
-//        {
-//            println("failed to parse radicals")
-//            return false
-//        }
         NSUserDefaults.standardUserDefaults().setObject(_timestamp, forKey: "PRKanjiJigokuDbUpdate")
         println("Update successful")
         
@@ -455,7 +435,7 @@ class PRDatabaseHelper
         }
         else
         {
-            predicate = NSPredicate(format: "character.level <= \(maxLevel) AND character.lesson <= \(maxLesson)")!
+            predicate = NSPredicate(format: "character.level <= \(maxLevel) AND character.lesson <= \(maxLesson) AND ( NOT (reading CONTAINS '-'))")!
         }
         fetchRequest.propertiesToFetch = [property]
         fetchRequest.predicate = predicate

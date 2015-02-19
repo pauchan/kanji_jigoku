@@ -10,7 +10,23 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "kanjijigoku/PRDatabaseHelper.swift"
-            timestampString = "445160201.767888"
+            timestampString = "446004742.931951"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "syncDatabase()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "kanjijigoku/PRDatabaseHelper.swift"
+            timestampString = "446004742.931951"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "26"
@@ -26,27 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "kanjijigoku/PRDatabaseHelper.swift"
-            timestampString = "445160201.767888"
+            timestampString = "446004742.931951"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "23"
-            endingLineNumber = "23"
-            landmarkName = "syncDatabase()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "kanjijigoku/PRDatabaseHelper.swift"
-            timestampString = "445160201.767888"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
             landmarkName = "syncDatabase()"
             landmarkType = "5">
          </BreakpointContent>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "kanjijigoku/PRDatabaseHelper.swift"
-            timestampString = "445160776.378721"
+            timestampString = "446004742.931951"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
             landmarkName = "syncDatabase()"
             landmarkType = "5">
          </BreakpointContent>
@@ -73,28 +73,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "kanjijigoku/PRDatabaseHelper.swift"
-            timestampString = "445160883.129202"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "75"
-            endingLineNumber = "75"
-            landmarkName = "shouldUpdateDb(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "kanjijigoku/PRFlashcardMenuViewController.swift"
-            timestampString = "445943975.962725"
+            timestampString = "446016190.356758"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
             landmarkName = "tableView(_:cellForRowAtIndexPath:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -106,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "kanjijigoku/PRFlashcardMenuViewController.swift"
-            timestampString = "445943975.962725"
+            timestampString = "446016190.356758"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "146"
-            endingLineNumber = "146"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
             landmarkName = "tableView(_:numberOfRowsInSection:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -122,11 +106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "kanjijigoku/PRFlashcardMenuViewController.swift"
-            timestampString = "445943975.962725"
+            timestampString = "446016190.356758"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "110"
-            endingLineNumber = "110"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
             landmarkName = "tableView(_:didSelectRowAtIndexPath:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -138,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "kanjijigoku/PRFlashcardMenuViewController.swift"
-            timestampString = "445943975.962725"
+            timestampString = "446016190.356758"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "108"
-            endingLineNumber = "108"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
             landmarkName = "tableView(_:didSelectRowAtIndexPath:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -170,11 +154,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "kanjijigoku/PRDatabaseHelper.swift"
-            timestampString = "445861414.186501"
+            timestampString = "446006626.886114"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "423"
-            endingLineNumber = "423"
+            startingLineNumber = "403"
+            endingLineNumber = "403"
             landmarkName = "getLevelArray()"
             landmarkType = "5">
          </BreakpointContent>
@@ -186,11 +170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "kanjijigoku/PRFlashcardMenuViewController.swift"
-            timestampString = "445943975.962725"
+            timestampString = "446016190.356758"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "183"
-            endingLineNumber = "183"
+            startingLineNumber = "146"
+            endingLineNumber = "146"
             landmarkName = "generateFlashcardsArrayForExamples(_:option:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -202,11 +186,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "kanjijigoku/PRFlashcardMenuViewController.swift"
-            timestampString = "445943975.962725"
+            timestampString = "446016190.356758"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
             landmarkName = "tableView(_:didSelectRowAtIndexPath:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -218,11 +202,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "kanjijigoku/PRDatabaseHelper.swift"
-            timestampString = "445861414.186501"
+            timestampString = "446006626.886114"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "435"
-            endingLineNumber = "435"
+            startingLineNumber = "415"
+            endingLineNumber = "415"
             landmarkName = "getLevelArray()"
             landmarkType = "5">
          </BreakpointContent>
@@ -234,11 +218,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "kanjijigoku/PRFlashcardMenuViewController.swift"
-            timestampString = "445943975.962725"
+            timestampString = "446016190.356758"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "195"
-            endingLineNumber = "195"
+            startingLineNumber = "158"
+            endingLineNumber = "158"
             landmarkName = "generateFlashcardsArrayForExamples(_:option:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -250,11 +234,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "kanjijigoku/PRFlashcardMenuViewController.swift"
-            timestampString = "445943975.962725"
+            timestampString = "446016190.356758"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "142"
-            endingLineNumber = "142"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
             landmarkName = "tableView(_:heightForRowAtIndexPath:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -266,11 +250,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "kanjijigoku/PRDatabaseHelper.swift"
-            timestampString = "445414012.089415"
+            timestampString = "446006626.886114"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "298"
-            endingLineNumber = "298"
+            startingLineNumber = "278"
+            endingLineNumber = "278"
             landmarkName = "parseExamples(_:character:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -394,11 +378,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "kanjijigoku/PRFlashcardMenuViewController.swift"
-            timestampString = "445943975.962725"
+            timestampString = "446016190.356758"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "222"
-            endingLineNumber = "222">
+            startingLineNumber = "185"
+            endingLineNumber = "185">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -455,44 +439,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "kanjijigoku/PRFlashcardMenuViewController.swift"
-            timestampString = "445943975.962725"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "120"
-            endingLineNumber = "120"
-            landmarkName = "textFieldDidEndEditing(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "kanjijigoku/Source/PRPickerDataSource.swift"
-            timestampString = "445775258.186737"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
-            landmarkName = "pickerView(_:didSelectRow:inComponent:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "kanjijigoku/PRDatabaseHelper.swift"
-            timestampString = "445861414.186501"
+            timestampString = "446006626.886114"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "445"
-            endingLineNumber = "445"
+            startingLineNumber = "425"
+            endingLineNumber = "425"
             landmarkName = "fetchFalseAnswers(_:property:maxLevel:maxLesson:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -536,11 +488,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "kanjijigoku/PRDatabaseHelper.swift"
-            timestampString = "445929733.553516"
+            timestampString = "446006626.886114"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "465"
-            endingLineNumber = "465"
+            startingLineNumber = "445"
+            endingLineNumber = "445"
             landmarkName = "fetchFalseAnswers(_:property:maxLevel:maxLesson:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -552,11 +504,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "kanjijigoku/PRTestsMenuViewController.swift"
-            timestampString = "445932152.080135"
+            timestampString = "446016897.495152"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "97"
-            endingLineNumber = "97"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
             landmarkName = "tableView(_:didSelectRowAtIndexPath:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -568,11 +520,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "kanjijigoku/PRTestsMenuViewController.swift"
-            timestampString = "445942433.471101"
+            timestampString = "446016897.495152"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "187"
-            endingLineNumber = "187"
+            startingLineNumber = "148"
+            endingLineNumber = "148"
             landmarkName = "generateTest(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -584,11 +536,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "kanjijigoku/PRTestsMenuViewController.swift"
-            timestampString = "445942433.471101"
+            timestampString = "446016897.495152"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "188"
-            endingLineNumber = "188"
+            startingLineNumber = "149"
+            endingLineNumber = "149"
             landmarkName = "generateTest(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -600,11 +552,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "kanjijigoku/PRTestsMenuViewController.swift"
-            timestampString = "445929355.099743"
+            timestampString = "446016897.495152"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "167"
-            endingLineNumber = "167"
+            startingLineNumber = "128"
+            endingLineNumber = "128"
             landmarkName = "generateTest(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -632,11 +584,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "kanjijigoku/PRTestsMenuViewController.swift"
-            timestampString = "445945342.277703"
+            timestampString = "446016897.495152"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "181"
-            endingLineNumber = "181"
+            startingLineNumber = "142"
+            endingLineNumber = "142"
             landmarkName = "generateTest(_:)"
             landmarkType = "5">
          </BreakpointContent>
