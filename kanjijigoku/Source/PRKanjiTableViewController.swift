@@ -69,26 +69,36 @@ class PRKanjiTableViewController: UITableViewController {
             if indexPath.row == 0
             {
                 let cell = tableView.dequeueReusableCellWithIdentifier("PRKanjiCell", forIndexPath: indexPath) as UITableViewCell
-                let arr = kanji.kunyomis.allObjects as NSArray
-                cell.textLabel?.text = arr.componentsJoinedByString(",")
+                let arr = kanji.kunyomis.allObjects as [Kunyomi]
+                cell.textLabel?.text = arr.map {
+                    (kunyomi) -> String in kunyomi.reading
+                    }.reduce(""){
+                
+                    (base,append) in base! + append
+                }
             }
             else
             {
                 let cell = tableView.dequeueReusableCellWithIdentifier("PRKanjiCell", forIndexPath: indexPath) as UITableViewCell
-                let arr = kanji.onyomis.allObjects as NSArray
-                cell.textLabel?.text = arr.componentsJoinedByString(",")
+                let arr = kanji.onyomis.allObjects as [Onyomi]
+                cell.textLabel?.text = arr.map {
+                    (onyomi) -> String in onyomi.reading
+                    }.reduce(""){
+                        
+                        (base,append) in base! + append + ", "
+                }
             }
         case 2:
             
             let cell = tableView.dequeueReusableCellWithIdentifier("PRKanjiCell", forIndexPath: indexPath) as UITableViewCell
-            let example = kanji.examples.anyObject() as Example
-            cell.textLabel?.text = example.example
+            let example = kanji.examples.allObjects as [Example]
+            cell.textLabel?.text = example[indexPath.row].example
         case 3:
             return tableView.dequeueReusableCellWithIdentifier("PRKanjiCell", forIndexPath: indexPath) as UITableViewCell
         case 4:
             let cell = tableView.dequeueReusableCellWithIdentifier("PRKanjiCell", forIndexPath: indexPath) as UITableViewCell
-            let example = kanji.sentences.anyObject() as Sentence
-            cell.textLabel?.text = example.sentence
+            let sentence = kanji.sentences.allObjects as [Sentence]
+            cell.textLabel?.text = sentence[indexPath.row].sentence
         default:
             return tableView.dequeueReusableCellWithIdentifier("PRKanjiCell", forIndexPath: indexPath) as UITableViewCell
 
