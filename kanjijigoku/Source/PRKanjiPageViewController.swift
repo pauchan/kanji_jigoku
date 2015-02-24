@@ -28,12 +28,12 @@ class PRKanjiPageViewController: UIPageViewController, UIPageViewControllerDeleg
         var vcArray = [vc] as [AnyObject]
         
         
-        let pageControl: PRKanjiPageControl = PRKanjiPageControl(kanjis: _kanjiTable,  frame: CGRectMake(self.view.center.x - (kKanjiPageIndicatorWidth/2.0), self.view.frame.origin.y + 60.0, kKanjiPageIndicatorWidth, kKanjiPageIndicatorHeight))
+        let pageControl: PRKanjiPageControl = PRKanjiPageControl(kanjis: _kanjiTable,  frame: CGRectMake(self.view.center.x - (kKanjiPageIndicatorWidth/2.0), self.view.frame.origin.y + 0.0, kKanjiPageIndicatorWidth, kKanjiPageIndicatorHeight))
         println("Center x: \(self.view.center.x)")
         //pageControl.frame =  CGRectMake(self.view.center.x - (kKanjiPageIndicatorWidth/2.0), self.view.frame.origin.y + 30.0, kKanjiPageIndicatorWidth, kKanjiPageIndicatorHeight)
         //        self.view.addSubview(pageControl)
         
-        vc.tableView.tableFooterView = pageControl
+        vc.tableView.tableHeaderView = pageControl
         
         self.setViewControllers(vcArray, direction: .Forward, animated: false, completion: nil)
 

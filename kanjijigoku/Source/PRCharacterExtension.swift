@@ -96,4 +96,38 @@ extension Sentence
         return attributedString
     }
 
+    
+    func getExplainedSentence() -> NSAttributedString
+    {
+        var parsedSentence : NSString = NSString(string: sentence)
+        var range = NSMakeRange(0, countElements(sentence))
+        var attributedString = NSMutableAttributedString(string: parsedSentence)
+        let regex = NSRegularExpression(pattern:"\\{(.*?);(.*?)\\}", options: nil, error: nil)
+        
+        var sentence2 = sentence
+        
+        while let group :NSTextCheckingResult = regex?.firstMatchInString(sentence2, options: nil, range: range)
+        {
+            
+            attributedString.replaceCharactersInRange(group.range, withAttributedString: generateFuriganaString(parsedSentence.substringWithRange(group.rangeAtIndex(1)), furiganaString: parsedSentence.substringWithRange(group.rangeAtIndex(2))))
+            parsedSentence = NSString(string: attributedString.string)
+            sentence2 = String(parsedSentence)
+            range = NSMakeRange(0, countElements(sentence2))
+            
+        }
+        
+        
+        if let arr = regex?.matchesInString(sentence, options: nil, range: range)
+        {
+            for element in arr
+            {
+                let group = element as NSTextCheckingResult
+                
+                
+            }
+        }
+        return attributedString
+    }
+
+    
 }

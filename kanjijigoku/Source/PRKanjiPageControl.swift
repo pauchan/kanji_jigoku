@@ -35,7 +35,7 @@ class PRKanjiPageControl: UIPageControl {
 
     init(kanjis : [Character], frame : CGRect) {
 
-        super.init()
+        super.init(frame: frame)
         self.numberOfPages = kanjis.count
         self.currentPage = 0
         var imgArray : [UIImageView] = [UIImageView]()
@@ -56,6 +56,7 @@ class PRKanjiPageControl: UIPageControl {
                 let obj : UIView = self.subviews[index] as UIView
                 var rect = obj.frame
                 rect.origin.x = frame.origin.x + (CGFloat(index) / CGFloat(self.subviews.count)) * frame.size.width
+                rect.origin.y = 10.0
                 rect.size = size
                 var imgView : UIImageView = UIImageView(frame: rect)
                 imgView.image = image

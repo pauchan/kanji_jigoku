@@ -27,6 +27,8 @@
 		18C64F2A1A920400000F5641 /* PRTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18C64F281A920400000F5641 /* PRTestViewController.xib */; };
 		18C6AFF21A9463DC003C5208 /* PRColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C6AFF11A9463DC003C5208 /* PRColor.swift */; };
 		18D0CB101A9C3C1B0027DD8F /* PRStringAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D0CB0F1A9C3C1B0027DD8F /* PRStringAttributes.swift */; };
+		18D0CB121A9C5E060027DD8F /* PRKanjiTableViewHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18D0CB111A9C5E060027DD8F /* PRKanjiTableViewHeaderCell.xib */; };
+		18D0CB141A9C63E80027DD8F /* PRKanjiTableViewHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D0CB131A9C63E80027DD8F /* PRKanjiTableViewHeaderCell.swift */; };
 		18D1705E1A8997C700672203 /* PRFlashcardMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D1705D1A8997C700672203 /* PRFlashcardMenuViewController.swift */; };
 		18D170601A8997D700672203 /* PRTestsMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D1705F1A8997D700672203 /* PRTestsMenuViewController.swift */; };
 		18D170621A89A0B000672203 /* PRHeaderViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18D170611A89A0B000672203 /* PRHeaderViewCell.xib */; };
@@ -83,6 +85,8 @@
 		18C64F281A920400000F5641 /* PRTestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PRTestViewController.xib; path = Source/PRTestViewController.xib; sourceTree = "<group>"; };
 		18C6AFF11A9463DC003C5208 /* PRColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRColor.swift; path = Source/PRColor.swift; sourceTree = "<group>"; };
 		18D0CB0F1A9C3C1B0027DD8F /* PRStringAttributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRStringAttributes.swift; sourceTree = "<group>"; };
+		18D0CB111A9C5E060027DD8F /* PRKanjiTableViewHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PRKanjiTableViewHeaderCell.xib; path = Source/PRKanjiTableViewHeaderCell.xib; sourceTree = "<group>"; };
+		18D0CB131A9C63E80027DD8F /* PRKanjiTableViewHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRKanjiTableViewHeaderCell.swift; path = Source/PRKanjiTableViewHeaderCell.swift; sourceTree = "<group>"; };
 		18D1705D1A8997C700672203 /* PRFlashcardMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRFlashcardMenuViewController.swift; sourceTree = "<group>"; };
 		18D1705F1A8997D700672203 /* PRTestsMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRTestsMenuViewController.swift; sourceTree = "<group>"; };
 		18D170611A89A0B000672203 /* PRHeaderViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PRHeaderViewCell.xib; path = Source/PRHeaderViewCell.xib; sourceTree = "<group>"; };
@@ -161,6 +165,8 @@
 				FB67D6E71A861B8A00926E38 /* PRKanjiMenuViewController.swift */,
 				18C4948B1A95B78900095A7E /* PRKanjiPageViewController.swift */,
 				18C4948D1A95B7AB00095A7E /* PRKanjiTableViewController.swift */,
+				18D0CB111A9C5E060027DD8F /* PRKanjiTableViewHeaderCell.xib */,
+				18D0CB131A9C63E80027DD8F /* PRKanjiTableViewHeaderCell.swift */,
 			);
 			name = Kanji;
 			sourceTree = "<group>";
@@ -399,6 +405,7 @@
 			files = (
 				18D1706A1A89BBE800672203 /* flashcardItems.plist in Resources */,
 				FB67D6F01A861B8A00926E38 /* LaunchScreen.xib in Resources */,
+				18D0CB121A9C5E060027DD8F /* PRKanjiTableViewHeaderCell.xib in Resources */,
 				FB67D6ED1A861B8A00926E38 /* Images.xcassets in Resources */,
 				18C64F2A1A920400000F5641 /* PRTestViewController.xib in Resources */,
 				18C5DA271A9314EC007FF4A3 /* testPairing.plist in Resources */,
@@ -491,6 +498,7 @@
 				18C64F261A9203C1000F5641 /* PRTestViewController.swift in Sources */,
 				18E4E6891A8D8B330038F86B /* PRCharacterExtension.swift in Sources */,
 				18C6AFF21A9463DC003C5208 /* PRColor.swift in Sources */,
+				18D0CB141A9C63E80027DD8F /* PRKanjiTableViewHeaderCell.swift in Sources */,
 				18C4948E1A95B7AB00095A7E /* PRKanjiTableViewController.swift in Sources */,
 				18D26D9B1A883ED800A8908C /* PRDatabaseHelper.swift in Sources */,
 				FB67D6E81A861B8A00926E38 /* PRKanjiMenuViewController.swift in Sources */,

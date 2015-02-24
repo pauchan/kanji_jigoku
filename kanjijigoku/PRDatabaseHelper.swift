@@ -470,4 +470,17 @@ class PRDatabaseHelper
         
         return bla
     }
+    
+    func fetchAdditionalExamples(kanji : String) -> [Example]
+    {
+        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let managedContext = appDelegate.managedObjectContext!
+        
+        let fetchRequest :NSFetchRequest = NSFetchRequest(entityName: "Example")
+        let entity = NSEntityDescription.entityForName("Example", inManagedObjectContext: managedContext)!
+        
+        fetchRequest.predicate = NSPredicate(format: "example CONTAINS '\(kanji)'")!
+
+        return managedContext.executeFetchRequest(fetchRequest, error: nil)! as [Example]
+    }
 }
