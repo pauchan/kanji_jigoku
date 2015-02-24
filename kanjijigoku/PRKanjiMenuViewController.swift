@@ -19,16 +19,12 @@ class PRKanjiMenuViewController: UITableViewController
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Action, target: self, action: "settings")
         self.navigationItem.title = "Kanji Jigoku"
         
-        
-        let dbHelper = PRDatabaseHelper()
-        _kanjiTable = dbHelper.getSelectedObjects("Character", level: PRStateSingleton.sharedInstance.currentLevel, lesson: PRStateSingleton.sharedInstance.currentLesson) as [Character]
-
-
         let nib : UINib = UINib(nibName: "PRHeaderViewCell", bundle: nil)
         self.tableView.registerNib(nib, forCellReuseIdentifier: "PRHeaderViewCell")
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "PRKanjiCell")
         self.tableView.tableFooterView = UIView()
-    
+                
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "lessonUpdated:", name: "PRKanjiJigokuLessonUpdated", object: nil)
 }
 
 override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
@@ -90,7 +86,11 @@ override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     return 2
 }
 
-
-
+func lessonUpdated(notification: NSNotification)
+{
+        println("notification called")
+        _kanjiTable = PRDatabaseHelper().getSelectedObjects("Character", level: PRStateSingleton.sharedInstance.currentLevel, lesson: PRStateSingleton.sharedInstance.currentLesson) as [Character]
+        self.tableView.reloadData()
+}
 
 }

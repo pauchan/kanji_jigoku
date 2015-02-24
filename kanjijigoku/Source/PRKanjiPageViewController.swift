@@ -8,10 +8,13 @@
 
 import UIKit
 
+let kKanjiPageIndicatorWidth : CGFloat = 300.0
+let kKanjiPageIndicatorHeight : CGFloat = 50.0
+
 class PRKanjiPageViewController: UIPageViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource
 {
     
-    var _kanjiTable : NSArray = [Character]()
+    var _kanjiTable : [Character] = [Character]()
     var _selectedIndex : Int = 0
     
     override func viewDidLoad()
@@ -23,7 +26,17 @@ class PRKanjiPageViewController: UIPageViewController, UIPageViewControllerDeleg
         let vc = PRKanjiTableViewController()
         vc.kanji = _kanjiTable[_selectedIndex] as Character
         var vcArray = [vc] as [AnyObject]
+        
+        
+        let pageControl: PRKanjiPageControl = PRKanjiPageControl(kanjis: _kanjiTable,  frame: CGRectMake(self.view.center.x - (kKanjiPageIndicatorWidth/2.0), self.view.frame.origin.y + 60.0, kKanjiPageIndicatorWidth, kKanjiPageIndicatorHeight))
+        println("Center x: \(self.view.center.x)")
+        //pageControl.frame =  CGRectMake(self.view.center.x - (kKanjiPageIndicatorWidth/2.0), self.view.frame.origin.y + 30.0, kKanjiPageIndicatorWidth, kKanjiPageIndicatorHeight)
+        //        self.view.addSubview(pageControl)
+        
+        vc.tableView.tableFooterView = pageControl
+        
         self.setViewControllers(vcArray, direction: .Forward, animated: false, completion: nil)
+
         
         
     }
@@ -40,6 +53,13 @@ class PRKanjiPageViewController: UIPageViewController, UIPageViewControllerDeleg
             _selectedIndex--
             let vc = PRKanjiTableViewController()
             vc.kanji  = _kanjiTable[_selectedIndex] as Character
+            
+//            let pageControl: PRKanjiPageControl = PRKanjiPageControl(kanjis: _kanjiTable)
+//            pageControl.frame = CGRectMake(self.view.center.x - (kKanjiPageIndicatorWidth/2.0), self.view.frame.origin.y , kKanjiPageIndicatorWidth, kKanjiPageIndicatorHeight)
+//            //        self.view.addSubview(pageControl)
+//            
+//            vc.tableView.tableFooterView = pageControl
+            
             return vc
         }
         
@@ -56,6 +76,13 @@ class PRKanjiPageViewController: UIPageViewController, UIPageViewControllerDeleg
             _selectedIndex++
             let vc = PRKanjiTableViewController()
             vc.kanji  = _kanjiTable[_selectedIndex] as Character
+            
+//            let pageControl: PRKanjiPageControl = PRKanjiPageControl(kanjis: _kanjiTable)
+//            pageControl.frame = CGRectMake(self.view.center.x - (kKanjiPageIndicatorWidth/2.0), self.view.frame.origin.y , kKanjiPageIndicatorWidth, kKanjiPageIndicatorHeight)
+//            //        self.view.addSubview(pageControl)
+//            
+//            vc.tableView.tableFooterView = pageControl
+            
             return vc
         }
     }

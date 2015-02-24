@@ -11,9 +11,16 @@ import CoreData
 
 
 class PRStateSingleton {
-    
-    var currentLesson = 1
+
     var currentLevel = 1
+    var currentLesson : Int = 1{
+    
+        didSet{
+        
+            println("setter called")
+            NSNotificationCenter.defaultCenter().postNotificationName("PRKanjiJigokuLessonUpdated", object: nil)
+        }
+    }
     
     var levelArray = [Int]()
     var lessonArray = [Int]()

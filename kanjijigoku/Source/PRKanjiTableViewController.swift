@@ -16,6 +16,8 @@ class PRKanjiTableViewController: UITableViewController {
     {
         super.viewDidLoad()
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "PRKanjiCell")
+        //self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "PRKanjiCell2")
+
 
 
     }
@@ -76,6 +78,7 @@ class PRKanjiTableViewController: UITableViewController {
                 
                     (base,append) in base! + append
                 }
+                return cell
             }
             else
             {
@@ -87,27 +90,47 @@ class PRKanjiTableViewController: UITableViewController {
                         
                         (base,append) in base! + append + ", "
                 }
+                return cell
             }
         case 2:
             
-            let cell = tableView.dequeueReusableCellWithIdentifier("PRKanjiCell", forIndexPath: indexPath) as UITableViewCell
+            var cell  : UITableViewCell? = tableView.dequeueReusableCellWithIdentifier("PRKanjiCell2") as? UITableViewCell
+            if cell == nil
+            {
+                cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "PRKanjiCell2")
+                cell!.selectionStyle = UITableViewCellSelectionStyle.None;
+            }
             let example = kanji.examples.allObjects as [Example]
-            cell.textLabel?.text = example[indexPath.row].example
+            var attributedText = NSMutableAttributedString(string: example[indexPath.row].example, attributes: kPRKanjiJigokuHelveticaBoldTwenty)
+            let attributedText2 = NSAttributedString(string: " 【" + example[indexPath.row].reading + "】", attributes: kPRKanjiJigokuHelveticaFourteen)
+            attributedText.appendAttributedString(attributedText2)
+            cell!.textLabel?.attributedText = attributedText
+            cell!.detailTextLabel?.text = example[indexPath.row].meaning
+            return cell!
+
         case 3:
             return tableView.dequeueReusableCellWithIdentifier("PRKanjiCell", forIndexPath: indexPath) as UITableViewCell
         case 4:
             let cell = tableView.dequeueReusableCellWithIdentifier("PRKanjiCell", forIndexPath: indexPath) as UITableViewCell
             let sentence = kanji.sentences.allObjects as [Sentence]
             cell.textLabel?.text = sentence[indexPath.row].sentence
+            cell.detailTextLabel?.text = sentence[indexPath.row].meaning
+            return cell
         default:
             return tableView.dequeueReusableCellWithIdentifier("PRKanjiCell", forIndexPath: indexPath) as UITableViewCell
 
         
         }
-        return tableView.dequeueReusableCellWithIdentifier("PRKanjiCell", forIndexPath: indexPath) as UITableViewCell
+        //return tableView.dequeueReusableCellWithIdentifier("PRKanjiCell", forIndexPath: indexPath) as UITableViewCell
 
 
     }
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        
+        return 60.0
+    }
+    
     
     
 }

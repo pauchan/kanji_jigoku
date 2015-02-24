@@ -30,7 +30,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         stateSingleton.lessonArray = db.getLessonArray(stateSingleton.currentLevel)
         
         let tabBarController : UITabBarController = UITabBarController()
-        let kanjiNavigationController : UINavigationController = UINavigationController(rootViewController: PRKanjiMenuViewController())
+        
+        let kanjiViewController = PRKanjiMenuViewController()
+        kanjiViewController._kanjiTable = db.getSelectedObjects("Character", level: PRStateSingleton.sharedInstance.currentLevel, lesson: PRStateSingleton.sharedInstance.currentLesson) as [Character]
+        
+        let kanjiNavigationController : UINavigationController = UINavigationController(rootViewController: kanjiViewController)
         let testsNavigationController : UINavigationController = UINavigationController(rootViewController: PRTestMenuViewController())
         let flashcardController : UINavigationController = UINavigationController(rootViewController: PRFlashcardMenuViewController(style: UITableViewStyle.Plain))
         
