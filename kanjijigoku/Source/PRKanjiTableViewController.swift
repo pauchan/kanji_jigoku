@@ -17,6 +17,7 @@ class PRKanjiTableViewController: UITableViewController {
     
     var kanji : Character!
     var additionalExamples : [Example]!
+    var relatedKanjis : [Character]!
 
     override func viewDidLoad()
     {
@@ -27,7 +28,7 @@ class PRKanjiTableViewController: UITableViewController {
         
         //additionalExamples = [Example]()
         additionalExamples = PRDatabaseHelper().fetchAdditionalExamples(kanji.kanji)
-
+        relatedKanjis = PRDatabaseHelper().fetchRelatedKanjis(kanji.relatedKanji)
 
 
     }
@@ -44,8 +45,12 @@ class PRKanjiTableViewController: UITableViewController {
         switch(section)
         {
         case PRKanjiJigokuKanjiOptions.Summary.rawValue:
-            // TODO!!!!
-            return 3
+            var rowsCount = ()
+            
+            
+            return rowsCount
+            
+            
         case PRKanjiJigokuKanjiOptions.Kunyomi.rawValue:
             return kanji.kunyomis.count > 0  ? 1 : 0
         case PRKanjiJigokuKanjiOptions.Onyomi.rawValue:

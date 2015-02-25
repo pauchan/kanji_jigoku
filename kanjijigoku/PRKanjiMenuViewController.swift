@@ -16,7 +16,7 @@ class PRKanjiMenuViewController: UITableViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Action, target: self, action: "settings")
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Action, target: self, action: "showSettings:")
         self.navigationItem.title = "Kanji Jigoku"
         
         let nib : UINib = UINib(nibName: "PRHeaderViewCell", bundle: nil)
@@ -30,12 +30,11 @@ class PRKanjiMenuViewController: UITableViewController
 override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
 {
     
-    if(indexPath.section == 0)
+    if indexPath.section == 0
     {
         let cell = tableView.dequeueReusableCellWithIdentifier("PRHeaderViewCell", forIndexPath: indexPath) as PRHeaderViewCell
         _headerCoordinator = PRHeaderCoordinator(headerCell: cell)
         return cell
-        
     }
     else
     {
@@ -61,7 +60,7 @@ override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPat
 
 override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
     
-    if(indexPath.section == 0)
+    if indexPath.section == 0 && indexPath.row == 0
     {
         return 90.0
     }
@@ -82,7 +81,8 @@ override func tableView(tableView: UITableView, numberOfRowsInSection section: I
         return _kanjiTable.count
     }
 }
-override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+override func numberOfSectionsInTableView(tableView: UITableView) -> Int
+{
     return 2
 }
 
@@ -92,5 +92,13 @@ func lessonUpdated(notification: NSNotification)
         _kanjiTable = PRDatabaseHelper().getSelectedObjects("Character", level: PRStateSingleton.sharedInstance.currentLevel, lesson: PRStateSingleton.sharedInstance.currentLesson) as [Character]
         self.tableView.reloadData()
 }
+    
+    func showSettings(sender: AnyObject)
+    {
+        self.navigationController?.pushViewController(PRSettingsViewController(), animated: false)
+        
+    
+    }
 
+    
 }

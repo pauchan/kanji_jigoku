@@ -7,7 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		180ABC981A9D5CFB0053A7F6 /* PRFilterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 180ABC971A9D5CFB0053A7F6 /* PRFilterCell.xib */; };
 		1860524E1A9AF44C0046247B /* PRKanjiPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1860524D1A9AF44C0046247B /* PRKanjiPageControl.swift */; };
+		18648AA71A9DB5EF00B5472D /* PRSearchKanjiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18648AA51A9DB5EF00B5472D /* PRSearchKanjiViewController.swift */; };
+		18648AA81A9DB5EF00B5472D /* PRSearchKanjiViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18648AA61A9DB5EF00B5472D /* PRSearchKanjiViewController.xib */; };
+		189369431A9D4DFD001DEFC4 /* PRSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189369411A9D4DFD001DEFC4 /* PRSettingsViewController.swift */; };
 		18C23D3E1A8C734C00AB5817 /* Kunyomi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C23D3D1A8C734C00AB5817 /* Kunyomi.swift */; };
 		18C23D401A8C734D00AB5817 /* Testable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C23D3F1A8C734D00AB5817 /* Testable.swift */; };
 		18C23D421A8C734D00AB5817 /* Sentence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C23D411A8C734D00AB5817 /* Sentence.swift */; };
@@ -41,7 +45,6 @@
 		18D26D9B1A883ED800A8908C /* PRDatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D26D9A1A883ED800A8908C /* PRDatabaseHelper.swift */; };
 		18E4E6871A8D81B30038F86B /* Flashcard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E4E6861A8D81B30038F86B /* Flashcard.swift */; };
 		18E4E6891A8D8B330038F86B /* PRCharacterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E4E6881A8D8B330038F86B /* PRCharacterExtension.swift */; };
-		18E4E68B1A8D8EFE0038F86B /* PRCharacterHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E4E68A1A8D8EFE0038F86B /* PRCharacterHelper.swift */; };
 		9890196ACBA1DBB36C220747 /* libPods-kanjijigoku.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16ED305BDA73EF495F1CC7A3 /* libPods-kanjijigoku.a */; };
 		DDA8FCCE07D8A23426327FF9 /* libPods-kanjijigokuTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 48DDE60AB133AD9253EF4C92 /* libPods-kanjijigokuTests.a */; };
 		FB67D6E31A861B8A00926E38 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB67D6E21A861B8A00926E38 /* AppDelegate.swift */; };
@@ -65,7 +68,11 @@
 
 /* Begin PBXFileReference section */
 		16ED305BDA73EF495F1CC7A3 /* libPods-kanjijigoku.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-kanjijigoku.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		180ABC971A9D5CFB0053A7F6 /* PRFilterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PRFilterCell.xib; path = Source/PRFilterCell.xib; sourceTree = "<group>"; };
 		1860524D1A9AF44C0046247B /* PRKanjiPageControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRKanjiPageControl.swift; path = Source/PRKanjiPageControl.swift; sourceTree = "<group>"; };
+		18648AA51A9DB5EF00B5472D /* PRSearchKanjiViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRSearchKanjiViewController.swift; path = Source/PRSearchKanjiViewController.swift; sourceTree = "<group>"; };
+		18648AA61A9DB5EF00B5472D /* PRSearchKanjiViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PRSearchKanjiViewController.xib; path = Source/PRSearchKanjiViewController.xib; sourceTree = "<group>"; };
+		189369411A9D4DFD001DEFC4 /* PRSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRSettingsViewController.swift; path = Source/PRSettingsViewController.swift; sourceTree = "<group>"; };
 		18C23D3D1A8C734C00AB5817 /* Kunyomi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Kunyomi.swift; path = Source/Kunyomi.swift; sourceTree = "<group>"; };
 		18C23D3F1A8C734D00AB5817 /* Testable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Testable.swift; path = Source/Testable.swift; sourceTree = "<group>"; };
 		18C23D411A8C734D00AB5817 /* Sentence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Sentence.swift; path = Source/Sentence.swift; sourceTree = "<group>"; };
@@ -99,7 +106,6 @@
 		18D26D9A1A883ED800A8908C /* PRDatabaseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRDatabaseHelper.swift; sourceTree = "<group>"; };
 		18E4E6861A8D81B30038F86B /* Flashcard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Flashcard.swift; path = Source/Flashcard.swift; sourceTree = "<group>"; };
 		18E4E6881A8D8B330038F86B /* PRCharacterExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRCharacterExtension.swift; path = Source/PRCharacterExtension.swift; sourceTree = "<group>"; };
-		18E4E68A1A8D8EFE0038F86B /* PRCharacterHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRCharacterHelper.swift; path = Source/PRCharacterHelper.swift; sourceTree = "<group>"; };
 		48DDE60AB133AD9253EF4C92 /* libPods-kanjijigokuTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-kanjijigokuTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		94CC88092ADA2AB93CF98660 /* Pods-kanjijigoku.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kanjijigoku.debug.xcconfig"; path = "Pods/Target Support Files/Pods-kanjijigoku/Pods-kanjijigoku.debug.xcconfig"; sourceTree = "<group>"; };
 		A6263FED85E89D9DE53C6A64 /* Pods-kanjijigokuTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kanjijigokuTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-kanjijigokuTests/Pods-kanjijigokuTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -151,9 +157,19 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		180ABC9D1A9D99530053A7F6 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				18648AA51A9DB5EF00B5472D /* PRSearchKanjiViewController.swift */,
+				18648AA61A9DB5EF00B5472D /* PRSearchKanjiViewController.xib */,
+			);
+			name = Search;
+			sourceTree = "<group>";
+		};
 		18C494891A95AE8100095A7E /* General */ = {
 			isa = PBXGroup;
 			children = (
+				189369411A9D4DFD001DEFC4 /* PRSettingsViewController.swift */,
 				18C494871A95A55000095A7E /* PRHeaderCoordinator.swift */,
 			);
 			name = General;
@@ -285,6 +301,7 @@
 		FBB1FF761A8724FC00F323D0 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				180ABC9D1A9D99530053A7F6 /* Search */,
 				18C4948A1A95AE8B00095A7E /* Kanji */,
 				18C494891A95AE8100095A7E /* General */,
 				18C64F221A92034E000F5641 /* Test */,
@@ -296,6 +313,7 @@
 		FBB1FF771A87250700F323D0 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				180ABC971A9D5CFB0053A7F6 /* PRFilterCell.xib */,
 				FB67D6EE1A861B8A00926E38 /* LaunchScreen.xib */,
 				18D170611A89A0B000672203 /* PRHeaderViewCell.xib */,
 				18D170631A89A49B00672203 /* PRHeaderViewCell.swift */,
@@ -312,7 +330,6 @@
 				18D26D9A1A883ED800A8908C /* PRDatabaseHelper.swift */,
 				18D1706D1A89D77B00672203 /* PRStateSingleton.swift */,
 				18E4E6881A8D8B330038F86B /* PRCharacterExtension.swift */,
-				18E4E68A1A8D8EFE0038F86B /* PRCharacterHelper.swift */,
 				18C6AFF11A9463DC003C5208 /* PRColor.swift */,
 				18D0CB0F1A9C3C1B0027DD8F /* PRStringAttributes.swift */,
 			);
@@ -405,7 +422,9 @@
 			files = (
 				18D1706A1A89BBE800672203 /* flashcardItems.plist in Resources */,
 				FB67D6F01A861B8A00926E38 /* LaunchScreen.xib in Resources */,
+				180ABC981A9D5CFB0053A7F6 /* PRFilterCell.xib in Resources */,
 				18D0CB121A9C5E060027DD8F /* PRKanjiTableViewHeaderCell.xib in Resources */,
+				18648AA81A9DB5EF00B5472D /* PRSearchKanjiViewController.xib in Resources */,
 				FB67D6ED1A861B8A00926E38 /* Images.xcassets in Resources */,
 				18C64F2A1A920400000F5641 /* PRTestViewController.xib in Resources */,
 				18C5DA271A9314EC007FF4A3 /* testPairing.plist in Resources */,
@@ -507,7 +526,6 @@
 				18C23D3E1A8C734C00AB5817 /* Kunyomi.swift in Sources */,
 				18C494881A95A55000095A7E /* PRHeaderCoordinator.swift in Sources */,
 				18C23D401A8C734D00AB5817 /* Testable.swift in Sources */,
-				18E4E68B1A8D8EFE0038F86B /* PRCharacterHelper.swift in Sources */,
 				18C64F1C1A917AC5000F5641 /* PRFuriganaLabel.swift in Sources */,
 				18D170601A8997D700672203 /* PRTestsMenuViewController.swift in Sources */,
 				18C23D461A8C734D00AB5817 /* Character.swift in Sources */,
@@ -516,8 +534,10 @@
 				18C23D481A8C734D00AB5817 /* Reading.swift in Sources */,
 				FB67D6E61A861B8A00926E38 /* kanjijigoku.xcdatamodeld in Sources */,
 				18D170641A89A49B00672203 /* PRHeaderViewCell.swift in Sources */,
+				189369431A9D4DFD001DEFC4 /* PRSettingsViewController.swift in Sources */,
 				18C5DA251A92FEF2007FF4A3 /* Question.swift in Sources */,
 				1860524E1A9AF44C0046247B /* PRKanjiPageControl.swift in Sources */,
+				18648AA71A9DB5EF00B5472D /* PRSearchKanjiViewController.swift in Sources */,
 				18C23D421A8C734D00AB5817 /* Sentence.swift in Sources */,
 				FB67D6E31A861B8A00926E38 /* AppDelegate.swift in Sources */,
 				18C4948C1A95B78900095A7E /* PRKanjiPageViewController.swift in Sources */,

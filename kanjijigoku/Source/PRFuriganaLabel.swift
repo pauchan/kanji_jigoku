@@ -16,9 +16,6 @@ class PRFuriganaLabel : UIView
     
     override func drawRect(rect: CGRect) {
         
-        
-
-        
         let context = UIGraphicsGetCurrentContext()
         
         CGContextSetRGBFillColor(context, 1.0, 1.0, 1.0, 1.0)
@@ -26,8 +23,6 @@ class PRFuriganaLabel : UIView
         CGContextFillPath(context)
         
         CGContextTranslateCTM(context,0.0 , 35.0)
-        
-        
         CGContextScaleCTM(context, 1.0, -1.0)
         
         let line = CTLineCreateWithAttributedString(furiganaText)

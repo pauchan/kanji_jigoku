@@ -483,4 +483,18 @@ class PRDatabaseHelper
 
         return managedContext.executeFetchRequest(fetchRequest, error: nil)! as [Example]
     }
+
+    func fetchRelatedKanjis(relatedKanji : String) -> [Character]
+    {
+        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let managedContext = appDelegate.managedObjectContext!
+        
+        let fetchRequest :NSFetchRequest = NSFetchRequest(entityName: "Character")
+        let entity = NSEntityDescription.entityForName("Character", inManagedObjectContext: managedContext)!
+        
+        fetchRequest.predicate = NSPredicate(format: "kanji='\(relatedKanji)'")!
+        
+        return managedContext.executeFetchRequest(fetchRequest, error: nil)! as [Character]
+    }
+    
 }

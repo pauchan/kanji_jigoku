@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="UITableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="140"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="dhj-iQ-tfr">
+                    <rect key="frame" x="536" y="15" width="51" height="31"/>
+                </switch>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wlacz filtr" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l0X-OF-URc">
+                    <rect key="frame" x="15" y="15" width="75" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Po wlaczeniu filtra kolorem zielonym beda zaznaczone kanji i zlozenia, ktorych obowiazuje tylko bierna znajomosc." lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fpG-L8-XRl">
+                    <rect key="frame" x="15" y="51" width="570" height="34"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fbt-sa-hQp">
+                    <rect key="frame" x="15" y="93" width="270" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EsM-Ys-xfK">
+                    <rect key="frame" x="315" y="93" width="270" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="fpG-L8-XRl" secondAttribute="trailing" constant="15" id="0ea-d6-cTT"/>
+                <constraint firstItem="dhj-iQ-tfr" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="3Lt-pV-PQC"/>
+                <constraint firstItem="Fbt-sa-hQp" firstAttribute="top" secondItem="fpG-L8-XRl" secondAttribute="bottom" constant="8" id="5ZD-Qv-xW9"/>
+                <constraint firstItem="fpG-L8-XRl" firstAttribute="top" secondItem="l0X-OF-URc" secondAttribute="bottom" constant="15" id="7bi-nV-H2h"/>
+                <constraint firstAttribute="trailing" secondItem="EsM-Ys-xfK" secondAttribute="trailing" constant="15" id="AHn-xU-LSx"/>
+                <constraint firstItem="l0X-OF-URc" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="AQL-y3-P8l"/>
+                <constraint firstAttribute="trailing" secondItem="dhj-iQ-tfr" secondAttribute="trailing" constant="15" id="Bfi-0O-Aq4"/>
+                <constraint firstAttribute="centerX" secondItem="EsM-Ys-xfK" secondAttribute="leading" constant="-15" id="EIF-En-8AS"/>
+                <constraint firstItem="Fbt-sa-hQp" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="centerX" constant="-15" id="c2N-go-FIZ"/>
+                <constraint firstItem="fpG-L8-XRl" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="dgP-eL-xEw"/>
+                <constraint firstItem="EsM-Ys-xfK" firstAttribute="top" secondItem="fpG-L8-XRl" secondAttribute="bottom" constant="8" id="jsu-s5-ohn"/>
+                <constraint firstItem="Fbt-sa-hQp" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="jtI-LQ-d1X"/>
+                <constraint firstItem="l0X-OF-URc" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="yf4-Sh-R64"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="504" y="395"/>
+        </view>
+    </objects>
+</document>
