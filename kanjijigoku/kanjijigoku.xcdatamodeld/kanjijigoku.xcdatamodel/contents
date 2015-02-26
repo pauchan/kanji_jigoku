@@ -11,7 +11,7 @@
         <attribute name="meaning" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="note" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="radical" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="relatedKanji" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="relatedKanji" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="strokeCount" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <relationship name="examples" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Example" inverseName="character" inverseEntity="Example" syncable="YES"/>
         <relationship name="kunyomis" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Kunyomi" inverseName="character" inverseEntity="Kunyomi" syncable="YES"/>

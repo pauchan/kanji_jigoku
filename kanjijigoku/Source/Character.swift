@@ -21,7 +21,7 @@ class Character: NSManagedObject {
     @NSManaged var meaning: String
     @NSManaged var note: String
     @NSManaged var radical: Int32
-    @NSManaged var relatedKanji: Int32
+    @NSManaged var relatedKanji: String
     @NSManaged var strokeCount: Int32
     @NSManaged var examples: NSSet
     @NSManaged var radicals: NSSet

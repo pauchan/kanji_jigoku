@@ -10,10 +10,10 @@ import UIKit
 
 enum PRKanjiJigokuKanjiOptions : Int
 {
-    case Summary = 0, Kunyomi, Onyomi, Examples, AdditionalExamples, Sentences
+    case RelatedKanijs=0, Summary, Notes , Kunyomi, Onyomi, Examples, AdditionalExamples, Sentences
 }
 
-class PRKanjiTableViewController: UITableViewController {
+class PRKanjiTableViewController: UITableViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     var kanji : Character!
     var additionalExamples : [Example]!
@@ -23,34 +23,33 @@ class PRKanjiTableViewController: UITableViewController {
     {
         super.viewDidLoad()
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "PRKanjiCell")
+        
         let nib : UINib = UINib(nibName: "PRKanjiTableViewHeaderCell", bundle: nil)
         self.tableView.registerNib(nib, forCellReuseIdentifier: "PRKanjiHeaderCell")
+
+        let nib2 : UINib = UINib(nibName: "PRRelatedKanjiCell", bundle: nil)
+        self.tableView.registerNib(nib2, forCellReuseIdentifier: "PRRelatedKanjiCell")
         
-        //additionalExamples = [Example]()
         additionalExamples = PRDatabaseHelper().fetchAdditionalExamples(kanji.kanji)
+        println("\(kanji.relatedKanji)")
         relatedKanjis = PRDatabaseHelper().fetchRelatedKanjis(kanji.relatedKanji)
-
-
     }
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Potentially incomplete method implementation.
-        // Return the number of sections.
-        return 5
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int
+    {
+        return 7
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete method implementation.
-        // Return the number of rows in the section.
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
         switch(section)
         {
+        case PRKanjiJigokuKanjiOptions.RelatedKanijs.rawValue:
+            return relatedKanjis.count > 0 ? 1 : 0
         case PRKanjiJigokuKanjiOptions.Summary.rawValue:
-            var rowsCount = ()
-            
-            
-            return rowsCount
-            
-            
+            return 1
+        case PRKanjiJigokuKanjiOptions.Notes.rawValue:
+            return kanji.note.isEmpty ? 0 : 1
         case PRKanjiJigokuKanjiOptions.Kunyomi.rawValue:
             return kanji.kunyomis.count > 0  ? 1 : 0
         case PRKanjiJigokuKanjiOptions.Onyomi.rawValue:
@@ -72,34 +71,39 @@ class PRKanjiTableViewController: UITableViewController {
 
         switch(indexPath.section)
         {
-        case PRKanjiJigokuKanjiOptions.Summary.rawValue:
+        case PRKanjiJigokuKanjiOptions.RelatedKanijs.rawValue:
             
-            if indexPath.row == 0
+            let cell = tableView.dequeueReusableCellWithIdentifier("PRRelatedKanjiCell", forIndexPath: indexPath) as PRRelatedKanjiCell
+            cell.relatedKanjiCollectionview.delegate = self
+            cell.relatedKanjiCollectionview.dataSource = self
+            cell.relatedKanjiCollectionview.backgroundColor = UIColor.whiteColor()
+            cell.relatedKanjiCollectionview.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: "UICollectionViewCell")
+            return cell
+            
+        case PRKanjiJigokuKanjiOptions.Summary.rawValue:
+
+            let headerCell = tableView.dequeueReusableCellWithIdentifier("PRKanjiHeaderCell", forIndexPath: indexPath) as PRKanjiTableViewHeaderCell
+            headerCell.kanjiLabel.text = kanji.kanji
+            
+            var arr = kanji.radicals.allObjects as [Radical]  //.allObjects as [Radical]
+            let radicalsString = arr.map
             {
-                return tableView.dequeueReusableCellWithIdentifier("PRKanjiCell", forIndexPath: indexPath) as UITableViewCell
-            }
-            else if indexPath.row == 1
+                (radical : Radical) -> String in radical.radical
+                
+            }.reduce("")
             {
-                let headerCell = tableView.dequeueReusableCellWithIdentifier("PRKanjiHeaderCell", forIndexPath: indexPath) as PRKanjiTableViewHeaderCell
-                headerCell.kanjiLabel.text = kanji.kanji
-                
-                var arr = kanji.radicals.allObjects as [Radical]  //.allObjects as [Radical]
-                let radicalsString = arr.map {
-                    (radical : Radical) -> String in radical.radical
-                    }.reduce(""){
-                        
-                        (base,append) in base + append
-                }
-                
-                
-                headerCell.detailsLabel.text = " \(kanji.strokeCount)画 【\(radicalsString)】"
-                headerCell.explanationLabel.text = kanji.meaning
-                return headerCell
+                    (base,append) in base + append
             }
-            else // indexPath.row == 2
-            {
-                return tableView.dequeueReusableCellWithIdentifier("PRKanjiCell", forIndexPath: indexPath) as UITableViewCell
-            }
+            
+            headerCell.detailsLabel.text = " \(kanji.strokeCount)画 【\(radicalsString)】"
+            headerCell.explanationLabel.text = kanji.meaning
+            return headerCell
+            
+        case PRKanjiJigokuKanjiOptions.Notes.rawValue:
+            
+            let cell = tableView.dequeueReusableCellWithIdentifier("PRKanjiCell", forIndexPath: indexPath) as UITableViewCell
+            cell.textLabel?.text = kanji.note
+            return cell
             
         case PRKanjiJigokuKanjiOptions.Kunyomi.rawValue:
 
@@ -124,6 +128,7 @@ class PRKanjiTableViewController: UITableViewController {
                         (base,append) in base! + append + ", "
                 }
                 return cell
+            
         case PRKanjiJigokuKanjiOptions.Examples.rawValue:
             
             var cell  : UITableViewCell? = tableView.dequeueReusableCellWithIdentifier("PRKanjiCell2") as? UITableViewCell
@@ -153,6 +158,7 @@ class PRKanjiTableViewController: UITableViewController {
             cell!.textLabel?.attributedText = attributedText
             cell!.detailTextLabel?.text = additionalExamples[indexPath.row].meaning + " " + additionalExamples[indexPath.row].note
             return cell!
+            
         case PRKanjiJigokuKanjiOptions.Sentences.rawValue:
             var cell  : UITableViewCell? = tableView.dequeueReusableCellWithIdentifier("PRKanjiCell2") as? UITableViewCell
             if cell == nil
@@ -214,11 +220,67 @@ class PRKanjiTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         
-        
-        return 60.0
-        
+        if indexPath.section == PRKanjiJigokuKanjiOptions.RelatedKanijs.rawValue || indexPath.section == PRKanjiJigokuKanjiOptions.Notes.rawValue
+        {
+                return 30.0
+        }
+        else if indexPath.section == PRKanjiJigokuKanjiOptions.Summary.rawValue
+        {
+            return 100.0
+        }
+        else
+        {
+            return 60.0
+        }
     }
     
     
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("UICollectionViewCell", forIndexPath: indexPath) as UICollectionViewCell
+        let label = UILabel(frame: CGRectMake(0, 0, cell.frame.size.width, cell.frame.size.height))
+        label.text = relatedKanjis[indexPath.row].kanji
+        
+        let onyomiSet = kanji.onyomis.allObjects as [Onyomi]
+        let onyomiSet2 = relatedKanjis[indexPath.row].onyomis.allObjects as [Onyomi]
+        
+        var readingSet : [String]
+        //var readingSet2 : NSMutableSet = NSMutableSet()
+
+//        onyomiSet.reduce(readingSet){
+//            
+//            (start : [String] ,onyomi : Onyomi) -> [String] in start.append(onyomi.reading); return start
+//        }
+        
+        let test = onyomiSet.map({
+        
+            (onyomi) -> String in onyomi.reading
+        })
+        
+//        
+        let testBool = onyomiSet.filter({
+        
+            (onyomi : Onyomi) in contains(test, onyomi.reading)
+        })
+        
+
+        println("\(test.description)")
+        println("\(testBool.description)")
+        
+        label.textColor = testBool.count > 0 ? UIColor.redColor() : UIColor.blueColor()
+        
+        cell.addSubview(label)
+        return cell
+    }
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        return relatedKanjis.count
+    }
+    
+    func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
+        
+        
+    }
     
 }

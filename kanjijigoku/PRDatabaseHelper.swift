@@ -146,7 +146,7 @@ class PRDatabaseHelper
                     character.meaning = rs.stringForColumnIndex(5)
                     // skipping columns with index 6 (pinyin) and index 7 (nonori)
                     character.note = rs.stringForColumnIndex(8)
-                    character.relatedKanji = rs.intForColumnIndex(9)
+                    character.relatedKanji = rs.stringForColumnIndex(9)
                     character.lesson = rs.intForColumnIndex(10)
                     character.level = rs.intForColumnIndex(11)
                     character.kanjiId = rs.intForColumnIndex(12)
@@ -492,7 +492,7 @@ class PRDatabaseHelper
         let fetchRequest :NSFetchRequest = NSFetchRequest(entityName: "Character")
         let entity = NSEntityDescription.entityForName("Character", inManagedObjectContext: managedContext)!
         
-        fetchRequest.predicate = NSPredicate(format: "kanji='\(relatedKanji)'")!
+        fetchRequest.predicate = NSPredicate(format: "relatedKanji='\(relatedKanji)' AND (NOT kanji='\(relatedKanji)')")!
         
         return managedContext.executeFetchRequest(fetchRequest, error: nil)! as [Character]
     }
