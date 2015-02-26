@@ -33,6 +33,8 @@ class PRKanjiTableViewController: UITableViewController, UICollectionViewDelegat
         additionalExamples = PRDatabaseHelper().fetchAdditionalExamples(kanji.kanji)
         println("\(kanji.relatedKanji)")
         relatedKanjis = PRDatabaseHelper().fetchRelatedKanjis(kanji.relatedKanji)
+        
+        self.tableView.tableFooterView = UIView(frame: CGRectMake(0.0, 0.0, self.view.frame.size.width, 45.0))
     }
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int
@@ -224,6 +226,10 @@ class PRKanjiTableViewController: UITableViewController, UICollectionViewDelegat
         {
                 return 30.0
         }
+        if indexPath.section == PRKanjiJigokuKanjiOptions.Kunyomi.rawValue || indexPath.section == PRKanjiJigokuKanjiOptions.Onyomi.rawValue
+        {
+            return 45.0
+        }
         else if indexPath.section == PRKanjiJigokuKanjiOptions.Summary.rawValue
         {
             return 100.0
@@ -244,21 +250,12 @@ class PRKanjiTableViewController: UITableViewController, UICollectionViewDelegat
         let onyomiSet = kanji.onyomis.allObjects as [Onyomi]
         let onyomiSet2 = relatedKanjis[indexPath.row].onyomis.allObjects as [Onyomi]
         
-        var readingSet : [String]
-        //var readingSet2 : NSMutableSet = NSMutableSet()
-
-//        onyomiSet.reduce(readingSet){
-//            
-//            (start : [String] ,onyomi : Onyomi) -> [String] in start.append(onyomi.reading); return start
-//        }
-        
         let test = onyomiSet.map({
         
             (onyomi) -> String in onyomi.reading
         })
         
-//        
-        let testBool = onyomiSet.filter({
+        let testBool = onyomiSet2.filter({
         
             (onyomi : Onyomi) in contains(test, onyomi.reading)
         })

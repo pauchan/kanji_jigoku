@@ -33,7 +33,7 @@ class PRSearchKanjiViewController: UIViewController, UITableViewDelegate, UITabl
         
         if indexPath.section == 0
         {
-            let cell = tableView.dequeueReusableCellWithIdentifier("PRHeaderViewCell", forIndexPath: indexPath) as PRHeaderViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("PRKanjiCell", forIndexPath: indexPath) as UITableViewCell
             //_headerCoordinator = PRHeaderCoordinator(headerCell: cell)
             return cell
         }
@@ -59,27 +59,20 @@ class PRSearchKanjiViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        
-        if indexPath.section == 0 && indexPath.row == 0
-        {
-            return 90.0
-        }
-        else
-        {
-            return 45.0
-        }
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
+    {
+        return 60.0
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         if(section == 0)
         {
-            return 1
+            return kunyomiSearchArray.count
         }
         else
         {
-            return 1
+            return sentenceSearchArray.count
         }
     }
     func numberOfSectionsInTableView(tableView: UITableView) -> Int

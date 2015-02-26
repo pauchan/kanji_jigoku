@@ -35,7 +35,7 @@ override func viewDidLoad() {
     
     //self.tableView.keyboardDismissMode = .OnDrag
     
-    self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Action, target: self, action: "settings")
+    self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Action, target: self, action: "prKanjiJigokuRightBarItemShowSettings:")
     self.navigationItem.title = "Kanji Jigoku"
     // Do any additional setup after loading the view, typically from a nib.
     let nib : UINib = UINib(nibName: "PRHeaderViewCell", bundle: nil)

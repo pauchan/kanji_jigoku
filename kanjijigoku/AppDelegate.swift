@@ -44,6 +44,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         tabBarController.viewControllers = [kanjiNavigationController, testsNavigationController, flashcardController]
         
+        for vc in tabBarController.viewControllers as [UINavigationController]
+        {
+            if vc.respondsToSelector("interactivePopGestureRecognizer")
+            {
+                vc.interactivePopGestureRecognizer.enabled = false
+            }
+        }
+        
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)  
         
         self.window?.rootViewController = tabBarController

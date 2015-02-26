@@ -16,7 +16,7 @@ class PRKanjiMenuViewController: UITableViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Action, target: self, action: "showSettings:")
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Action, target: self, action: "prKanjiJigokuRightBarItemShowSettings:")
         self.navigationItem.title = "Kanji Jigoku"
         
         let nib : UINib = UINib(nibName: "PRHeaderViewCell", bundle: nil)
@@ -92,13 +92,6 @@ func lessonUpdated(notification: NSNotification)
         _kanjiTable = PRDatabaseHelper().getSelectedObjects("Character", level: PRStateSingleton.sharedInstance.currentLevel, lesson: PRStateSingleton.sharedInstance.currentLesson) as [Character]
         self.tableView.reloadData()
 }
-    
-    func showSettings(sender: AnyObject)
-    {
-        self.navigationController?.pushViewController(PRSettingsViewController(), animated: false)
-        
-    
-    }
 
     
 }
