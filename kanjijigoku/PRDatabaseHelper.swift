@@ -85,15 +85,26 @@ class PRDatabaseHelper
                     {
                         if(appDbUpdate.isEqualToString(_timestamp))
                         {
-                            
+                            println("there is no new version of db")
                             return false
+                        }
+                        else
+                        {
+                            println("new version - updating")
+                            return true
                         }
                     }
                 }
             }
+            // there was some data error or connectivity errror. We still ha
+            println("connetivity error. Using old version of db")
+            return false
         }
-        
-        return true
+        else
+        {
+            // there is no user default for timestamp so new db needs to be created
+            return true
+        }
     }
 
     
@@ -484,7 +495,7 @@ class PRDatabaseHelper
         return managedContext.executeFetchRequest(fetchRequest, error: nil)! as [Example]
     }
 
-    func fetchRelatedKanjis(relatedKanji : String) -> [Character]
+    func fetchRelatedKanjis(kanji: Character) -> [Character]
     {
         let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         let managedContext = appDelegate.managedObjectContext!
@@ -492,7 +503,7 @@ class PRDatabaseHelper
         let fetchRequest :NSFetchRequest = NSFetchRequest(entityName: "Character")
         let entity = NSEntityDescription.entityForName("Character", inManagedObjectContext: managedContext)!
         
-        fetchRequest.predicate = NSPredicate(format: "relatedKanji='\(relatedKanji)' AND (NOT kanji='\(relatedKanji)')")!
+        fetchRequest.predicate = NSPredicate(format: "relatedKanji='\(kanji.relatedKanji)' AND (NOT kanji='\(kanji.kanji)')")!
         
         return managedContext.executeFetchRequest(fetchRequest, error: nil)! as [Character]
     }

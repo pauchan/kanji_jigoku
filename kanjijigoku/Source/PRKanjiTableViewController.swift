@@ -31,8 +31,14 @@ class PRKanjiTableViewController: UITableViewController, UICollectionViewDelegat
         self.tableView.registerNib(nib2, forCellReuseIdentifier: "PRRelatedKanjiCell")
         
         additionalExamples = PRDatabaseHelper().fetchAdditionalExamples(kanji.kanji)
-        println("\(kanji.relatedKanji)")
-        relatedKanjis = PRDatabaseHelper().fetchRelatedKanjis(kanji.relatedKanji)
+        if kanji.relatedKanji.isEmpty
+        {
+            relatedKanjis = [Character]()
+        }
+        else
+        {
+            relatedKanjis = PRDatabaseHelper().fetchRelatedKanjis(kanji)
+        }
         
         self.tableView.tableFooterView = UIView(frame: CGRectMake(0.0, 0.0, self.view.frame.size.width, 45.0))
     }
@@ -277,6 +283,10 @@ class PRKanjiTableViewController: UITableViewController, UICollectionViewDelegat
     
     func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
         
+        
+        let vc = PRKanjiTableViewController()
+        vc.kanji  = relatedKanjis[indexPath.row] as Character
+        self.navigationController?.pushViewController(vc, animated: false)
         
     }
     
