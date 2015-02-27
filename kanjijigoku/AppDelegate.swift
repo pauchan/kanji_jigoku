@@ -40,14 +40,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         kanjiViewController._kanjiTable = db.getSelectedObjects("Character", level: PRStateSingleton.sharedInstance.currentLevel, lesson: PRStateSingleton.sharedInstance.currentLesson) as [Character]
         
         let kanjiNavigationController : UINavigationController = UINavigationController(rootViewController: kanjiViewController)
+        let searchNavigationController : UINavigationController = UINavigationController(rootViewController: PRSearchKanjiViewController(nibName: "PRSearchKanjiViewController" ,bundle: nil))
         let testsNavigationController : UINavigationController = UINavigationController(rootViewController: PRTestMenuViewController())
         let flashcardController : UINavigationController = UINavigationController(rootViewController: PRFlashcardMenuViewController(style: UITableViewStyle.Plain))
         
         kanjiNavigationController.tabBarItem.title = "Lekcja"
+        searchNavigationController.tabBarItem.title = "Szukaj"
         testsNavigationController.tabBarItem.title = "Testy"
         flashcardController.tabBarItem.title = "Fiszki"
         
-        tabBarController.viewControllers = [kanjiNavigationController, testsNavigationController, flashcardController]
+        tabBarController.viewControllers = [kanjiNavigationController, searchNavigationController, testsNavigationController, flashcardController]
         
         for vc in tabBarController.viewControllers as [UINavigationController]
         {

@@ -11,7 +11,7 @@ import UIKit
 class PRKanjiPageControl: UIPageControl {
 
     var inactiveImagesArray : [UIImage]!
-    var activeImagesArray : [UIImage]!
+    //var activeImagesArray : [UIImage]!
     
     /*
     // Only override drawRect: if you perform custom drawing.
@@ -33,47 +33,44 @@ class PRKanjiPageControl: UIPageControl {
         super.init(coder: aDecoder)
     }
 
-    init(kanjis : [Character], frame : CGRect) {
+    init(kanjis : [Character], frame: CGRect) {
 
-        super.init(frame: frame)
+        super.init(frame : frame)
+        
+        inactiveImagesArray = [UIImage]()
+        
         self.numberOfPages = kanjis.count
         self.currentPage = 0
-        var imgArray : [UIImageView] = [UIImageView]()
+
         for ch in kanjis
         {
             let font = UIFont(name: "Helvetica", size: 17.0)
             let kanji :NSAttributedString = NSAttributedString(string: ch.kanji, attributes: [NSFontAttributeName : font!])
-
-            //let size = kanji.sizeWithAttributes()
-            let size = kanji.size()
             
-            UIGraphicsBeginImageContextWithOptions(size, false, 0.0)
+            UIGraphicsBeginImageContextWithOptions(kanji.size(), false, 0.0)
             kanji.drawAtPoint(CGPointMake(0.0, 0.0)) //, withAttributes: [NSFontAttributeName : font!])
-            let image : UIImage = UIGraphicsGetImageFromCurrentImageContext()
+            inactiveImagesArray.append(UIGraphicsGetImageFromCurrentImageContext())
             UIGraphicsEndImageContext()
-            if((find(kanjis, ch) != nil && self.subviews.count > find(kanjis, ch))){
-                let index : Int = find(kanjis, ch)!
-                let obj : UIView = self.subviews[index] as UIView
-                var rect = obj.frame
-                rect.origin.x = frame.origin.x + (CGFloat(index) / CGFloat(self.subviews.count)) * frame.size.width
-                rect.origin.y = 10.0
-                rect.size = size
-                var imgView : UIImageView = UIImageView(frame: rect)
-                imgView.image = image
-                imgArray.append(imgView)
-            }
+            
         }
         for v in self.subviews as [UIView]
         {
             v.removeFromSuperview()
         }
+        self.backgroundColor = UIColor.whiteColor()
         
-        for v : UIView in imgArray
+    }
+    
+    func setupView(frame: CGRect)
+    {
+        for (index, value : UIImage) in enumerate(inactiveImagesArray)
         {
-            self.addSubview(v)
+            let rect = CGRectMake(frame.origin.x + (CGFloat(index) / CGFloat(inactiveImagesArray.count)) * frame.size.width, 10.0, value.size.width, value.size.height)
+            var imgView : UIImageView = UIImageView(frame: rect)
+            imgView.image = value
+            self.addSubview(imgView)
         }
         
-        //self.subviews = imgArray as [AnyObject]
     }
     
 }

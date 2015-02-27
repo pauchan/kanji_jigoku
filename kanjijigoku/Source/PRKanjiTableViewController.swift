@@ -13,17 +13,25 @@ enum PRKanjiJigokuKanjiOptions : Int
     case RelatedKanijs=0, Summary, Notes , Kunyomi, Onyomi, Examples, AdditionalExamples, Sentences
 }
 
-class PRKanjiTableViewController: UITableViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class PRKanjiTableViewController: UIViewController, UITableViewDelegate,UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource {
     
     var kanji : Character!
     var additionalExamples : [Example]!
     var relatedKanjis : [Character]!
-    
-    var pageControl : UIPageControl!
+    var tableView : UITableView!
+    var pageControl : PRKanjiPageControl!
 
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        self.tableView = UITableView(frame: CGRectMake(0, 64.0, self.view.frame.size.width, self.view.frame.size.height*0.85))
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        self.view.addSubview(self.tableView)
+        pageControl.setupView(CGRectMake(0, self.view.frame.size.height*0.85, self.view.frame.size.width, self.view.frame.size.height*0.15))
+        self.view.addSubview(pageControl)
+        
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "PRKanjiCell")
         
         let nib : UINib = UINib(nibName: "PRKanjiTableViewHeaderCell", bundle: nil)
@@ -43,15 +51,15 @@ class PRKanjiTableViewController: UITableViewController, UICollectionViewDelegat
         }
         
         self.tableView.tableFooterView = UIView(frame: CGRectMake(0.0, 0.0, self.view.frame.size.width, 45.0))
-        self.tableView.tableHeaderView = pageControl
+        //self.tableView.tableHeaderView = pageControl
     }
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int
     {
         return 7
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         switch(section)
         {
@@ -78,7 +86,7 @@ class PRKanjiTableViewController: UITableViewController, UICollectionViewDelegat
     }
 
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 
         switch(indexPath.section)
         {
@@ -200,7 +208,7 @@ class PRKanjiTableViewController: UITableViewController, UICollectionViewDelegat
     
     
     
-    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         
         if section == PRKanjiJigokuKanjiOptions.AdditionalExamples.rawValue || section == PRKanjiJigokuKanjiOptions.Sentences.rawValue
         {
@@ -212,7 +220,7 @@ class PRKanjiTableViewController: UITableViewController, UICollectionViewDelegat
         }
     }
     
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         
         if section == PRKanjiJigokuKanjiOptions.AdditionalExamples.rawValue
         {
@@ -229,7 +237,7 @@ class PRKanjiTableViewController: UITableViewController, UICollectionViewDelegat
     }
     
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         
         if indexPath.section == PRKanjiJigokuKanjiOptions.RelatedKanijs.rawValue || indexPath.section == PRKanjiJigokuKanjiOptions.Notes.rawValue
         {

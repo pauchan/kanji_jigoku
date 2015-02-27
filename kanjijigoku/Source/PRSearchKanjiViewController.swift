@@ -8,14 +8,23 @@
 
 import UIKit
 
-class PRSearchKanjiViewController: UIViewController, UITableViewDelegate, UITableViewDataSource
-
-
+class PRSearchKanjiViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate
 {
     @IBOutlet weak var kanjiSearchTable: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
     
-    var kunyomiSearchArray : [Kunyomi]!
-    var sentenceSearchArray : [Sentence]!
+    
+    var kunyomiSearchArray : [Kunyomi] = [Kunyomi]()
+    var sentenceSearchArray : [Sentence] = [Sentence]()
+ 
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+        
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+
+    required init(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad()
     {
@@ -23,6 +32,8 @@ class PRSearchKanjiViewController: UIViewController, UITableViewDelegate, UITabl
         
         kanjiSearchTable.delegate = self
         kanjiSearchTable.dataSource = self
+        
+        searchBar.delegate = self
 
         // Do any additional setup after loading the view.
     }
@@ -81,6 +92,10 @@ class PRSearchKanjiViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     
-
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        
+        //clicked!!!
+        
+    }
 
 }
