@@ -18,6 +18,8 @@ class PRKanjiTableViewController: UITableViewController, UICollectionViewDelegat
     var kanji : Character!
     var additionalExamples : [Example]!
     var relatedKanjis : [Character]!
+    
+    var pageControl : UIPageControl!
 
     override func viewDidLoad()
     {
@@ -41,6 +43,7 @@ class PRKanjiTableViewController: UITableViewController, UICollectionViewDelegat
         }
         
         self.tableView.tableFooterView = UIView(frame: CGRectMake(0.0, 0.0, self.view.frame.size.width, 45.0))
+        self.tableView.tableHeaderView = pageControl
     }
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int
