@@ -20,6 +20,8 @@ class PRSettingsViewController: UITableViewController {
         
         self.navigationItem.title = "Ustawienia"
         
+        let vc  = PRFilterController(nibName: "PRFilterCell", bundle: nil)
+        
         //self.tableView.registerClass(UITableViewCell.self, forHeaderFooterViewReuseIdentifier: "PRSettingsCell")
         
     }
@@ -88,12 +90,13 @@ class PRSettingsViewController: UITableViewController {
                 {
                     cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "PRSettingsCell")
                     cell!.selectionStyle = UITableViewCellSelectionStyle.None
-                    cell!.accessoryType = UITableViewCellAccessoryType.Checkmark
                     cell!.textLabel?.text = "Automatyczne aktualizacje"
                     cell!.detailTextLabel?.text = "Automatycznie sprawdzaj aktualizacje bazy po uruchomieniu aplikacji, jesli urzadzenie jest polaczone z internetem."
                     cell!.detailTextLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                    cell!.accessoryType = UITableViewCellAccessoryType.Checkmark
                     cell!.detailTextLabel?.numberOfLines = 0
                 }
+                cell!.tintColor = (NSUserDefaults.standardUserDefaults().objectForKey("PRKanjiJigokuAutoDbUpdate") != nil) ? UIColor.blueColor() : UIColor.grayColor()
                 return cell!
             case 2:
                 var cell : UITableViewCell? = tableView.dequeueReusableCellWithIdentifier("PRSettingsCell") as? UITableViewCell
@@ -129,8 +132,47 @@ class PRSettingsViewController: UITableViewController {
         }
     }
 
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        if indexPath.section == 0
+        {
+            if indexPath.row == 0
+            {
+                PRDatabaseHelper().syncDatabase()
+            }
+            else if indexPath.row == 1
+            {
+                if let cell = tableView.cellForRowAtIndexPath(indexPath)
+                {
+                    if NSUserDefaults.standardUserDefaults().objectForKey("PRKanjiJigokuAutoDbUpdate") != nil
+                    {
+                        println("becoming nil")
+                        NSUserDefaults.standardUserDefaults().setObject(nil, forKey: "PRKanjiJigokuAutoDbUpdate")
+                    }
+                    else
+                    {
+                        println("becoming true")
+                        NSUserDefaults.standardUserDefaults().setObject(true, forKey: "PRKanjiJigokuAutoDbUpdate")
+                    }
+                    NSUserDefaults.standardUserDefaults().synchronize()
+                    tableView.reloadData()
+                }
+            }
+            else
+            {
+                NSUserDefaults.standardUserDefaults().setObject(nil, forKey: "PRKanjiJigokuDbUpdate")
+                PRDatabaseHelper().syncDatabase()
+                self.navigationController?.popToRootViewControllerAnimated(false)
+            }
+        }
+        else
+        {
+            
+        }
+    }
 
 
-
+    
     
 }

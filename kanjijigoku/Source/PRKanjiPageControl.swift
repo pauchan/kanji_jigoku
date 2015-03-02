@@ -41,7 +41,7 @@ class PRKanjiPageControl: UIPageControl {
         
         self.numberOfPages = kanjis.count
         self.currentPage = 0
-
+        
         for ch in kanjis
         {
             let font = UIFont(name: "Helvetica", size: 17.0)
@@ -53,16 +53,18 @@ class PRKanjiPageControl: UIPageControl {
             UIGraphicsEndImageContext()
             
         }
-        for v in self.subviews as [UIView]
-        {
-            v.removeFromSuperview()
-        }
+
         self.backgroundColor = UIColor.whiteColor()
         
     }
     
     func setupView(frame: CGRect)
     {
+        for v in self.subviews as [UIView]
+        {
+            v.removeFromSuperview()
+        }
+        
         for (index, value : UIImage) in enumerate(inactiveImagesArray)
         {
             let rect = CGRectMake(frame.origin.x + (CGFloat(index) / CGFloat(inactiveImagesArray.count)) * frame.size.width, 10.0, value.size.width, value.size.height)

@@ -16,21 +16,21 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="WEC-QE-dc7">
+                    <rect key="frame" x="0.0" y="108" width="600" height="492"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
                 <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="F4i-VJ-txG">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                    <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="Qrg-i0-Zgd"/>
                     </constraints>
                     <textInputTraits key="textInputTraits"/>
                 </searchBar>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="WEC-QE-dc7">
-                    <rect key="frame" x="0.0" y="44" width="600" height="556"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="F4i-VJ-txG" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="248-WX-gFf"/>
+                <constraint firstItem="F4i-VJ-txG" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="248-WX-gFf"/>
                 <constraint firstItem="WEC-QE-dc7" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="5SO-7E-pAC"/>
                 <constraint firstItem="F4i-VJ-txG" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="GSM-Sf-90n"/>
                 <constraint firstAttribute="bottom" secondItem="WEC-QE-dc7" secondAttribute="bottom" id="L0T-Rd-uVv"/>

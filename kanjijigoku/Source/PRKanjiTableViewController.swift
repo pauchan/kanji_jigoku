@@ -25,12 +25,25 @@ class PRKanjiTableViewController: UIViewController, UITableViewDelegate,UITableV
     {
         super.viewDidLoad()
         
-        self.tableView = UITableView(frame: CGRectMake(0, 64.0, self.view.frame.size.width, self.view.frame.size.height*0.85))
+        println("navigation controller: \(self.navigationController?.description)")
+        println("navigation controller: \(self.navigationItem.description)")
+        println("navigation controller: \(self.navigationController?.navigationBar.description)")
+        println("navigation controller: \(self.navigationController?.navigationBarHidden)")
+        if self.navigationController != nil
+        {
+            self.tableView = UITableView(frame: CGRectMake(0, 0.0, self.view.frame.size.width, self.view.frame.size.height*0.85))
+        }
+        else
+        {
+            self.tableView = UITableView(frame: CGRectMake(0, 64.0, self.view.frame.size.width, self.view.frame.size.height*0.85))
+        }
+        
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.view.addSubview(self.tableView)
         pageControl.setupView(CGRectMake(0, self.view.frame.size.height*0.85, self.view.frame.size.width, self.view.frame.size.height*0.15))
         self.view.addSubview(pageControl)
+        
         
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "PRKanjiCell")
         
@@ -56,7 +69,7 @@ class PRKanjiTableViewController: UIViewController, UITableViewDelegate,UITableV
 
     func numberOfSectionsInTableView(tableView: UITableView) -> Int
     {
-        return 7
+        return 8
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
@@ -254,6 +267,14 @@ class PRKanjiTableViewController: UIViewController, UITableViewDelegate,UITableV
         else
         {
             return 60.0
+//            let cell = self.tableView(tableView, cellForRowAtIndexPath: indexPath)
+//            var newBounds = cell.bounds
+//            newBounds.size.width = tableView.bounds.width
+//            cell.bounds = newBounds
+//            
+//            cell.setNeedsLayout()
+//            cell.layoutIfNeeded()
+//            return cell.preferredView.bounds.height
         }
     }
     

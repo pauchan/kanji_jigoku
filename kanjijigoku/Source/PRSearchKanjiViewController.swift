@@ -97,5 +97,10 @@ class PRSearchKanjiViewController: UIViewController, UITableViewDelegate, UITabl
         //clicked!!!
         
     }
+    
+    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+        
+        // end editing
+    }
 
 }

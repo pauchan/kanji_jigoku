@@ -16,6 +16,7 @@ class PRKanjiPageViewController: UIPageViewController, UIPageViewControllerDeleg
     
     var _kanjiTable : [Character] = [Character]()
     var _selectedIndex : Int = 0
+    //var inactiveImagesArray : [UIImage] = [UIImage]()
     var _pageControl : PRKanjiPageControl!
     
 //        override init() {
@@ -40,7 +41,7 @@ class PRKanjiPageViewController: UIPageViewController, UIPageViewControllerDeleg
         var vcArray = [vc] as [AnyObject]
         
         _pageControl = PRKanjiPageControl(kanjis: _kanjiTable, frame: CGRectMake(0, self.view.frame.size.height*0.85, self.view.frame.size.width, self.view.frame.size.height*0.15))
-        // ,  frame: CGRectMake(self.view.center.x - (kKanjiPageIndicatorWidth/2.0), self.view.frame.origin.y + 0.0, kKanjiPageIndicatorWidth, kKanjiPageIndicatorHeight
+         //,  frame: CGRectMake(self.view.center.x - (kKanjiPageIndicatorWidth/2.0), self.view.frame.origin.y + 0.0, kKanjiPageIndicatorWidth, kKanjiPageIndicatorHeight
         vc.pageControl = _pageControl
         
         self.setViewControllers(vcArray, direction: .Forward, animated: false, completion: nil)
@@ -95,6 +96,22 @@ class PRKanjiPageViewController: UIPageViewController, UIPageViewControllerDeleg
         
         return _selectedIndex
     }
+    
+//    func generateKanjiPageController(kanjis: [Character])
+//    {
+//    
+//        for ch in kanjis
+//        {
+//            let font = UIFont(name: "Helvetica", size: 17.0)
+//            let kanji :NSAttributedString = NSAttributedString(string: ch.kanji, attributes: [NSFontAttributeName : font!])
+//            
+//            UIGraphicsBeginImageContextWithOptions(kanji.size(), false, 0.0)
+//            kanji.drawAtPoint(CGPointMake(0.0, 0.0)) //, withAttributes: [NSFontAttributeName : font!])
+//            inactiveImagesArray.append(UIGraphicsGetImageFromCurrentImageContext())
+//            UIGraphicsEndImageContext()
+//            
+//        }
+//    }
     
 }
 

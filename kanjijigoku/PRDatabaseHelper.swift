@@ -19,8 +19,15 @@ class PRDatabaseHelper
     //func parseCharacters(database : FMDatabase) -> Bool
     var _timestamp : NSString = NSString()
     
-    func syncDatabase()
+    func syncDatabase() -> Bool
     {
+        
+        if(!shouldUpdateDb())
+        {
+            println("database up to date")
+            return true
+        }
+        
         if downloadDbFile()
         {
             let documentsFolder = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
@@ -33,6 +40,7 @@ class PRDatabaseHelper
                 if parseDb(database)
                 {
                     println("parsed db succesfully")
+                    return true
                 }
                 else
                 {
@@ -49,6 +57,7 @@ class PRDatabaseHelper
         {
             println("Download db file failed")
         }
+        return false
     }
     
     func downloadDbFile() -> Bool
@@ -71,7 +80,7 @@ class PRDatabaseHelper
         return false
     }
     
-    func shouldUpdateDb(database : FMDatabase) -> Bool
+    func shouldUpdateDb() -> Bool
     {
         
         if let appDbUpdate : NSString = NSUserDefaults.standardUserDefaults().objectForKey("PRKanjiJigokuDbUpdate") as? String
@@ -81,15 +90,17 @@ class PRDatabaseHelper
             {
                 if let urlData : NSData = NSData(contentsOfURL: url)
                 {
-                    if var _timestamp = NSString(data: urlData, encoding: NSUTF8StringEncoding)
+                    if var timestamp = NSString(data: urlData, encoding: NSUTF8StringEncoding)
                     {
-                        if(appDbUpdate.isEqualToString(_timestamp))
+                        if(appDbUpdate.isEqualToString(timestamp))
                         {
+                            //_timestamp = timestamp
                             println("there is no new version of db")
                             return false
                         }
                         else
                         {
+                            _timestamp = timestamp
                             println("new version - updating")
                             return true
                         }
@@ -111,12 +122,11 @@ class PRDatabaseHelper
     func parseDb(database : FMDatabase) -> Bool
     {
         
-        
-        if(!shouldUpdateDb(database))
-        {
-            println("database up to date")
-            return true
-        }
+//        if(!syncDatabase())
+//        {
+//            println("there was problems with")
+//            return false
+//        }
         
         deleteObjects("Character")
         deleteObjects("Kunyomi")
@@ -130,7 +140,8 @@ class PRDatabaseHelper
             println("failed to parse characters")
             return false
         }
-        
+
+        println("Timestamp: \(_timestamp)")
         NSUserDefaults.standardUserDefaults().setObject(_timestamp, forKey: "PRKanjiJigokuDbUpdate")
         println("Update successful")
         
@@ -506,6 +517,20 @@ class PRDatabaseHelper
         fetchRequest.predicate = NSPredicate(format: "relatedKanji='\(kanji.relatedKanji)' AND (NOT kanji='\(kanji.kanji)')")!
         
         return managedContext.executeFetchRequest(fetchRequest, error: nil)! as [Character]
+    }
+    
+    func fetchSentencesContainingKanji(kanji: String) -> [Sentence]
+    {
+    
+        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let managedContext = appDelegate.managedObjectContext!
+        
+        let fetchRequest :NSFetchRequest = NSFetchRequest(entityName: "Sentence")
+        let entity = NSEntityDescription.entityForName("Sentence", inManagedObjectContext: managedContext)!
+        
+        fetchRequest.predicate = NSPredicate(format: "sentence CONTAINS '\(kanji)'")!
+        
+        return managedContext.executeFetchRequest(fetchRequest, error: nil)! as [Sentence]
     }
     
 }

@@ -19,7 +19,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         let db = PRDatabaseHelper()
-        db.syncDatabase()
+        
+        if NSUserDefaults.standardUserDefaults().objectForKey("PRKanjiJigokuAutoDbUpdate") != nil
+        {
+            db.syncDatabase()
+        }
         
         var pageControl : UIPageControl = UIPageControl.appearance()
         pageControl.pageIndicatorTintColor = UIColor.redColor()

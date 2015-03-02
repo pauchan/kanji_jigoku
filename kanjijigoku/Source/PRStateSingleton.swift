@@ -25,6 +25,10 @@ class PRStateSingleton {
     var levelArray = [Int]()
     var lessonArray = [Int]()
     
+    var filterOn : Bool = false
+    var filterLesson : Int = 1
+    var filterLevel : Int = 1
+    
     class var sharedInstance: PRStateSingleton {
         struct Static {
             static var instance: PRStateSingleton?
