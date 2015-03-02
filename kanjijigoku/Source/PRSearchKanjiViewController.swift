@@ -21,7 +21,7 @@ class PRSearchKanjiViewController: UIViewController, UITableViewDelegate, UITabl
         
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
-
+    
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -36,6 +36,8 @@ class PRSearchKanjiViewController: UIViewController, UITableViewDelegate, UITabl
         searchBar.delegate = self
 
         // Do any additional setup after loading the view.
+        kanjiSearchTable.registerClass(UITableViewCell.self, forCellReuseIdentifier: "PRKanjiCell")
+
     }
 
     
@@ -51,7 +53,7 @@ class PRSearchKanjiViewController: UIViewController, UITableViewDelegate, UITabl
         else
         {
             let cell = tableView.dequeueReusableCellWithIdentifier("PRKanjiCell", forIndexPath: indexPath) as UITableViewCell
-            //cell.textLabel?.text = _kanjiTable[indexPath.row].kanji
+            cell.textLabel.text = sentenceSearchArray[indexPath.row].sentence
             return cell
         }
     }
@@ -88,19 +90,18 @@ class PRSearchKanjiViewController: UIViewController, UITableViewDelegate, UITabl
     }
     func numberOfSectionsInTableView(tableView: UITableView) -> Int
     {
-        return 2
+        return 1
     }
     
     
-    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+    func searchBarSearchButtonClicked(searchBar: UISearchBar)
+    {
         
-        //clicked!!!
+        sentenceSearchArray = PRDatabaseHelper().fetchSentencesContainingKanji(searchBar.text)
+        println("search array count \(sentenceSearchArray.count)")
+        kanjiSearchTable.reloadData()
         
-    }
-    
-    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
         
-        // end editing
     }
 
 }
