@@ -540,18 +540,27 @@ class PRDatabaseHelper
         return managedContext.executeFetchRequest(fetchRequest, error: nil)! as [Character]
     }
     
-    func fetchSentencesContainingKanji(kanji: String) -> [Sentence]
+    func fetchObjectsContainingPhrase(object: String, phrase: String) -> [NSManagedObject]
     {
     
         let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         let managedContext = appDelegate.managedObjectContext!
         
-        let fetchRequest :NSFetchRequest = NSFetchRequest(entityName: "Sentence")
-        let entity = NSEntityDescription.entityForName("Sentence", inManagedObjectContext: managedContext)!
+        let fetchRequest :NSFetchRequest = NSFetchRequest(entityName: object)
+        let entity = NSEntityDescription.entityForName(object, inManagedObjectContext: managedContext)!
+        switch object
+        {
+            case "Character":
+                fetchRequest.predicate = NSPredicate(format: "(ANY kunyomis.reading='\(phrase)') OR (ANY onyomis.reading='\(phrase)')")!
+            case "Example":
+                fetchRequest.predicate = NSPredicate(format: "reading='\(phrase)'")!
+            case "Sentence":
+                fetchRequest.predicate = NSPredicate(format: "\(object.lowercaseString) CONTAINS '\(phrase)'")!
+        default:
+                fetchRequest.predicate == nil
+        }
         
-        fetchRequest.predicate = NSPredicate(format: "sentence CONTAINS '\(kanji)'")!
-        
-        return managedContext.executeFetchRequest(fetchRequest, error: nil)! as [Sentence]
+        return managedContext.executeFetchRequest(fetchRequest, error: nil)! as [NSManagedObject]
     }
     
 }

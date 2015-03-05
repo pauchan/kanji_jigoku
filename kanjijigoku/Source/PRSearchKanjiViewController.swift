@@ -14,7 +14,8 @@ class PRSearchKanjiViewController: UIViewController, UITableViewDelegate, UITabl
     @IBOutlet weak var searchBar: UISearchBar!
     
     
-    var kunyomiSearchArray : [Kunyomi] = [Kunyomi]()
+    var characterSearchArray : [Character] = [Character]()
+    var exampleSearchArray : [Example] = [Example]()
     var sentenceSearchArray : [Sentence] = [Sentence]()
  
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
@@ -47,7 +48,13 @@ class PRSearchKanjiViewController: UIViewController, UITableViewDelegate, UITabl
         if indexPath.section == 0
         {
             let cell = tableView.dequeueReusableCellWithIdentifier("PRKanjiCell", forIndexPath: indexPath) as UITableViewCell
-            //_headerCoordinator = PRHeaderCoordinator(headerCell: cell)
+            cell.textLabel?.text = characterSearchArray[indexPath.row].kanji
+            return cell
+        }
+        else if indexPath.section == 1
+        {
+            let cell = tableView.dequeueReusableCellWithIdentifier("PRKanjiCell", forIndexPath: indexPath) as UITableViewCell
+            cell.textLabel?.text = exampleSearchArray[indexPath.row].example
             return cell
         }
         else
@@ -79,9 +86,13 @@ class PRSearchKanjiViewController: UIViewController, UITableViewDelegate, UITabl
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        if(section == 0)
+        if section == 0
         {
-            return kunyomiSearchArray.count
+            return characterSearchArray.count
+        }
+        else if section == 1
+        {
+            return exampleSearchArray.count
         }
         else
         {
@@ -90,14 +101,49 @@ class PRSearchKanjiViewController: UIViewController, UITableViewDelegate, UITabl
     }
     func numberOfSectionsInTableView(tableView: UITableView) -> Int
     {
-        return 2
+        return 3
+    }
+    
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        
+        switch section
+        {
+        case 0:
+            return "Kanji"
+        case 1:
+            return "Zlozenia"
+        case 2:
+            return "Zdania"
+        default:
+            return ""
+        }
+    }
+    
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
+    {
+        switch section
+        {
+        case 0:
+            return characterSearchArray.count > 0 ? 30 : 0
+        case 1:
+            return exampleSearchArray.count > 0 ? 30 : 0
+        case 2:
+            return sentenceSearchArray.count > 0 ? 30 : 0
+        default:
+            return 0
+        }
     }
     
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar)
     {
         
-        sentenceSearchArray = PRDatabaseHelper().fetchSentencesContainingKanji(searchBar.text)
+        characterSearchArray = PRDatabaseHelper().fetchObjectsContainingPhrase("Character", phrase: searchBar.text) as [Character]
+        exampleSearchArray = PRDatabaseHelper().fetchObjectsContainingPhrase("Example", phrase: searchBar.text) as [Example]
+        sentenceSearchArray = PRDatabaseHelper().fetchObjectsContainingPhrase("Sentence", phrase: searchBar.text) as [Sentence]
+        println("character array count \(characterSearchArray.count)")
+        println("example array count \(exampleSearchArray.count)")
         println("search array count \(sentenceSearchArray.count)")
         kanjiSearchTable.reloadData()
         searchBar.resignFirstResponder()
