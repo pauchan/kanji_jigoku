@@ -33,7 +33,7 @@ class PRTestResultsViewController: UITableViewController {
         if(indexPath.section == 0)
         {
             let cell = tableView.dequeueReusableCellWithIdentifier("PRTestResultCell", forIndexPath: indexPath) as UITableViewCell
-            cell.textLabel?.text = "\(descriptionText) : \(correctAnswers)/10"
+            cell.textLabel?.text = "\(descriptionText) : \(correctAnswers)/\(questions.count)"
             return cell
             
         }
@@ -74,5 +74,6 @@ class PRTestResultsViewController: UITableViewController {
         
         return 2
     }
+
 
 }

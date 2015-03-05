@@ -401,6 +401,7 @@
 				TargetAttributes = {
 					FB67D6DC1A861B8A00926E38 = {
 						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = 57NUJ8NN7U;
 					};
 					FB67D6F41A861B8B00926E38 = {
 						CreatedOnToolsVersion = 6.1;
@@ -676,11 +677,12 @@
 			baseConfigurationReference = 94CC88092ADA2AB93CF98660 /* Pods-kanjijigoku.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Pawel Rusin (CMRU8R2N3V)";
 				INFOPLIST_FILE = kanjijigoku/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "aee5bfb1-f82f-4710-865d-238d7510cd8c";
+				PROVISIONING_PROFILE = "8a6eec12-5f85-48e1-abcf-4924fdfd9dee";
 				SWIFT_OBJC_BRIDGING_HEADER = "kanjijigoku/kanjijigoku-Bridging-Header.h";
 			};
 			name = Debug;
@@ -690,11 +692,12 @@
 			baseConfigurationReference = A827BE30AC2E4D1D915162FD /* Pods-kanjijigoku.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Pawel Rusin (CMRU8R2N3V)";
 				INFOPLIST_FILE = kanjijigoku/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "aee5bfb1-f82f-4710-865d-238d7510cd8c";
+				PROVISIONING_PROFILE = "8a6eec12-5f85-48e1-abcf-4924fdfd9dee";
 				SWIFT_OBJC_BRIDGING_HEADER = "kanjijigoku/kanjijigoku-Bridging-Header.h";
 			};
 			name = Release;

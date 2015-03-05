@@ -124,26 +124,43 @@ class PRTestMenuViewController : UITableViewController
     
     func generateTest(testDict: [String:String]) -> [Question]
     {
-        // 1. fetch all the objects for the given lesson
-        var wideArray = PRDatabaseHelper().getSelectedObjects(testDict["questionObject"]!, level: PRStateSingleton.sharedInstance.currentLevel, lesson: PRStateSingleton.sharedInstance.currentLesson)
-        
-        // 2. randomly select 10 of them
-        let idsArray = PRDatabaseHelper().generateRandomIdsArray(10, arrayCount: wideArray.count)
-        
         var newResponse: [Question] = [Question]()
-        for selectedId in idsArray
+        
+        if testDict["questionObject"] != nil && testDict["questionProperty"] != nil && testDict["answerProperty"] != nil
         {
-            let object: AnyObject = wideArray[selectedId]
-            let questionString : String = object.valueForKey(testDict["questionProperty"]!) as String
+            // 1. fetch all the objects for the given lesson
+            let wideArray = PRDatabaseHelper().getSelectedObjects(testDict["questionObject"]!, level: PRStateSingleton.sharedInstance.currentLevel, lesson: PRStateSingleton.sharedInstance.currentLesson)
             
-            // 3. for each assign 3 wrong answer for each type
-            let falseAnswers = PRDatabaseHelper().fetchFalseAnswers(testDict["questionObject"]!, property: testDict["answerProperty"]!, maxLevel: PRStateSingleton.sharedInstance.currentLevel, maxLesson: PRStateSingleton.sharedInstance.currentLesson)
-    
-            let properAnswer = object.valueForKey(testDict["answerProperty"]!) as String
-            let meaning = object.valueForKey("meaning") as String
-            let question = Question(question: questionString, correctOption: properAnswer,  falseOptions: falseAnswers, meaning: meaning)
-            newResponse.append(question)
-            //newResponse.append(object.valueForKey(property) as String)
+            // 2. randomly select 10 of them
+            let idsArray = PRDatabaseHelper().generateRandomIdsArray(10, arrayCount: wideArray.count)
+            
+            for selectedId in idsArray
+            {
+
+                let object: AnyObject = wideArray[selectedId]
+                let questionString : String = object.valueForKey(testDict["questionProperty"]!) as String
+                
+                
+                let properAnswer = object.valueForKey(testDict["answerProperty"]!) as String
+                
+                // 3. for each assign 3 wrong answer for each type
+                var falseAnswers : [String]
+                if testDict["questionObject"]! == "Kunyomi" && testDict["answerProperty"]! == "meaning"
+                {
+                    let kunyomiObject = object as Kunyomi
+                    falseAnswers = PRDatabaseHelper().fetchFalseAnswers(testDict["questionObject"]!, property: testDict["answerProperty"]!, properAnswer: properAnswer, partOfSpeechIndex: Int(kunyomiObject.speechPart), maxLevel: PRStateSingleton.sharedInstance.currentLevel, maxLesson: PRStateSingleton.sharedInstance.currentLesson)
+                }
+                else
+                {
+                    falseAnswers = PRDatabaseHelper().fetchFalseAnswers(testDict["questionObject"]!, property: testDict["answerProperty"]!, properAnswer: properAnswer, partOfSpeechIndex:0, maxLevel: PRStateSingleton.sharedInstance.currentLevel, maxLesson: PRStateSingleton.sharedInstance.currentLesson)
+                }
+
+
+                let meaning = object.valueForKey("meaning") as String
+                let question = Question(question: questionString, correctOption: properAnswer,  falseOptions: falseAnswers, meaning: meaning)
+                newResponse.append(question)
+                //newResponse.append(object.valueForKey(property) as String)
+            }
         }
         return newResponse
         

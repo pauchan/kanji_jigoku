@@ -58,7 +58,7 @@
 		<key>questionObject</key>
 		<string>Kunyomi</string>
 		<key>questionProperty</key>
-		<string>kanji</string>
+		<string>reading</string>
 		<key>answerProperty</key>
 		<string>meaning</string>
 	</dict>

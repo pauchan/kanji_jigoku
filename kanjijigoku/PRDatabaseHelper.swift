@@ -13,6 +13,8 @@ import CoreData
 let kPRKanjiJigokuDBUpdateRequest = "http://serwer1456650.home.pl/getUpdateTime.php"
 let kPRKanjiJigokuDBLocation = "http://serwer1456650.home.pl/clientDB.db"
 
+let kPRKanjiJigokuFalseAnswerAmount = 3
+
 class PRDatabaseHelper
 {
     
@@ -121,12 +123,6 @@ class PRDatabaseHelper
     
     func parseDb(database : FMDatabase) -> Bool
     {
-        
-//        if(!syncDatabase())
-//        {
-//            println("there was problems with")
-//            return false
-//        }
         
         deleteObjects("Character")
         deleteObjects("Kunyomi")
@@ -385,9 +381,13 @@ class PRDatabaseHelper
         {
             fetchRequest.predicate = NSPredicate(format: "level=\(level) AND lesson=\(lesson)")!
         }
+        else if name == "Kunyomi"
+        {
+            fetchRequest.predicate = NSPredicate(format: "character.level=\(level) AND character.lesson=\(lesson) AND ( NOT (reading CONTAINS '-')) AND meaning!='' AND meaning!=nil")!
+        }
         else
         {
-            fetchRequest.predicate = NSPredicate(format: "character.level=\(level) AND character.lesson=\(lesson)")!
+            fetchRequest.predicate = NSPredicate(format: "character.level=\(level) AND character.lesson=\(lesson) AND ( NOT (reading CONTAINS '-'))")!
         }
         
         let outArray: NSArray = managedContext.executeFetchRequest(fetchRequest, error: nil)!
@@ -442,7 +442,7 @@ class PRDatabaseHelper
             
     }
     
-    func fetchFalseAnswers(object: String, property: String, maxLevel: Int, maxLesson: Int) -> [String]
+    func fetchFalseAnswers(object: String, property: String, properAnswer: String, partOfSpeechIndex: Int, maxLevel: Int, maxLesson: Int) -> [String]
     {
         let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         let managedContext = appDelegate.managedObjectContext!
@@ -457,21 +457,42 @@ class PRDatabaseHelper
         }
         else
         {
-            predicate = NSPredicate(format: "character.level <= \(maxLevel) AND character.lesson <= \(maxLesson) AND ( NOT (reading CONTAINS '-'))")!
+            // egde case - in case of kuyomi - meaning test you need to make sure that given kunyomi has reading and its the same part of speech as the correct answer
+            if(object == "Kunyomi" && property == "meaning")
+            {
+                predicate = NSPredicate(format: "character.level <= \(maxLevel) AND character.lesson <= \(maxLesson) AND ( NOT (reading CONTAINS '-')) AND meaning!='' AND meaning!=nil AND speechPart==\(partOfSpeechIndex)")!
+            }
+            else
+            {
+                predicate = NSPredicate(format: "character.level <= \(maxLevel) AND character.lesson <= \(maxLesson) AND ( NOT (reading CONTAINS '-'))")!
+            }
         }
         fetchRequest.propertiesToFetch = [property]
         fetchRequest.predicate = predicate
         let outResponse = managedContext.executeFetchRequest(fetchRequest, error: nil)! //as [String]
-        let idsArray = generateRandomIdsArray(3, arrayCount: outResponse.count)
-        
+
         var newResponse: [String] = [String]()
-        for selectedId in idsArray
+        
+        var objectId : Int = generateRandomIdsArray(1, arrayCount: outResponse.count)[0]
+        
+        var loopCount = 0
+        
+        while  newResponse.count < kPRKanjiJigokuFalseAnswerAmount
         {
-            let object = outResponse[selectedId] as NSManagedObject
-            newResponse.append(object.valueForKey(property) as String)
+            let object = outResponse[objectId] as NSManagedObject
+            let proposedValue : String = object.valueForKey(property) as String
+            if proposedValue != properAnswer && !(contains(newResponse, proposedValue))
+            {
+                newResponse.append(proposedValue)
+            }
+            if ++loopCount > 100
+            {
+                break
+            }
+            objectId = generateRandomIdsArray(1, arrayCount: outResponse.count)[0]
         }
+        println("Response array count \(newResponse.count), should be 3")
         return newResponse
-    
     }
 
     

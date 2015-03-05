@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "kanjijigoku/PRDatabaseHelper.swift"
-            timestampString = "446964402.987336"
+            timestampString = "447214416.022614"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
             landmarkName = "syncDatabase()"
             landmarkType = "5">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "kanjijigoku/PRDatabaseHelper.swift"
-            timestampString = "446964402.987336"
+            timestampString = "447214416.022614"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
             landmarkName = "syncDatabase()"
             landmarkType = "5">
          </BreakpointContent>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "kanjijigoku/PRDatabaseHelper.swift"
-            timestampString = "446964402.987336"
+            timestampString = "447214416.022614"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
             landmarkName = "syncDatabase()"
             landmarkType = "5">
          </BreakpointContent>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "kanjijigoku/PRDatabaseHelper.swift"
-            timestampString = "446964402.987336"
+            timestampString = "447214416.022614"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
             landmarkName = "syncDatabase()"
             landmarkType = "5">
          </BreakpointContent>
@@ -138,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "kanjijigoku/AppDelegate.swift"
-            timestampString = "446970025.167113"
+            timestampString = "447034859.492012"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
             landmarkName = "application(_:didFinishLaunchingWithOptions:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -154,7 +154,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "kanjijigoku/PRDatabaseHelper.swift"
-            timestampString = "446964778.032913"
+            timestampString = "447223276.479935"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "425"
@@ -202,7 +202,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "kanjijigoku/PRDatabaseHelper.swift"
-            timestampString = "446964778.032913"
+            timestampString = "447223276.479935"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "437"
@@ -250,11 +250,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "kanjijigoku/PRDatabaseHelper.swift"
-            timestampString = "446964778.032913"
+            timestampString = "447214416.022614"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "300"
-            endingLineNumber = "300"
+            startingLineNumber = "296"
+            endingLineNumber = "296"
             landmarkName = "parseExamples(_:character:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -440,12 +440,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "kanjijigoku/PRDatabaseHelper.swift"
-            timestampString = "446964778.032913"
+            timestampString = "447223276.479935"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "447"
             endingLineNumber = "447"
-            landmarkName = "fetchFalseAnswers(_:property:maxLevel:maxLesson:)"
+            landmarkName = "fetchFalseAnswers(_:property:properAnswer:partOfSpeechIndex:maxLevel:maxLesson:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -456,11 +456,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "kanjijigoku/AppDelegate.swift"
-            timestampString = "446970025.167113"
+            timestampString = "447034859.492012"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
             landmarkName = "application(_:didFinishLaunchingWithOptions:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -472,28 +472,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "kanjijigoku/AppDelegate.swift"
-            timestampString = "446970025.167113"
+            timestampString = "447034859.492012"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
             landmarkName = "application(_:didFinishLaunchingWithOptions:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "kanjijigoku/PRDatabaseHelper.swift"
-            timestampString = "446964778.032913"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "467"
-            endingLineNumber = "467"
-            landmarkName = "fetchFalseAnswers(_:property:maxLevel:maxLesson:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -520,11 +504,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "kanjijigoku/PRTestsMenuViewController.swift"
-            timestampString = "446016897.495152"
+            timestampString = "447223276.479935"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "148"
-            endingLineNumber = "148"
+            startingLineNumber = "165"
+            endingLineNumber = "165"
             landmarkName = "generateTest(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -536,11 +520,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "kanjijigoku/PRTestsMenuViewController.swift"
-            timestampString = "446016897.495152"
+            timestampString = "447223276.479935"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "149"
-            endingLineNumber = "149"
+            startingLineNumber = "166"
+            endingLineNumber = "166"
             landmarkName = "generateTest(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -552,11 +536,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "kanjijigoku/PRTestsMenuViewController.swift"
-            timestampString = "446016897.495152"
+            timestampString = "447212780.883842"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "128"
-            endingLineNumber = "128"
+            startingLineNumber = "132"
+            endingLineNumber = "132"
             landmarkName = "generateTest(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -568,11 +552,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "kanjijigoku/Source/PRTestViewController.swift"
-            timestampString = "445945113.063444"
+            timestampString = "447215161.617692"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "92"
-            endingLineNumber = "92"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
             landmarkName = "loadQuestion(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -584,11 +568,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "kanjijigoku/PRTestsMenuViewController.swift"
-            timestampString = "446016897.495152"
+            timestampString = "447223276.479935"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "142"
-            endingLineNumber = "142"
+            startingLineNumber = "158"
+            endingLineNumber = "158"
             landmarkName = "generateTest(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -834,11 +818,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "kanjijigoku/AppDelegate.swift"
-            timestampString = "446970025.167113"
+            timestampString = "447034859.492012"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
             landmarkName = "application(_:didFinishLaunchingWithOptions:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -930,11 +914,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "kanjijigoku/PRDatabaseHelper.swift"
-            timestampString = "446964454.89481"
+            timestampString = "447214416.022614"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
             landmarkName = "shouldUpdateDb()"
             landmarkType = "5">
          </BreakpointContent>
@@ -946,11 +930,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "kanjijigoku/PRDatabaseHelper.swift"
-            timestampString = "446964778.032913"
+            timestampString = "447214416.022614"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "145"
-            endingLineNumber = "145"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
             landmarkName = "parseDb(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1016,6 +1000,102 @@
             startingLineNumber = "35"
             endingLineNumber = "35"
             landmarkName = "init(coder:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "kanjijigoku/Source/PRSearchKanjiViewController.swift"
+            timestampString = "447034477.897215"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "tableView(_:cellForRowAtIndexPath:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "kanjijigoku/Source/PRSearchKanjiViewController.swift"
+            timestampString = "447034971.050353"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "tableView(_:cellForRowAtIndexPath:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "kanjijigoku/PRDatabaseHelper.swift"
+            timestampString = "447223276.479935"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "480"
+            endingLineNumber = "480"
+            landmarkName = "fetchFalseAnswers(_:property:properAnswer:partOfSpeechIndex:maxLevel:maxLesson:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "kanjijigoku/PRDatabaseHelper.swift"
+            timestampString = "447223276.479935"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "461"
+            endingLineNumber = "461"
+            landmarkName = "fetchFalseAnswers(_:property:properAnswer:partOfSpeechIndex:maxLevel:maxLesson:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "kanjijigoku/PRDatabaseHelper.swift"
+            timestampString = "447223276.479935"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "463"
+            endingLineNumber = "463"
+            landmarkName = "fetchFalseAnswers(_:property:properAnswer:partOfSpeechIndex:maxLevel:maxLesson:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "kanjijigoku/PRDatabaseHelper.swift"
+            timestampString = "447223276.479935"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "467"
+            endingLineNumber = "467"
+            landmarkName = "fetchFalseAnswers(_:property:properAnswer:partOfSpeechIndex:maxLevel:maxLesson:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -56,6 +56,8 @@ class PRTestViewController: UIViewController {
                 else
                 {
                     questionsCount++
+                    generateSummary()
+
                     if questionsCount >= maxQuestionCount
                     {
                         var vc = PRTestResultsViewController()
@@ -68,7 +70,6 @@ class PRTestViewController: UIViewController {
                     else
                     {
                         // generate summary for the currentquestion
-                        generateSummary()
                         loadQuestion(questionsCount)
                     }
                 }
@@ -94,6 +95,10 @@ class PRTestViewController: UIViewController {
         wrongAnswer = false
         answerLabel.hidden = true
         answerLabel.text = questions[questionNumber].meaning
+        
+        answerLabel.adjustsFontSizeToFitWidth = true
+        answerLabel.textAlignment = NSTextAlignment.Center
+        
         questionLabel.text = questions[questionNumber].question
         for button in testOptionButtons
         {
@@ -102,6 +107,10 @@ class PRTestViewController: UIViewController {
                 button.enabled = true
                 button.backgroundColor = UIColor.lightGrayColor()
                 button.setTitle(questions[questionNumber].options[index], forState: UIControlState.Normal)
+                
+                button.titleLabel?.adjustsFontSizeToFitWidth = true
+                button.titleLabel?.textAlignment = NSTextAlignment.Center
+                
                 button.addTarget(self, action: "testButtonClicked:", forControlEvents: UIControlEvents.TouchUpInside)
             }
             

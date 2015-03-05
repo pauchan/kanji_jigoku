@@ -53,7 +53,7 @@ class PRSearchKanjiViewController: UIViewController, UITableViewDelegate, UITabl
         else
         {
             let cell = tableView.dequeueReusableCellWithIdentifier("PRKanjiCell", forIndexPath: indexPath) as UITableViewCell
-            cell.textLabel.text = sentenceSearchArray[indexPath.row].sentence
+            cell.textLabel?.text = sentenceSearchArray[indexPath.row].sentence
             return cell
         }
     }
@@ -90,7 +90,7 @@ class PRSearchKanjiViewController: UIViewController, UITableViewDelegate, UITabl
     }
     func numberOfSectionsInTableView(tableView: UITableView) -> Int
     {
-        return 1
+        return 2
     }
     
     
@@ -100,6 +100,7 @@ class PRSearchKanjiViewController: UIViewController, UITableViewDelegate, UITabl
         sentenceSearchArray = PRDatabaseHelper().fetchSentencesContainingKanji(searchBar.text)
         println("search array count \(sentenceSearchArray.count)")
         kanjiSearchTable.reloadData()
+        searchBar.resignFirstResponder()
         
         
     }

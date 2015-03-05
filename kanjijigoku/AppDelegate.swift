@@ -9,6 +9,8 @@
 import UIKit
 import CoreData
 
+let kPRKanjiJigokuTestMode = true
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -20,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let db = PRDatabaseHelper()
         
-        if NSUserDefaults.standardUserDefaults().objectForKey("PRKanjiJigokuAutoDbUpdate") != nil
+        if NSUserDefaults.standardUserDefaults().objectForKey("PRKanjiJigokuAutoDbUpdate") == nil || NSUserDefaults.standardUserDefaults().objectForKey("PRKanjiJigokuAutoDbUpdate") as Bool == true || kPRKanjiJigokuTestMode
         {
             db.syncDatabase()
         }
