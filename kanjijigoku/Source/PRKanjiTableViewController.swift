@@ -142,23 +142,13 @@ class PRKanjiTableViewController: UIViewController, UITableViewDelegate,UITableV
 
                 let cell = tableView.dequeueReusableCellWithIdentifier("PRKanjiCell", forIndexPath: indexPath) as UITableViewCell
                 let arr = kanji.kunyomis.allObjects as [Kunyomi]
-                cell.textLabel?.text = arr.map {
-                    (kunyomi) -> String in kunyomi.reading
-                    }.reduce(""){
-                
-                    (base,append) in base! + append
-                }
+                cell.textLabel?.text = generateCommaSeparatedString(arr)
                 return cell
 
         case PRKanjiJigokuKanjiOptions.Onyomi.rawValue:
                 let cell = tableView.dequeueReusableCellWithIdentifier("PRKanjiCell", forIndexPath: indexPath) as UITableViewCell
                 let arr = kanji.onyomis.allObjects as [Onyomi]
-                cell.textLabel?.text = arr.map {
-                    (onyomi) -> String in onyomi.reading
-                    }.reduce(""){
-                        
-                        (base,append) in base! + append + ", "
-                }
+                cell.textLabel?.text = generateCommaSeparatedString(arr)
                 return cell
             
         case PRKanjiJigokuKanjiOptions.Examples.rawValue:
@@ -223,9 +213,13 @@ class PRKanjiTableViewController: UIViewController, UITableViewDelegate,UITableV
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         
-        if section == PRKanjiJigokuKanjiOptions.AdditionalExamples.rawValue || section == PRKanjiJigokuKanjiOptions.Sentences.rawValue
+        if section == PRKanjiJigokuKanjiOptions.AdditionalExamples.rawValue
         {
-            return 30.0
+            return additionalExamples.count > 0 ? 30.0 : 0.0
+        }
+        else if section == PRKanjiJigokuKanjiOptions.Sentences.rawValue
+        {
+            return kanji.sentences.count > 0 ? 30.0 : 0.0
         }
         else
         {
@@ -321,5 +315,23 @@ class PRKanjiTableViewController: UIViewController, UITableViewDelegate,UITableV
         self.navigationController?.pushViewController(vc, animated: false)
         
     }
-    
+
+
+func generateCommaSeparatedString(arrayOfReadings: [Reading]) -> String
+{
+    var appStr : String = ""
+    for i in 0..<arrayOfReadings.count
+    {
+        if i != arrayOfReadings.count-1
+        {
+            let str = arrayOfReadings[i].reading+", "
+            appStr += str
+        }
+        else
+        {
+            appStr += arrayOfReadings[i].reading
+        }
+    }
+    return appStr
+}
 }

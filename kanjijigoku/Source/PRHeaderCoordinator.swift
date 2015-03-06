@@ -52,18 +52,18 @@ class PRHeaderCoordinator: NSObject, UIPickerViewDataSource, UIPickerViewDelegat
         return 1
     }
     
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String!
-    {
-        if pickerView == levelPickerView
-        {
-            return "Poziom \(PRStateSingleton.sharedInstance.levelArray[row])"
-        }
-        else
-        {
-            return "Lekcja \(PRStateSingleton.sharedInstance.lessonArray[row])"
-        }
-        
-    }
+//    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String!
+//    {
+//        if pickerView == levelPickerView
+//        {
+//            return "Poziom \(PRStateSingleton.sharedInstance.levelArray[row])"
+//        }
+//        else
+//        {
+//            return "Lekcja \(PRStateSingleton.sharedInstance.lessonArray[row]): \(generateLessonSummaryString(PRStateSingleton.sharedInstance.currentLevel, lesson: PRStateSingleton.sharedInstance.lessonArray[row]))"
+//        }
+//        
+//    }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
     {
@@ -80,8 +80,61 @@ class PRHeaderCoordinator: NSObject, UIPickerViewDataSource, UIPickerViewDelegat
             self.headerCell.lessonComboBox?.resignFirstResponder()
         }
         
+        
     }
     
+    func generateLessonSummaryString(level: Int, lesson: Int) -> String
+    {
     
+    let arr : [Character]  = PRDatabaseHelper().getSelectedObjects("Character", level: level, lesson: lesson) as [Character]
+        var bla : String =  arr.map
+            {
+                (kanji: Character) -> String in kanji.kanji
+            }.reduce("")
+            {
+                (base,append) in base + append + " "
+            }
+        return bla
+    }
+    
+    func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView!) -> UIView {
+        
+        var labView : UILabel? = view as? UILabel
+        
+        if labView == nil
+        {
+            labView = UILabel()
+            labView?.textAlignment = NSTextAlignment.Center
+            if pickerView == lessonPickerView
+            {
+                labView!.font = UIFont(name: "Helvetica", size: 14)
+            }
+        }
+        if pickerView == levelPickerView
+        {
+            labView!.text = "Poziom \(PRStateSingleton.sharedInstance.levelArray[row])"
+        }
+        else
+        {
+            labView!.text = "Lekcja \(PRStateSingleton.sharedInstance.lessonArray[row]): \(generateLessonSummaryString(PRStateSingleton.sharedInstance.currentLevel, lesson: PRStateSingleton.sharedInstance.lessonArray[row]))"
+        }
+        
+        return labView!
+    }
+    
+//    - (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view
+//    {
+//    UILabel* tView = (UILabel*)view;
+//    if (!tView)
+//    {
+//    tView = [[UILabel alloc] init];
+//    [tView setFont:[UIFont fontWithName:@"Helvetica" size:14]];
+//    //[tView setTextAlignment:UITextAlignmentLeft];
+//    tView.numberOfLines=3;
+//    }
+//    // Fill the label text here
+//    tView.text=[wishvalues objectAtIndex:row];
+//    return tView;
+//    }
     
 }
