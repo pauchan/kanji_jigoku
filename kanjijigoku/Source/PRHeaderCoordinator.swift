@@ -52,19 +52,6 @@ class PRHeaderCoordinator: NSObject, UIPickerViewDataSource, UIPickerViewDelegat
         return 1
     }
     
-//    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String!
-//    {
-//        if pickerView == levelPickerView
-//        {
-//            return "Poziom \(PRStateSingleton.sharedInstance.levelArray[row])"
-//        }
-//        else
-//        {
-//            return "Lekcja \(PRStateSingleton.sharedInstance.lessonArray[row]): \(generateLessonSummaryString(PRStateSingleton.sharedInstance.currentLevel, lesson: PRStateSingleton.sharedInstance.lessonArray[row]))"
-//        }
-//        
-//    }
-    
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
     {
         if pickerView == levelPickerView
@@ -121,20 +108,5 @@ class PRHeaderCoordinator: NSObject, UIPickerViewDataSource, UIPickerViewDelegat
         
         return labView!
     }
-    
-//    - (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view
-//    {
-//    UILabel* tView = (UILabel*)view;
-//    if (!tView)
-//    {
-//    tView = [[UILabel alloc] init];
-//    [tView setFont:[UIFont fontWithName:@"Helvetica" size:14]];
-//    //[tView setTextAlignment:UITextAlignmentLeft];
-//    tView.numberOfLines=3;
-//    }
-//    // Fill the label text here
-//    tView.text=[wishvalues objectAtIndex:row];
-//    return tView;
-//    }
     
 }

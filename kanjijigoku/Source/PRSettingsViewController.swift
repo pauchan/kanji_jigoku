@@ -9,6 +9,8 @@
 import UIKit
 
 class PRSettingsViewController: UITableViewController {
+    
+    var filterController : PRFilterController!
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,8 +21,6 @@ class PRSettingsViewController: UITableViewController {
         self.tableView.registerNib(nib, forCellReuseIdentifier: "PRFilterCell")
         
         self.navigationItem.title = "Ustawienia"
-        
-        let vc  = PRFilterController(nibName: "PRFilterCell", bundle: nil)
         
         //self.tableView.registerClass(UITableViewCell.self, forHeaderFooterViewReuseIdentifier: "PRSettingsCell")
         
@@ -66,7 +66,8 @@ class PRSettingsViewController: UITableViewController {
         
         if indexPath.section == 1
         {
-            let cell = tableView.dequeueReusableCellWithIdentifier("PRFilterCell", forIndexPath: indexPath) as UITableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("PRFilterCell", forIndexPath: indexPath) as PRFilterCell
+            filterController = PRFilterController(filterCell: cell)
             return cell
             
         }

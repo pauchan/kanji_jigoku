@@ -8,54 +8,31 @@
 
 import UIKit
 
-class PRFilterController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate  {
+class PRFilterController: NSObject, UIPickerViewDataSource, UIPickerViewDelegate  {
 
     
-    @IBOutlet weak var levelComboBox: UITextField!
-    @IBOutlet weak var lessonComboBox: UITextField!
     var levelPickerView = UIPickerView()
     var lessonPickerView = UIPickerView()
     
+    var filterCell : PRFilterCell! // = PRFilterCell()
     
-    override init() {
+    init(filterCell: PRFilterCell)
+    {
+        self.filterCell = filterCell
         
-        
-        self.levelComboBox?.inputView = levelPickerView
-        self.lessonComboBox?.inputView = lessonPickerView
+        self.filterCell.levelComboBox?.inputView = levelPickerView
+        self.filterCell.lessonComboBox?.inputView = lessonPickerView
         
         super.init()
         
         levelPickerView.delegate = self
         lessonPickerView.delegate = self
         
-    }
-
-    required init(coder aDecoder: NSCoder) {
-        
-        super.init(coder: aDecoder)
-        
-        self.levelComboBox?.inputView = levelPickerView
-        self.lessonComboBox?.inputView = lessonPickerView
-        
-        levelPickerView.delegate = self
-        lessonPickerView.delegate = self
+        self.filterCell.filterSwitch?.addTarget(self, action: "filterSwitch:", forControlEvents: UIControlEvents.ValueChanged)
         
     }
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
-        
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-
-        self.levelComboBox?.inputView = levelPickerView
-        self.lessonComboBox?.inputView = lessonPickerView
-        
-        levelPickerView.delegate = self
-        lessonPickerView.delegate = self
-    }
-    
-    
-    
-    @IBAction func filterSwitch(sender: UISwitch) {
+    func filterSwitch(sender: UISwitch) {
         
         
         if sender.on
@@ -64,11 +41,11 @@ class PRFilterController: UIViewController, UIPickerViewDataSource, UIPickerView
             PRStateSingleton.sharedInstance.filterLevel = PRStateSingleton.sharedInstance.currentLevel
             PRStateSingleton.sharedInstance.filterLesson = PRStateSingleton.sharedInstance.currentLesson
             
-            self.levelComboBox?.text = "Poziom \(PRStateSingleton.sharedInstance.currentLevel)"
-            self.lessonComboBox?.text = "Lekcja \(PRStateSingleton.sharedInstance.currentLesson)"
+            self.filterCell.levelComboBox?.text = "Poziom \(PRStateSingleton.sharedInstance.currentLevel)"
+            self.filterCell.lessonComboBox?.text = "Lekcja \(PRStateSingleton.sharedInstance.currentLesson)"
         
-            levelComboBox.enabled = true
-            lessonComboBox.enabled = true
+            filterCell.levelComboBox.enabled = true
+            filterCell.lessonComboBox.enabled = true
             
             
         }
@@ -76,10 +53,10 @@ class PRFilterController: UIViewController, UIPickerViewDataSource, UIPickerView
         {
             PRStateSingleton.sharedInstance.filterOn = false
         
-            levelComboBox.enabled = false
-            lessonComboBox.enabled = false
-            levelComboBox.text = ""
-            lessonComboBox.text = ""
+            filterCell.levelComboBox.enabled = false
+            filterCell.lessonComboBox.enabled = false
+            filterCell.levelComboBox.text = ""
+            filterCell.lessonComboBox.text = ""
         }
     }
     
@@ -100,34 +77,74 @@ class PRFilterController: UIViewController, UIPickerViewDataSource, UIPickerView
     return 1
     }
     
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String!
-    {
-    if pickerView == levelPickerView
-    {
-    return "Poziom \(PRStateSingleton.sharedInstance.levelArray[row])"
-    }
-    else
-    {
-    return "Lekcja \(PRStateSingleton.sharedInstance.lessonArray[row])"
-    }
+//    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String!
+//    {
+//    if pickerView == levelPickerView
+//    {
+//    return "Poziom \(PRStateSingleton.sharedInstance.levelArray[row])"
+//    }
+//    else
+//    {
+//    return "Lekcja \(PRStateSingleton.sharedInstance.lessonArray[row])"
+//    }
     
-    }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
     {
     if pickerView == levelPickerView
     {
-    self.levelComboBox?.text = "Poziom \(PRStateSingleton.sharedInstance.levelArray[row])"
+    self.filterCell.levelComboBox?.text = "Poziom \(PRStateSingleton.sharedInstance.levelArray[row])"
     PRStateSingleton.sharedInstance.currentLevel = PRStateSingleton.sharedInstance.levelArray[row]
-    self.lessonComboBox?.becomeFirstResponder()
+    self.filterCell.lessonComboBox?.becomeFirstResponder()
     }
     else
     {
-    self.lessonComboBox?.text = "Lekcja \(PRStateSingleton.sharedInstance.lessonArray[row])"
+    self.filterCell.lessonComboBox?.text = "Lekcja \(PRStateSingleton.sharedInstance.lessonArray[row])"
     PRStateSingleton.sharedInstance.currentLesson = PRStateSingleton.sharedInstance.lessonArray[row]
-    self.lessonComboBox?.resignFirstResponder()
+    self.filterCell.lessonComboBox?.resignFirstResponder()
     }
     
     }
+    
+    
+    func generateLessonSummaryString(level: Int, lesson: Int) -> String
+    {
+        
+        let arr : [Character]  = PRDatabaseHelper().getSelectedObjects("Character", level: level, lesson: lesson) as [Character]
+        var bla : String =  arr.map
+            {
+                (kanji: Character) -> String in kanji.kanji
+            }.reduce("")
+                {
+                    (base,append) in base + append + " "
+        }
+        return bla
+    }
+    
+    func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView!) -> UIView {
+        
+        var labView : UILabel? = view as? UILabel
+        
+        if labView == nil
+        {
+            labView = UILabel()
+            labView?.textAlignment = NSTextAlignment.Center
+            if pickerView == lessonPickerView
+            {
+                labView!.font = UIFont(name: "Helvetica", size: 14)
+            }
+        }
+        if pickerView == levelPickerView
+        {
+            labView!.text = "Poziom \(PRStateSingleton.sharedInstance.levelArray[row])"
+        }
+        else
+        {
+            labView!.text = "Lekcja \(PRStateSingleton.sharedInstance.lessonArray[row]): \(generateLessonSummaryString(PRStateSingleton.sharedInstance.currentLevel, lesson: PRStateSingleton.sharedInstance.lessonArray[row]))"
+        }
+        
+        return labView!
+    }
+
     
 }
