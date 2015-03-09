@@ -11,7 +11,7 @@ import UIKit
 class PRKanjiPageControl: UIPageControl {
 
     var inactiveImagesArray : [UIImage]!
-    //var activeImagesArray : [UIImage]!
+    var activeImagesArray : [UIImage]!
     
     /*
     // Only override drawRect: if you perform custom drawing.
@@ -38,23 +38,30 @@ class PRKanjiPageControl: UIPageControl {
         super.init(frame : frame)
         
         inactiveImagesArray = [UIImage]()
-        
-        self.numberOfPages = kanjis.count
-        self.currentPage = 0
+        activeImagesArray = [UIImage]()
+
         
         for ch in kanjis
         {
             let font = UIFont(name: "Helvetica", size: 17.0)
             let kanji :NSAttributedString = NSAttributedString(string: ch.kanji, attributes: [NSFontAttributeName : font!])
+            let activeKanji :NSAttributedString = NSAttributedString(string: ch.kanji, attributes: [NSFontAttributeName : font!, NSForegroundColorAttributeName : UIColor.redColor()])
+
             
             UIGraphicsBeginImageContextWithOptions(kanji.size(), false, 0.0)
             kanji.drawAtPoint(CGPointMake(0.0, 0.0)) //, withAttributes: [NSFontAttributeName : font!])
             inactiveImagesArray.append(UIGraphicsGetImageFromCurrentImageContext())
+            activeKanji.drawAtPoint(CGPointMake(0.0, 0.0))
+            activeImagesArray.append(UIGraphicsGetImageFromCurrentImageContext())
             UIGraphicsEndImageContext()
             
         }
 
         self.backgroundColor = UIColor.whiteColor()
+        for v in self.subviews as [UIView]
+        {
+            v.removeFromSuperview()
+        }
         
     }
     
@@ -67,9 +74,18 @@ class PRKanjiPageControl: UIPageControl {
         
         for (index, value : UIImage) in enumerate(inactiveImagesArray)
         {
-            let rect = CGRectMake(frame.origin.x + (CGFloat(index) / CGFloat(inactiveImagesArray.count)) * frame.size.width, 10.0, value.size.width, value.size.height)
+            let leftMargin : CGFloat = (((1.0 / CGFloat(inactiveImagesArray.count)) * frame.size.width - value.size.width) / 2.0) as CGFloat
+            //let leftMargin :CGFloat = (frame.size.width - value.size.width*CGFloat(inactiveImagesArray.count))/2.0 as CGFloat
+            let rect = CGRectMake(frame.origin.x + leftMargin + (CGFloat(index) / CGFloat(inactiveImagesArray.count)) * frame.size.width, 10.0, value.size.width, value.size.height)
             var imgView : UIImageView = UIImageView(frame: rect)
-            imgView.image = value
+            if index == self.currentPage
+            {
+                imgView.image = activeImagesArray[index]
+            }
+            else
+            {
+                imgView.image = value
+            }
             self.addSubview(imgView)
         }
         

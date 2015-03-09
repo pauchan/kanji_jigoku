@@ -331,7 +331,6 @@
 				FB67D6EE1A861B8A00926E38 /* LaunchScreen.xib */,
 				18D170611A89A0B000672203 /* PRHeaderViewCell.xib */,
 				18D170631A89A49B00672203 /* PRHeaderViewCell.swift */,
-				18C64F1B1A917AC5000F5641 /* PRFuriganaLabel.swift */,
 				1860524D1A9AF44C0046247B /* PRKanjiPageControl.swift */,
 				188C73671A9EE6E600D1634C /* PRRelatedKanjiCell.swift */,
 				188C73681A9EE6E600D1634C /* PRRelatedKanjiCell.xib */,
@@ -344,6 +343,7 @@
 			isa = PBXGroup;
 			children = (
 				FB67D7071A8622F400926E38 /* kanjijigoku-Bridging-Header.h */,
+				18C64F1B1A917AC5000F5641 /* PRFuriganaLabel.swift */,
 				18D26D9A1A883ED800A8908C /* PRDatabaseHelper.swift */,
 				18D1706D1A89D77B00672203 /* PRStateSingleton.swift */,
 				18E4E6881A8D8B330038F86B /* PRCharacterExtension.swift */,
