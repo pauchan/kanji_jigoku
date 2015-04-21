@@ -22,7 +22,6 @@ class PRKanjiPageViewController: UIViewController, UIPageViewControllerDelegate,
     
     override func viewDidLoad()
     {
-        self.navigationItem.title = "Kanji"
         
         pageViewController = UIPageViewController(transitionStyle: UIPageViewControllerTransitionStyle.PageCurl, navigationOrientation: UIPageViewControllerNavigationOrientation.Horizontal, options: nil)
         
@@ -32,6 +31,8 @@ class PRKanjiPageViewController: UIViewController, UIPageViewControllerDelegate,
         let vc = PRKanjiTableViewController()
         vc.kanji = _kanjiTable[_selectedIndex] as Character
         var vcArray = [vc] as [AnyObject]
+        
+        self.navigationItem.title = vc.kanji.kanji
         
         _pageControl = PRKanjiPageControl(kanjis: _kanjiTable, frame: CGRectMake(0, self.view.frame.size.height*0.85, self.view.frame.size.width, self.view.frame.size.height*0.15))
          //,  frame: CGRectMake(self.view.center.x - (kKanjiPageIndicatorWidth/2.0), self.view.frame.origin.y + 0.0, kKanjiPageIndicatorWidth, kKanjiPageIndicatorHeight
@@ -60,6 +61,7 @@ class PRKanjiPageViewController: UIViewController, UIPageViewControllerDelegate,
             _pageControl.currentPage = --_selectedIndex
             let vc = PRKanjiTableViewController()
             vc.kanji  = _kanjiTable[_selectedIndex] as Character
+            self.navigationItem.title = vc.kanji.kanji
             vc.pageControl = _pageControl
             return vc
         }
@@ -77,6 +79,7 @@ class PRKanjiPageViewController: UIViewController, UIPageViewControllerDelegate,
             _pageControl.currentPage = ++_selectedIndex
             let vc = PRKanjiTableViewController()
             vc.kanji  = _kanjiTable[_selectedIndex] as Character
+            self.navigationItem.title = vc.kanji.kanji
             vc.pageControl = _pageControl
             
             return vc

@@ -53,7 +53,9 @@ extension Sentence
 //        CFAttributedStringSetAttribute(attrStr, CFRangeMake(0, CFAttributedStringGetLength(attrStr)), kCTParagraphStyleAttributeName, paragraphStyle)
         
         var alignment = CTTextAlignment.TextAlignmentCenter
-        var settings = [CTParagraphStyleSetting(spec: .Alignment, valueSize: UInt(sizeofValue(alignment)), value: &alignment)]
+        var wrap = CTLineBreakMode.ByTruncatingTail
+        
+        var settings = [CTParagraphStyleSetting(spec: .Alignment, valueSize: UInt(sizeofValue(alignment)), value: &alignment),CTParagraphStyleSetting(spec: .LineBreakMode, valueSize: UInt(sizeofValue(wrap)), value: &wrap)]
         let style = CTParagraphStyleCreate(settings, 1)
         
         

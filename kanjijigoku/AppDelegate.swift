@@ -26,14 +26,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         {
             db.syncDatabase()
         }
-        
-//        var pageControl : UIPageControl = UIPageControl.appearance()
-//        pageControl.pageIndicatorTintColor = UIColor.redColor()
-//        pageControl.currentPageIndicatorTintColor = UIColor.blackColor()
-//        pageControl.backgroundColor = UIColor.whiteColor()
-        
-        //let arr = db.fetchFalseAnswers("Example", property: "example", maxLevel: 7, maxLesson: 7)
-        //let arr2 = db.fetchFalseAnswers("Example", property: "example", maxLevel: 7, maxLesson: 7)
 
         
         let stateSingleton : PRStateSingleton = PRStateSingleton.sharedInstance
@@ -41,6 +33,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         stateSingleton.lessonArray = db.getLessonArray(stateSingleton.currentLevel)
         
         let tabBarController : UITabBarController = UITabBarController()
+        
+        UITabBar.appearance().barTintColor = UIColor().fadedOrangeColor()
+        UINavigationBar.appearance().barTintColor = UIColor().fadedOrangeColor()
+
+        UINavigationBar.appearance().tintColor = UIColor.grayColor()
+
+        // not working
+        UIBarButtonItem.appearance().setBackButtonBackgroundImage(UIImage(named: "leftArrowIcon"), forState: .Normal, barMetrics: .Default)
+        UIBarButtonItem.appearance().setBackgroundImage(UIImage(named: "leftArrowIcon"), forState: .Normal, barMetrics: .Default)
+
+        //UINavigationBar.appearance().backIndicatorTransitionMaskImage = UIImage(named: "leftArrowIcon")
+
         
         let kanjiViewController = PRKanjiMenuViewController()
         kanjiViewController._kanjiTable = db.getSelectedObjects("Character", level: PRStateSingleton.sharedInstance.currentLevel, lesson: PRStateSingleton.sharedInstance.currentLesson) as [Character]
@@ -50,10 +54,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let testsNavigationController : UINavigationController = UINavigationController(rootViewController: PRTestMenuViewController())
         let flashcardController : UINavigationController = UINavigationController(rootViewController: PRFlashcardMenuViewController(style: UITableViewStyle.Plain))
         
-        kanjiNavigationController.tabBarItem.title = "Lekcja"
-        searchNavigationController.tabBarItem.title = "Szukaj"
-        testsNavigationController.tabBarItem.title = "Testy"
-        flashcardController.tabBarItem.title = "Fiszki"
+        
+        
+        kanjiNavigationController.tabBarItem = UITabBarItem(title: "Lekcja", image: generateKanjiImage() , tag: 0)
+        searchNavigationController.tabBarItem = UITabBarItem(title: "Szukaj", image: UIImage(named: "SearchIcon"), tag: 1)
+        testsNavigationController.tabBarItem = UITabBarItem(title: "Testy", image: UIImage(named: "TestIcon"), tag: 2)
+        flashcardController.tabBarItem = UITabBarItem(title: "Fiszki", image: UIImage(named: "FlashcardIcon"), tag: 3)
         
         tabBarController.viewControllers = [kanjiNavigationController, searchNavigationController, testsNavigationController, flashcardController]
         
