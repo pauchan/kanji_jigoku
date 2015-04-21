@@ -57,7 +57,7 @@ class PRKanjiPageViewController: UIViewController, UIPageViewControllerDelegate,
         }
         else
         {
-            _pageControl.currentPage = ++_selectedIndex
+            _pageControl.currentPage = --_selectedIndex
             let vc = PRKanjiTableViewController()
             vc.kanji  = _kanjiTable[_selectedIndex] as Character
             vc.pageControl = _pageControl
@@ -67,14 +67,14 @@ class PRKanjiPageViewController: UIViewController, UIPageViewControllerDelegate,
     }
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
-        
+
         if _selectedIndex == _kanjiTable.count - 1
         {
             return nil
         }
         else
         {
-            _pageControl.currentPage = --_selectedIndex
+            _pageControl.currentPage = ++_selectedIndex
             let vc = PRKanjiTableViewController()
             vc.kanji  = _kanjiTable[_selectedIndex] as Character
             vc.pageControl = _pageControl

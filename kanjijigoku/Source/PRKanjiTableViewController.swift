@@ -26,13 +26,16 @@ class PRKanjiTableViewController: UIViewController, UITableViewDelegate,UITableV
         super.viewDidLoad()
         
 
-        if self.parentViewController?.navigationController != nil
+        if self.parentViewController != nil
         {
-           self.parentViewController?.navigationController?.navigationBarHidden = true
+            println("there is navigation controller")
+            self.parentViewController?.navigationController?.navigationBarHidden = true
             self.tableView = UITableView(frame: CGRectMake(0, 0.0, self.view.frame.size.width, self.view.frame.size.height*0.85))
         }
         else
         {
+            println("no navigation controller")
+            //self.parentViewController?.navigationController?.navigationBarHidden = true
             self.tableView = UITableView(frame: CGRectMake(0, 64.0, self.view.frame.size.width, self.view.frame.size.height*0.85))
         }
         
