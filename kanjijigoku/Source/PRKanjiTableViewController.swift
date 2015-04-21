@@ -178,8 +178,15 @@ class PRKanjiTableViewController: UIViewController, UITableViewDelegate,UITableV
             var attributedText = NSMutableAttributedString(string: additionalExamples[indexPath.row].example, attributes: kPRKanjiJigokuHelveticaBoldTwenty)
             let attributedText2 = NSAttributedString(string: " 【" + additionalExamples[indexPath.row].reading + "】", attributes: kPRKanjiJigokuHelveticaFourteen)
             attributedText.appendAttributedString(attributedText2)
+            
             cell!.textLabel?.attributedText = attributedText
+            cell!.detailTextLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+            cell!.detailTextLabel?.numberOfLines = 0
+            //cell!.textLabel?.sizeToFit()
             cell!.detailTextLabel?.text = additionalExamples[indexPath.row].meaning + " " + additionalExamples[indexPath.row].note
+            //cell!.detailTextLabel?.numberOfLines = 1
+            //cell!.detailTextLabel?.sizeToFit()
+            cell!.detailTextLabel?.adjustsFontSizeToFitWidth = true
             return cell!
             
         case PRKanjiJigokuKanjiOptions.Sentences.rawValue:
@@ -188,10 +195,11 @@ class PRKanjiTableViewController: UIViewController, UITableViewDelegate,UITableV
             {
                 cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "PRKanjiCell2")
                 cell!.selectionStyle = UITableViewCellSelectionStyle.None
-                cell!.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                cell!.textLabel?.lineBreakMode = NSLineBreakMode.ByCharWrapping
                 cell!.textLabel?.numberOfLines = 0
-                //cell!.detailTextLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
-                //cell!.detailTextLabel?.numberOfLines = 0
+
+                cell!.detailTextLabel?.lineBreakMode = NSLineBreakMode.ByCharWrapping
+                cell!.detailTextLabel?.numberOfLines = 0
                 
             }
             let sentence = kanji.sentences.allObjects as [Sentence]
@@ -261,7 +269,7 @@ class PRKanjiTableViewController: UIViewController, UITableViewDelegate,UITableV
         }
         else
         {
-            return 60.0
+            return 80.0
 //            let cell = self.tableView(tableView, cellForRowAtIndexPath: indexPath)
 //            var newBounds = cell.bounds
 //            newBounds.size.width = tableView.bounds.width
