@@ -105,7 +105,7 @@ class PRTestViewController: UIViewController {
             if let index = find(testOptionButtons, button)
             {
                 button.enabled = true
-                button.backgroundColor = UIColor.lightGrayColor()
+                button.backgroundColor = UIColor().brightOrangeColor()
                 button.setTitle(questions[questionNumber].options[index], forState: UIControlState.Normal)
                 
                 button.titleLabel?.adjustsFontSizeToFitWidth = true

@@ -45,6 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         //UINavigationBar.appearance().backIndicatorTransitionMaskImage = UIImage(named: "leftArrowIcon")
 
+        //UINavigationBar.appearance().titleTextAttributes = UITextAttributes([UITextAttributeFont : UIFont(name: "HelveticaNeue-CondensedBlack", size: 21.0)])
         
         let kanjiViewController = PRKanjiMenuViewController()
         kanjiViewController._kanjiTable = db.getSelectedObjects("Character", level: PRStateSingleton.sharedInstance.currentLevel, lesson: PRStateSingleton.sharedInstance.currentLesson) as [Character]

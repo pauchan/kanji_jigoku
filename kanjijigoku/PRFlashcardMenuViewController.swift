@@ -35,8 +35,8 @@ override func viewDidLoad() {
     
     //self.tableView.keyboardDismissMode = .OnDrag
     
-    self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Action, target: self, action: "prKanjiJigokuRightBarItemShowSettings:")
-    self.navigationItem.title = "Kanji Jigoku"
+    self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "SettingsIcon"), style: .Plain,  target: self, action: "prKanjiJigokuRightBarItemShowSettings:")
+    self.navigationItem.title = "Fiszki"
     // Do any additional setup after loading the view, typically from a nib.
     let nib : UINib = UINib(nibName: "PRHeaderViewCell", bundle: nil)
     self.tableView.registerNib(nib, forCellReuseIdentifier: "PRHeaderViewCell")
@@ -67,28 +67,30 @@ override func viewDidLoad() {
     {
         if indexPath.section != 0
         {
-            if indexPath.row < kCustomFlashCardOption // just for now, I need to think about custom flashcards
+            let charactersArray = PRDatabaseHelper().getSelectedObjects("Character", level: PRStateSingleton.sharedInstance.currentLevel, lesson: PRStateSingleton.sharedInstance.currentLesson)
+            var flashcardsArray : [Flashcard]
+            if(indexPath.row == kKunyomiOption || indexPath.row == kOnyomiOption)
             {
-                //var dbHelp =
-                let charactersArray = PRDatabaseHelper().getSelectedObjects("Character", level: PRStateSingleton.sharedInstance.currentLevel, lesson: PRStateSingleton.sharedInstance.currentLesson)
-                var flashcardsArray : [Flashcard]
-                if(indexPath.row == kKunyomiOption || indexPath.row == kOnyomiOption)
-                {
-                    flashcardsArray = self.generateFlashcardsArrayForReadings(charactersArray as [Character], option: indexPath.row)
-                }
-                else if(indexPath.row == kExamplesOption || indexPath.row == kSentenceOption)
-                {
-                    flashcardsArray = self.generateFlashcardsArrayForExamples(charactersArray as [Character], option: indexPath.row)
-                }
-                else // customFlashcardToImplement
-                {
-                    flashcardsArray = []
-                }
-
-                var vc = PRFlashcardPageViewController()
-                vc._flashcardSet = flashcardsArray
-                navigationController?.pushViewController(vc, animated: false)
+                flashcardsArray = self.generateFlashcardsArrayForReadings(charactersArray as [Character], option: indexPath.row)
             }
+            else if(indexPath.row == kExamplesOption || indexPath.row == kSentenceOption)
+            {
+                flashcardsArray = self.generateFlashcardsArrayForExamples(charactersArray as [Character], option: indexPath.row)
+            }
+            else // customFlashcardToImplement
+            {
+                flashcardsArray = []
+            }
+            if flashcardsArray.count == 0 {
+            
+                var toast : UIAlertView = UIAlertView(title: "Brak fiszek", message: "Brak fiszek dla zadanej kategorii", delegate: self, cancelButtonTitle: "Zamknij")
+                toast.show()
+                return
+            }
+
+            var vc = PRFlashcardPageViewController()
+            vc._flashcardSet = flashcardsArray
+            navigationController?.pushViewController(vc, animated: false)
             
         }
         

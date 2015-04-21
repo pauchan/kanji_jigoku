@@ -31,6 +31,9 @@ class PRSearchKanjiViewController: UIViewController, UITableViewDelegate, UITabl
     {
         super.viewDidLoad()
         
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "SettingsIcon"), style: .Plain,  target: self, action: "prKanjiJigokuRightBarItemShowSettings:")
+        self.navigationItem.title = "Szukaj"
+        
         kanjiSearchTable.delegate = self
         kanjiSearchTable.dataSource = self
         
@@ -38,6 +41,9 @@ class PRSearchKanjiViewController: UIViewController, UITableViewDelegate, UITabl
 
         // Do any additional setup after loading the view.
         kanjiSearchTable.registerClass(UITableViewCell.self, forCellReuseIdentifier: "PRKanjiCell")
+        
+        kanjiSearchTable.tableFooterView = UIView()
+
 
     }
 

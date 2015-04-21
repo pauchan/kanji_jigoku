@@ -24,6 +24,11 @@ class PRTestResultsViewController: UITableViewController {
         
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "PRTestResultCell")
         self.tableView.tableFooterView = UIView()
+        
+        // almost working but cannot display the arrow image...
+        let backButton : UIBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Bordered, target: self, action: "customizedBack:")
+        backButton.setBackButtonBackgroundImage(UIImage(named: "LeftArrowIcon"), forState: UIControlState.Normal, barMetrics: UIBarMetrics.Default)
+        self.navigationItem.leftBarButtonItem = backButton
 
     }
     
@@ -73,6 +78,12 @@ class PRTestResultsViewController: UITableViewController {
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         
         return 2
+    }
+    
+    func customizedBack(sender: AnyObject)
+    {
+    
+        self.navigationController?.popToRootViewControllerAnimated(false)
     }
 
 
