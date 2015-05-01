@@ -32,7 +32,7 @@ class PRDatabaseHelper
         
         if downloadDbFile()
         {
-            let documentsFolder = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
+            let documentsFolder = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as! String
             let path = documentsFolder.stringByAppendingPathComponent("clientDB.db")
             
             let database = FMDatabase(path: path)
@@ -94,7 +94,7 @@ class PRDatabaseHelper
                 {
                     if var timestamp = NSString(data: urlData, encoding: NSUTF8StringEncoding)
                     {
-                        if(appDbUpdate.isEqualToString(timestamp))
+                        if(appDbUpdate.isEqualToString(timestamp as String))
                         {
                             //_timestamp = timestamp
                             println("there is no new version of db")
@@ -146,7 +146,7 @@ class PRDatabaseHelper
         
         func parseCharacters(database : FMDatabase) -> Bool
         {
-            let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
             let managedContext = appDelegate.managedObjectContext!
             
             let entity = NSEntityDescription.entityForName("Character", inManagedObjectContext: managedContext)!
@@ -154,7 +154,7 @@ class PRDatabaseHelper
             if let rs = database.executeQuery("select * from znaki", withArgumentsInArray: nil) {
                 while rs.next() {
                     
-                    let character = NSManagedObject(entity: entity, insertIntoManagedObjectContext: managedContext) as Character
+                    let character = NSManagedObject(entity: entity, insertIntoManagedObjectContext: managedContext) as! Character
                     
                     character.kanji = rs.stringForColumnIndex(0)
                     character.alternativeKanji = rs.stringForColumnIndex(1)
@@ -192,7 +192,7 @@ class PRDatabaseHelper
         
         func parseSentences(database : FMDatabase, character : String) -> NSSet
         {
-            let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
             let managedContext = appDelegate.managedObjectContext!
             
             let entity = NSEntityDescription.entityForName("Sentence", inManagedObjectContext: managedContext)!
@@ -202,7 +202,7 @@ class PRDatabaseHelper
             if let rs = database.executeQuery("select * from zdania where kanji='\(character)'", withArgumentsInArray: nil) {
                 while rs.next() {
                     
-                    let sentence = NSManagedObject(entity: entity, insertIntoManagedObjectContext: managedContext) as Sentence
+                    let sentence = NSManagedObject(entity: entity, insertIntoManagedObjectContext: managedContext) as! Sentence
                     
                     sentence.kanji = rs.stringForColumnIndex(0)
                     sentence.example = rs.stringForColumnIndex(1)
@@ -217,13 +217,13 @@ class PRDatabaseHelper
                 println("select failed: \(database.lastErrorMessage())")
             }
             
-            return outSet.copy() as NSSet
+            return outSet.copy() as! NSSet
             
         }
         
         func parseKunyomi(database : FMDatabase, character : String) -> NSSet
         {
-            let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
             let managedContext = appDelegate.managedObjectContext!
             
             let entity = NSEntityDescription.entityForName("Kunyomi", inManagedObjectContext: managedContext)!
@@ -233,7 +233,7 @@ class PRDatabaseHelper
             if let rs = database.executeQuery("select * from kunyomi where kanji='\(character)'", withArgumentsInArray: nil) {
                 while rs.next() {
                     
-                    let kunyomi = NSManagedObject(entity: entity, insertIntoManagedObjectContext: managedContext) as Kunyomi
+                    let kunyomi = NSManagedObject(entity: entity, insertIntoManagedObjectContext: managedContext) as! Kunyomi
                     
                     kunyomi.kanji = rs.stringForColumnIndex(0)
                     kunyomi.reading = rs.stringForColumnIndex(1)
@@ -248,13 +248,13 @@ class PRDatabaseHelper
                 println("select failed: \(database.lastErrorMessage())")
             }
             
-            return outSet.copy() as NSSet
+            return outSet.copy() as! NSSet
             
         }
         
     func parseOnyomi(database : FMDatabase, character : String) -> NSSet
         {
-            let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
             let managedContext = appDelegate.managedObjectContext!
             
             let entity = NSEntityDescription.entityForName("Onyomi", inManagedObjectContext: managedContext)!
@@ -264,7 +264,7 @@ class PRDatabaseHelper
             if let rs = database.executeQuery("select * from onyomi where kanji='\(character)'", withArgumentsInArray: nil) {
                 while rs.next() {
                     
-                    let onyomi = NSManagedObject(entity: entity, insertIntoManagedObjectContext: managedContext) as Onyomi
+                    let onyomi = NSManagedObject(entity: entity, insertIntoManagedObjectContext: managedContext) as! Onyomi
                     
                     onyomi.kanji = rs.stringForColumnIndex(0)
                     onyomi.reading = rs.stringForColumnIndex(1)
@@ -280,13 +280,13 @@ class PRDatabaseHelper
                 //return outSet
             }
             
-            return outSet.copy() as NSSet
+            return outSet.copy() as! NSSet
             
         }
         
         func parseExamples(database : FMDatabase, character : String) -> NSSet
         {
-            let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
             let managedContext = appDelegate.managedObjectContext!
             
             let entity = NSEntityDescription.entityForName("Example", inManagedObjectContext: managedContext)!
@@ -296,7 +296,7 @@ class PRDatabaseHelper
             if let rs = database.executeQuery("select * from zlozenia where kanji='\(character)'", withArgumentsInArray: nil) {
                 while rs.next() {
                     
-                    let example = NSManagedObject(entity: entity, insertIntoManagedObjectContext: managedContext) as Example
+                    let example = NSManagedObject(entity: entity, insertIntoManagedObjectContext: managedContext) as! Example
                     
                     example.kanji = rs.stringForColumnIndex(0)
                     example.example = rs.stringForColumnIndex(1)
@@ -312,12 +312,12 @@ class PRDatabaseHelper
                 println("select failed: \(database.lastErrorMessage())")
             }
             
-            return outSet.copy() as NSSet
+            return outSet.copy() as! NSSet
         }
         
         func parseRadicals(database : FMDatabase, number : Int) -> NSSet
         {
-            let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
             let managedContext = appDelegate.managedObjectContext!
             
             let entity = NSEntityDescription.entityForName("Radical", inManagedObjectContext: managedContext)!
@@ -327,7 +327,7 @@ class PRDatabaseHelper
             if let rs = database.executeQuery("select * from pierwiastki where numer=\(number)", withArgumentsInArray: nil) {
                 while rs.next() {
                     
-                    let radical = NSManagedObject(entity: entity, insertIntoManagedObjectContext: managedContext) as Radical
+                    let radical = NSManagedObject(entity: entity, insertIntoManagedObjectContext: managedContext) as! Radical
                     
                     radical.number = rs.intForColumnIndex(0)
                     radical.radical = rs.stringForColumnIndex(1)
@@ -339,13 +339,13 @@ class PRDatabaseHelper
                 println("select failed: \(database.lastErrorMessage())")
             }
             
-            return outSet.copy() as NSSet
+            return outSet.copy() as! NSSet
         }
     
     func deleteObjects(description: String)
     {
         //var fetchRequest : NSFetchRequest = NSFetchRequest()
-        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext!
         
         //let entity : NSEntityDescription = NSEntityDescription.entityForName(description, inManagedObjectContext: managedContext)!
@@ -353,7 +353,7 @@ class PRDatabaseHelper
         let fetchRequest = NSFetchRequest(entityName: description)
         
         var error : NSError?
-        let fetchedRequest = managedContext.executeFetchRequest(fetchRequest, error: &error) as [NSManagedObject]
+        let fetchedRequest = managedContext.executeFetchRequest(fetchRequest, error: &error) as! [NSManagedObject]
         
         //let objects = fetchedRequest as? [NSManagedObjects]
         
@@ -371,7 +371,7 @@ class PRDatabaseHelper
     
     func getSelectedObjects(name: String, level: Int, lesson: Int) -> NSArray
     {
-        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext!
         
         let fetchRequest : NSFetchRequest = NSFetchRequest(entityName: name)
@@ -379,15 +379,15 @@ class PRDatabaseHelper
         
         if name == "Character"
         {
-            fetchRequest.predicate = NSPredicate(format: "level=\(level) AND lesson=\(lesson)")!
+            fetchRequest.predicate = NSPredicate(format: "level=\(level) AND lesson=\(lesson)")
         }
         else if name == "Kunyomi"
         {
-            fetchRequest.predicate = NSPredicate(format: "character.level=\(level) AND character.lesson=\(lesson) AND ( NOT (reading CONTAINS '-')) AND meaning!='' AND meaning!=nil")!
+            fetchRequest.predicate = NSPredicate(format: "character.level=\(level) AND character.lesson=\(lesson) AND ( NOT (reading CONTAINS '-')) AND meaning!='' AND meaning!=nil")
         }
         else
         {
-            fetchRequest.predicate = NSPredicate(format: "character.level=\(level) AND character.lesson=\(lesson) AND ( NOT (reading CONTAINS '-'))")!
+            fetchRequest.predicate = NSPredicate(format: "character.level=\(level) AND character.lesson=\(lesson) AND ( NOT (reading CONTAINS '-'))")
         }
         
         let outArray: NSArray = managedContext.executeFetchRequest(fetchRequest, error: nil)!
@@ -397,7 +397,7 @@ class PRDatabaseHelper
     func getLessonArray(currentLevel : Int) -> [Int]
     {
 
-            let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
             let managedContext = appDelegate.managedObjectContext!
             
             let fetchRequest : NSFetchRequest = NSFetchRequest(entityName: "Character")
@@ -413,7 +413,7 @@ class PRDatabaseHelper
             var outArray = [Int]()
             for object in outResponse
             {
-                outArray += [object["lesson"] as Int]
+                outArray += [object["lesson"] as! Int]
             }
 
             return outArray
@@ -422,7 +422,7 @@ class PRDatabaseHelper
 
         func getLevelArray() -> [Int] {
             
-            let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
             let managedContext = appDelegate.managedObjectContext!
             
             let fetchRequest :NSFetchRequest = NSFetchRequest(entityName: "Character")
@@ -436,7 +436,7 @@ class PRDatabaseHelper
             var outArray = [Int]()
             for object in outResponse
             {
-                 outArray += [object["level"] as Int]
+                 outArray += [object["level"] as! Int]
             }
             return outArray
             
@@ -444,7 +444,7 @@ class PRDatabaseHelper
     
     func fetchFalseAnswers(object: String, property: String, properAnswer: String, partOfSpeechIndex: Int, maxLevel: Int, maxLesson: Int) -> [String]
     {
-        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext!
         
         let fetchRequest :NSFetchRequest = NSFetchRequest(entityName: object)
@@ -453,23 +453,23 @@ class PRDatabaseHelper
         var predicate : NSPredicate
         if object == "Character"
         {
-            predicate = NSPredicate(format: "level <= \(maxLevel) AND lesson <= \(maxLesson)")!
+            predicate = NSPredicate(format: "level <= \(maxLevel) AND lesson <= \(maxLesson)")
         }
         else
         {
-            // egde case - in case of kuyomi - meaning test you need to make sure that given kunyomi has reading and its the same part of speech as the correct answer
+            // egde case - in case of kuyomi - meaning test you need to make sure that given kunyomi has reading and its the same part of speech as! the correct answer
             if(object == "Kunyomi" && property == "meaning")
             {
-                predicate = NSPredicate(format: "character.level <= \(maxLevel) AND character.lesson <= \(maxLesson) AND ( NOT (reading CONTAINS '-')) AND meaning!='' AND meaning!=nil AND speechPart==\(partOfSpeechIndex)")!
+                predicate = NSPredicate(format: "character.level <= \(maxLevel) AND character.lesson <= \(maxLesson) AND ( NOT (reading CONTAINS '-')) AND meaning!='' AND meaning!=nil AND speechPart==\(partOfSpeechIndex)")
             }
             else
             {
-                predicate = NSPredicate(format: "character.level <= \(maxLevel) AND character.lesson <= \(maxLesson) AND ( NOT (reading CONTAINS '-'))")!
+                predicate = NSPredicate(format: "character.level <= \(maxLevel) AND character.lesson <= \(maxLesson) AND ( NOT (reading CONTAINS '-'))")
             }
         }
         fetchRequest.propertiesToFetch = [property]
         fetchRequest.predicate = predicate
-        let outResponse = managedContext.executeFetchRequest(fetchRequest, error: nil)! //as [String]
+        let outResponse = managedContext.executeFetchRequest(fetchRequest, error: nil)! //as! [String]
 
         var newResponse: [String] = [String]()
         
@@ -479,8 +479,8 @@ class PRDatabaseHelper
         
         while  newResponse.count < kPRKanjiJigokuFalseAnswerAmount
         {
-            let object = outResponse[objectId] as NSManagedObject
-            let proposedValue : String = object.valueForKey(property) as String
+            let object = outResponse[objectId] as! NSManagedObject
+            let proposedValue : String = object.valueForKey(property) as! String
             if proposedValue != properAnswer && !(contains(newResponse, proposedValue))
             {
                 newResponse.append(proposedValue)
@@ -516,34 +516,34 @@ class PRDatabaseHelper
     
     func fetchAdditionalExamples(kanji : String) -> [Example]
     {
-        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext!
         
         let fetchRequest :NSFetchRequest = NSFetchRequest(entityName: "Example")
         let entity = NSEntityDescription.entityForName("Example", inManagedObjectContext: managedContext)!
         
-        fetchRequest.predicate = NSPredicate(format: "example CONTAINS '\(kanji)'")!
+        fetchRequest.predicate = NSPredicate(format: "example CONTAINS '\(kanji)'")
 
-        return managedContext.executeFetchRequest(fetchRequest, error: nil)! as [Example]
+        return managedContext.executeFetchRequest(fetchRequest, error: nil)! as! [Example]
     }
 
     func fetchRelatedKanjis(kanji: Character) -> [Character]
     {
-        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext!
         
         let fetchRequest :NSFetchRequest = NSFetchRequest(entityName: "Character")
         let entity = NSEntityDescription.entityForName("Character", inManagedObjectContext: managedContext)!
         
-        fetchRequest.predicate = NSPredicate(format: "relatedKanji='\(kanji.relatedKanji)' AND (NOT kanji='\(kanji.kanji)')")!
+        fetchRequest.predicate = NSPredicate(format: "relatedKanji='\(kanji.relatedKanji)' AND (NOT kanji='\(kanji.kanji)')")
         
-        return managedContext.executeFetchRequest(fetchRequest, error: nil)! as [Character]
+        return managedContext.executeFetchRequest(fetchRequest, error: nil)! as! [Character]
     }
     
     func fetchObjectsContainingPhrase(object: String, phrase: String) -> [NSManagedObject]
     {
     
-        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext!
         
         let fetchRequest :NSFetchRequest = NSFetchRequest(entityName: object)
@@ -551,16 +551,16 @@ class PRDatabaseHelper
         switch object
         {
             case "Character":
-                fetchRequest.predicate = NSPredicate(format: "(ANY kunyomis.reading='\(phrase)') OR (ANY onyomis.reading='\(phrase)')")!
+                fetchRequest.predicate = NSPredicate(format: "(ANY kunyomis.reading='\(phrase)') OR (ANY onyomis.reading='\(phrase)')")
             case "Example":
-                fetchRequest.predicate = NSPredicate(format: "reading='\(phrase)'")!
+                fetchRequest.predicate = NSPredicate(format: "reading='\(phrase)'")
             case "Sentence":
-                fetchRequest.predicate = NSPredicate(format: "\(object.lowercaseString) CONTAINS '\(phrase)'")!
+                fetchRequest.predicate = NSPredicate(format: "\(object.lowercaseString) CONTAINS '\(phrase)'")
         default:
                 fetchRequest.predicate == nil
         }
         
-        return managedContext.executeFetchRequest(fetchRequest, error: nil)! as [NSManagedObject]
+        return managedContext.executeFetchRequest(fetchRequest, error: nil)! as! [NSManagedObject]
     }
     
 }

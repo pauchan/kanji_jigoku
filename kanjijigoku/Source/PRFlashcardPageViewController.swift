@@ -28,7 +28,7 @@ class PRFlashcardPageViewController : UIPageViewController, UIPageViewController
         else
         {
             let vc = PRFlashcardViewController(nibName: "PRFlashcardViewController", bundle: nil)
-            vc.flashcard = _flashcardSet[0] as Flashcard
+            vc.flashcard = _flashcardSet[0] as! Flashcard
             var vcArray = [vc] as [AnyObject]
             self.setViewControllers(vcArray, direction: .Forward, animated: false, completion: nil)
         }
@@ -46,7 +46,7 @@ class PRFlashcardPageViewController : UIPageViewController, UIPageViewController
         {
             _selectedIndex--
             let vc = PRFlashcardViewController(nibName: "PRFlashcardViewController", bundle: nil)
-            vc.flashcard  = _flashcardSet[_selectedIndex] as Flashcard
+            vc.flashcard  = _flashcardSet[_selectedIndex] as! Flashcard
             return vc
         }
         
@@ -62,7 +62,7 @@ class PRFlashcardPageViewController : UIPageViewController, UIPageViewController
         {
             _selectedIndex++
             let vc = PRFlashcardViewController(nibName: "PRFlashcardViewController", bundle: nil)
-            vc.flashcard  = _flashcardSet[_selectedIndex] as Flashcard
+            vc.flashcard  = _flashcardSet[_selectedIndex] as! Flashcard
             return vc
         }
     }

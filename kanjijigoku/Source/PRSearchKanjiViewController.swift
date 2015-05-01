@@ -53,19 +53,19 @@ class PRSearchKanjiViewController: UIViewController, UITableViewDelegate, UITabl
         
         if indexPath.section == 0
         {
-            let cell = tableView.dequeueReusableCellWithIdentifier("PRKanjiCell", forIndexPath: indexPath) as UITableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("PRKanjiCell", forIndexPath: indexPath) as! UITableViewCell
             cell.textLabel?.text = characterSearchArray[indexPath.row].kanji
             return cell
         }
         else if indexPath.section == 1
         {
-            let cell = tableView.dequeueReusableCellWithIdentifier("PRKanjiCell", forIndexPath: indexPath) as UITableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("PRKanjiCell", forIndexPath: indexPath) as! UITableViewCell
             cell.textLabel?.text = exampleSearchArray[indexPath.row].example
             return cell
         }
         else
         {
-            let cell = tableView.dequeueReusableCellWithIdentifier("PRKanjiCell", forIndexPath: indexPath) as UITableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("PRKanjiCell", forIndexPath: indexPath) as! UITableViewCell
             cell.textLabel?.text = sentenceSearchArray[indexPath.row].sentence
             return cell
         }
@@ -145,9 +145,9 @@ class PRSearchKanjiViewController: UIViewController, UITableViewDelegate, UITabl
     func searchBarSearchButtonClicked(searchBar: UISearchBar)
     {
         
-        characterSearchArray = PRDatabaseHelper().fetchObjectsContainingPhrase("Character", phrase: searchBar.text) as [Character]
-        exampleSearchArray = PRDatabaseHelper().fetchObjectsContainingPhrase("Example", phrase: searchBar.text) as [Example]
-        sentenceSearchArray = PRDatabaseHelper().fetchObjectsContainingPhrase("Sentence", phrase: searchBar.text) as [Sentence]
+        characterSearchArray = PRDatabaseHelper().fetchObjectsContainingPhrase("Character", phrase: searchBar.text) as! [Character]
+        exampleSearchArray = PRDatabaseHelper().fetchObjectsContainingPhrase("Example", phrase: searchBar.text) as! [Example]
+        sentenceSearchArray = PRDatabaseHelper().fetchObjectsContainingPhrase("Sentence", phrase: searchBar.text) as! [Sentence]
         println("character array count \(characterSearchArray.count)")
         println("example array count \(exampleSearchArray.count)")
         println("search array count \(sentenceSearchArray.count)")

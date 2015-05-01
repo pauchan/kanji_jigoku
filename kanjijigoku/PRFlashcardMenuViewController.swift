@@ -50,14 +50,14 @@ override func viewDidLoad() {
         
     if(indexPath.section == 0)
     {
-        let cell = tableView.dequeueReusableCellWithIdentifier("PRHeaderViewCell", forIndexPath: indexPath) as PRHeaderViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("PRHeaderViewCell", forIndexPath: indexPath) as! PRHeaderViewCell
         _headerCoordinator = PRHeaderCoordinator(headerCell: cell)
         return cell
         
     }
         else
     {
-        let cell = tableView.dequeueReusableCellWithIdentifier("PRFlashcardCell", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("PRFlashcardCell", forIndexPath: indexPath) as! UITableViewCell
         cell.textLabel?.text = _tableItems[indexPath.row] as? String
         return cell
     }
@@ -71,11 +71,11 @@ override func viewDidLoad() {
             var flashcardsArray : [Flashcard]
             if(indexPath.row == kKunyomiOption || indexPath.row == kOnyomiOption)
             {
-                flashcardsArray = self.generateFlashcardsArrayForReadings(charactersArray as [Character], option: indexPath.row)
+                flashcardsArray = self.generateFlashcardsArrayForReadings(charactersArray as! [Character], option: indexPath.row)
             }
             else if(indexPath.row == kExamplesOption || indexPath.row == kSentenceOption)
             {
-                flashcardsArray = self.generateFlashcardsArrayForExamples(charactersArray as [Character], option: indexPath.row)
+                flashcardsArray = self.generateFlashcardsArrayForExamples(charactersArray as! [Character], option: indexPath.row)
             }
             else // customFlashcardToImplement
             {
@@ -150,7 +150,7 @@ override func viewDidLoad() {
             {
                 for e in character.examples
                 {
-                    let example = e as Example
+                    let example = e as! Example
                     returnArray.append(Flashcard(text: example.example, reading: example.reading, meaning: example.meaning))
                 }
             }
@@ -158,7 +158,7 @@ override func viewDidLoad() {
             {
                 for s in character.sentences
                 {
-                    let sentence = s as Sentence
+                    let sentence = s as! Sentence
                     let flashcard = Flashcard(text: sentence.sentence, reading: sentence.sentence, meaning: sentence.meaning)
                     flashcard.furiganaReading = sentence.replaceExplainedSentence(sentence.sentence)
                     flashcard.text = (sentence.replaceExplainedSentence(sentence.sentence)).string

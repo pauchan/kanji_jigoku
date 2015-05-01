@@ -110,7 +110,7 @@ class PRFilterController: NSObject, UIPickerViewDataSource, UIPickerViewDelegate
     func generateLessonSummaryString(level: Int, lesson: Int) -> String
     {
         
-        let arr : [Character]  = PRDatabaseHelper().getSelectedObjects("Character", level: level, lesson: lesson) as [Character]
+        let arr : [Character]  = PRDatabaseHelper().getSelectedObjects("Character", level: level, lesson: lesson) as! [Character]
         var bla : String =  arr.map
             {
                 (kanji: Character) -> String in kanji.kanji

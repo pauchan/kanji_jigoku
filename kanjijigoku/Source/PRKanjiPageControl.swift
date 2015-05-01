@@ -58,7 +58,7 @@ class PRKanjiPageControl: UIPageControl {
         }
 
         self.backgroundColor = UIColor.whiteColor()
-        for v in self.subviews as [UIView]
+        for v in self.subviews as! [UIView]
         {
             v.removeFromSuperview()
         }
@@ -67,7 +67,7 @@ class PRKanjiPageControl: UIPageControl {
     
     func setupView(frame: CGRect)
     {
-        for v in self.subviews as [UIView]
+        for v in self.subviews as! [UIView]
         {
             v.removeFromSuperview()
         }
@@ -75,7 +75,7 @@ class PRKanjiPageControl: UIPageControl {
         for (index, value : UIImage) in enumerate(inactiveImagesArray)
         {
             let leftMargin : CGFloat = (((1.0 / CGFloat(inactiveImagesArray.count)) * frame.size.width - value.size.width) / 2.0) as CGFloat
-            //let leftMargin :CGFloat = (frame.size.width - value.size.width*CGFloat(inactiveImagesArray.count))/2.0 as CGFloat
+            //let leftMargin :CGFloat = (frame.size.width - value.size.width*CGFloat(inactiveImagesArray.count))/2.0 as! CGFloat
             let rect = CGRectMake(frame.origin.x + leftMargin + (CGFloat(index) / CGFloat(inactiveImagesArray.count)) * frame.size.width, 10.0, value.size.width, value.size.height)
             var imgView : UIImageView = UIImageView(frame: rect)
             if index == self.currentPage

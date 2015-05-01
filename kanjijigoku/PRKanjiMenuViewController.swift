@@ -32,13 +32,13 @@ override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath:
     
     if indexPath.section == 0
     {
-        let cell = tableView.dequeueReusableCellWithIdentifier("PRHeaderViewCell", forIndexPath: indexPath) as PRHeaderViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("PRHeaderViewCell", forIndexPath: indexPath) as! PRHeaderViewCell
         _headerCoordinator = PRHeaderCoordinator(headerCell: cell)
         return cell
     }
     else
     {
-        let cell = tableView.dequeueReusableCellWithIdentifier("PRKanjiCell", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("PRKanjiCell", forIndexPath: indexPath) as! UITableViewCell
         cell.textLabel?.text = _kanjiTable[indexPath.row].kanji
         return cell
     }
@@ -89,7 +89,7 @@ override func numberOfSectionsInTableView(tableView: UITableView) -> Int
 func lessonUpdated(notification: NSNotification)
 {
         println("notification called")
-        _kanjiTable = PRDatabaseHelper().getSelectedObjects("Character", level: PRStateSingleton.sharedInstance.currentLevel, lesson: PRStateSingleton.sharedInstance.currentLesson) as [Character]
+        _kanjiTable = PRDatabaseHelper().getSelectedObjects("Character", level: PRStateSingleton.sharedInstance.currentLevel, lesson: PRStateSingleton.sharedInstance.currentLesson) as! [Character]
         self.tableView.reloadData()
 }
 

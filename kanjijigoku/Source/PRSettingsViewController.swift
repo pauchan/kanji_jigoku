@@ -66,7 +66,7 @@ class PRSettingsViewController: UITableViewController {
         
         if indexPath.section == 1
         {
-            let cell = tableView.dequeueReusableCellWithIdentifier("PRFilterCell", forIndexPath: indexPath) as PRFilterCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("PRFilterCell", forIndexPath: indexPath) as! PRFilterCell
             filterController = PRFilterController(filterCell: cell)
             return cell
             

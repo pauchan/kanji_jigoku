@@ -48,15 +48,15 @@ class PRTestMenuViewController : UITableViewController
         
         if(indexPath.section == 0)
         {
-            let cell = tableView.dequeueReusableCellWithIdentifier("PRHeaderViewCell", forIndexPath: indexPath) as PRHeaderViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("PRHeaderViewCell", forIndexPath: indexPath) as! PRHeaderViewCell
             _headerCoordinator = PRHeaderCoordinator(headerCell: cell)
             return cell
             
         }
         else
         {
-            let cell = tableView.dequeueReusableCellWithIdentifier("PRFlashcardCell", forIndexPath: indexPath) as UITableViewCell
-            let testDict = _tableItems[indexPath.row] as [String: String]
+            let cell = tableView.dequeueReusableCellWithIdentifier("PRFlashcardCell", forIndexPath: indexPath) as! UITableViewCell
+            let testDict = _tableItems[indexPath.row] as! [String: String]
             cell.textLabel?.text = testDict["label"]
             return cell
         }
@@ -68,7 +68,7 @@ class PRTestMenuViewController : UITableViewController
         {
     
                 var vc = PRTestViewController(nibName: "PRTestViewController", bundle: nil)
-                let testDict : [String: String] = _tableItems[indexPath.row] as [String: String]
+                let testDict : [String: String] = _tableItems[indexPath.row] as! [String: String]
                 vc.questions = generateTest(testDict)
                 vc.descriptionText = testDict["label"]!
                 navigationController?.pushViewController(vc, animated: false)
@@ -138,16 +138,16 @@ class PRTestMenuViewController : UITableViewController
             {
 
                 let object: AnyObject = wideArray[selectedId]
-                let questionString : String = object.valueForKey(testDict["questionProperty"]!) as String
+                let questionString : String = object.valueForKey(testDict["questionProperty"]!) as! String
                 
                 
-                let properAnswer = object.valueForKey(testDict["answerProperty"]!) as String
+                let properAnswer = object.valueForKey(testDict["answerProperty"]!) as! String
                 
                 // 3. for each assign 3 wrong answer for each type
                 var falseAnswers : [String]
                 if testDict["questionObject"]! == "Kunyomi" && testDict["answerProperty"]! == "meaning"
                 {
-                    let kunyomiObject = object as Kunyomi
+                    let kunyomiObject = object as! Kunyomi
                     falseAnswers = PRDatabaseHelper().fetchFalseAnswers(testDict["questionObject"]!, property: testDict["answerProperty"]!, properAnswer: properAnswer, partOfSpeechIndex: Int(kunyomiObject.speechPart), maxLevel: PRStateSingleton.sharedInstance.currentLevel, maxLesson: PRStateSingleton.sharedInstance.currentLesson)
                 }
                 else
@@ -156,10 +156,10 @@ class PRTestMenuViewController : UITableViewController
                 }
 
 
-                let meaning = object.valueForKey("meaning") as String
+                let meaning = object.valueForKey("meaning") as! String
                 let question = Question(question: questionString, correctOption: properAnswer,  falseOptions: falseAnswers, meaning: meaning)
                 newResponse.append(question)
-                //newResponse.append(object.valueForKey(property) as String)
+                //newResponse.append(object.valueForKey(property) as! String)
             }
         }
         return newResponse

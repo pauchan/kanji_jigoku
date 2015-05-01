@@ -26,7 +26,7 @@ class PRTestResultsViewController: UITableViewController {
         self.tableView.tableFooterView = UIView()
         
         // almost working but cannot display the arrow image...
-        let backButton : UIBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Bordered, target: self, action: "customizedBack:")
+        let backButton : UIBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: self, action: "customizedBack:")
         backButton.setBackButtonBackgroundImage(UIImage(named: "LeftArrowIcon"), forState: UIControlState.Normal, barMetrics: UIBarMetrics.Default)
         self.navigationItem.leftBarButtonItem = backButton
 
@@ -37,14 +37,14 @@ class PRTestResultsViewController: UITableViewController {
         
         if(indexPath.section == 0)
         {
-            let cell = tableView.dequeueReusableCellWithIdentifier("PRTestResultCell", forIndexPath: indexPath) as UITableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("PRTestResultCell", forIndexPath: indexPath) as! UITableViewCell
             cell.textLabel?.text = "\(descriptionText) : \(correctAnswers)/\(questions.count)"
             return cell
             
         }
         else
         {
-            let cell = tableView.dequeueReusableCellWithIdentifier("PRTestResultCell", forIndexPath: indexPath) as UITableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("PRTestResultCell", forIndexPath: indexPath) as! UITableViewCell
             cell.textLabel?.attributedText = questions[indexPath.row].questionSummaryString
             return cell
         }

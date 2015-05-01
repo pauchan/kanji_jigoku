@@ -694,7 +694,7 @@
 				INFOPLIST_FILE = kanjijigoku/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "13b5bdd8-3e69-4d92-ab49-7d3cac6fe45a";
+				PROVISIONING_PROFILE = "a98c61c1-6bfa-446e-9d13-7e7083597e9b";
 				SWIFT_OBJC_BRIDGING_HEADER = "kanjijigoku/kanjijigoku-Bridging-Header.h";
 			};
 			name = Debug;
@@ -709,7 +709,7 @@
 				INFOPLIST_FILE = kanjijigoku/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "13b5bdd8-3e69-4d92-ab49-7d3cac6fe45a";
+				PROVISIONING_PROFILE = "a98c61c1-6bfa-446e-9d13-7e7083597e9b";
 				SWIFT_OBJC_BRIDGING_HEADER = "kanjijigoku/kanjijigoku-Bridging-Header.h";
 			};
 			name = Release;

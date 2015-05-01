@@ -106,7 +106,7 @@ class PRKanjiTableViewController: UIViewController, UITableViewDelegate,UITableV
         {
         case PRKanjiJigokuKanjiOptions.RelatedKanijs.rawValue:
             
-            let cell = tableView.dequeueReusableCellWithIdentifier("PRRelatedKanjiCell", forIndexPath: indexPath) as PRRelatedKanjiCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("PRRelatedKanjiCell", forIndexPath: indexPath) as! PRRelatedKanjiCell
             cell.relatedKanjiCollectionview.delegate = self
             cell.relatedKanjiCollectionview.dataSource = self
             cell.relatedKanjiCollectionview.backgroundColor = UIColor.whiteColor()
@@ -115,10 +115,10 @@ class PRKanjiTableViewController: UIViewController, UITableViewDelegate,UITableV
             
         case PRKanjiJigokuKanjiOptions.Summary.rawValue:
 
-            let headerCell = tableView.dequeueReusableCellWithIdentifier("PRKanjiHeaderCell", forIndexPath: indexPath) as PRKanjiTableViewHeaderCell
+            let headerCell = tableView.dequeueReusableCellWithIdentifier("PRKanjiHeaderCell", forIndexPath: indexPath) as! PRKanjiTableViewHeaderCell
             headerCell.kanjiLabel.text = kanji.kanji
             
-            var arr = kanji.radicals.allObjects as [Radical]  //.allObjects as [Radical]
+            var arr = kanji.radicals.allObjects as! [Radical]  //.allObjects as! [Radical]
             let radicalsString = arr.map
             {
                 (radical : Radical) -> String in radical.radical
@@ -134,21 +134,21 @@ class PRKanjiTableViewController: UIViewController, UITableViewDelegate,UITableV
             
         case PRKanjiJigokuKanjiOptions.Notes.rawValue:
             
-            let cell = tableView.dequeueReusableCellWithIdentifier("PRKanjiCell", forIndexPath: indexPath) as UITableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("PRKanjiCell", forIndexPath: indexPath) as! UITableViewCell
             cell.textLabel?.text = kanji.note
             return cell
             
         case PRKanjiJigokuKanjiOptions.Kunyomi.rawValue:
 
 
-                let cell = tableView.dequeueReusableCellWithIdentifier("PRKanjiCell", forIndexPath: indexPath) as UITableViewCell
-                let arr = kanji.kunyomis.allObjects as [Kunyomi]
+                let cell = tableView.dequeueReusableCellWithIdentifier("PRKanjiCell", forIndexPath: indexPath) as! UITableViewCell
+                let arr = kanji.kunyomis.allObjects as! [Kunyomi]
                 cell.textLabel?.text = generateCommaSeparatedString(arr)
                 return cell
 
         case PRKanjiJigokuKanjiOptions.Onyomi.rawValue:
-                let cell = tableView.dequeueReusableCellWithIdentifier("PRKanjiCell", forIndexPath: indexPath) as UITableViewCell
-                let arr = kanji.onyomis.allObjects as [Onyomi]
+                let cell = tableView.dequeueReusableCellWithIdentifier("PRKanjiCell", forIndexPath: indexPath) as! UITableViewCell
+                let arr = kanji.onyomis.allObjects as! [Onyomi]
                 cell.textLabel?.text = generateCommaSeparatedString(arr)
                 return cell
             
@@ -160,7 +160,7 @@ class PRKanjiTableViewController: UIViewController, UITableViewDelegate,UITableV
                 cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "PRKanjiCell2")
                 cell!.selectionStyle = UITableViewCellSelectionStyle.None;
             }
-            let example = kanji.examples.allObjects as [Example]
+            let example = kanji.examples.allObjects as! [Example]
             var attributedText = NSMutableAttributedString(string: example[indexPath.row].example, attributes: kPRKanjiJigokuHelveticaBoldTwenty)
             let attributedText2 = NSAttributedString(string: " 【" + example[indexPath.row].reading + "】", attributes: kPRKanjiJigokuHelveticaFourteen)
             attributedText.appendAttributedString(attributedText2)
@@ -202,18 +202,18 @@ class PRKanjiTableViewController: UIViewController, UITableViewDelegate,UITableV
                 cell!.detailTextLabel?.numberOfLines = 0
                 
             }
-            let sentence = kanji.sentences.allObjects as [Sentence]
+            let sentence = kanji.sentences.allObjects as! [Sentence]
             cell!.textLabel?.text =  sentence[indexPath.row].getExplainedSentence().string
             cell!.detailTextLabel?.text = sentence[indexPath.row].meaning
             //cell!.textLabel?.sizeToFit()
             //cell!.detailTextLabel?.sizeToFit()
             return cell!
         default:
-            return tableView.dequeueReusableCellWithIdentifier("PRKanjiCell", forIndexPath: indexPath) as UITableViewCell
+            return tableView.dequeueReusableCellWithIdentifier("PRKanjiCell", forIndexPath: indexPath) as! UITableViewCell
 
         
         }
-        //return tableView.dequeueReusableCellWithIdentifier("PRKanjiCell", forIndexPath: indexPath) as UITableViewCell
+        //return tableView.dequeueReusableCellWithIdentifier("PRKanjiCell", forIndexPath: indexPath) as! UITableViewCell
 
     }
     
@@ -284,12 +284,12 @@ class PRKanjiTableViewController: UIViewController, UITableViewDelegate,UITableV
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("UICollectionViewCell", forIndexPath: indexPath) as UICollectionViewCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("UICollectionViewCell", forIndexPath: indexPath) as! UICollectionViewCell
         let label = UILabel(frame: CGRectMake(0, 0, cell.frame.size.width, cell.frame.size.height))
         label.text = relatedKanjis[indexPath.row].kanji
         
-        let onyomiSet = kanji.onyomis.allObjects as [Onyomi]
-        let onyomiSet2 = relatedKanjis[indexPath.row].onyomis.allObjects as [Onyomi]
+        let onyomiSet = kanji.onyomis.allObjects as! [Onyomi]
+        let onyomiSet2 = relatedKanjis[indexPath.row].onyomis.allObjects as! [Onyomi]
         
         let test = onyomiSet.map({
         

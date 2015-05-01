@@ -37,7 +37,7 @@ class PRTestViewController: UIViewController {
     
     func testButtonClicked(sender : AnyObject)
     {
-        let button = sender as UIButton
+        let button = sender as! UIButton
         if let index = find(testOptionButtons, button)
         {
             println("Selected index = \(index)")
