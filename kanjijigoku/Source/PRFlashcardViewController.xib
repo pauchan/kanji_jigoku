@@ -28,7 +28,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IMk-Kd-H5Y">
-                    <rect key="frame" x="15" y="363" width="570" height="167"/>
+                    <rect key="frame" x="15" y="400" width="570" height="130"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="100" id="eO5-gM-A4E"/>
                     </constraints>
@@ -42,10 +42,10 @@
                     </variation>
                 </label>
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j7J-Sh-apf" customClass="PRFuriganaLabel" customModule="kanjijigoku" customModuleProvider="target">
-                    <rect key="frame" x="15" y="293" width="570" height="50"/>
+                    <rect key="frame" x="15" y="300" width="570" height="80"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="50" id="wMA-jD-aHf"/>
+                        <constraint firstAttribute="height" constant="80" id="wMA-jD-aHf"/>
                     </constraints>
                 </view>
             </subviews>
@@ -55,7 +55,7 @@
                 <constraint firstItem="IMk-Kd-H5Y" firstAttribute="top" secondItem="j7J-Sh-apf" secondAttribute="bottom" constant="20" id="2OW-2o-F6n"/>
                 <constraint firstItem="j7J-Sh-apf" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="7Kq-vG-oqe"/>
                 <constraint firstItem="LZe-it-cXK" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="D0m-q9-0mQ"/>
-                <constraint firstItem="j7J-Sh-apf" firstAttribute="top" secondItem="LZe-it-cXK" secondAttribute="bottom" constant="13" id="HjA-aV-lSO"/>
+                <constraint firstItem="j7J-Sh-apf" firstAttribute="top" secondItem="LZe-it-cXK" secondAttribute="bottom" constant="20" id="HjA-aV-lSO"/>
                 <constraint firstItem="j7J-Sh-apf" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="UdE-R7-mZZ"/>
                 <constraint firstItem="IMk-Kd-H5Y" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="aux-aa-bAo"/>
                 <constraint firstAttribute="trailing" secondItem="LZe-it-cXK" secondAttribute="trailing" constant="15" id="f8S-7M-zQA"/>
