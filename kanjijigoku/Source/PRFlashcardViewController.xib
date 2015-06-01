@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PRFlashcardViewController" customModule="kanjijigoku" customModuleProvider="target">
@@ -17,26 +18,31 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LZe-it-cXK">
-                    <rect key="frame" x="15" y="240" width="570" height="120"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="clip" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.20000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="LZe-it-cXK">
+                    <rect key="frame" x="15" y="120" width="570" height="160"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="120" id="dnG-fK-aGD"/>
+                        <constraint firstAttribute="height" constant="160" id="dnG-fK-aGD"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="48"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IMk-Kd-H5Y">
-                    <rect key="frame" x="15" y="440" width="570" height="70"/>
+                    <rect key="frame" x="15" y="363" width="570" height="167"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="70" id="eO5-gM-A4E"/>
+                        <constraint firstAttribute="height" constant="100" id="eO5-gM-A4E"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="eO5-gM-A4E"/>
+                        </mask>
+                    </variation>
                 </label>
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j7J-Sh-apf" customClass="PRFuriganaLabel" customModule="kanjijigoku" customModuleProvider="target">
-                    <rect key="frame" x="15" y="373" width="570" height="50"/>
+                    <rect key="frame" x="15" y="293" width="570" height="50"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="wMA-jD-aHf"/>
@@ -46,17 +52,18 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <gestureRecognizers/>
             <constraints>
-                <constraint firstItem="IMk-Kd-H5Y" firstAttribute="top" secondItem="j7J-Sh-apf" secondAttribute="bottom" constant="17" id="2OW-2o-F6n"/>
+                <constraint firstItem="IMk-Kd-H5Y" firstAttribute="top" secondItem="j7J-Sh-apf" secondAttribute="bottom" constant="20" id="2OW-2o-F6n"/>
                 <constraint firstItem="j7J-Sh-apf" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="7Kq-vG-oqe"/>
                 <constraint firstItem="LZe-it-cXK" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="D0m-q9-0mQ"/>
                 <constraint firstItem="j7J-Sh-apf" firstAttribute="top" secondItem="LZe-it-cXK" secondAttribute="bottom" constant="13" id="HjA-aV-lSO"/>
                 <constraint firstItem="j7J-Sh-apf" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="UdE-R7-mZZ"/>
                 <constraint firstItem="IMk-Kd-H5Y" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="aux-aa-bAo"/>
                 <constraint firstAttribute="trailing" secondItem="LZe-it-cXK" secondAttribute="trailing" constant="15" id="f8S-7M-zQA"/>
-                <constraint firstItem="LZe-it-cXK" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="fOc-TL-Dx0"/>
+                <constraint firstItem="LZe-it-cXK" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="top" constant="200" id="fOc-TL-Dx0"/>
                 <constraint firstAttribute="trailing" secondItem="IMk-Kd-H5Y" secondAttribute="trailing" constant="15" id="fge-s2-tDg"/>
                 <constraint firstItem="LZe-it-cXK" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="jGp-zS-Isi"/>
                 <constraint firstAttribute="trailing" secondItem="j7J-Sh-apf" secondAttribute="trailing" constant="15" id="lAa-ek-DTJ"/>
+                <constraint firstAttribute="bottom" secondItem="IMk-Kd-H5Y" secondAttribute="bottom" constant="70" id="ldk-7m-Wme"/>
                 <constraint firstItem="IMk-Kd-H5Y" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="zzG-fw-xvE"/>
             </constraints>
             <point key="canvasLocation" x="174" y="174"/>
