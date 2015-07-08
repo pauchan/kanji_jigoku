@@ -19,19 +19,34 @@ class PRFuriganaLabel : UIView
         let context = UIGraphicsGetCurrentContext()
         
         CGContextSetRGBFillColor(context, 1.0, 1.0, 1.0, 1.0)
-        CGContextAddRect(context, rect)
-        CGContextFillPath(context)
         
-        CGContextTranslateCTM(context,0.0 , 35.0)
+        CGContextSetTextMatrix(context, CGAffineTransformIdentity);
+        CGContextTranslateCTM(context, 0, self.bounds.size.height);
         CGContextScaleCTM(context, 1.0, -1.0)
         
-        let line = CTLineCreateWithAttributedString(furiganaText)
-        let width : Float = Float(CTLineGetTypographicBounds(line, nil, nil, nil))
-        let yCenter : Float = (Float(rect.width)-width)/2.0
+        var attributedText = furiganaText as? NSMutableAttributedString
+        if attributedText != nil {
+            
+            var alignment = CTTextAlignment.TextAlignmentCenter
+            let alignmentSetting = [CTParagraphStyleSetting(spec: .Alignment, valueSize: Int(sizeofValue(alignment)), value: &alignment)]
+            let paragraphStyle = CTParagraphStyleCreate(alignmentSetting, 1)
+            CFAttributedStringSetAttribute(attributedText, CFRangeMake(0, CFAttributedStringGetLength(attributedText)), kCTParagraphStyleAttributeName, paragraphStyle)
+            
+            var path: CGMutablePathRef = CGPathCreateMutable()
+            CGPathAddRect(path, nil, self.bounds)
+            
+            let frameSetter : CTFramesetterRef = CTFramesetterCreateWithAttributedString(attributedText)
+            let frame = CTFramesetterCreateFrame(frameSetter, CFRangeMake(0, attributedText!.length), path, nil)
+            
+            CTFrameDraw(frame, context)
+        } else {
         
-        CGContextTranslateCTM(context,CGFloat(yCenter) , 0.0)
-
-        CTLineDraw(line, context)
+            let line = CTLineCreateWithAttributedString(furiganaText)
+            let width : Float = Float(CTLineGetTypographicBounds(line, nil, nil, nil))
+            let yCenter : Float = (Float(rect.width)-width)/2.0
+            CGContextTranslateCTM(context,CGFloat(yCenter) , 0.0)
+            CTLineDraw(line, context)
+        }
     }
 
 }

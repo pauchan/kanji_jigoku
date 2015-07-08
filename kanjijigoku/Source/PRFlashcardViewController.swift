@@ -28,6 +28,7 @@ class PRFlashcardViewController : UIViewController, UIGestureRecognizerDelegate 
         let tap : UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "tapReceived:")
         tap.delegate = self
         self.view.addGestureRecognizer(tap)
+        characterLabel?.adjustsFontSizeToFitWidth = true
         characterLabel?.text = flashcard.text
         readingLabel?.furiganaText = flashcard.furiganaReading
         meaningLabel?.text = flashcard.meaning

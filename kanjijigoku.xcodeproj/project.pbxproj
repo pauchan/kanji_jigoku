@@ -331,6 +331,7 @@
 			isa = PBXGroup;
 			children = (
 				1812D5441AA9A771004C91D0 /* PRFilterCell.swift */,
+				18C64F1B1A917AC5000F5641 /* PRFuriganaLabel.swift */,
 				180ABC971A9D5CFB0053A7F6 /* PRFilterCell.xib */,
 				FB67D6EE1A861B8A00926E38 /* LaunchScreen.xib */,
 				18D170611A89A0B000672203 /* PRHeaderViewCell.xib */,
@@ -348,7 +349,6 @@
 			isa = PBXGroup;
 			children = (
 				FB67D7071A8622F400926E38 /* kanjijigoku-Bridging-Header.h */,
-				18C64F1B1A917AC5000F5641 /* PRFuriganaLabel.swift */,
 				18D26D9A1A883ED800A8908C /* PRDatabaseHelper.swift */,
 				18D1706D1A89D77B00672203 /* PRStateSingleton.swift */,
 				18E4E6881A8D8B330038F86B /* PRCharacterExtension.swift */,
@@ -415,7 +415,7 @@
 				TargetAttributes = {
 					FB67D6DC1A861B8A00926E38 = {
 						CreatedOnToolsVersion = 6.1;
-						DevelopmentTeam = 57NUJ8NN7U;
+						DevelopmentTeam = VA566HV7D5;
 					};
 					FB67D6F41A861B8B00926E38 = {
 						CreatedOnToolsVersion = 6.1;
@@ -700,11 +700,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Pawel Rusin (CMRU8R2N3V)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Pawel Rusin (ASR7WNYKP5)";
 				INFOPLIST_FILE = kanjijigoku/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a98c61c1-6bfa-446e-9d13-7e7083597e9b";
+				PROVISIONING_PROFILE = "06f119b9-4889-4964-8a54-3b4d5e08635d";
 				SWIFT_OBJC_BRIDGING_HEADER = "kanjijigoku/kanjijigoku-Bridging-Header.h";
 			};
 			name = Debug;
@@ -715,11 +715,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Pawel Rusin (CMRU8R2N3V)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Pawel Rusin (ASR7WNYKP5)";
 				INFOPLIST_FILE = kanjijigoku/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a98c61c1-6bfa-446e-9d13-7e7083597e9b";
+				PROVISIONING_PROFILE = "06f119b9-4889-4964-8a54-3b4d5e08635d";
 				SWIFT_OBJC_BRIDGING_HEADER = "kanjijigoku/kanjijigoku-Bridging-Header.h";
 			};
 			name = Release;
