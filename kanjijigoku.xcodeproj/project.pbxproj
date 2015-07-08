@@ -12,6 +12,7 @@
 		1812D5451AA9A771004C91D0 /* PRFilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1812D5441AA9A771004C91D0 /* PRFilterCell.swift */; };
 		1848284A1B4CDFC1001AB41F /* PRStringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184828491B4CDFC1001AB41F /* PRStringExtension.swift */; };
 		1848284B1B4CE8E9001AB41F /* PRStringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184828491B4CDFC1001AB41F /* PRStringExtension.swift */; };
+		1848284D1B4CF964001AB41F /* PRDetailedKanjiCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1848284C1B4CF964001AB41F /* PRDetailedKanjiCell.swift */; };
 		1860524E1A9AF44C0046247B /* PRKanjiPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1860524D1A9AF44C0046247B /* PRKanjiPageControl.swift */; };
 		18648AA71A9DB5EF00B5472D /* PRSearchKanjiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18648AA51A9DB5EF00B5472D /* PRSearchKanjiViewController.swift */; };
 		18648AA81A9DB5EF00B5472D /* PRSearchKanjiViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18648AA61A9DB5EF00B5472D /* PRSearchKanjiViewController.xib */; };
@@ -83,6 +84,7 @@
 		1812D5421AA9A35E004C91D0 /* PRNoCursorTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRNoCursorTextField.swift; path = Source/PRNoCursorTextField.swift; sourceTree = "<group>"; };
 		1812D5441AA9A771004C91D0 /* PRFilterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRFilterCell.swift; path = Source/PRFilterCell.swift; sourceTree = "<group>"; };
 		184828491B4CDFC1001AB41F /* PRStringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRStringExtension.swift; path = Source/PRStringExtension.swift; sourceTree = "<group>"; };
+		1848284C1B4CF964001AB41F /* PRDetailedKanjiCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRDetailedKanjiCell.swift; path = Source/PRDetailedKanjiCell.swift; sourceTree = "<group>"; };
 		1860524D1A9AF44C0046247B /* PRKanjiPageControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRKanjiPageControl.swift; path = Source/PRKanjiPageControl.swift; sourceTree = "<group>"; };
 		18648AA51A9DB5EF00B5472D /* PRSearchKanjiViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRSearchKanjiViewController.swift; path = Source/PRSearchKanjiViewController.swift; sourceTree = "<group>"; };
 		18648AA61A9DB5EF00B5472D /* PRSearchKanjiViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PRSearchKanjiViewController.xib; path = Source/PRSearchKanjiViewController.xib; sourceTree = "<group>"; };
@@ -337,6 +339,7 @@
 				188C73671A9EE6E600D1634C /* PRRelatedKanjiCell.swift */,
 				188C73681A9EE6E600D1634C /* PRRelatedKanjiCell.xib */,
 				1812D5421AA9A35E004C91D0 /* PRNoCursorTextField.swift */,
+				1848284C1B4CF964001AB41F /* PRDetailedKanjiCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -543,6 +546,7 @@
 				18C23D4C1A8C734D00AB5817 /* Radical.swift in Sources */,
 				18C64F261A9203C1000F5641 /* PRTestViewController.swift in Sources */,
 				18E4E6891A8D8B330038F86B /* PRCharacterExtension.swift in Sources */,
+				1848284D1B4CF964001AB41F /* PRDetailedKanjiCell.swift in Sources */,
 				18C6AFF21A9463DC003C5208 /* PRColor.swift in Sources */,
 				18D0CB141A9C63E80027DD8F /* PRKanjiTableViewHeaderCell.swift in Sources */,
 				18C4948E1A95B7AB00095A7E /* PRKanjiTableViewController.swift in Sources */,
