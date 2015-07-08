@@ -21,16 +21,27 @@ class kanjijigokuTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        XCTAssert(true, "Pass")
+    func testRemoveReferenceSubstringWithNoReference() {
+    
+        let testString = "dsfdsafgdghbgrbf"
+        let shortened = testString.removeReferenceSubstring()
+        XCTAssertEqual(testString, shortened, "proper shortening for string with no reference")
     }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock() {
-            // Put the code you want to measure the time of here.
-        }
+    func testRemoveReferenceSubstringWithOneReference() {
+        
+        let comparableString = "dsfdsafgdghbgrbf"
+        let testString = "dsfdsafgdgh|234324234|bgrbf"
+        let shortened = testString.removeReferenceSubstring()
+        XCTAssertEqual(shortened, comparableString, "proper shortening for string with one reference")
     }
+
     
+    func testRemoveReferenceSubstringWithTwoReference() {
+        
+        let comparableString = "dsfdsafgdghbgrbf"
+        let testString = "d|fre45tg|sfdsafgdgh|234324234|bgrbf"
+        let shortened = testString.removeReferenceSubstring()
+        XCTAssertEqual(shortened, comparableString, "proper shortening for string with two reference")
+    }
 }
