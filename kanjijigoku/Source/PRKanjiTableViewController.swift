@@ -220,7 +220,16 @@ class PRKanjiTableViewController: UIViewController, UITableViewDelegate,UITableV
         }
         else
         {
-            return 80.0
+            // adjust based on detailed width and height
+            var cell = tableView.cellForRowAtIndexPath(indexPath)
+            let font = cell!.textLabel!.font
+            let detailedFont = cell!.detailTextLabel!.font
+            let constraintsSize = CGSizeMake(cell!.bounds.size.width, CGFloat(MAXFLOAT))
+            let text: NSString = NSString(string: cell!.textLabel!.text!)
+            let labelSize = text.boundingRectWithSize(constraintsSize, options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: [NSFontAttributeName: font], context: nil)
+            let detailedText: NSString = NSString(string: cell!.detailTextLabel!.text!)
+            let detailedLabelSize = detailedText.boundingRectWithSize(constraintsSize, options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: [NSFontAttributeName: detailedFont!], context: nil)
+            return labelSize.height + detailedLabelSize.height + 20.0
         }
     }
     
