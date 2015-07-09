@@ -220,19 +220,31 @@ class PRKanjiTableViewController: UIViewController, UITableViewDelegate,UITableV
         }
         else
         {
+            var text = ""
+            var detailedText = ""
+            if displaySection == .Examples {
+                let example = kanji.examples.allObjects as! [Example]
+                text = example[indexPath.row].generateDescriptionString().string
+                detailedText = example[indexPath.row].meaning + " " + example[indexPath.row].note.removeReferenceSubstring()
+            } else if displaySection == .AdditionalExamples {
+                text = additionalExamples[indexPath.row].generateDescriptionString().string
+                detailedText = additionalExamples[indexPath.row].meaning + " " + additionalExamples[indexPath.row].note.removeReferenceSubstring()
+            } else { // == .Sentences
+                let sentence = kanji.sentences.allObjects as! [Sentence]
+                text = sentence[indexPath.row].getExplainedSentence().string
+                detailedText = sentence[indexPath.row].meaning
+            }
+            
             // adjust based on detailed width and height
-            var cell = tableView.cellForRowAtIndexPath(indexPath)
-            let font = cell!.textLabel!.font
-            let detailedFont = cell!.detailTextLabel!.font
-            let constraintsSize = CGSizeMake(cell!.bounds.size.width, CGFloat(MAXFLOAT))
-            let text: NSString = NSString(string: cell!.textLabel!.text!)
+            let font = UIFont(name: "HiraKakuProN-W3", size: 15.0)!
+            let detailedFont = UIFont(name: "HiraKakuProN-W3", size: 12.0)!
+            let constraintsSize = CGSizeMake(tableView.bounds.size.width, CGFloat(MAXFLOAT))
             let labelSize = text.boundingRectWithSize(constraintsSize, options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: [NSFontAttributeName: font], context: nil)
-            let detailedText: NSString = NSString(string: cell!.detailTextLabel!.text!)
-            let detailedLabelSize = detailedText.boundingRectWithSize(constraintsSize, options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: [NSFontAttributeName: detailedFont!], context: nil)
+            let detailedLabelSize = detailedText.boundingRectWithSize(constraintsSize, options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: [NSFontAttributeName: detailedFont], context: nil)
+            println("Cell height: \(labelSize.height + detailedLabelSize.height + 20.0)")
             return labelSize.height + detailedLabelSize.height + 20.0
         }
     }
-    
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         

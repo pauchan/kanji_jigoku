@@ -27,6 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             db.syncDatabase()
         }
 
+        //UILabel.appearance().font = UIFont(name: "HiraKakuProN-W3", size: 13.0);
         
         let stateSingleton : PRStateSingleton = PRStateSingleton.sharedInstance
         stateSingleton.levelArray = db.getLevelArray()
@@ -42,10 +43,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // not working
         UIBarButtonItem.appearance().setBackButtonBackgroundImage(UIImage(named: "leftArrowIcon"), forState: .Normal, barMetrics: .Default)
         UIBarButtonItem.appearance().setBackgroundImage(UIImage(named: "leftArrowIcon"), forState: .Normal, barMetrics: .Default)
-
-        //UINavigationBar.appearance().backIndicatorTransitionMaskImage = UIImage(named: "leftArrowIcon")
-
-        //UINavigationBar.appearance().titleTextAttributes = UITextAttributes([UITextAttributeFont : UIFont(name: "HelveticaNeue-CondensedBlack", size: 21.0)])
         
         let kanjiViewController = PRKanjiMenuViewController()
         kanjiViewController._kanjiTable = db.getSelectedObjects("Character", level: PRStateSingleton.sharedInstance.currentLevel, lesson: PRStateSingleton.sharedInstance.currentLesson) as! [Character]
