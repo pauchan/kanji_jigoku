@@ -121,16 +121,16 @@ class PRTestViewController: UIViewController {
     {
     
         let kanjiString : String = questions[questionsCount-1].question as String
-        let attrArr = [NSFontAttributeName : UIFont(name: "Helvetica-Bold", size: 12.0)!]
+        let attrArr = [NSFontAttributeName : UIFont().appFont()]
         let beginningAtrStr = NSAttributedString(string: kanjiString , attributes: attrArr)
         var tempString : NSMutableAttributedString = NSMutableAttributedString(attributedString: beginningAtrStr)
         tempString.appendAttributedString(NSAttributedString(string: " "))
-        tempString.appendAttributedString(NSAttributedString(string: questions[questionsCount-1].meaning, attributes: [NSFontAttributeName : UIFont(name: "Helvetica", size: 12.0)!]))
+        tempString.appendAttributedString(NSAttributedString(string: questions[questionsCount-1].meaning, attributes: [NSFontAttributeName : UIFont().appFont()]))
         tempString.appendAttributedString(NSAttributedString(string: " "))
         
         for button in testOptionButtons
         {
-            let atrStr = NSAttributedString(string: button.titleForState(UIControlState.Normal)!, attributes: [NSForegroundColorAttributeName : button.backgroundColor!, NSFontAttributeName : UIFont(name: "Helvetica", size: 12.0)!])
+            let atrStr = NSAttributedString(string: button.titleForState(UIControlState.Normal)!, attributes: [NSForegroundColorAttributeName : button.backgroundColor!, NSFontAttributeName : UIFont().appFont()])
             tempString.appendAttributedString(atrStr)
             tempString.appendAttributedString(NSAttributedString(string: " "))
         }
