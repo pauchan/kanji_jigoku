@@ -106,7 +106,6 @@ class PRKanjiTableViewController: UIViewController, UITableViewDelegate,UITableV
         switch(displaySection)
         {
         case .RelatedKanijs:
-            
             let cell = tableView.dequeueReusableCellWithIdentifier("PRRelatedKanjiCell", forIndexPath: indexPath) as! PRRelatedKanjiCell
             cell.relatedKanjiCollectionview.delegate = self
             cell.relatedKanjiCollectionview.dataSource = self
@@ -115,30 +114,27 @@ class PRKanjiTableViewController: UIViewController, UITableViewDelegate,UITableV
             return cell
             
         case .Summary:
-            
             let headerCell = tableView.dequeueReusableCellWithIdentifier("PRKanjiHeaderCell", forIndexPath: indexPath) as! PRKanjiTableViewHeaderCell
             headerCell.kanjiLabel.text = kanji.kanji
-            headerCell.detailsLabel.text = " \(kanji.strokeCount)画 【\(self.generateRadicalsString())】"
+            headerCell.detailsLabel.text = " \(kanji.strokeCount)画 【\(kanji.generateRadicalsString())】"
             headerCell.explanationLabel.text = kanji.meaning
             return headerCell
             
         case .Notes:
-            
             let cell = tableView.dequeueReusableCellWithIdentifier("PRKanjiCell", forIndexPath: indexPath) as! UITableViewCell
             cell.textLabel?.text = kanji.note
             return cell
             
         case .Kunyomi:
-            
             let cell = tableView.dequeueReusableCellWithIdentifier("PRKanjiCell", forIndexPath: indexPath) as! UITableViewCell
             let arr = kanji.kunyomis.allObjects as! [Kunyomi]
-            cell.textLabel?.text = generateCommaSeparatedString(arr)
+            cell.textLabel?.text = kanji.generateCommaSeparatedString(arr)
             return cell
             
         case .Onyomi:
             let cell = tableView.dequeueReusableCellWithIdentifier("PRKanjiCell", forIndexPath: indexPath) as! UITableViewCell
             let arr = kanji.onyomis.allObjects as! [Onyomi]
-            cell.textLabel?.text = generateCommaSeparatedString(arr)
+            cell.textLabel?.text = kanji.generateCommaSeparatedString(arr)
             return cell
             
         case .Examples:
@@ -220,6 +216,7 @@ class PRKanjiTableViewController: UIViewController, UITableViewDelegate,UITableV
         }
         else
         {
+            // for examples and sentences adjust based on detailed height
             var text = ""
             var detailedText = ""
             if displaySection == .Examples {
@@ -235,12 +232,15 @@ class PRKanjiTableViewController: UIViewController, UITableViewDelegate,UITableV
                 detailedText = sentence[indexPath.row].meaning
             }
             
-            // adjust based on detailed width and height
             let font = UIFont(name: "HiraKakuProN-W3", size: 15.0)!
-            let detailedFont = UIFont(name: "HiraKakuProN-W3", size: 12.0)!
+            let detailedFont = UIFont().appFont()
             let constraintsSize = CGSizeMake(tableView.bounds.size.width, CGFloat(MAXFLOAT))
             let labelSize = text.boundingRectWithSize(constraintsSize, options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: [NSFontAttributeName: font], context: nil)
+            
             let detailedLabelSize = detailedText.boundingRectWithSize(constraintsSize, options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: [NSFontAttributeName: detailedFont], context: nil)
+            
+            
+            
             println("Cell height: \(labelSize.height + detailedLabelSize.height + 20.0)")
             return labelSize.height + detailedLabelSize.height + 20.0
         }
@@ -286,40 +286,6 @@ class PRKanjiTableViewController: UIViewController, UITableViewDelegate,UITableV
         let vc = PRKanjiTableViewController()
         vc.kanji  = relatedKanjis[indexPath.row] as Character
         self.navigationController?.pushViewController(vc, animated: false)
-        
-    }
-    
-    
-    func generateCommaSeparatedString(arrayOfReadings: [Reading]) -> String
-    {
-        var appStr : String = ""
-        for i in 0..<arrayOfReadings.count
-        {
-            if i != arrayOfReadings.count-1
-            {
-                let str = arrayOfReadings[i].reading+", "
-                appStr += str
-            }
-            else
-            {
-                appStr += arrayOfReadings[i].reading
-            }
-        }
-        return appStr
-    }
-    
-    func generateRadicalsString() -> String {
-        
-        var arr = kanji.radicals.allObjects as! [Radical]
-        return arr.map
-            {
-                (radical : Radical) -> String in radical.radical
-                
-            }.reduce("")
-                {
-                    (base,append) in base + append
-        }
-        
         
     }
 }
