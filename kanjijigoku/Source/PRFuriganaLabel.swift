@@ -25,6 +25,10 @@ class PRFuriganaLabel : UIView
         CGContextScaleCTM(context, 1.0, -1.0)
         
         var attributedText = furiganaText as? NSMutableAttributedString
+        
+        let newFont = self.fontSizeToFitView(UIFont().appFontOfSize(22.0), text: furiganaText.string)
+        attributedText?.addAttribute(NSFontAttributeName, value: newFont, range: NSRange(location: 0,length: furiganaText.length))
+        
         if attributedText != nil {
             
             var alignment = CTTextAlignment.TextAlignmentCenter

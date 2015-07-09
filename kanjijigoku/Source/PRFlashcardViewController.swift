@@ -28,13 +28,11 @@ class PRFlashcardViewController : UIViewController, UIGestureRecognizerDelegate 
         let tap : UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "tapReceived:")
         tap.delegate = self
         self.view.addGestureRecognizer(tap)
-        characterLabel?.adjustsFontSizeToFitWidth = true
         characterLabel?.text = flashcard.text
         readingLabel?.furiganaText = flashcard.furiganaReading
-        meaningLabel?.text = flashcard.meaning
-
+        meaningLabel?.text = flashcard.meaning        
     }
-    
+
     func tapReceived(sender: UITapGestureRecognizer) {
         
         tapCount++
@@ -52,6 +50,16 @@ class PRFlashcardViewController : UIViewController, UIGestureRecognizerDelegate 
         }
         
     }
+    
+    override func viewDidLayoutSubviews() {
+        
+        super.viewDidLayoutSubviews()
+        characterLabel.font = characterLabel.fontSizeToFitView(UIFont().appFontOfSize(36.0), text: flashcard.text)
+        meaningLabel?.font = meaningLabel.fontSizeToFitView(UIFont().appFontOfSize(22.0), text: flashcard.meaning)
+
+    }
+    
+
 
 
 }

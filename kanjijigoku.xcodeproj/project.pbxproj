@@ -26,7 +26,6 @@
 		18BD12211B4E057F00D76B2D /* PRSentenceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BD12201B4E057F00D76B2D /* PRSentenceExtension.swift */; };
 		18BD12231B4E05B900D76B2D /* PRExampleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BD12221B4E05B900D76B2D /* PRExampleExtension.swift */; };
 		18BD12251B4E15EF00D76B2D /* PRFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BD12241B4E15EF00D76B2D /* PRFont.swift */; };
-		18BD12271B4E2C8900D76B2D /* PRReadingExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BD12261B4E2C8900D76B2D /* PRReadingExtension.swift */; };
 		18BD12291B4E2EBB00D76B2D /* PRViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BD12281B4E2EBB00D76B2D /* PRViewExtension.swift */; };
 		18C23D3E1A8C734C00AB5817 /* Kunyomi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C23D3D1A8C734C00AB5817 /* Kunyomi.swift */; };
 		18C23D401A8C734D00AB5817 /* Testable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C23D3F1A8C734D00AB5817 /* Testable.swift */; };
@@ -103,7 +102,6 @@
 		18BD12201B4E057F00D76B2D /* PRSentenceExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRSentenceExtension.swift; path = Source/PRSentenceExtension.swift; sourceTree = "<group>"; };
 		18BD12221B4E05B900D76B2D /* PRExampleExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRExampleExtension.swift; sourceTree = "<group>"; };
 		18BD12241B4E15EF00D76B2D /* PRFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRFont.swift; path = Source/PRFont.swift; sourceTree = "<group>"; };
-		18BD12261B4E2C8900D76B2D /* PRReadingExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRReadingExtension.swift; path = Source/PRReadingExtension.swift; sourceTree = "<group>"; };
 		18BD12281B4E2EBB00D76B2D /* PRViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRViewExtension.swift; sourceTree = "<group>"; };
 		18C23D3D1A8C734C00AB5817 /* Kunyomi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Kunyomi.swift; path = Source/Kunyomi.swift; sourceTree = "<group>"; };
 		18C23D3F1A8C734D00AB5817 /* Testable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Testable.swift; path = Source/Testable.swift; sourceTree = "<group>"; };
@@ -205,7 +203,6 @@
 				18E4E6881A8D8B330038F86B /* PRCharacterExtension.swift */,
 				18BD12201B4E057F00D76B2D /* PRSentenceExtension.swift */,
 				18BD12221B4E05B900D76B2D /* PRExampleExtension.swift */,
-				18BD12261B4E2C8900D76B2D /* PRReadingExtension.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -566,7 +563,6 @@
 				18D170721A89F03100672203 /* PRFlashcardPageViewController.swift in Sources */,
 				18C64F291A920400000F5641 /* PRTestResultsViewController.swift in Sources */,
 				18D0CB101A9C3C1B0027DD8F /* PRStringAttributes.swift in Sources */,
-				18BD12271B4E2C8900D76B2D /* PRReadingExtension.swift in Sources */,
 				18C23D4C1A8C734D00AB5817 /* Radical.swift in Sources */,
 				18C64F261A9203C1000F5641 /* PRTestViewController.swift in Sources */,
 				18E4E6891A8D8B330038F86B /* PRCharacterExtension.swift in Sources */,
