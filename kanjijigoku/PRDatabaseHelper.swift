@@ -553,9 +553,9 @@ class PRDatabaseHelper
             case "Character":
                 fetchRequest.predicate = NSPredicate(format: "(ANY kunyomis.reading='\(phrase)') OR (ANY onyomis.reading='\(phrase)')")
             case "Example":
-                fetchRequest.predicate = NSPredicate(format: "reading='\(phrase)'")
+                fetchRequest.predicate = NSPredicate(format: "reading='\(phrase)' OR example CONTAINS '\(phrase)'")
             case "Sentence":
-                fetchRequest.predicate = NSPredicate(format: "\(object.lowercaseString) CONTAINS '\(phrase)'")
+                fetchRequest.predicate = NSPredicate(format: "(sentence CONTAINS '\(phrase)') OR (meaning CONTAINS '\(phrase)')")
         default:
                 fetchRequest.predicate == nil
         }

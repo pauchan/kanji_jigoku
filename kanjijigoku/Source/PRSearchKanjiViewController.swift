@@ -41,6 +41,8 @@ class PRSearchKanjiViewController: UIViewController, UITableViewDelegate, UITabl
 
         // Do any additional setup after loading the view.
         kanjiSearchTable.registerClass(UITableViewCell.self, forCellReuseIdentifier: "PRKanjiCell")
+        kanjiSearchTable.registerClass(PRDetailedKanjiCell.self, forCellReuseIdentifier: "PRDetailedKanjiCell")
+
         
         kanjiSearchTable.tableFooterView = UIView()
 
@@ -59,14 +61,16 @@ class PRSearchKanjiViewController: UIViewController, UITableViewDelegate, UITabl
         }
         else if indexPath.section == 1
         {
-            let cell = tableView.dequeueReusableCellWithIdentifier("PRKanjiCell", forIndexPath: indexPath) as! UITableViewCell
-            cell.textLabel?.text = exampleSearchArray[indexPath.row].example
+            let cell = tableView.dequeueReusableCellWithIdentifier("PRDetailedKanjiCell", forIndexPath: indexPath) as! PRDetailedKanjiCell
+            cell.textLabel?.attributedText = exampleSearchArray[indexPath.row].generateDescriptionString()
+            cell.detailTextLabel?.text = exampleSearchArray[indexPath.row].meaning
             return cell
         }
         else
         {
-            let cell = tableView.dequeueReusableCellWithIdentifier("PRKanjiCell", forIndexPath: indexPath) as! UITableViewCell
-            cell.textLabel?.text = sentenceSearchArray[indexPath.row].sentence
+            let cell = tableView.dequeueReusableCellWithIdentifier("PRDetailedKanjiCell", forIndexPath: indexPath) as! PRDetailedKanjiCell
+            cell.textLabel?.text = sentenceSearchArray[indexPath.row].getExplainedSentence().string
+            cell.detailTextLabel?.text = sentenceSearchArray[indexPath.row].meaning
             return cell
         }
     }
