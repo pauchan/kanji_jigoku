@@ -16,8 +16,8 @@ class PRDetailedKanjiCell: UITableViewCell {
         
         super.init(style: UITableViewCellStyle.Subtitle, reuseIdentifier: reuseIdentifier)
         self.selectionStyle = UITableViewCellSelectionStyle.None
-        self.textLabel?.numberOfLines = 5
-        self.detailTextLabel?.numberOfLines = 5
+        self.textLabel?.numberOfLines = 0
+        self.detailTextLabel?.numberOfLines = 0
         
         self.textLabel?.font = UIFont(name: "HiraKakuProN-W3", size: 15.0);
         self.detailTextLabel?.font = UIFont(name: "HiraKakuProN-W3", size: 12.0);
@@ -28,21 +28,4 @@ class PRDetailedKanjiCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-//    
-//override func layoutSubviews() {
-//        
-//
-//        super.layoutSubviews()
-//        let size = self.bounds.size
-//        self.textLabel?.frame = CGRectMake(CELL_MARGIN_SIZE, CELL_MARGIN_SIZE, size.width-2.0*CELL_MARGIN_SIZE, size.height*0.5-4.0*CELL_MARGIN_SIZE)
-//        self.detailTextLabel?.frame = CGRectMake(CELL_MARGIN_SIZE, size.height*0.5-2.0*CELL_MARGIN_SIZE, size.width-2.0*CELL_MARGIN_SIZE, size.height*0.5-4.0*CELL_MARGIN_SIZE)
-//    
-//}
 }
-
-//func setFontToFit(text: String, label: UILabel) -> CGFloat {
-//
-//    let font = label.font
-//    let expectedSize = text.
-//
-//}

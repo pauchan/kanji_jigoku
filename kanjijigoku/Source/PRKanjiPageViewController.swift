@@ -16,7 +16,6 @@ class PRKanjiPageViewController: UIViewController, UIPageViewControllerDelegate,
     
     var _kanjiTable : [Kanji] = [Kanji]()
     var _selectedIndex : Int = 0
-    //var inactiveImagesArray : [UIImage] = [UIImage]()
     var _pageControl : PRKanjiPageControl!
     var pageViewController : UIPageViewController!
     
@@ -35,7 +34,6 @@ class PRKanjiPageViewController: UIViewController, UIPageViewControllerDelegate,
         self.navigationItem.title = vc.kanji.kanji
         
         _pageControl = PRKanjiPageControl(kanjis: _kanjiTable, frame: CGRectMake(0, self.view.frame.size.height*0.85, self.view.frame.size.width, self.view.frame.size.height*0.15))
-         //,  frame: CGRectMake(self.view.center.x - (kKanjiPageIndicatorWidth/2.0), self.view.frame.origin.y + 0.0, kKanjiPageIndicatorWidth, kKanjiPageIndicatorHeight
         _pageControl.numberOfPages = _kanjiTable.count
         vc.pageControl = _pageControl
         _pageControl.currentPage = _selectedIndex
@@ -45,7 +43,6 @@ class PRKanjiPageViewController: UIViewController, UIPageViewControllerDelegate,
         self.view.addSubview(pageViewController.view)
         self.pageViewController.didMoveToParentViewController(self)
 
-        
         
     }
     

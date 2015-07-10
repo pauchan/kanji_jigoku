@@ -18,16 +18,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
         
         let db = PRDatabaseHelper()
-        
         if NSUserDefaults.standardUserDefaults().objectForKey("PRKanjiJigokuAutoDbUpdate") == nil || NSUserDefaults.standardUserDefaults().objectForKey("PRKanjiJigokuAutoDbUpdate") as! Bool == true || kPRKanjiJigokuTestMode
         {
             db.syncDatabase()
         }
-
-        //UILabel.appearance().font = UIFont(name: "HiraKakuProN-W3", size: 13.0);
         
         let stateSingleton : PRStateSingleton = PRStateSingleton.sharedInstance
         stateSingleton.levelArray = db.getLevelArray()

@@ -15,6 +15,9 @@ let kPRKanjiJigokuDBLocation = "http://serwer1456650.home.pl/clientDB.db"
 
 let kPRKanjiJigokuFalseAnswerAmount = 3
 
+private let ObligatoryFlag = "8"
+
+
 class PRDatabaseHelper
 {
     
