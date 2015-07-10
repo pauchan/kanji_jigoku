@@ -14,7 +14,7 @@ let kKanjiPageIndicatorHeight : CGFloat = 50.0
 class PRKanjiPageViewController: UIViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource
 {
     
-    var _kanjiTable : [Character] = [Character]()
+    var _kanjiTable : [Kanji] = [Kanji]()
     var _selectedIndex : Int = 0
     //var inactiveImagesArray : [UIImage] = [UIImage]()
     var _pageControl : PRKanjiPageControl!
@@ -29,7 +29,7 @@ class PRKanjiPageViewController: UIViewController, UIPageViewControllerDelegate,
         pageViewController.delegate = self
     
         let vc = PRKanjiTableViewController()
-        vc.kanji = _kanjiTable[_selectedIndex] as Character
+        vc.kanji = _kanjiTable[_selectedIndex] as Kanji
         var vcArray = [vc] as [AnyObject]
         
         self.navigationItem.title = vc.kanji.kanji
@@ -60,7 +60,7 @@ class PRKanjiPageViewController: UIViewController, UIPageViewControllerDelegate,
         {
             _pageControl.currentPage = --_selectedIndex
             let vc = PRKanjiTableViewController()
-            vc.kanji  = _kanjiTable[_selectedIndex] as Character
+            vc.kanji  = _kanjiTable[_selectedIndex] as Kanji
             self.navigationItem.title = vc.kanji.kanji
             vc.pageControl = _pageControl
             return vc
@@ -78,7 +78,7 @@ class PRKanjiPageViewController: UIViewController, UIPageViewControllerDelegate,
         {
             _pageControl.currentPage = ++_selectedIndex
             let vc = PRKanjiTableViewController()
-            vc.kanji  = _kanjiTable[_selectedIndex] as Character
+            vc.kanji  = _kanjiTable[_selectedIndex] as Kanji
             self.navigationItem.title = vc.kanji.kanji
             vc.pageControl = _pageControl
             

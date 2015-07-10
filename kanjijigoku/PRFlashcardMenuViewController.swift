@@ -67,15 +67,15 @@ override func viewDidLoad() {
     {
         if indexPath.section != 0
         {
-            let charactersArray = PRDatabaseHelper().getSelectedObjects("Character", level: PRStateSingleton.sharedInstance.currentLevel, lesson: PRStateSingleton.sharedInstance.currentLesson)
+            let charactersArray = PRDatabaseHelper().getSelectedObjects("Kanji", level: PRStateSingleton.sharedInstance.currentLevel, lesson: PRStateSingleton.sharedInstance.currentLesson)
             var flashcardsArray : [Flashcard]
             if(indexPath.row == kKunyomiOption || indexPath.row == kOnyomiOption)
             {
-                flashcardsArray = self.generateFlashcardsArrayForReadings(charactersArray as! [Character], option: indexPath.row)
+                flashcardsArray = self.generateFlashcardsArrayForReadings(charactersArray as! [Kanji], option: indexPath.row)
             }
             else if(indexPath.row == kExamplesOption || indexPath.row == kSentenceOption)
             {
-                flashcardsArray = self.generateFlashcardsArrayForExamples(charactersArray as! [Character], option: indexPath.row)
+                flashcardsArray = self.generateFlashcardsArrayForExamples(charactersArray as! [Kanji], option: indexPath.row)
             }
             else // customFlashcardToImplement
             {
@@ -123,24 +123,24 @@ override func viewDidLoad() {
         return 2
     }
     
-    func generateFlashcardsArrayForReadings(characters: [Character], option: Int) -> [Flashcard]
+    func generateFlashcardsArrayForReadings(characters: [Kanji], option: Int) -> [Flashcard]
     {
         
         var returnArray : [Flashcard] = [Flashcard]()
-        for kanjiCharacter in characters
+        for kanjiKanji in characters
         {
             if(option == kOnyomiOption){
-                returnArray.append(Flashcard(text: kanjiCharacter.kanji, reading: kanjiCharacter.generateReadingString(kanjiCharacter.onyomis), meaning: kanjiCharacter.meaning))
+                returnArray.append(Flashcard(text: kanjiKanji.kanji, reading: kanjiKanji.generateReadingString(kanjiKanji.onyomis), meaning: kanjiKanji.meaning))
             }
             else // option == kKunyomiOption
             {
-                returnArray.append(Flashcard(text: kanjiCharacter.kanji, reading: kanjiCharacter.generateReadingString(kanjiCharacter.kunyomis), meaning: kanjiCharacter.meaning))
+                returnArray.append(Flashcard(text: kanjiKanji.kanji, reading: kanjiKanji.generateReadingString(kanjiKanji.kunyomis), meaning: kanjiKanji.meaning))
             }
         }
         return returnArray
     }
     
-    func generateFlashcardsArrayForExamples(characters: [Character], option : Int) -> [Flashcard]
+    func generateFlashcardsArrayForExamples(characters: [Kanji], option : Int) -> [Flashcard]
     {
         
         var returnArray : [Flashcard] = [Flashcard]()

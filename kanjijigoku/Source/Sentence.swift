@@ -17,7 +17,7 @@ class Sentence: NSManagedObject {
     @NSManaged var meaning: String
     @NSManaged var sentence: String
     @NSManaged var sentenceId: Int32
-    @NSManaged var character: Character
+    @NSManaged var character: Kanji
     @NSManaged var examples: Example
 
 }

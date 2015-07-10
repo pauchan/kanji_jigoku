@@ -14,6 +14,6 @@ class Radical: NSManagedObject {
     @NSManaged var name: String
     @NSManaged var number: Int32
     @NSManaged var radical: String
-    @NSManaged var character: Character
+    @NSManaged var character: Kanji
 
 }

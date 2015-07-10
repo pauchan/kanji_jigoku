@@ -11,6 +11,6 @@ import CoreData
 
 class Onyomi: Reading {
 
-    @NSManaged var character: Character
+    @NSManaged var character: Kanji
 
 }

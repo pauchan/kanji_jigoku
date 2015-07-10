@@ -1,5 +1,5 @@
 //
-//  Character.swift
+//  Kanji.swift
 //  kanjijigoku
 //
 //  Created by Paweł Rusin on 2015/02/12.
@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-class Character: NSManagedObject {
+class Kanji: NSManagedObject {
 
     @NSManaged var alternativeKanji: String
     @NSManaged var alternativeRadical: Int32

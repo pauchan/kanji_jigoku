@@ -46,7 +46,7 @@
 		<key>label</key>
 		<string>Kanji &gt; znaczenie</string>
 		<key>questionObject</key>
-		<string>Character</string>
+		<string>Kanji</string>
 		<key>questionProperty</key>
 		<string>kanji</string>
 		<key>answerProperty</key>

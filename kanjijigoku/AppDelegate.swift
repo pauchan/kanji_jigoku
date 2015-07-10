@@ -45,7 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIBarButtonItem.appearance().setBackgroundImage(UIImage(named: "leftArrowIcon"), forState: .Normal, barMetrics: .Default)
         
         let kanjiViewController = PRKanjiMenuViewController()
-        kanjiViewController._kanjiTable = db.getSelectedObjects("Character", level: PRStateSingleton.sharedInstance.currentLevel, lesson: PRStateSingleton.sharedInstance.currentLesson) as! [Character]
+        kanjiViewController._kanjiTable = db.getSelectedObjects("Kanji", level: PRStateSingleton.sharedInstance.currentLevel, lesson: PRStateSingleton.sharedInstance.currentLesson) as! [Kanji]
         
         let kanjiNavigationController : UINavigationController = UINavigationController(rootViewController: kanjiViewController)
         let searchNavigationController : UINavigationController = UINavigationController(rootViewController: PRSearchKanjiViewController(nibName: "PRSearchKanjiViewController" ,bundle: nil))

@@ -14,7 +14,7 @@ class PRSearchKanjiViewController: UIViewController, UITableViewDelegate, UITabl
     @IBOutlet weak var searchBar: UISearchBar!
     
     
-    var characterSearchArray : [Character] = [Character]()
+    var characterSearchArray : [Kanji] = [Kanji]()
     var exampleSearchArray : [Example] = [Example]()
     var sentenceSearchArray : [Sentence] = [Sentence]()
  
@@ -149,7 +149,7 @@ class PRSearchKanjiViewController: UIViewController, UITableViewDelegate, UITabl
     func searchBarSearchButtonClicked(searchBar: UISearchBar)
     {
         
-        characterSearchArray = PRDatabaseHelper().fetchObjectsContainingPhrase("Character", phrase: searchBar.text) as! [Character]
+        characterSearchArray = PRDatabaseHelper().fetchObjectsContainingPhrase("Kanji", phrase: searchBar.text) as! [Kanji]
         exampleSearchArray = PRDatabaseHelper().fetchObjectsContainingPhrase("Example", phrase: searchBar.text) as! [Example]
         sentenceSearchArray = PRDatabaseHelper().fetchObjectsContainingPhrase("Sentence", phrase: searchBar.text) as! [Sentence]
         println("character array count \(characterSearchArray.count)")

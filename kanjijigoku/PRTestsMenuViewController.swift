@@ -104,18 +104,18 @@ class PRTestMenuViewController : UITableViewController
         return 2
     }
     
-    func generateFlashcardsArrayForReadings(characters: [Character], option: Int) -> [Flashcard]
+    func generateFlashcardsArrayForReadings(characters: [Kanji], option: Int) -> [Flashcard]
     {
         
         var returnArray : [Flashcard] = [Flashcard]()
-        for kanjiCharacter in characters
+        for kanjiKanji in characters
         {
             if(option == kOnyomiOption){
-                returnArray.append(Flashcard(text: kanjiCharacter.kanji, reading: kanjiCharacter.generateReadingString(kanjiCharacter.onyomis), meaning: kanjiCharacter.meaning))
+                returnArray.append(Flashcard(text: kanjiKanji.kanji, reading: kanjiKanji.generateReadingString(kanjiKanji.onyomis), meaning: kanjiKanji.meaning))
             }
             else // option == kKunyomiOption
             {
-                returnArray.append(Flashcard(text: kanjiCharacter.kanji, reading: kanjiCharacter.generateReadingString(kanjiCharacter.kunyomis), meaning: kanjiCharacter.meaning))
+                returnArray.append(Flashcard(text: kanjiKanji.kanji, reading: kanjiKanji.generateReadingString(kanjiKanji.kunyomis), meaning: kanjiKanji.meaning))
             }
         }
         return returnArray

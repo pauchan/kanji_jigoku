@@ -31,7 +31,7 @@
 		18C23D401A8C734D00AB5817 /* Testable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C23D3F1A8C734D00AB5817 /* Testable.swift */; };
 		18C23D421A8C734D00AB5817 /* Sentence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C23D411A8C734D00AB5817 /* Sentence.swift */; };
 		18C23D441A8C734D00AB5817 /* Example.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C23D431A8C734D00AB5817 /* Example.swift */; };
-		18C23D461A8C734D00AB5817 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C23D451A8C734D00AB5817 /* Character.swift */; };
+		18C23D461A8C734D00AB5817 /* Kanji.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C23D451A8C734D00AB5817 /* Kanji.swift */; };
 		18C23D481A8C734D00AB5817 /* Reading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C23D471A8C734D00AB5817 /* Reading.swift */; };
 		18C23D4A1A8C734D00AB5817 /* Onyomi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C23D491A8C734D00AB5817 /* Onyomi.swift */; };
 		18C23D4C1A8C734D00AB5817 /* Radical.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C23D4B1A8C734D00AB5817 /* Radical.swift */; };
@@ -107,7 +107,7 @@
 		18C23D3F1A8C734D00AB5817 /* Testable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Testable.swift; path = Source/Testable.swift; sourceTree = "<group>"; };
 		18C23D411A8C734D00AB5817 /* Sentence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Sentence.swift; path = Source/Sentence.swift; sourceTree = "<group>"; };
 		18C23D431A8C734D00AB5817 /* Example.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Example.swift; path = Source/Example.swift; sourceTree = "<group>"; };
-		18C23D451A8C734D00AB5817 /* Character.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Character.swift; path = Source/Character.swift; sourceTree = "<group>"; };
+		18C23D451A8C734D00AB5817 /* Kanji.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Kanji.swift; path = Source/Kanji.swift; sourceTree = "<group>"; };
 		18C23D471A8C734D00AB5817 /* Reading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Reading.swift; path = Source/Reading.swift; sourceTree = "<group>"; };
 		18C23D491A8C734D00AB5817 /* Onyomi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Onyomi.swift; path = Source/Onyomi.swift; sourceTree = "<group>"; };
 		18C23D4B1A8C734D00AB5817 /* Radical.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Radical.swift; path = Source/Radical.swift; sourceTree = "<group>"; };
@@ -323,7 +323,7 @@
 				18C23D4B1A8C734D00AB5817 /* Radical.swift */,
 				18C23D491A8C734D00AB5817 /* Onyomi.swift */,
 				18C23D471A8C734D00AB5817 /* Reading.swift */,
-				18C23D451A8C734D00AB5817 /* Character.swift */,
+				18C23D451A8C734D00AB5817 /* Kanji.swift */,
 				18C23D431A8C734D00AB5817 /* Example.swift */,
 				18C23D411A8C734D00AB5817 /* Sentence.swift */,
 				18C23D3F1A8C734D00AB5817 /* Testable.swift */,
@@ -582,7 +582,7 @@
 				188C73691A9EE6E600D1634C /* PRRelatedKanjiCell.swift in Sources */,
 				18D170601A8997D700672203 /* PRTestsMenuViewController.swift in Sources */,
 				1899D5881A9F0F1E006B63B0 /* PRMenuViewExtension.swift in Sources */,
-				18C23D461A8C734D00AB5817 /* Character.swift in Sources */,
+				18C23D461A8C734D00AB5817 /* Kanji.swift in Sources */,
 				18D1705E1A8997C700672203 /* PRFlashcardMenuViewController.swift in Sources */,
 				18D1706E1A89D77B00672203 /* PRStateSingleton.swift in Sources */,
 				18C23D481A8C734D00AB5817 /* Reading.swift in Sources */,

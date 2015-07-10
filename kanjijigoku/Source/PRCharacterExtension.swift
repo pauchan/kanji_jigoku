@@ -1,5 +1,5 @@
 //
-//  PRCharacterExtension.swift
+//  PRKanjiExtension.swift
 //  kanjijigoku
 //
 //  Created by Paweł Rusin on 2015/02/13.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension Character
+extension Kanji
 {
 
     func generateReadingString(set: NSSet) -> String

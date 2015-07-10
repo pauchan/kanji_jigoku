@@ -33,7 +33,7 @@ class PRKanjiPageControl: UIPageControl {
         super.init(coder: aDecoder)
     }
 
-    init(kanjis : [Character], frame: CGRect) {
+    init(kanjis : [Kanji], frame: CGRect) {
 
         super.init(frame : frame)
         

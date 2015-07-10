@@ -12,6 +12,6 @@ import CoreData
 class Kunyomi: Reading {
 
     @NSManaged var speechPart: Int32
-    @NSManaged var character: Character
+    @NSManaged var character: Kanji
 
 }

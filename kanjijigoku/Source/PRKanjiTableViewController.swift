@@ -15,9 +15,9 @@ enum PRKanjiJigokuKanjiOptions : Int
 
 class PRKanjiTableViewController: UIViewController, UITableViewDelegate,UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource {
     
-    var kanji : Character!
+    var kanji : Kanji!
     var additionalExamples : [Example]!
-    var relatedKanjis : [Character]!
+    var relatedKanjis : [Kanji]!
     var tableView : UITableView!
     var pageControl : PRKanjiPageControl!
     
@@ -57,7 +57,7 @@ class PRKanjiTableViewController: UIViewController, UITableViewDelegate,UITableV
         additionalExamples = PRDatabaseHelper().fetchAdditionalExamples(kanji.kanji)
         if kanji.relatedKanji.isEmpty
         {
-            relatedKanjis = [Character]()
+            relatedKanjis = [Kanji]()
         }
         else
         {
@@ -281,7 +281,7 @@ class PRKanjiTableViewController: UIViewController, UITableViewDelegate,UITableV
         
         
         let vc = PRKanjiTableViewController()
-        vc.kanji  = relatedKanjis[indexPath.row] as Character
+        vc.kanji  = relatedKanjis[indexPath.row] as Kanji
         self.navigationController?.pushViewController(vc, animated: false)
         
     }

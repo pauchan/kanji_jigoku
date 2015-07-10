@@ -11,7 +11,7 @@ import UIKit
 class PRKanjiMenuViewController: UITableViewController
 {
     var _headerCoordinator : PRHeaderCoordinator!
-    var _kanjiTable : [Character]!
+    var _kanjiTable : [Kanji]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,7 +89,7 @@ override func numberOfSectionsInTableView(tableView: UITableView) -> Int
 func lessonUpdated(notification: NSNotification)
 {
         println("notification called")
-        _kanjiTable = PRDatabaseHelper().getSelectedObjects("Character", level: PRStateSingleton.sharedInstance.currentLevel, lesson: PRStateSingleton.sharedInstance.currentLesson) as! [Character]
+        _kanjiTable = PRDatabaseHelper().getSelectedObjects("Kanji", level: PRStateSingleton.sharedInstance.currentLevel, lesson: PRStateSingleton.sharedInstance.currentLesson) as! [Kanji]
         self.tableView.reloadData()
 }
 

@@ -15,7 +15,7 @@ class Example: Testable {
     @NSManaged var example: String
     @NSManaged var exampleId: Int32
     @NSManaged var note: String
-    @NSManaged var character: Character
+    @NSManaged var character: Kanji
     @NSManaged var sentences: NSSet
 
 }
