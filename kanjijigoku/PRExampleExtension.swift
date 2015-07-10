@@ -12,18 +12,24 @@ extension Example {
     
     func generateDescriptionString() -> NSAttributedString {
         
-        var description = ""
-        if self.code == 1 {
-        
-           description.append(kPRstarCharacter)
-        }
-        description += self.example
-        
-        var attributedText = NSMutableAttributedString(string: description, attributes: kPRKanjiJigokuAttributedBoldBig)
+        var attributedText = NSMutableAttributedString(string: self.example, attributes: kPRKanjiJigokuAttributedBoldBig)
         let attributedText2 = NSAttributedString(string: " 【" + self.reading + "】", attributes: kPRKanjiJigokuAttributedSmall)
         attributedText.appendAttributedString(attributedText2)
         return attributedText
         
+    }
+    
+    
+    func markIfImportant(text: String) -> NSAttributedString {
+
+        if self.code.rangeOfString("1") != nil {
+            
+            let newString = String(kPRstarCharacter) + " " + text
+            return NSMutableAttributedString(string: newString)
+        } else {
+        
+            return NSAttributedString(string: text)
+        }
     }
     
 }

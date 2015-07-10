@@ -146,7 +146,7 @@ class PRKanjiTableViewController: UIViewController, UITableViewDelegate,UITableV
             debugLog("examples")
             var cell = tableView.dequeueReusableCellWithIdentifier("PRKanjiCell2") as? PRDetailedKanjiCell
             let example = kanji.examples.allObjects as! [Example]
-            let descriptionString = example[indexPath.row].generateDescriptionString()
+            let descriptionString = example[indexPath.row].markIfImportant(example[indexPath.row].generateDescriptionString().string)
             cell!.textLabel?.attributedText =  (PRStateSingleton.sharedInstance.filterOn) ? self.filterOutAdvancedKanji(descriptionString.string) : descriptionString
             cell!.detailTextLabel?.text = example[indexPath.row].meaning + " " + example[indexPath.row].note.removeReferenceSubstring()
             return cell!
