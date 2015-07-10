@@ -140,20 +140,22 @@ class PRKanjiTableViewController: UIViewController, UITableViewDelegate,UITableV
         case .Examples:
             var cell = tableView.dequeueReusableCellWithIdentifier("PRKanjiCell2") as? PRDetailedKanjiCell
             let example = kanji.examples.allObjects as! [Example]
-            cell!.textLabel?.attributedText = example[indexPath.row].generateDescriptionString()
+            let descriptionString = example[indexPath.row].generateDescriptionString()
+            cell!.textLabel?.attributedText =  (PRStateSingleton.sharedInstance.filterOn) ? self.filterOutAdvancedKanji(descriptionString.string) : descriptionString
             cell!.detailTextLabel?.text = example[indexPath.row].meaning + " " + example[indexPath.row].note.removeReferenceSubstring()
             return cell!
             
         case .AdditionalExamples:
             var cell = tableView.dequeueReusableCellWithIdentifier("PRKanjiCell2") as? PRDetailedKanjiCell
-            cell!.textLabel?.attributedText = additionalExamples[indexPath.row].generateDescriptionString()
+            let descriptionString = additionalExamples[indexPath.row].generateDescriptionString()
+            cell!.textLabel?.attributedText = (PRStateSingleton.sharedInstance.filterOn) ? self.filterOutAdvancedKanji(descriptionString.string) : descriptionString
             cell!.detailTextLabel?.text = additionalExamples[indexPath.row].meaning + " " + additionalExamples[indexPath.row].note.removeReferenceSubstring()
             return cell!
             
         case .Sentences:
             var cell = tableView.dequeueReusableCellWithIdentifier("PRKanjiCell2") as? PRDetailedKanjiCell
             let sentence = kanji.sentences.allObjects as! [Sentence]
-            cell!.textLabel?.text =  sentence[indexPath.row].getExplainedSentence().string
+            cell!.textLabel?.attributedText = (PRStateSingleton.sharedInstance.filterOn) ? self.filterOutAdvancedKanji(sentence[indexPath.row].getExplainedSentence().string) : sentence[indexPath.row].getExplainedSentence()
             cell!.detailTextLabel?.text = sentence[indexPath.row].meaning
             return cell!
         default:
@@ -288,10 +290,31 @@ class PRKanjiTableViewController: UIViewController, UITableViewDelegate,UITableV
     
     func filterOutAdvancedKanji(text: String) -> NSAttributedString {
     
-        //let characters = Array(text)
-        //characters.filter(
-        //    ((character: Chara)))
+        let characters: [Character] = Array(text)
+        let mappedString: NSAttributedString = characters.map{ (inputCharacter : Character) -> NSAttributedString in
+            
+            if self.characterIsKanji(inputCharacter) {
+            
+                // character is kanji so we can look it up in our database
+                if let kanji = PRDatabaseHelper().fetchSingleKanji(String(inputCharacter)) {
+                    if Int(kanji.level) > Int(PRStateSingleton.sharedInstance.filterLevel) && Int(kanji.lesson) > Int(PRStateSingleton.sharedInstance.filterLesson) {
+                    
+                        return NSAttributedString(string: String(inputCharacter), attributes: [NSForegroundColorAttributeName: UIColor.greenColor()])
+                    }
+                }
+            }
+            return NSAttributedString(string: String(inputCharacter))
+        }.reduce(NSMutableAttributedString()) { $0.appendAttributedString($1); return $0 }
+        
+        return mappedString
+    }
     
-        return NSAttributedString()
+    func characterIsKanji(character: Character) -> Bool {
+        
+        let kanjicharacters = NSCharacterSet(range: NSMakeRange(0x4e00, 0x9faf))
+        let s = String(character).unicodeScalars
+        let uni = s[s.startIndex]
+        
+        return kanjicharacters.longCharacterIsMember(uni.value)
     }
 }

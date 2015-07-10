@@ -563,4 +563,21 @@ class PRDatabaseHelper
         return managedContext.executeFetchRequest(fetchRequest, error: nil)! as! [NSManagedObject]
     }
     
+    func fetchSingleKanji(kanji: String) -> Kanji? {
+
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext!
+        let fetchRequest :NSFetchRequest = NSFetchRequest(entityName: "Kanji")
+        let entity = NSEntityDescription.entityForName("Kanji", inManagedObjectContext: managedContext)!
+        fetchRequest.predicate = NSPredicate(format: "kanji='\(kanji)'")
+        fetchRequest.fetchLimit = 1
+        let object = managedContext.executeFetchRequest(fetchRequest, error: nil)! as! [NSManagedObject]
+        if object.count > 0 {
+            return object.first as? Kanji
+        } else {
+            return nil
+        }
+    
+    }
+    
 }
