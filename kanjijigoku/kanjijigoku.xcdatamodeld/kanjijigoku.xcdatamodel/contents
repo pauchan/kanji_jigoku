@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14D136" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Example" representedClassName="kanjijigoku.Example" parentEntity="Testable" syncable="YES">
-        <attribute name="code" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="code" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="example" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="exampleId" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="note" optional="YES" attributeType="String" syncable="YES"/>
@@ -11,7 +11,7 @@
     <entity name="Kanji" representedClassName="kanjijigoku.Kanji" syncable="YES">
         <attribute name="alternativeKanji" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="alternativeRadical" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="code" optional="YES" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="code" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="kanji" attributeType="String" syncable="YES"/>
         <attribute name="kanjiId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="lesson" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
@@ -41,12 +41,12 @@
         <relationship name="character" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Kanji" inverseName="radicals" inverseEntity="Kanji" syncable="YES"/>
     </entity>
     <entity name="Reading" representedClassName="kanjijigoku.Reading" isAbstract="YES" parentEntity="Testable" syncable="YES">
-        <attribute name="code" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="code" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="note" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="readingId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
     </entity>
     <entity name="Sentence" representedClassName="kanjijigoku.Sentence" syncable="YES">
-        <attribute name="code" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="code" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="example" attributeType="String" syncable="YES"/>
         <attribute name="kanji" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="meaning" optional="YES" attributeType="String" syncable="YES"/>
@@ -61,8 +61,8 @@
         <attribute name="reading" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Kanji" positionX="160" positionY="192" width="128" height="298"/>
         <element name="Example" positionX="-5258" positionY="-1906" width="128" height="133"/>
+        <element name="Kanji" positionX="160" positionY="192" width="128" height="298"/>
         <element name="Kunyomi" positionX="-5285" positionY="-2178" width="128" height="73"/>
         <element name="Onyomi" positionX="-5276" positionY="-2052" width="128" height="58"/>
         <element name="Radical" positionX="-5841" positionY="-1678" width="128" height="103"/>

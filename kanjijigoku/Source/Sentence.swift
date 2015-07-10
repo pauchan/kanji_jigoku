@@ -11,7 +11,7 @@ import CoreData
 
 class Sentence: NSManagedObject {
 
-    @NSManaged var code: Int32
+    @NSManaged var code: String
     @NSManaged var example: String
     @NSManaged var kanji: String
     @NSManaged var meaning: String

@@ -11,7 +11,7 @@ import CoreData
 
 class Reading: Testable {
 
-    @NSManaged var code: Int32
+    @NSManaged var code: String
     @NSManaged var note: String
     @NSManaged var readingId: Int32
 

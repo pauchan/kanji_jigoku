@@ -157,6 +157,11 @@ class PRDatabaseHelper
             if let rs = database.executeQuery("select * from znaki", withArgumentsInArray: nil) {
                 while rs.next() {
                     
+                    if !self.shouldSaveEntity(String(rs.intForColumnIndex(14))) {
+
+                        continue
+                    }
+                    
                     let character = NSManagedObject(entity: entity, insertIntoManagedObjectContext: managedContext) as! Kanji
                     
                     character.kanji = rs.stringForColumnIndex(0)
@@ -171,6 +176,8 @@ class PRDatabaseHelper
                     character.lesson = rs.intForColumnIndex(10)
                     character.level = rs.intForColumnIndex(11)
                     character.kanjiId = rs.intForColumnIndex(12)
+                    // skipping column 13 id_sql
+                    character.note = String(rs.intForColumnIndex(14))
                     
                     character.kunyomis = parseKunyomi(database, character: character.kanji)
                     character.onyomis = parseOnyomi(database, character: character.kanji)
@@ -205,13 +212,18 @@ class PRDatabaseHelper
             if let rs = database.executeQuery("select * from zdania where kanji='\(character)'", withArgumentsInArray: nil) {
                 while rs.next() {
                     
+                    if !self.shouldSaveEntity(String(rs.intForColumnIndex(4))) {
+                        
+                        continue
+                    }
+                    
                     let sentence = NSManagedObject(entity: entity, insertIntoManagedObjectContext: managedContext) as! Sentence
                     
                     sentence.kanji = rs.stringForColumnIndex(0)
                     sentence.example = rs.stringForColumnIndex(1)
                     sentence.sentence = rs.stringForColumnIndex(2)
                     sentence.meaning = rs.stringForColumnIndex(3)
-                    sentence.code = rs.intForColumnIndex(4)
+                    sentence.code = rs.stringForColumnIndex(4)
                     sentence.sentenceId = rs.intForColumnIndex(5)
                     
                     outSet.addObject(sentence)
@@ -236,13 +248,18 @@ class PRDatabaseHelper
             if let rs = database.executeQuery("select * from kunyomi where kanji='\(character)'", withArgumentsInArray: nil) {
                 while rs.next() {
                     
+                    if !self.shouldSaveEntity(String(rs.intForColumnIndex(4))) {
+                        
+                        continue
+                    }
+                    
                     let kunyomi = NSManagedObject(entity: entity, insertIntoManagedObjectContext: managedContext) as! Kunyomi
                     
                     kunyomi.kanji = rs.stringForColumnIndex(0)
                     kunyomi.reading = rs.stringForColumnIndex(1)
                     kunyomi.meaning = rs.stringForColumnIndex(2)
                     kunyomi.readingId = rs.intForColumnIndex(3)
-                    kunyomi.code = rs.intForColumnIndex(4)
+                    kunyomi.code = rs.stringForColumnIndex(4)
                     kunyomi.note = rs.stringForColumnIndex(5)
                     
                     outSet.addObject(kunyomi)
@@ -267,13 +284,18 @@ class PRDatabaseHelper
             if let rs = database.executeQuery("select * from onyomi where kanji='\(character)'", withArgumentsInArray: nil) {
                 while rs.next() {
                     
+                    if !self.shouldSaveEntity(String(rs.intForColumnIndex(4))) {
+                        
+                        continue
+                    }
+                    
                     let onyomi = NSManagedObject(entity: entity, insertIntoManagedObjectContext: managedContext) as! Onyomi
                     
                     onyomi.kanji = rs.stringForColumnIndex(0)
                     onyomi.reading = rs.stringForColumnIndex(1)
                     onyomi.meaning = rs.stringForColumnIndex(2)
                     onyomi.readingId = rs.intForColumnIndex(3)
-                    onyomi.code = rs.intForColumnIndex(4)
+                    onyomi.code = rs.stringForColumnIndex(4)
                     onyomi.note = rs.stringForColumnIndex(5)
                     
                     outSet.addObject(onyomi)
@@ -299,6 +321,11 @@ class PRDatabaseHelper
             if let rs = database.executeQuery("select * from zlozenia where kanji='\(character)'", withArgumentsInArray: nil) {
                 while rs.next() {
                     
+                    if !self.shouldSaveEntity(String(rs.intForColumnIndex(6))) {
+                        
+                        continue
+                    }
+                    
                     let example = NSManagedObject(entity: entity, insertIntoManagedObjectContext: managedContext) as! Example
                     
                     example.kanji = rs.stringForColumnIndex(0)
@@ -307,7 +334,7 @@ class PRDatabaseHelper
                     example.meaning = rs.stringForColumnIndex(3)
                     example.note = rs.stringForColumnIndex(4)
                     example.exampleId = rs.intForColumnIndex(5)
-                    example.code = rs.intForColumnIndex(6)
+                    example.code = rs.stringForColumnIndex(6)
                     
                     outSet.addObject(example)
                 }
@@ -581,6 +608,18 @@ class PRDatabaseHelper
             return nil
         }
     
+    }
+    
+    // if obli code is 7 or 9, do not save the entity in db
+    func shouldSaveEntity(text: String) -> Bool {
+    
+        if text.rangeOfString("7") != nil || text.rangeOfString("9") != nil  {
+        
+            return false
+        } else {
+        
+            return true
+        }
     }
     
 }
