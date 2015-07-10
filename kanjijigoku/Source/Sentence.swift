@@ -9,9 +9,8 @@
 import Foundation
 import CoreData
 
-class Sentence: NSManagedObject {
+class Sentence: BaseEntity {
 
-    @NSManaged var code: String
     @NSManaged var example: String
     @NSManaged var kanji: String
     @NSManaged var meaning: String

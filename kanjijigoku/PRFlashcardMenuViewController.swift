@@ -151,7 +151,9 @@ override func viewDidLoad() {
                 for e in character.examples
                 {
                     let example = e as! Example
-                    returnArray.append(Flashcard(text: example.example, reading: example.reading, meaning: example.meaning))
+                    if example.isObligatory() {
+                        returnArray.append(Flashcard(text: example.example, reading: example.reading, meaning: example.meaning))
+                    }
                 }
             }
             else
@@ -159,10 +161,12 @@ override func viewDidLoad() {
                 for s in character.sentences
                 {
                     let sentence = s as! Sentence
-                    let flashcard = Flashcard(text: sentence.sentence, reading: sentence.sentence, meaning: sentence.meaning)
-                    flashcard.furiganaReading = sentence.replaceExplainedSentence(sentence.sentence)
-                    flashcard.text = (sentence.replaceExplainedSentence(sentence.sentence)).string
-                    returnArray.append(flashcard)
+                    if sentence.isObligatory() {
+                        let flashcard = Flashcard(text: sentence.sentence, reading: sentence.sentence, meaning: sentence.meaning)
+                        flashcard.furiganaReading = sentence.replaceExplainedSentence(sentence.sentence)
+                        flashcard.text = (sentence.replaceExplainedSentence(sentence.sentence)).string
+                        returnArray.append(flashcard)
+                    }
                 }
             }
         }

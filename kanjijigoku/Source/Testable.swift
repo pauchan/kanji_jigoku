@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-class Testable: NSManagedObject {
+class Testable: BaseEntity {
 
     @NSManaged var kanji: String
     @NSManaged var meaning: String

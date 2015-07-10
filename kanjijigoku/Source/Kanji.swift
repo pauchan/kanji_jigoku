@@ -9,11 +9,10 @@
 import Foundation
 import CoreData
 
-class Kanji: NSManagedObject {
+class Kanji: BaseEntity {
 
     @NSManaged var alternativeKanji: String
     @NSManaged var alternativeRadical: Int32
-    @NSManaged var code: String
     @NSManaged var kanji: String
     @NSManaged var kanjiId: Int32
     @NSManaged var lesson: Int32
