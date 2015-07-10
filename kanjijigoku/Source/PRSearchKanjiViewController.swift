@@ -77,21 +77,63 @@ class PRSearchKanjiViewController: UIViewController, UITableViewDelegate, UITabl
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
-        if indexPath.section != 0
+        
+        var selectedKanji: Kanji? = nil
+        if indexPath.section == 0 // if its kanji,
         {
+            selectedKanji = characterSearchArray[indexPath.row]
             
-            var vc = PRKanjiPageViewController()
-            //vc._kanjiTable = _kanjiTable
-            vc._selectedIndex = indexPath.row
-            navigationController?.pushViewController(vc, animated: false)
+        } else if indexPath.section == 1 {
+        
+            selectedKanji = exampleSearchArray[indexPath.row].character
+        }else if indexPath.section == 2 {
+            
+            selectedKanji = sentenceSearchArray[indexPath.row].character
         }
         
+        var vc = PRKanjiPageViewController()
+        vc._kanjiTable = PRDatabaseHelper().getSelectedObjects("Kanji", level: Int(selectedKanji!.level), lesson: Int(selectedKanji!.lesson)) as! [Kanji]
+        
+        vc._selectedIndex = find(vc._kanjiTable, selectedKanji!)!
+        
+        //self.tabBarController?.selectedIndex = 0
+        
+        navigationController?.pushViewController(vc, animated: false)
+
     }
     
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
     {
-        return 60.0
+        if indexPath.section == 0 {
+        
+            return 30.0
+        } else {
+        
+            let displaySection: PRKanjiJigokuKanjiOptions = PRKanjiJigokuKanjiOptions(rawValue: indexPath.section)!
+            // for examples and sentences adjust based on detailed height
+            var text = ""
+            var detailedText = ""
+            if displaySection == .Examples {
+                text = exampleSearchArray[indexPath.row].generateDescriptionString().string
+                detailedText = exampleSearchArray[indexPath.row].meaning + " " + exampleSearchArray[indexPath.row].note.removeReferenceSubstring()
+            }
+            else { // == .Sentences
+                text = sentenceSearchArray[indexPath.row].getExplainedSentence().string
+                detailedText = sentenceSearchArray[indexPath.row].meaning
+            }
+            
+            let font = UIFont(name: "HiraKakuProN-W3", size: 15.0)!
+            let detailedFont = UIFont().appFont()
+            let constraintsSize = CGSizeMake(tableView.bounds.size.width, CGFloat(MAXFLOAT))
+            let labelSize = text.boundingRectWithSize(constraintsSize, options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: [NSFontAttributeName: font], context: nil)
+            let detailedLabelSize = detailedText.boundingRectWithSize(constraintsSize, options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: [NSFontAttributeName: detailedFont], context: nil)
+            
+            //debugLog("Cell height: \(labelSize.height + detailedLabelSize.height + 20.0)")
+            return labelSize.height + detailedLabelSize.height + 20.0
+        
+        }
+        
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
