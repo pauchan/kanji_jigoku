@@ -92,6 +92,7 @@ class PRKanjiTableViewController: UIViewController, UITableViewDelegate,UITableV
         case .AdditionalExamples:
             return additionalExamples.count
         case .Sentences:
+            println("sentences count: \(kanji.sentences.count)")
             return kanji.sentences.count
         default:
             return 0
@@ -106,6 +107,7 @@ class PRKanjiTableViewController: UIViewController, UITableViewDelegate,UITableV
         switch(displaySection)
         {
         case .RelatedKanijs:
+            debugLog("related kanji")
             let cell = tableView.dequeueReusableCellWithIdentifier("PRRelatedKanjiCell", forIndexPath: indexPath) as! PRRelatedKanjiCell
             cell.relatedKanjiCollectionview.delegate = self
             cell.relatedKanjiCollectionview.dataSource = self
@@ -114,6 +116,7 @@ class PRKanjiTableViewController: UIViewController, UITableViewDelegate,UITableV
             return cell
             
         case .Summary:
+            debugLog("summary")
             let headerCell = tableView.dequeueReusableCellWithIdentifier("PRKanjiHeaderCell", forIndexPath: indexPath) as! PRKanjiTableViewHeaderCell
             headerCell.kanjiLabel.text = kanji.kanji
             headerCell.detailsLabel.text = " \(kanji.strokeCount)画 【\(kanji.generateRadicalsString())】"
@@ -121,11 +124,13 @@ class PRKanjiTableViewController: UIViewController, UITableViewDelegate,UITableV
             return headerCell
             
         case .Notes:
+            debugLog("notes")
             let cell = tableView.dequeueReusableCellWithIdentifier("PRKanjiCell", forIndexPath: indexPath) as! UITableViewCell
             cell.textLabel?.text = kanji.note
             return cell
             
         case .Kunyomi:
+            debugLog("kunyomi")
             let cell = tableView.dequeueReusableCellWithIdentifier("PRKanjiCell", forIndexPath: indexPath) as! UITableViewCell
             let arr = kanji.kunyomis.allObjects as! [Kunyomi]
             cell.textLabel?.text = kanji.generateCommaSeparatedString(arr)
@@ -138,6 +143,7 @@ class PRKanjiTableViewController: UIViewController, UITableViewDelegate,UITableV
             return cell
             
         case .Examples:
+            debugLog("examples")
             var cell = tableView.dequeueReusableCellWithIdentifier("PRKanjiCell2") as? PRDetailedKanjiCell
             let example = kanji.examples.allObjects as! [Example]
             let descriptionString = example[indexPath.row].generateDescriptionString()
@@ -146,6 +152,7 @@ class PRKanjiTableViewController: UIViewController, UITableViewDelegate,UITableV
             return cell!
             
         case .AdditionalExamples:
+            debugLog("additional examples")
             var cell = tableView.dequeueReusableCellWithIdentifier("PRKanjiCell2") as? PRDetailedKanjiCell
             let descriptionString = additionalExamples[indexPath.row].generateDescriptionString()
             cell!.textLabel?.attributedText = (PRStateSingleton.sharedInstance.filterOn) ? self.filterOutAdvancedKanji(descriptionString.string) : descriptionString
@@ -153,9 +160,12 @@ class PRKanjiTableViewController: UIViewController, UITableViewDelegate,UITableV
             return cell!
             
         case .Sentences:
+            debugLog("sentences")
             var cell = tableView.dequeueReusableCellWithIdentifier("PRKanjiCell2") as? PRDetailedKanjiCell
             let sentence = kanji.sentences.allObjects as! [Sentence]
-            cell!.textLabel?.attributedText = (PRStateSingleton.sharedInstance.filterOn) ? self.filterOutAdvancedKanji(sentence[indexPath.row].getExplainedSentence().string) : sentence[indexPath.row].getExplainedSentence()
+            println("explanation: \(sentence[indexPath.row].getExplainedSentence())")
+            
+            cell!.textLabel?.attributedText = (PRStateSingleton.sharedInstance.filterOn) ? self.filterOutAdvancedKanji(sentence[indexPath.row].getExplainedSentence().string) : NSAttributedString(string: sentence[indexPath.row].getExplainedSentence().string)
             cell!.detailTextLabel?.text = sentence[indexPath.row].meaning
             return cell!
         default:
@@ -240,7 +250,7 @@ class PRKanjiTableViewController: UIViewController, UITableViewDelegate,UITableV
             let labelSize = text.boundingRectWithSize(constraintsSize, options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: [NSFontAttributeName: font], context: nil)
             let detailedLabelSize = detailedText.boundingRectWithSize(constraintsSize, options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: [NSFontAttributeName: detailedFont], context: nil)
             
-            println("Cell height: \(labelSize.height + detailedLabelSize.height + 20.0)")
+            //println("Cell height: \(labelSize.height + detailedLabelSize.height + 20.0)")
             return labelSize.height + detailedLabelSize.height + 20.0
         }
     }
@@ -265,8 +275,8 @@ class PRKanjiTableViewController: UIViewController, UITableViewDelegate,UITableV
         })
         
         
-        println("\(test.description)")
-        println("\(testBool.description)")
+        debugLog("\(test.description)")
+        debugLog("\(testBool.description)")
         
         label.textColor = testBool.count > 0 ? UIColor.redColor() : UIColor.blueColor()
         
