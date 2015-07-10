@@ -24,6 +24,8 @@ let IS_IPHONE_5 = (IS_IPHONE && SCREEN_MAX_LENGTH == 568.0)
 let IS_IPHONE_6 = (IS_IPHONE && SCREEN_MAX_LENGTH == 667.0)
 let IS_IPHONE_6P = (IS_IPHONE && SCREEN_MAX_LENGTH == 736.0)
 
+let kPRstarCharacter: Character = "\u{2B50}"
+
 func debugLog(logMessage: String, filename: String = __FILE__, function: String = __FUNCTION__, line: Int = __LINE__ ) {
     
     if debugOn {
