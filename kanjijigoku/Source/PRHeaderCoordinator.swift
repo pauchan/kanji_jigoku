@@ -94,7 +94,7 @@ class PRHeaderCoordinator: NSObject, UIPickerViewDataSource, UIPickerViewDelegat
             labView?.textAlignment = NSTextAlignment.Center
             if pickerView == lessonPickerView
             {
-                labView!.font = UIFont(name: "Helvetica", size: 14)
+                labView!.font = UIFont().appFontOfSize(14.0)
             }
         }
         if pickerView == levelPickerView

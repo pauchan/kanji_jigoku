@@ -8,6 +8,6 @@
 
 import UIKit
 
-let kPRKanjiJigokuHelveticaBoldTwenty : [NSObject : AnyObject] = [NSFontAttributeName : UIFont(name: "Helvetica-Bold", size: 20.0)!]
-let kPRKanjiJigokuHelveticaFourteen : [NSObject : AnyObject] = [NSFontAttributeName : UIFont(name: "Helvetica", size: 14.0)!]
+let kPRKanjiJigokuAttributedBoldBig : [NSObject : AnyObject] = [NSFontAttributeName : UIFont().appFontOfSize(20.0)]
+let kPRKanjiJigokuAttributedSmall : [NSObject : AnyObject] = [NSFontAttributeName : UIFont().appFontOfSize(14.0)]
 

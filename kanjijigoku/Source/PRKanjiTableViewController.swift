@@ -236,10 +236,7 @@ class PRKanjiTableViewController: UIViewController, UITableViewDelegate,UITableV
             let detailedFont = UIFont().appFont()
             let constraintsSize = CGSizeMake(tableView.bounds.size.width, CGFloat(MAXFLOAT))
             let labelSize = text.boundingRectWithSize(constraintsSize, options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: [NSFontAttributeName: font], context: nil)
-            
             let detailedLabelSize = detailedText.boundingRectWithSize(constraintsSize, options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: [NSFontAttributeName: detailedFont], context: nil)
-            
-            
             
             println("Cell height: \(labelSize.height + detailedLabelSize.height + 20.0)")
             return labelSize.height + detailedLabelSize.height + 20.0
@@ -287,5 +284,14 @@ class PRKanjiTableViewController: UIViewController, UITableViewDelegate,UITableV
         vc.kanji  = relatedKanjis[indexPath.row] as Character
         self.navigationController?.pushViewController(vc, animated: false)
         
+    }
+    
+    func filterOutAdvancedKanji(text: String) -> NSAttributedString {
+    
+        //let characters = Array(text)
+        //characters.filter(
+        //    ((character: Chara)))
+    
+        return NSAttributedString()
     }
 }

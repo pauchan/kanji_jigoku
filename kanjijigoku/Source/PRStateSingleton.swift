@@ -14,7 +14,6 @@ class PRStateSingleton {
 
     var currentLevel = 1
     var currentLesson : Int = 1{
-    
         didSet{
         
             println("setter called")

@@ -43,9 +43,9 @@ class PRKanjiPageControl: UIPageControl {
         
         for ch in kanjis
         {
-            let font = UIFont(name: "Helvetica", size: 17.0)
-            let kanji :NSAttributedString = NSAttributedString(string: ch.kanji, attributes: [NSFontAttributeName : font!])
-            let activeKanji :NSAttributedString = NSAttributedString(string: ch.kanji, attributes: [NSFontAttributeName : font!, NSForegroundColorAttributeName : UIColor.redColor()])
+            let font = UIFont().appFontOfSize(17.0)
+            let kanji :NSAttributedString = NSAttributedString(string: ch.kanji, attributes: [NSFontAttributeName : font])
+            let activeKanji :NSAttributedString = NSAttributedString(string: ch.kanji, attributes: [NSFontAttributeName : font, NSForegroundColorAttributeName : UIColor.redColor()])
 
             
             UIGraphicsBeginImageContextWithOptions(kanji.size(), false, 0.0)

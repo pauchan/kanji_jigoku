@@ -86,7 +86,6 @@ class PRKanjiPageViewController: UIViewController, UIPageViewControllerDelegate,
         }
     }
     
-    //func page
     
     func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
         
@@ -97,22 +96,6 @@ class PRKanjiPageViewController: UIViewController, UIPageViewControllerDelegate,
         
         return _selectedIndex
     }
-    
-//    func generateKanjiPageController(kanjis: [Character])
-//    {
-//    
-//        for ch in kanjis
-//        {
-//            let font = UIFont(name: "Helvetica", size: 17.0)
-//            let kanji :NSAttributedString = NSAttributedString(string: ch.kanji, attributes: [NSFontAttributeName : font!])
-//            
-//            UIGraphicsBeginImageContextWithOptions(kanji.size(), false, 0.0)
-//            kanji.drawAtPoint(CGPointMake(0.0, 0.0)) //, withAttributes: [NSFontAttributeName : font!])
-//            inactiveImagesArray.append(UIGraphicsGetImageFromCurrentImageContext())
-//            UIGraphicsEndImageContext()
-//            
-//        }
-//    }
     
 }
 
