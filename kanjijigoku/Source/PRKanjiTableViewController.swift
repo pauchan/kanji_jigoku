@@ -289,7 +289,7 @@ class PRKanjiTableViewController: UIViewController, UITableViewDelegate,UITableV
         return relatedKanjis.count
     }
     
-    func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         
         
         let vc = PRKanjiTableViewController()
