@@ -38,11 +38,11 @@ class PRFilterController: NSObject, UIPickerViewDataSource, UIPickerViewDelegate
         if sender.on
         {
             PRStateSingleton.sharedInstance.filterOn = true
-            PRStateSingleton.sharedInstance.filterLevel = PRStateSingleton.sharedInstance.currentLevel
-            PRStateSingleton.sharedInstance.filterLesson = PRStateSingleton.sharedInstance.currentLesson
+            PRStateSingleton.sharedInstance.filterLevel = PRStateSingleton.sharedInstance.filterLevel
+            PRStateSingleton.sharedInstance.filterLesson = PRStateSingleton.sharedInstance.filterLesson
             
-            self.filterCell.levelComboBox?.text = "Poziom \(PRStateSingleton.sharedInstance.currentLevel)"
-            self.filterCell.lessonComboBox?.text = "Lekcja \(PRStateSingleton.sharedInstance.currentLesson)"
+            self.filterCell.levelComboBox?.text = "Poziom \(PRStateSingleton.sharedInstance.filterLevel)"
+            self.filterCell.lessonComboBox?.text = "Lekcja \(PRStateSingleton.sharedInstance.filterLesson)"
         
             filterCell.levelComboBox.enabled = true
             filterCell.lessonComboBox.enabled = true
@@ -77,33 +77,20 @@ class PRFilterController: NSObject, UIPickerViewDataSource, UIPickerViewDelegate
     return 1
     }
     
-//    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String!
-//    {
-//    if pickerView == levelPickerView
-//    {
-//    return "Poziom \(PRStateSingleton.sharedInstance.levelArray[row])"
-//    }
-//    else
-//    {
-//    return "Lekcja \(PRStateSingleton.sharedInstance.lessonArray[row])"
-//    }
-    
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
     {
-    if pickerView == levelPickerView
-    {
-    self.filterCell.levelComboBox?.text = "Poziom \(PRStateSingleton.sharedInstance.levelArray[row])"
-    PRStateSingleton.sharedInstance.currentLevel = PRStateSingleton.sharedInstance.levelArray[row]
-    self.filterCell.lessonComboBox?.becomeFirstResponder()
+    if pickerView == levelPickerView {
+        
+        self.filterCell.levelComboBox?.text = "Poziom \(PRStateSingleton.sharedInstance.levelArray[row])"
+        PRStateSingleton.sharedInstance.filterLevel = PRStateSingleton.sharedInstance.levelArray[row]
+        self.filterCell.lessonComboBox?.becomeFirstResponder()
     }
-    else
-    {
-    self.filterCell.lessonComboBox?.text = "Lekcja \(PRStateSingleton.sharedInstance.lessonArray[row])"
-    PRStateSingleton.sharedInstance.currentLesson = PRStateSingleton.sharedInstance.lessonArray[row]
-    self.filterCell.lessonComboBox?.resignFirstResponder()
+    else {
+        self.filterCell.lessonComboBox?.text = "Lekcja \(PRStateSingleton.sharedInstance.lessonArray[row])"
+        PRStateSingleton.sharedInstance.filterLesson = PRStateSingleton.sharedInstance.lessonArray[row]
+        self.filterCell.lessonComboBox?.resignFirstResponder()
     }
-    
     }
     
     
@@ -131,7 +118,7 @@ class PRFilterController: NSObject, UIPickerViewDataSource, UIPickerViewDelegate
             labView?.textAlignment = NSTextAlignment.Center
             if pickerView == lessonPickerView
             {
-                labView!.font = UIFont(name: "Helvetica", size: 14)
+                labView!.font = UIFont().appFontOfSize(14.0)
             }
         }
         if pickerView == levelPickerView
@@ -140,7 +127,7 @@ class PRFilterController: NSObject, UIPickerViewDataSource, UIPickerViewDelegate
         }
         else
         {
-            labView!.text = "Lekcja \(PRStateSingleton.sharedInstance.lessonArray[row]): \(generateLessonSummaryString(PRStateSingleton.sharedInstance.currentLevel, lesson: PRStateSingleton.sharedInstance.lessonArray[row]))"
+            labView!.text = "Lekcja \(PRStateSingleton.sharedInstance.lessonArray[row]): \(generateLessonSummaryString(PRStateSingleton.sharedInstance.filterLevel, lesson: PRStateSingleton.sharedInstance.lessonArray[row]))"
         }
         
         return labView!

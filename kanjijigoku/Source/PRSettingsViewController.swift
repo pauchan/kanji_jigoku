@@ -19,26 +19,18 @@ class PRSettingsViewController: UITableViewController {
         
         let nib = UINib(nibName: "PRFilterCell", bundle: nil)
         self.tableView.registerNib(nib, forCellReuseIdentifier: "PRFilterCell")
-        
         self.navigationItem.title = "Ustawienia"
-        
-        //self.tableView.registerClass(UITableViewCell.self, forHeaderFooterViewReuseIdentifier: "PRSettingsCell")
-        
     }
 
 
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Potentially incomplete method implementation.
-        // Return the number of sections.
         return 2
     }
     
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete method implementation.
-        // Return the number of rows in the section.
         if section == 0
         {
             return 3
@@ -91,10 +83,10 @@ class PRSettingsViewController: UITableViewController {
                 {
                     cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "PRSettingsCell")
                     cell!.selectionStyle = UITableViewCellSelectionStyle.None
+                    cell!.accessoryType = UITableViewCellAccessoryType.Checkmark
                     cell!.textLabel?.text = "Automatyczne aktualizacje"
                     cell!.detailTextLabel?.text = "Automatycznie sprawdzaj aktualizacje bazy po uruchomieniu aplikacji, jesli urzadzenie jest polaczone z internetem."
                     cell!.detailTextLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
-                    cell!.accessoryType = UITableViewCellAccessoryType.Checkmark
                     cell!.detailTextLabel?.numberOfLines = 0
                 }
                 cell!.tintColor = (NSUserDefaults.standardUserDefaults().objectForKey("PRKanjiJigokuAutoDbUpdate") != nil) ? UIColor.blueColor() : UIColor.grayColor()
@@ -160,14 +152,14 @@ class PRSettingsViewController: UITableViewController {
                     tableView.reloadData()
                 }
             }
-            else
+            else // row == 2 
             {
                 NSUserDefaults.standardUserDefaults().setObject(nil, forKey: "PRKanjiJigokuDbUpdate")
                 PRDatabaseHelper().syncDatabase()
                 self.navigationController?.popToRootViewControllerAnimated(false)
             }
         }
-        else
+        else //section == 1
         {
             
         }
