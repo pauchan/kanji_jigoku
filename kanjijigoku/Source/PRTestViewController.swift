@@ -28,11 +28,15 @@ class PRTestViewController: UIViewController {
     
     override func viewDidLoad() {
         
-        self.navigationItem.title = "Test"
-
-        
+        super.viewDidLoad()
         descriptionLabel.text = descriptionText
         loadQuestion(0)
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        
+        super.viewDidAppear(animated)
+        self.navigationItem.title = "Test"
     }
     
     func testButtonClicked(sender : AnyObject)
@@ -65,7 +69,6 @@ class PRTestViewController: UIViewController {
                         vc.questions = questions
                         vc.correctAnswers = properAnswersCount
                         self.navigationController?.pushViewController(vc, animated: false)
-
                     }
                     else
                     {
@@ -73,7 +76,6 @@ class PRTestViewController: UIViewController {
                         loadQuestion(questionsCount)
                     }
                 }
-                
             }
             else
             {

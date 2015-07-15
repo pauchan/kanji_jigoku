@@ -25,11 +25,6 @@ class PRTestResultsViewController: UITableViewController {
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "PRTestResultCell")
         self.tableView.tableFooterView = UIView()
         
-        // almost working but cannot display the arrow image...
-        let backButton : UIBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: self, action: "customizedBack:")
-        backButton.setBackButtonBackgroundImage(UIImage(named: "LeftArrowIcon"), forState: UIControlState.Normal, barMetrics: UIBarMetrics.Default)
-        self.navigationItem.leftBarButtonItem = backButton
-
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
@@ -38,6 +33,7 @@ class PRTestResultsViewController: UITableViewController {
         if(indexPath.section == 0)
         {
             let cell = tableView.dequeueReusableCellWithIdentifier("PRTestResultCell", forIndexPath: indexPath) as! UITableViewCell
+            cell.selectionStyle = UITableViewCellSelectionStyle.None
             cell.textLabel?.text = "\(descriptionText) : \(correctAnswers)/\(questions.count)"
             return cell
             
@@ -45,6 +41,7 @@ class PRTestResultsViewController: UITableViewController {
         else
         {
             let cell = tableView.dequeueReusableCellWithIdentifier("PRTestResultCell", forIndexPath: indexPath) as! UITableViewCell
+            cell.selectionStyle = UITableViewCellSelectionStyle.None
             cell.textLabel?.attributedText = questions[indexPath.row].questionSummaryString
             return cell
         }
@@ -80,10 +77,10 @@ class PRTestResultsViewController: UITableViewController {
         return 2
     }
     
-    func customizedBack(sender: AnyObject)
-    {
-    
+    override func viewWillDisappear(animated: Bool) {
+        
         self.navigationController?.popToRootViewControllerAnimated(false)
+        super.viewWillDisappear(animated)
     }
 
 
