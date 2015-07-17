@@ -411,16 +411,23 @@ class PRDatabaseHelper
         {
             fetchRequest.predicate = NSPredicate(format: "level=\(level) AND lesson=\(lesson)")
         }
-        else if name == "Kunyomi"
-        {
-            fetchRequest.predicate = NSPredicate(format: "character.level=\(level) AND character.lesson=\(lesson) AND ( NOT (reading CONTAINS '-')) AND meaning!='' AND meaning!=nil")
-        }
         else
         {
-            fetchRequest.predicate = NSPredicate(format: "character.level=\(level) AND character.lesson=\(lesson) AND ( NOT (reading CONTAINS '-'))")
+            var predicates = [NSPredicate(format: "character.level=\(level)"), NSPredicate(format: "character.lesson=\(lesson)"), NSPredicate(format: "NOT (reading CONTAINS '-')")]
+            if !PRStateSingleton.sharedInstance.extraMaterial {
+            
+                predicates.append(NSPredicate(format: "NOT (code CONTAINS '8')"))
+            }
+            if name == "Kunyomi" {
+            
+                predicates.append(NSPredicate(format: "meaning!=''"))
+                predicates.append(NSPredicate(format: "meaning!=nil"))
+            }
+            fetchRequest.predicate = NSCompoundPredicate(type: NSCompoundPredicateType.AndPredicateType, subpredicates: predicates)
         }
         
         let outArray: NSArray = managedContext.executeFetchRequest(fetchRequest, error: nil)!
+        debugLog("returning \(outArray.count) objects")
         return outArray
     }
     

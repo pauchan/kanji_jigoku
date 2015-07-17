@@ -103,23 +103,6 @@ class PRTestMenuViewController : UITableViewController
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 2
     }
-    
-    func generateFlashcardsArrayForReadings(characters: [Kanji], option: Int) -> [Flashcard]
-    {
-        
-        var returnArray : [Flashcard] = [Flashcard]()
-        for kanjiKanji in characters
-        {
-            if(option == kOnyomiOption){
-                returnArray.append(Flashcard(text: kanjiKanji.kanji, reading: kanjiKanji.generateReadingString(kanjiKanji.onyomis), meaning: kanjiKanji.meaning))
-            }
-            else // option == kKunyomiOption
-            {
-                returnArray.append(Flashcard(text: kanjiKanji.kanji, reading: kanjiKanji.generateReadingString(kanjiKanji.kunyomis), meaning: kanjiKanji.meaning))
-            }
-        }
-        return returnArray
-    }
 
     
     func generateTest(testDict: [String:String]) -> [Question]
@@ -155,11 +138,10 @@ class PRTestMenuViewController : UITableViewController
                     falseAnswers = PRDatabaseHelper().fetchFalseAnswers(testDict["questionObject"]!, property: testDict["answerProperty"]!, properAnswer: properAnswer, partOfSpeechIndex:0, maxLevel: PRStateSingleton.sharedInstance.currentLevel, maxLesson: PRStateSingleton.sharedInstance.currentLesson)
                 }
 
-
                 let meaning = object.valueForKey("meaning") as! String
+                println("Meanning: \(meaning)")
                 let question = Question(question: questionString, correctOption: properAnswer,  falseOptions: falseAnswers, meaning: meaning)
                 newResponse.append(question)
-                //newResponse.append(object.valueForKey(property) as! String)
             }
         }
         return newResponse

@@ -124,7 +124,7 @@ class PRSearchKanjiViewController: UIViewController, UITableViewDelegate, UITabl
             }
             
             let font = UIFont(name: "HiraKakuProN-W3", size: 15.0)!
-            let detailedFont = UIFont().appFont()
+            let detailedFont = UIFont.systemFontOfSize(12.0)
             let constraintsSize = CGSizeMake(tableView.bounds.size.width, CGFloat(MAXFLOAT))
             let labelSize = text.boundingRectWithSize(constraintsSize, options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: [NSFontAttributeName: font], context: nil)
             let detailedLabelSize = detailedText.boundingRectWithSize(constraintsSize, options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: [NSFontAttributeName: detailedFont], context: nil)

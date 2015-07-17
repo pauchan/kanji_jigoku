@@ -19,8 +19,8 @@ class PRDetailedKanjiCell: UITableViewCell {
         self.textLabel?.numberOfLines = 0
         self.detailTextLabel?.numberOfLines = 0
         
-        self.textLabel?.font = UIFont(name: "HiraKakuProN-W3", size: 15.0);
-        self.detailTextLabel?.font = UIFont(name: "HiraKakuProN-W3", size: 12.0);
+        self.textLabel?.font = UIFont().appFontOfSize(15.0)
+        self.detailTextLabel?.font = UIFont.systemFontOfSize(12.0)
         
     }
 

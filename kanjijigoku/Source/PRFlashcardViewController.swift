@@ -55,7 +55,7 @@ class PRFlashcardViewController : UIViewController, UIGestureRecognizerDelegate 
         
         super.viewDidLayoutSubviews()
         characterLabel.font = characterLabel.fontSizeToFitView(UIFont().appFontOfSize(36.0), text: flashcard.text)
-        meaningLabel?.font = meaningLabel.fontSizeToFitView(UIFont().appFontOfSize(22.0), text: flashcard.meaning)
+        meaningLabel?.font = meaningLabel.fontSizeToFitView(UIFont.systemFontOfSize(22.0), text: flashcard.meaning)
 
     }
     

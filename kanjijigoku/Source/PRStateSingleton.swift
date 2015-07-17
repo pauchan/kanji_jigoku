@@ -27,6 +27,7 @@ class PRStateSingleton {
     var filterOn : Bool = false
     var filterLesson : Int = 1
     var filterLevel : Int = 1
+    var extraMaterial: Bool = false
         
     class var sharedInstance: PRStateSingleton {
         struct Static {

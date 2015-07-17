@@ -29,6 +29,10 @@ class PRHeaderCoordinator: NSObject, UIPickerViewDataSource, UIPickerViewDelegat
         
         super.init()
         
+        self.headerCell.extraMaterialSwitch?.addTarget(self, action: "enableMaterial:", forControlEvents: UIControlEvents.ValueChanged)
+        self.headerCell.extraMaterialSwitch?.selected = PRStateSingleton.sharedInstance.extraMaterial
+
+        
         levelPickerView.delegate = self
         lessonPickerView.delegate = self
         
@@ -107,6 +111,11 @@ class PRHeaderCoordinator: NSObject, UIPickerViewDataSource, UIPickerViewDelegat
         }
         
         return labView!
+    }
+    
+    func enableMaterial(sender: AnyObject) {
+    
+        PRStateSingleton.sharedInstance.extraMaterial = self.headerCell.extraMaterialSwitch!.selected
     }
     
 }

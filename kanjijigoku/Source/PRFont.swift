@@ -20,4 +20,5 @@ extension UIFont {
     func appFontOfSize(size: CGFloat) -> UIFont {
         return UIFont(name: "HiraKakuProN-W3", size: size)!
     }
+    
 }
