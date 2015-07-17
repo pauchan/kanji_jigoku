@@ -77,6 +77,8 @@ class PRKanjiTableViewController: UITableViewController, UICollectionViewDelegat
         case .Sentences:
             println("sentences count: \(kanji.sentences.count)")
             return kanji.sentences.count
+        case .KanjiList:
+            return 1
         default:
             return 0
             
@@ -208,12 +210,11 @@ class PRKanjiTableViewController: UITableViewController, UICollectionViewDelegat
         {
             return 45.0
         }
-        else if displaySection == .Summary
+        else if displaySection == .Summary || displaySection == .KanjiList
         {
             return 100.0
         }
-        else
-        {
+        else{
             // for examples and sentences adjust based on detailed height
             var text = ""
             var detailedText = ""
@@ -242,14 +243,14 @@ class PRKanjiTableViewController: UITableViewController, UICollectionViewDelegat
     
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
     
-        //if section == 0 {
+        if section == 0 {
         
-        //    return PRKanjiHeader(kanjis: sameLessonKanjis, frame: CGRectMake(0.0, 0.0, self.tableView.frame.size.width, 30.0))
-        //}else {
+            return PRKanjiHeader(kanjis: sameLessonKanjis, frame: CGRectMake(0.0, 0.0, self.tableView.frame.size.width, 30.0))
+        }else {
             let header = UIView(frame: CGRectMake(0.0, 0.0, self.tableView.frame.size.width, 30.0))
             header.backgroundColor = UIColor.lightGrayColor()
             return header
-        //}
+        }
     
     }
     
