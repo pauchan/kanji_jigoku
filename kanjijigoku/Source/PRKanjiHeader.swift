@@ -49,7 +49,7 @@ class PRKanjiHeader: UIView {
             
         }
 
-        self.backgroundColor = UIColor.whiteColor()
+        self.backgroundColor = UIColor.yellowColor()
         for v in self.subviews as! [UIView]
         {
             v.removeFromSuperview()

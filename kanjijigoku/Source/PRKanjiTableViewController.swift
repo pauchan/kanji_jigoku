@@ -10,7 +10,7 @@ import UIKit
 
 enum PRKanjiJigokuKanjiOptions : Int
 {
-    case RelatedKanijs=0, Summary, Notes , Kunyomi, Onyomi, Examples, AdditionalExamples, Sentences
+    case KanjiList=0, RelatedKanijs, Summary, Notes , Kunyomi, Onyomi, Examples, AdditionalExamples, Sentences
 }
 
 class PRKanjiTableViewController: UITableViewController, UICollectionViewDelegate, UICollectionViewDataSource {
@@ -52,7 +52,7 @@ class PRKanjiTableViewController: UITableViewController, UICollectionViewDelegat
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int
     {
-        return 8
+        return 9
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
@@ -169,9 +169,13 @@ class PRKanjiTableViewController: UITableViewController, UICollectionViewDelegat
         {
             return kanji.sentences.count > 0 ? 30.0 : 0.0
         }
+        else if displaySection == .KanjiList {
+        
+            return 30.0
+        }
         else
         {
-            return 0.0
+            return 10.0
         }
     }
     
@@ -188,7 +192,7 @@ class PRKanjiTableViewController: UITableViewController, UICollectionViewDelegat
         }
         else
         {
-            return ""
+            return "tst"
         }
     }
     
@@ -234,6 +238,19 @@ class PRKanjiTableViewController: UITableViewController, UICollectionViewDelegat
             
             return labelSize.height + detailedLabelSize.height + 20.0
         }
+    }
+    
+    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    
+        //if section == 0 {
+        
+        //    return PRKanjiHeader(kanjis: sameLessonKanjis, frame: CGRectMake(0.0, 0.0, self.tableView.frame.size.width, 30.0))
+        //}else {
+            let header = UIView(frame: CGRectMake(0.0, 0.0, self.tableView.frame.size.width, 30.0))
+            header.backgroundColor = UIColor.lightGrayColor()
+            return header
+        //}
+    
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
