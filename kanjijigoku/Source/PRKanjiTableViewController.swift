@@ -13,37 +13,20 @@ enum PRKanjiJigokuKanjiOptions : Int
     case RelatedKanijs=0, Summary, Notes , Kunyomi, Onyomi, Examples, AdditionalExamples, Sentences
 }
 
-class PRKanjiTableViewController: UIViewController, UITableViewDelegate,UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource {
+class PRKanjiTableViewController: UITableViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     var kanji : Kanji!
+    var sameLessonKanjis: [Kanji]!
     var additionalExamples : [Example]!
     var relatedKanjis : [Kanji]!
-    var tableView : UITableView!
-    var pageControl : PRKanjiPageControl!
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
         
-        
-        if self.parentViewController != nil
-        {
-            println("there is navigation controller")
-            self.parentViewController?.navigationController?.navigationBarHidden = true
-            self.tableView = UITableView(frame: CGRectMake(0, 0.0, self.view.frame.size.width, self.view.frame.size.height*0.85))
-        }
-        else
-        {
-            println("no navigation controller")
-            //self.parentViewController?.navigationController?.navigationBarHidden = true
-            self.tableView = UITableView(frame: CGRectMake(0, 64.0, self.view.frame.size.width, self.view.frame.size.height*0.85))
-        }
-        
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
-        self.view.addSubview(self.tableView)
-        pageControl.setupView(CGRectMake(0, self.view.frame.size.height*0.85, self.view.frame.size.width, self.view.frame.size.height*0.15))
-        self.view.addSubview(pageControl)
+        //let contraint = NSLayoutConstraint(item:self.topLayoutGuide, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal , toItem: self.tableView, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 0.0)
+        //self.tableView.addConstraint(contraint)
+        self.tableView.contentInset = UIEdgeInsets(top: 64.0, left: 0.0, bottom: 0.0, right: 0.0)
         
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "PRKanjiCell")
         self.tableView.registerClass(PRDetailedKanjiCell.self, forCellReuseIdentifier: "PRKanjiCell2")
@@ -64,15 +47,15 @@ class PRKanjiTableViewController: UIViewController, UITableViewDelegate,UITableV
             relatedKanjis = PRDatabaseHelper().fetchRelatedKanjis(kanji)
         }
         
-        self.tableView.tableFooterView = UIView(frame: CGRectMake(0.0, 0.0, self.view.frame.size.width, 45.0))
+        self.tableView.tableFooterView = UIView()
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int
     {
         return 8
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         let displaySection: PRKanjiJigokuKanjiOptions = PRKanjiJigokuKanjiOptions(rawValue: section)!
         switch(displaySection)
@@ -101,7 +84,7 @@ class PRKanjiTableViewController: UIViewController, UITableViewDelegate,UITableV
     }
     
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let displaySection: PRKanjiJigokuKanjiOptions = PRKanjiJigokuKanjiOptions(rawValue: indexPath.section)!
         switch(displaySection)
@@ -175,7 +158,7 @@ class PRKanjiTableViewController: UIViewController, UITableViewDelegate,UITableV
     
     
     
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         
         let displaySection: PRKanjiJigokuKanjiOptions = PRKanjiJigokuKanjiOptions(rawValue: section)!
         if displaySection == .AdditionalExamples
@@ -192,7 +175,7 @@ class PRKanjiTableViewController: UIViewController, UITableViewDelegate,UITableV
         }
     }
     
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         
         let displaySection: PRKanjiJigokuKanjiOptions = PRKanjiJigokuKanjiOptions(rawValue: section)!
         if displaySection == .AdditionalExamples
@@ -210,7 +193,7 @@ class PRKanjiTableViewController: UIViewController, UITableViewDelegate,UITableV
     }
     
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         
         let displaySection: PRKanjiJigokuKanjiOptions = PRKanjiJigokuKanjiOptions(rawValue: indexPath.section)!
         if displaySection == .RelatedKanijs || displaySection == .Notes

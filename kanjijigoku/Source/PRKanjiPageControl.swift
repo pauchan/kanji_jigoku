@@ -8,18 +8,10 @@
 
 import UIKit
 
-class PRKanjiPageControl: UIPageControl {
+class PRKanjiHeader: UIView {
 
     var inactiveImagesArray : [UIImage]!
     var activeImagesArray : [UIImage]!
-    
-    /*
-    // Only override drawRect: if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func drawRect(rect: CGRect) {
-        // Drawing code
-    }
-    */
     
     override init(frame: CGRect) {
         
@@ -78,14 +70,14 @@ class PRKanjiPageControl: UIPageControl {
             //let leftMargin :CGFloat = (frame.size.width - value.size.width*CGFloat(inactiveImagesArray.count))/2.0 as! CGFloat
             let rect = CGRectMake(frame.origin.x + leftMargin + (CGFloat(index) / CGFloat(inactiveImagesArray.count)) * frame.size.width, 10.0, value.size.width, value.size.height)
             var imgView : UIImageView = UIImageView(frame: rect)
-            if index == self.currentPage
-            {
-                imgView.image = activeImagesArray[index]
-            }
-            else
-            {
-                imgView.image = value
-            }
+//            if index == self.currentPage
+//            {
+//                imgView.image = activeImagesArray[index]
+//            }
+//            else
+//            {
+//                imgView.image = value
+//            }
             self.addSubview(imgView)
         }
         

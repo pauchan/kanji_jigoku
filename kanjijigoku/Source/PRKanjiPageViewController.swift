@@ -8,15 +8,11 @@
 
 import UIKit
 
-let kKanjiPageIndicatorWidth : CGFloat = 300.0
-let kKanjiPageIndicatorHeight : CGFloat = 50.0
-
 class PRKanjiPageViewController: UIViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource
 {
     
     var _kanjiTable : [Kanji] = [Kanji]()
     var _selectedIndex : Int = 0
-    var _pageControl : PRKanjiPageControl!
     var pageViewController : UIPageViewController!
     
     override func viewDidLoad()
@@ -33,15 +29,8 @@ class PRKanjiPageViewController: UIViewController, UIPageViewControllerDelegate,
         
         self.navigationItem.title = vc.kanji.kanji
         
-        _pageControl = PRKanjiPageControl(kanjis: _kanjiTable, frame: CGRectMake(0, self.view.frame.size.height*0.85, self.view.frame.size.width, self.view.frame.size.height*0.15))
-        _pageControl.numberOfPages = _kanjiTable.count
-        vc.pageControl = _pageControl
-        _pageControl.currentPage = _selectedIndex
-        
         pageViewController.setViewControllers(vcArray, direction: .Forward, animated: false, completion: nil)
-        self.addChildViewController(pageViewController)
         self.view.addSubview(pageViewController.view)
-        self.pageViewController.didMoveToParentViewController(self)
 
         
     }
@@ -55,11 +44,11 @@ class PRKanjiPageViewController: UIViewController, UIPageViewControllerDelegate,
         }
         else
         {
-            _pageControl.currentPage = --_selectedIndex
+            _selectedIndex--
             let vc = PRKanjiTableViewController()
             vc.kanji  = _kanjiTable[_selectedIndex] as Kanji
+            vc.sameLessonKanjis = _kanjiTable
             self.navigationItem.title = vc.kanji.kanji
-            vc.pageControl = _pageControl
             return vc
         }
         
@@ -73,12 +62,11 @@ class PRKanjiPageViewController: UIViewController, UIPageViewControllerDelegate,
         }
         else
         {
-            _pageControl.currentPage = ++_selectedIndex
+            _selectedIndex++
             let vc = PRKanjiTableViewController()
             vc.kanji  = _kanjiTable[_selectedIndex] as Kanji
+            vc.sameLessonKanjis = _kanjiTable
             self.navigationItem.title = vc.kanji.kanji
-            vc.pageControl = _pageControl
-            
             return vc
         }
     }
