@@ -4,7 +4,7 @@
 <array>
 	<dict>
 		<key>label</key>
-		<string>Kanji &gt; kun&apos;yomi</string>
+		<string>Kanji ➙ kun&apos;yomi</string>
 		<key>questionObject</key>
 		<string>Kunyomi</string>
 		<key>questionProperty</key>
@@ -14,7 +14,7 @@
 	</dict>
 	<dict>
 		<key>label</key>
-		<string>Kanji &gt; on&apos;yomi</string>
+		<string>Kanji ➙ on&apos;yomi</string>
 		<key>questionObject</key>
 		<string>Onyomi</string>
 		<key>questionProperty</key>
@@ -24,7 +24,7 @@
 	</dict>
 	<dict>
 		<key>label</key>
-		<string>Kun&apos;yomi &gt; kanji</string>
+		<string>Kun&apos;yomi ➙ kanji</string>
 		<key>questionObject</key>
 		<string>Kunyomi</string>
 		<key>questionProperty</key>
@@ -34,7 +34,7 @@
 	</dict>
 	<dict>
 		<key>label</key>
-		<string>On&apos;yomi &gt; kanji</string>
+		<string>On&apos;yomi ➙ kanji</string>
 		<key>questionObject</key>
 		<string>Onyomi</string>
 		<key>questionProperty</key>
@@ -44,7 +44,7 @@
 	</dict>
 	<dict>
 		<key>label</key>
-		<string>Kanji &gt; znaczenie</string>
+		<string>Kanji ➙ znaczenie</string>
 		<key>questionObject</key>
 		<string>Kanji</string>
 		<key>questionProperty</key>
@@ -54,7 +54,7 @@
 	</dict>
 	<dict>
 		<key>label</key>
-		<string>kun&apos;yomi &gt; znaczenie</string>
+		<string>kun&apos;yomi ➙ znaczenie</string>
 		<key>questionObject</key>
 		<string>Kunyomi</string>
 		<key>questionProperty</key>
@@ -64,7 +64,7 @@
 	</dict>
 	<dict>
 		<key>label</key>
-		<string>Zlozenie &gt; znaczenie</string>
+		<string>Zlozenie ➙ znaczenie</string>
 		<key>questionObject</key>
 		<string>Example</string>
 		<key>questionProperty</key>
@@ -74,7 +74,7 @@
 	</dict>
 	<dict>
 		<key>label</key>
-		<string>Znaczenie &gt; zlozenie</string>
+		<string>Znaczenie ➙ zlozenie</string>
 		<key>questionObject</key>
 		<string>Example</string>
 		<key>questionProperty</key>

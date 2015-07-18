@@ -30,6 +30,13 @@ class PRTestViewController: UIViewController {
         
         super.viewDidLoad()
         descriptionLabel.text = descriptionText
+        
+        let backButton : UIBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: self, action: "customizedBack:")
+        backButton.setBackButtonBackgroundImage(UIImage(named: "LeftArrowIcon"), forState: UIControlState.Normal, barMetrics: UIBarMetrics.Default)
+        self.navigationItem.leftBarButtonItem = backButton
+        self.navigationController!.navigationBar.backIndicatorImage = UIImage(named: "LeftArrowIcon")!
+        self.navigationController!.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "LeftArrowIcon")!
+        
         loadQuestion(0)
     }
     
@@ -97,6 +104,8 @@ class PRTestViewController: UIViewController {
         wrongAnswer = false
         answerLabel.hidden = true
         answerLabel.text = questions[questionNumber].meaning
+        answerLabel.layer.borderColor = UIColor.blackColor().CGColor
+        answerLabel.layer.borderWidth = 3.0
         
         answerLabel.adjustsFontSizeToFitWidth = true
         answerLabel.textAlignment = NSTextAlignment.Center
@@ -106,6 +115,9 @@ class PRTestViewController: UIViewController {
         {
             if let index = find(testOptionButtons, button)
             {
+                button.layer.cornerRadius = 10 // this value vary as per your desire
+                button.clipsToBounds = true
+                
                 button.enabled = true
                 button.backgroundColor = UIColor().brightOrangeColor()
                 button.setTitle(questions[questionNumber].options[index], forState: UIControlState.Normal)

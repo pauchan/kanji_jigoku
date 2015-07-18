@@ -34,7 +34,7 @@
                         <constraint firstAttribute="height" constant="5" id="1io-TO-fXr"/>
                     </constraints>
                 </progressView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="ntx-CP-Oln">
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="ntx-CP-Oln">
                     <rect key="frame" x="30" y="341" width="540" height="40"/>
                     <color key="backgroundColor" white="0.8557538777" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -45,21 +45,22 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yrR-js-Mvu">
-                    <rect key="frame" x="30" y="176" width="540" height="40"/>
-                    <color key="backgroundColor" red="0.59111489097527792" green="1" blue="0.059312364616591728" alpha="1" colorSpace="calibratedRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="40" id="59u-c9-GLs"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="2sc-uW-rfX">
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="2sc-uW-rfX">
                     <rect key="frame" x="30" y="396" width="540" height="40"/>
                     <color key="backgroundColor" white="0.8557538777" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="w8m-5X-lH1"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HiraMinProN-W3" family="Hiragino Mincho ProN" pointSize="17"/>
+                    <state key="normal">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="EHD-QF-baa">
+                    <rect key="frame" x="30" y="286" width="540" height="40"/>
+                    <color key="backgroundColor" white="0.8557538777" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="blB-Xv-53d"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="HiraMinProN-W3" family="Hiragino Mincho ProN" pointSize="17"/>
                     <state key="normal">
@@ -75,7 +76,7 @@
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="IPh-bC-VMs">
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="IPh-bC-VMs">
                     <rect key="frame" x="30" y="231" width="540" height="40"/>
                     <color key="backgroundColor" white="0.8557538777" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -86,17 +87,16 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="EHD-QF-baa">
-                    <rect key="frame" x="30" y="286" width="540" height="40"/>
-                    <color key="backgroundColor" white="0.8557538777" alpha="1" colorSpace="calibratedWhite"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yrR-js-Mvu">
+                    <rect key="frame" x="30" y="444" width="540" height="40"/>
+                    <color key="backgroundColor" red="0.59111489097527792" green="1" blue="0.059312364616591728" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="40" id="blB-Xv-53d"/>
+                        <constraint firstAttribute="height" constant="40" id="59u-c9-GLs"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="HiraMinProN-W3" family="Hiragino Mincho ProN" pointSize="17"/>
-                    <state key="normal">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                </button>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
@@ -109,13 +109,13 @@
                 <constraint firstItem="Xwj-Bp-RDN" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="80" id="LoJ-81-bfR"/>
                 <constraint firstItem="EHD-QF-baa" firstAttribute="top" secondItem="IPh-bC-VMs" secondAttribute="bottom" constant="15" id="MmM-se-6mt"/>
                 <constraint firstItem="DAs-cy-EYS" firstAttribute="top" secondItem="Xwj-Bp-RDN" secondAttribute="bottom" constant="30" id="O3P-aO-0iP"/>
+                <constraint firstItem="yrR-js-Mvu" firstAttribute="top" secondItem="2sc-uW-rfX" secondAttribute="bottom" constant="15" id="QQZ-ka-Tyi"/>
                 <constraint firstAttribute="trailing" secondItem="IPh-bC-VMs" secondAttribute="trailing" constant="30" id="Ra1-Ak-3Xq"/>
                 <constraint firstAttribute="bottom" secondItem="eXC-Jb-vSq" secondAttribute="bottom" constant="80" id="THR-QP-Xvc"/>
                 <constraint firstItem="yrR-js-Mvu" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="30" id="UkS-0a-9EZ"/>
-                <constraint firstItem="IPh-bC-VMs" firstAttribute="top" secondItem="yrR-js-Mvu" secondAttribute="bottom" constant="15" id="XEu-x9-a0F"/>
+                <constraint firstItem="IPh-bC-VMs" firstAttribute="top" secondItem="DAs-cy-EYS" secondAttribute="bottom" constant="15" id="VI7-C5-D6k"/>
                 <constraint firstItem="eXC-Jb-vSq" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="XbN-8o-2u3"/>
                 <constraint firstItem="2sc-uW-rfX" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="30" id="ZZ3-1I-P54"/>
-                <constraint firstItem="yrR-js-Mvu" firstAttribute="top" secondItem="DAs-cy-EYS" secondAttribute="bottom" constant="15" id="hpd-sO-uGh"/>
                 <constraint firstItem="EHD-QF-baa" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="30" id="kx2-De-r69"/>
                 <constraint firstItem="ntx-CP-Oln" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="30" id="mGw-Om-j3L"/>
                 <constraint firstAttribute="trailing" secondItem="yrR-js-Mvu" secondAttribute="trailing" constant="30" id="nj3-Re-n7C"/>

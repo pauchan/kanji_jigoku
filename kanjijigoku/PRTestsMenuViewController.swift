@@ -138,8 +138,9 @@ class PRTestMenuViewController : UITableViewController
                     falseAnswers = PRDatabaseHelper().fetchFalseAnswers(testDict["questionObject"]!, property: testDict["answerProperty"]!, properAnswer: properAnswer, partOfSpeechIndex:0, maxLevel: PRStateSingleton.sharedInstance.currentLevel, maxLesson: PRStateSingleton.sharedInstance.currentLesson)
                 }
 
-                let meaning = object.valueForKey("meaning") as! String
+                var meaning = object.valueForKey("meaning") as! String
                 println("Meanning: \(meaning)")
+
                 let question = Question(question: questionString, correctOption: properAnswer,  falseOptions: falseAnswers, meaning: meaning)
                 newResponse.append(question)
             }
