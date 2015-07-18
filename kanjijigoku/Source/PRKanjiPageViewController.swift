@@ -25,6 +25,7 @@ class PRKanjiPageViewController: UIViewController, UIPageViewControllerDelegate,
     
         let vc = PRKanjiTableViewController()
         vc.kanji = _kanjiTable[_selectedIndex] as Kanji
+        vc.currentPage = _selectedIndex
         vc.sameLessonKanjis = _kanjiTable
 
         var vcArray = [vc] as [AnyObject]
@@ -50,6 +51,7 @@ class PRKanjiPageViewController: UIViewController, UIPageViewControllerDelegate,
             let vc = PRKanjiTableViewController()
             vc.kanji  = _kanjiTable[_selectedIndex] as Kanji
             vc.sameLessonKanjis = _kanjiTable
+            vc.currentPage = _selectedIndex
             self.navigationItem.title = vc.kanji.kanji
             return vc
         }
@@ -68,6 +70,7 @@ class PRKanjiPageViewController: UIViewController, UIPageViewControllerDelegate,
             let vc = PRKanjiTableViewController()
             vc.kanji  = _kanjiTable[_selectedIndex] as Kanji
             vc.sameLessonKanjis = _kanjiTable
+            vc.currentPage = _selectedIndex
             self.navigationItem.title = vc.kanji.kanji
             return vc
         }
