@@ -73,6 +73,7 @@
 		FB67D6F01A861B8A00926E38 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB67D6EE1A861B8A00926E38 /* LaunchScreen.xib */; };
 		FB67D6FC1A861B8B00926E38 /* kanjijigokuTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB67D6FB1A861B8B00926E38 /* kanjijigokuTests.swift */; };
 		FB67D7091A86232E00926E38 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FB67D7081A86232E00926E38 /* libsqlite3.dylib */; };
+		FBBA5A571B5A72FE00CAAC92 /* PRInitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBBA5A561B5A72FE00CAAC92 /* PRInitController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -160,6 +161,7 @@
 		FB67D6FB1A861B8B00926E38 /* kanjijigokuTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kanjijigokuTests.swift; sourceTree = "<group>"; };
 		FB67D7071A8622F400926E38 /* kanjijigoku-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "kanjijigoku-Bridging-Header.h"; sourceTree = "<group>"; };
 		FB67D7081A86232E00926E38 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		FBBA5A561B5A72FE00CAAC92 /* PRInitController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRInitController.swift; path = Source/PRInitController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -220,6 +222,7 @@
 				189369411A9D4DFD001DEFC4 /* PRSettingsViewController.swift */,
 				18C494871A95A55000095A7E /* PRHeaderCoordinator.swift */,
 				18C27A091AA4332200B8621C /* PRFilterController.swift */,
+				FBBA5A561B5A72FE00CAAC92 /* PRInitController.swift */,
 			);
 			name = General;
 			sourceTree = "<group>";
@@ -588,6 +591,7 @@
 				188945901B4FBBF9006F9564 /* BaseEntity.swift in Sources */,
 				18E4E6871A8D81B30038F86B /* Flashcard.swift in Sources */,
 				18C23D3E1A8C734C00AB5817 /* Kunyomi.swift in Sources */,
+				FBBA5A571B5A72FE00CAAC92 /* PRInitController.swift in Sources */,
 				18C494881A95A55000095A7E /* PRHeaderCoordinator.swift in Sources */,
 				18C23D401A8C734D00AB5817 /* Testable.swift in Sources */,
 				18C64F1C1A917AC5000F5641 /* PRFuriganaLabel.swift in Sources */,

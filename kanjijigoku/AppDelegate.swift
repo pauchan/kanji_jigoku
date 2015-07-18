@@ -10,46 +10,44 @@ import UIKit
 import CoreData
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, FinishedLoadingDelegate {
 
     var window: UIWindow?
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        let db = PRDatabaseHelper()
-        if NSUserDefaults.standardUserDefaults().objectForKey("PRKanjiJigokuAutoDbUpdate") == nil || NSUserDefaults.standardUserDefaults().objectForKey("PRKanjiJigokuAutoDbUpdate") as! Bool == true
-        {
-            debugLog("syncing database")
-            db.syncDatabase()
-        } else {
-            debugLog("dont auto-update db...")
-        }
-        
         let stateSingleton : PRStateSingleton = PRStateSingleton.sharedInstance
-        stateSingleton.levelArray = db.getLevelArray()
-        stateSingleton.lessonArray = db.getLessonArray(stateSingleton.currentLevel)
+        stateSingleton.levelArray = PRDatabaseHelper().getLevelArray()
+        stateSingleton.lessonArray = PRDatabaseHelper().getLessonArray(stateSingleton.currentLevel)
         
-        let tabBarController : UITabBarController = UITabBarController()
         
         UITabBar.appearance().barTintColor = UIColor().fadedOrangeColor()
         UINavigationBar.appearance().barTintColor = UIColor().fadedOrangeColor()
-
         UINavigationBar.appearance().tintColor = UIColor.grayColor()
 
-        // not working
-        UIBarButtonItem.appearance().setBackButtonBackgroundImage(UIImage(named: "leftArrowIcon"), forState: .Normal, barMetrics: .Default)
-        UIBarButtonItem.appearance().setBackgroundImage(UIImage(named: "leftArrowIcon"), forState: .Normal, barMetrics: .Default)
+        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        let viewContr = PRInitController()
+        viewContr.delegate = self
+        self.window?.rootViewController = viewContr
+        self.window?.makeKeyAndVisible()
+        
+        return true
+    }
+    
+    func splashDidFinishLoading() {
+    
+
+        let tabBarController : UITabBarController = UITabBarController()
+
         
         let kanjiViewController = PRKanjiMenuViewController()
-        kanjiViewController._kanjiTable = db.getSelectedObjects("Kanji", level: PRStateSingleton.sharedInstance.currentLevel, lesson: PRStateSingleton.sharedInstance.currentLesson) as! [Kanji]
+        kanjiViewController._kanjiTable = PRDatabaseHelper().getSelectedObjects("Kanji", level: PRStateSingleton.sharedInstance.currentLevel, lesson: PRStateSingleton.sharedInstance.currentLesson) as! [Kanji]
         
         let kanjiNavigationController : UINavigationController = UINavigationController(rootViewController: kanjiViewController)
         let searchNavigationController : UINavigationController = UINavigationController(rootViewController: PRSearchKanjiViewController(nibName: "PRSearchKanjiViewController" ,bundle: nil))
         let testsNavigationController : UINavigationController = UINavigationController(rootViewController: PRTestMenuViewController())
         let flashcardController : UINavigationController = UINavigationController(rootViewController: PRFlashcardMenuViewController(style: UITableViewStyle.Plain))
-        
-        
         
         kanjiNavigationController.tabBarItem = UITabBarItem(title: "Lekcja", image: generateKanjiImage() , tag: 0)
         searchNavigationController.tabBarItem = UITabBarItem(title: "Szukaj", image: UIImage(named: "SearchIcon"), tag: 1)
@@ -66,14 +64,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         
-        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)  
-        
         self.window?.rootViewController = tabBarController
-        
         self.window?.makeKeyAndVisible()
 
-        
-        return true
     }
 
     func applicationWillResignActive(application: UIApplication) {
