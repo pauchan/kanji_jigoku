@@ -34,8 +34,19 @@ class PRKanjiPageViewController: UIViewController, UIPageViewControllerDelegate,
         
         pageViewController.setViewControllers(vcArray, direction: .Forward, animated: false, completion: nil)
         self.view.addSubview(pageViewController.view)
-
         
+        self.view.gestureRecognizers = self.pageViewController.gestureRecognizers;
+        
+        // Find the tap gesture recognizer so we can remove it!
+        var tapRecognizer: UIGestureRecognizer
+        for  recognizer in self.pageViewController.gestureRecognizers {
+            if  recognizer is UITapGestureRecognizer {
+                tapRecognizer = recognizer as! UIGestureRecognizer
+                self.view.removeGestureRecognizer(tapRecognizer)
+                self.pageViewController.view.removeGestureRecognizer(tapRecognizer)
+                
+            }
+        }
     }
     
     

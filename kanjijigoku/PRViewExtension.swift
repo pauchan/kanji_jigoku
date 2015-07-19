@@ -24,6 +24,7 @@ extension UIView {
             let ratio =  self.bounds.size.height / requiredSize.height
             println("new ratio is /(ratio)")
             return UIFont().appFontOfSize(ratio * desiredFont.pointSize)
+
         }
     }
 }

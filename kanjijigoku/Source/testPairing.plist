@@ -64,7 +64,7 @@
 	</dict>
 	<dict>
 		<key>label</key>
-		<string>Zlozenie ➙ znaczenie</string>
+		<string>Złożenie ➙ znaczenie</string>
 		<key>questionObject</key>
 		<string>Example</string>
 		<key>questionProperty</key>
@@ -74,7 +74,7 @@
 	</dict>
 	<dict>
 		<key>label</key>
-		<string>Znaczenie ➙ zlozenie</string>
+		<string>Znaczenie ➙ złożenie</string>
 		<key>questionObject</key>
 		<string>Example</string>
 		<key>questionProperty</key>
@@ -84,7 +84,7 @@
 	</dict>
 	<dict>
 		<key>label</key>
-		<string>Czytanie slow</string>
+		<string>Czytanie słow</string>
 		<key>questionObject</key>
 		<string>Example</string>
 		<key>questionProperty</key>

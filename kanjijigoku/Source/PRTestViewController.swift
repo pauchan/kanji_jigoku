@@ -104,8 +104,6 @@ class PRTestViewController: UIViewController {
         wrongAnswer = false
         answerLabel.hidden = true
         answerLabel.text = questions[questionNumber].meaning
-        answerLabel.layer.borderColor = UIColor.blackColor().CGColor
-        answerLabel.layer.borderWidth = 3.0
         
         answerLabel.adjustsFontSizeToFitWidth = true
         answerLabel.textAlignment = NSTextAlignment.Center

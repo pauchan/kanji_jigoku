@@ -76,7 +76,7 @@ class PRKanjiTableViewController: UIViewController, UITableViewDelegate,UITableV
         case .Summary:
             return 1
         case .Notes:
-            return kanji.note.isEmpty ? 0 : 1
+            return (kanji.note.isEmpty || kanji.note == "0") ? 0 : 1
         case .Kunyomi:
             return kanji.kunyomis.count > 0  ? 1 : 0
         case .Onyomi:
@@ -107,6 +107,7 @@ class PRKanjiTableViewController: UIViewController, UITableViewDelegate,UITableV
             cell.relatedKanjiCollectionview.dataSource = self
             cell.relatedKanjiCollectionview.backgroundColor = UIColor.whiteColor()
             cell.relatedKanjiCollectionview.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: "UICollectionViewCell")
+            cell.selectionStyle = .None
             return cell
             
         case .Summary:
@@ -115,12 +116,14 @@ class PRKanjiTableViewController: UIViewController, UITableViewDelegate,UITableV
             headerCell.kanjiLabel.text = kanji.kanji
             headerCell.detailsLabel.text = " \(kanji.strokeCount)画 【\(kanji.generateRadicalsString())】"
             headerCell.explanationLabel.text = kanji.meaning
+            headerCell.selectionStyle = .None
             return headerCell
             
         case .Notes:
             debugLog("notes")
             let cell = tableView.dequeueReusableCellWithIdentifier("PRKanjiCell", forIndexPath: indexPath) as! UITableViewCell
             cell.textLabel?.text = kanji.note
+            cell.selectionStyle = .None
             return cell
             
         case .Kunyomi:
@@ -128,12 +131,14 @@ class PRKanjiTableViewController: UIViewController, UITableViewDelegate,UITableV
             let cell = tableView.dequeueReusableCellWithIdentifier("PRKanjiCell", forIndexPath: indexPath) as! UITableViewCell
             let arr = kanji.kunyomis.allObjects as! [Kunyomi]
             cell.textLabel?.text = kanji.generateCommaSeparatedString(arr)
+            cell.selectionStyle = .None
             return cell
             
         case .Onyomi:
             let cell = tableView.dequeueReusableCellWithIdentifier("PRKanjiCell", forIndexPath: indexPath) as! UITableViewCell
             let arr = kanji.onyomis.allObjects as! [Onyomi]
             cell.textLabel?.text = kanji.generateCommaSeparatedString(arr)
+            cell.selectionStyle = .None
             return cell
             
         case .Examples:
@@ -285,7 +290,9 @@ class PRKanjiTableViewController: UIViewController, UITableViewDelegate,UITableV
         
         let vc = PRKanjiTableViewController()
         vc.kanji  = relatedKanjis[indexPath.row] as Kanji
-        self.navigationController?.pushViewController(vc, animated: false)
+        vc.sameLessonKanjis = []
+        vc.currentPage = 0
+        self.presentViewController(vc, animated: true, completion: nil)
         
     }
     

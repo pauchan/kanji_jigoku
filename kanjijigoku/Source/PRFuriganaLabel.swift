@@ -16,9 +16,12 @@ class PRFuriganaLabel : UIView
     
     override func drawRect(rect: CGRect) {
         
+        self.layer.borderColor = UIColor.redColor().CGColor
+        self.layer.borderWidth = 2.0
+        
         let context = UIGraphicsGetCurrentContext()
         
-        CGContextSetRGBFillColor(context, 1.0, 1.0, 1.0, 1.0)
+        CGContextSetRGBFillColor(context, 1.0, 0.0, 1.0, 1.0)
         
         CGContextSetTextMatrix(context, CGAffineTransformIdentity);
         CGContextTranslateCTM(context, 0, self.bounds.size.height);
@@ -26,8 +29,14 @@ class PRFuriganaLabel : UIView
         
         var attributedText = furiganaText as? NSMutableAttributedString
         
-        let newFont = self.fontSizeToFitView(UIFont().appFontOfSize(22.0), text: furiganaText.string)
+        let newFont = self.fontSizeToFitView(UIFont().appFontOfSize(24.0), text: furiganaText.string)
+        debugLog("font size: \(newFont.pointSize)")
+        
+        attributedText?.removeAttribute(NSFontAttributeName, range: NSRange(location: 0, length: furiganaText.length))
         attributedText?.addAttribute(NSFontAttributeName, value: newFont, range: NSRange(location: 0,length: furiganaText.length))
+        
+        
+
         
         if attributedText != nil {
             
