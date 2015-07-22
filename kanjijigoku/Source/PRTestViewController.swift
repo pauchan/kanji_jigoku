@@ -31,12 +31,6 @@ class PRTestViewController: UIViewController {
         super.viewDidLoad()
         descriptionLabel.text = descriptionText
         
-        let backButton : UIBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: self, action: "customizedBack:")
-        backButton.setBackButtonBackgroundImage(UIImage(named: "LeftArrowIcon"), forState: UIControlState.Normal, barMetrics: UIBarMetrics.Default)
-        self.navigationItem.leftBarButtonItem = backButton
-        self.navigationController!.navigationBar.backIndicatorImage = UIImage(named: "LeftArrowIcon")!
-        self.navigationController!.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "LeftArrowIcon")!
-        
         loadQuestion(0)
     }
     

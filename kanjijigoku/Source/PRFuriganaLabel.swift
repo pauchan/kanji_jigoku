@@ -15,10 +15,7 @@ class PRFuriganaLabel : UIView
     var furiganaText : NSAttributedString!
     
     override func drawRect(rect: CGRect) {
-        
-        self.layer.borderColor = UIColor.redColor().CGColor
-        self.layer.borderWidth = 2.0
-        
+                
         let context = UIGraphicsGetCurrentContext()
         
         CGContextSetRGBFillColor(context, 1.0, 0.0, 1.0, 1.0)

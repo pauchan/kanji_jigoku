@@ -89,7 +89,6 @@
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yrR-js-Mvu">
                     <rect key="frame" x="30" y="444" width="540" height="40"/>
-                    <color key="backgroundColor" red="0.59111489097527792" green="1" blue="0.059312364616591728" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="59u-c9-GLs"/>
                     </constraints>
