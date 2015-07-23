@@ -10,16 +10,33 @@ import Foundation
 
 extension String
 {
-
-func removeReferenceSubstring() -> String {
     
-    let regex = NSRegularExpression(pattern: "\\|.*?\\|" , options: .CaseInsensitive, error: nil)
-    let regex2 = NSRegularExpression(pattern: "[\\[\\]]" , options: .CaseInsensitive, error: nil)
-
-    var  mutString : NSMutableString = NSMutableString(string: self)
-    
-    regex!.replaceMatchesInString(mutString, options: nil, range: NSMakeRange(0, count(self)), withTemplate: "")
-    regex2!.replaceMatchesInString(mutString, options: nil, range: NSMakeRange(0, mutString.length), withTemplate: "")
-    return mutString as String
+    func removeReferenceSubstring() -> String {
+        
+        let regex = NSRegularExpression(pattern: "\\|.*?\\|" , options: .CaseInsensitive, error: nil)
+        let regex2 = NSRegularExpression(pattern: "[\\[\\]]" , options: .CaseInsensitive, error: nil)
+        
+        var  mutString : NSMutableString = NSMutableString(string: self)
+        
+        regex!.replaceMatchesInString(mutString, options: nil, range: NSMakeRange(0, count(self)), withTemplate: "")
+        regex2!.replaceMatchesInString(mutString, options: nil, range: NSMakeRange(0, mutString.length), withTemplate: "")
+        return mutString as String
     }
+    
+    
+    func isRomaji() -> Bool {
+        
+        let regex = NSRegularExpression(pattern: "[a-z]" , options: .CaseInsensitive, error: nil)
+        var  mutString : NSMutableString = NSMutableString(string: self)
+        
+        regex!.replaceMatchesInString(mutString, options: nil, range: NSMakeRange(0, count(self)), withTemplate: "")
+        if mutString.length == 0 {
+        
+            return true
+        }else {
+            return false
+        }
+    }
+    
 }
+

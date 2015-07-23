@@ -27,6 +27,7 @@
 		188B81AA1B60BE8C00B1543A /* RomajiKanaConversionArray.plist in Resources */ = {isa = PBXBuildFile; fileRef = 188B81A91B60BE8C00B1543A /* RomajiKanaConversionArray.plist */; };
 		188B81AB1B60CC9900B1543A /* PRStateSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D1706D1A89D77B00672203 /* PRStateSingleton.swift */; };
 		188B81AC1B60CCCD00B1543A /* PRRomajiKanaConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188B81A31B60AB3D00B1543A /* PRRomajiKanaConverter.swift */; };
+		188B81AE1B60E0F500B1543A /* PRStringExtensionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188B81AD1B60E0F500B1543A /* PRStringExtensionTest.swift */; };
 		188C73691A9EE6E600D1634C /* PRRelatedKanjiCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188C73671A9EE6E600D1634C /* PRRelatedKanjiCell.swift */; };
 		188C736A1A9EE6E600D1634C /* PRRelatedKanjiCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 188C73681A9EE6E600D1634C /* PRRelatedKanjiCell.xib */; };
 		189369431A9D4DFD001DEFC4 /* PRSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189369411A9D4DFD001DEFC4 /* PRSettingsViewController.swift */; };
@@ -110,6 +111,7 @@
 		188B81A31B60AB3D00B1543A /* PRRomajiKanaConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRRomajiKanaConverter.swift; path = Source/PRRomajiKanaConverter.swift; sourceTree = "<group>"; };
 		188B81A71B60B7BB00B1543A /* PRRomajiKanaConverterTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRRomajiKanaConverterTest.swift; sourceTree = "<group>"; };
 		188B81A91B60BE8C00B1543A /* RomajiKanaConversionArray.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = RomajiKanaConversionArray.plist; sourceTree = "<group>"; };
+		188B81AD1B60E0F500B1543A /* PRStringExtensionTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRStringExtensionTest.swift; sourceTree = "<group>"; };
 		188C73671A9EE6E600D1634C /* PRRelatedKanjiCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRRelatedKanjiCell.swift; path = Source/PRRelatedKanjiCell.swift; sourceTree = "<group>"; };
 		188C73681A9EE6E600D1634C /* PRRelatedKanjiCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PRRelatedKanjiCell.xib; path = Source/PRRelatedKanjiCell.xib; sourceTree = "<group>"; };
 		189369411A9D4DFD001DEFC4 /* PRSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRSettingsViewController.swift; path = Source/PRSettingsViewController.swift; sourceTree = "<group>"; };
@@ -331,6 +333,7 @@
 			children = (
 				FB67D6FB1A861B8B00926E38 /* kanjijigokuTests.swift */,
 				188B81A71B60B7BB00B1543A /* PRRomajiKanaConverterTest.swift */,
+				188B81AD1B60E0F500B1543A /* PRStringExtensionTest.swift */,
 			);
 			path = kanjijigokuTests;
 			sourceTree = "<group>";
@@ -646,6 +649,7 @@
 				FB67D6FC1A861B8B00926E38 /* kanjijigokuTests.swift in Sources */,
 				188B81AC1B60CCCD00B1543A /* PRRomajiKanaConverter.swift in Sources */,
 				188B81A81B60B7BB00B1543A /* PRRomajiKanaConverterTest.swift in Sources */,
+				188B81AE1B60E0F500B1543A /* PRStringExtensionTest.swift in Sources */,
 				188B81AB1B60CC9900B1543A /* PRStateSingleton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
