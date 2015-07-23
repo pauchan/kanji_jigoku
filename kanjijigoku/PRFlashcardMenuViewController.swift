@@ -127,14 +127,14 @@ override func viewDidLoad() {
     {
         
         var returnArray : [Flashcard] = [Flashcard]()
-        for kanjiKanji in characters
+        for kanji in characters
         {
             if(option == kOnyomiOption){
-                returnArray.append(Flashcard(text: kanjiKanji.kanji, reading: kanjiKanji.generateReadingString(kanjiKanji.onyomis), meaning: kanjiKanji.meaning))
+                returnArray.append(Flashcard(text: kanji.kanji, reading: kanji.generateReadingString(kanji.onyomis), meaning: kanji.meaning))
             }
             else // option == kKunyomiOption
             {
-                returnArray.append(Flashcard(text: kanjiKanji.kanji, reading: kanjiKanji.generateReadingString(kanjiKanji.kunyomis), meaning: kanjiKanji.meaning))
+                returnArray.append(Flashcard(text: kanji.kanji, reading: kanji.generateReadingString(kanji.kunyomis), meaning: kanji.meaning))
             }
         }
         return returnArray
@@ -151,17 +151,18 @@ override func viewDidLoad() {
                 for e in character.examples
                 {
                     let example = e as! Example
-                    if example.isObligatory() {
+                    if example.obligatory {
                         returnArray.append(Flashcard(text: example.example, reading: example.reading, meaning: example.meaning))
                     }
                 }
             }
             else
             {
+                debugLog("for kanji \(character.kanji) sententces count \(character.sentences.count)")
                 for s in character.sentences
                 {
                     let sentence = s as! Sentence
-                    if sentence.isObligatory() {
+                    if sentence.obligatory {
                         let flashcard = Flashcard(text: sentence.sentence, reading: sentence.sentence, meaning: sentence.meaning)
                         flashcard.furiganaReading = sentence.replaceExplainedSentence(sentence.sentence)
                         flashcard.text = (sentence.replaceExplainedSentence(sentence.sentence)).string

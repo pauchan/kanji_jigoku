@@ -177,12 +177,13 @@ class PRDatabaseHelper
                     character.level = rs.intForColumnIndex(11)
                     character.kanjiId = rs.intForColumnIndex(12)
                     // skipping column 13 id_sql
-                    character.note = String(rs.intForColumnIndex(14))
+                    character.code = String(rs.intForColumnIndex(14))
                     
                     character.kunyomis = parseKunyomi(database, character: character.kanji)
                     character.onyomis = parseOnyomi(database, character: character.kanji)
                     character.examples = parseExamples(database, character: character.kanji)
                     character.sentences = parseSentences(database, character: character.kanji)
+                    debugLog("for kanji \(character.kanji) sententces count \(character.sentences.count)")
                     character.radicals = parseRadicals(database, number: Int(character.radical))
                     
                 }
@@ -208,7 +209,6 @@ class PRDatabaseHelper
             let entity = NSEntityDescription.entityForName("Sentence", inManagedObjectContext: managedContext)!
             
             var outSet : NSMutableSet = NSMutableSet()
-            
             if let rs = database.executeQuery("select * from zdania where kanji='\(character)'", withArgumentsInArray: nil) {
                 while rs.next() {
                     
@@ -223,15 +223,15 @@ class PRDatabaseHelper
                     sentence.example = rs.stringForColumnIndex(1)
                     sentence.sentence = rs.stringForColumnIndex(2)
                     sentence.meaning = rs.stringForColumnIndex(3)
-                    sentence.code = rs.stringForColumnIndex(4)
+                    sentence.code = String(rs.intForColumnIndex(4))
                     sentence.sentenceId = rs.intForColumnIndex(5)
                     
                     outSet.addObject(sentence)
+                    //count++
                 }
             } else {
                 println("select failed: \(database.lastErrorMessage())")
-            }
-            
+            }            
             return outSet.copy() as! NSSet
             
         }
@@ -259,7 +259,7 @@ class PRDatabaseHelper
                     kunyomi.reading = rs.stringForColumnIndex(1)
                     kunyomi.meaning = rs.stringForColumnIndex(2)
                     kunyomi.readingId = rs.intForColumnIndex(3)
-                    kunyomi.code = rs.stringForColumnIndex(4)
+                    kunyomi.code = String(rs.intForColumnIndex(4))
                     kunyomi.note = rs.stringForColumnIndex(5)
                     
                     outSet.addObject(kunyomi)
@@ -295,8 +295,8 @@ class PRDatabaseHelper
                     onyomi.reading = rs.stringForColumnIndex(1)
                     onyomi.meaning = rs.stringForColumnIndex(2)
                     onyomi.readingId = rs.intForColumnIndex(3)
-                    onyomi.code = rs.stringForColumnIndex(4)
-                    onyomi.note = rs.stringForColumnIndex(5)
+                    onyomi.code = String(rs.intForColumnIndex(4))
+                    onyomi.note = String(rs.intForColumnIndex(5))
                     
                     outSet.addObject(onyomi)
                 }
@@ -334,7 +334,7 @@ class PRDatabaseHelper
                     example.meaning = rs.stringForColumnIndex(3)
                     example.note = rs.stringForColumnIndex(4)
                     example.exampleId = rs.intForColumnIndex(5)
-                    example.code = rs.stringForColumnIndex(6)
+                    example.code = String(rs.intForColumnIndex(6))
                     
                     outSet.addObject(example)
                 }

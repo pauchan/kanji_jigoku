@@ -9,13 +9,17 @@
 import Foundation
 
 extension BaseEntity {
-
-    func isObligatory() -> Bool {
     
-        if self.code.rangeOfString("8") != nil {
+    var obligatory: Bool {
         
-            return true
+        get {
+            
+            debugLog("code is \(self.code)")
+            if self.code.rangeOfString("8") == nil {
+                
+                return true
+            }
+            return false
         }
-        return false
     }
 }
