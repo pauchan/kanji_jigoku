@@ -10,7 +10,7 @@ import UIKit
 
 enum PRKanjiJigokuKanjiOptions : Int
 {
-    case RelatedKanijs=0, Summary, Notes , Kunyomi, Onyomi, Examples, AdditionalExamples, Sentences
+    case RelatedKanijs=0, Summary, Notes , Onyomi, Kunyomi, Examples, AdditionalExamples, Sentences
 }
 
 class PRKanjiTableViewController: UIViewController, UITableViewDelegate,UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource {
