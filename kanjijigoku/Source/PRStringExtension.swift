@@ -1,4 +1,4 @@
-//
+    //
 //  PRStringExtension.swift
 //  kanjijigoku
 //
@@ -26,17 +26,38 @@ extension String
     
     func isRomaji() -> Bool {
         
-        let regex = NSRegularExpression(pattern: "[a-z]" , options: .CaseInsensitive, error: nil)
+        return isAlhpabetWithCharacters("[a-z]")
+    }
+
+    func isKatakana() -> Bool {
+        
+        return isAlhpabetWithCharacters("[ァ-ヶ]")
+    }
+    
+    func isHiragana() -> Bool {
+        
+        return isAlhpabetWithCharacters("[ぁ-ん]")
+    }
+    
+    func isKanji() -> Bool {
+        
+        return isAlhpabetWithCharacters("[一-龠]")
+    }
+    
+    func isAlhpabetWithCharacters(characters: String) -> Bool {
+        
+        let regex = NSRegularExpression(pattern: characters , options: .CaseInsensitive, error: nil)
         var  mutString : NSMutableString = NSMutableString(string: self)
         
-        regex!.replaceMatchesInString(mutString, options: nil, range: NSMakeRange(0, count(self)), withTemplate: "")
+        let bla = regex!.replaceMatchesInString(mutString, options: nil, range: NSMakeRange(0, count(self)), withTemplate: "")
         if mutString.length == 0 {
-        
+            
             return true
         }else {
             return false
         }
     }
+    
     
 }
 

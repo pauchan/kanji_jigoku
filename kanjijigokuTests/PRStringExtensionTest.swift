@@ -24,7 +24,7 @@ class PRStringExtensionTest: XCTestCase {
     func testShouldBeRomajiString() {
         // This is an example of a functional test case.
         let romajiString = "ThisIsRomajiString"
-        XCTAssert(true, "This is romaji string")
+        XCTAssert(romajiString.isRomaji(), "This is romaji string")
     }
     
     func testShouldNOTBeRomajiString() {
@@ -39,4 +39,10 @@ class PRStringExtensionTest: XCTestCase {
         XCTAssertFalse(mixedString.isRomaji(), "This mixed string (not romaji)")
     }
 
+    
+    func testMixedShouldNotBeRomajiString2() {
+        // This is an example of a functional test case.
+        let mixedString = "mieszanyStringこれは"
+        XCTAssertFalse(mixedString.isRomaji(), "This mixed string (not romaji)")
+    }
 }
