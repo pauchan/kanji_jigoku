@@ -110,15 +110,14 @@ class PRSearchKanjiViewController: UIViewController, UITableViewDelegate, UITabl
             return 30.0
         } else {
         
-            let displaySection: PRKanjiJigokuKanjiOptions = PRKanjiJigokuKanjiOptions(rawValue: indexPath.section)!
-            // for examples and sentences adjust based on detailed height
             var text = ""
             var detailedText = ""
-            if displaySection == .Examples {
+            if indexPath.section == 1 {
                 text = exampleSearchArray[indexPath.row].generateDescriptionString().string
                 detailedText = exampleSearchArray[indexPath.row].meaning + " " + exampleSearchArray[indexPath.row].note.removeReferenceSubstring()
             }
             else { // == .Sentences
+                let indexPAth = indexPath.row
                 text = sentenceSearchArray[indexPath.row].getExplainedSentence().string
                 detailedText = sentenceSearchArray[indexPath.row].meaning
             }

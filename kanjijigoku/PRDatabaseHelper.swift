@@ -577,6 +577,7 @@ class PRDatabaseHelper
         return managedContext.executeFetchRequest(fetchRequest, error: nil)! as! [Kanji]
     }
     
+    
     func fetchObjectsContainingPhrase(object: String, phrase: String) -> [NSManagedObject]
     {
     
@@ -585,17 +586,40 @@ class PRDatabaseHelper
         
         let fetchRequest :NSFetchRequest = NSFetchRequest(entityName: object)
         let entity = NSEntityDescription.entityForName(object, inManagedObjectContext: managedContext)!
+        
+        var predicates = [NSPredicate]()
+        /*
+        we are looking for a match in 3 places:
+        1. for kanji we are looking for a kanji-match, onyomi-match, kunyomi match
+        2. for examples we are looking for a kanji-match in examples and onyomi match in readings
+        3. for sentences we are looking for a kanji-match in sentence and onyomi match in meaning
+        
+        */
+        var hiraganaPhrase = phrase
+        var katakanaPhrase = phrase
+        var kanjiPhrase = phrase
+        
+        if phrase.isRomaji() {
+            hiraganaPhrase = PRRomajiKanaConverter().convert(phrase, from: AlphabetType.Romaji, to: AlphabetType.Hiragana)
+            katakanaPhrase = PRRomajiKanaConverter().convert(phrase, from: AlphabetType.Romaji, to: AlphabetType.Katakana)
+        }
         switch object
         {
-            case "Kanji":
-                fetchRequest.predicate = NSPredicate(format: "(ANY kunyomis.reading='\(phrase)') OR (ANY onyomis.reading='\(phrase)')")
-            case "Example":
-                fetchRequest.predicate = NSPredicate(format: "reading='\(phrase)' OR example CONTAINS '\(phrase)'")
-            case "Sentence":
-                fetchRequest.predicate = NSPredicate(format: "(sentence CONTAINS '\(phrase)') OR (meaning CONTAINS '\(phrase)')")
+        case "Kanji":
+            //let predicateA = NSPredicate(format: "ANY kunyomis.reading='\(hiraganaPhrase)'")
+            //let predicateB = NSPredicate(format: "ANY onyomis.reading='\(katakanaPhrase)'")
+            
+            predicates = [NSPredicate(format: "ANY kunyomis.reading='\(hiraganaPhrase)'"), NSPredicate(format: "ANY onyomis.reading='\(katakanaPhrase)'")]
+        case "Example":
+            predicates = [NSPredicate(format: "reading CONTAINS '\(hiraganaPhrase)'"), NSPredicate(format: "example CONTAINS '\(kanjiPhrase)'")]
+        case "Sentence":
+            predicates = [NSPredicate(format: "sentence CONTAINS '\(hiraganaPhrase)'"), NSPredicate(format: "meaning CONTAINS '\(phrase)'")]
         default:
-                fetchRequest.predicate == nil
+            predicates = [NSPredicate]()
         }
+        
+        // generate compound predicate based on the specific phrase type
+        fetchRequest.predicate = NSCompoundPredicate(type: NSCompoundPredicateType.OrPredicateType, subpredicates: predicates)
         
         return managedContext.executeFetchRequest(fetchRequest, error: nil)! as! [NSManagedObject]
     }
