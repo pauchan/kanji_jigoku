@@ -26,13 +26,13 @@ extension Kanji
                 returnString += reading.reading + "・"
             }
         }
-        return returnString.substringWithRange(Range<String.Index>(start: returnString.startIndex, end: advance(returnString.endIndex, -1)))
+        return returnString.substringWithRange(Range<String.Index>(start: returnString.startIndex, end: returnString.endIndex.advancedBy(-1)))
     }
     
     
     func generateRadicalsString() -> String {
         
-        var arr = self.radicals.allObjects as! [Radical]
+        let arr = self.radicals.allObjects as! [Radical]
         return arr.map
             {
                 (radical : Radical) -> String in radical.radical

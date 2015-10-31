@@ -43,9 +43,9 @@ class PRTestViewController: UIViewController {
     func testButtonClicked(sender : AnyObject)
     {
         let button = sender as! UIButton
-        if let index = find(testOptionButtons, button)
+        if let index = testOptionButtons.indexOf(button)
         {
-            println("Selected index = \(index)")
+            print("Selected index = \(index)")
             if index == questions[questionsCount].properAnswerIndex
             {
                 if !correctMarked
@@ -65,7 +65,7 @@ class PRTestViewController: UIViewController {
 
                     if questionsCount >= maxQuestionCount
                     {
-                        var vc = PRTestResultsViewController()
+                        let vc = PRTestResultsViewController()
                         vc.descriptionText = descriptionText
                         vc.questions = questions
                         vc.correctAnswers = properAnswersCount
@@ -105,7 +105,7 @@ class PRTestViewController: UIViewController {
         questionLabel.text = questions[questionNumber].question
         for button in testOptionButtons
         {
-            if let index = find(testOptionButtons, button)
+            if let index = testOptionButtons.indexOf(button)
             {
                 button.layer.cornerRadius = 10 // this value vary as per your desire
                 button.clipsToBounds = true
@@ -129,7 +129,7 @@ class PRTestViewController: UIViewController {
         let kanjiString : String = questions[questionsCount-1].question as String
         let attrArr = [NSFontAttributeName : UIFont().appFont()]
         let beginningAtrStr = NSAttributedString(string: kanjiString , attributes: attrArr)
-        var tempString : NSMutableAttributedString = NSMutableAttributedString(attributedString: beginningAtrStr)
+        let tempString : NSMutableAttributedString = NSMutableAttributedString(attributedString: beginningAtrStr)
         tempString.appendAttributedString(NSAttributedString(string: " "))
         tempString.appendAttributedString(NSAttributedString(string: questions[questionsCount-1].meaning, attributes: [NSFontAttributeName : UIFont().appFont()]))
         tempString.appendAttributedString(NSAttributedString(string: " "))

@@ -10,10 +10,11 @@ import Foundation
 
 extension Example {
     
-    func generateDescriptionString() -> NSAttributedString {
+    func generateDescriptionString() -> NSMutableAttributedString {
         
-        var attributedText = NSMutableAttributedString(string: self.example, attributes: kPRKanjiJigokuAttributedBoldBig)
+        let attributedText = NSMutableAttributedString(string: self.example, attributes: kPRKanjiJigokuAttributedBoldBig)
         let attributedText2 = NSAttributedString(string: " 【" + self.reading + "】", attributes: kPRKanjiJigokuAttributedSmall)
+        
         attributedText.appendAttributedString(attributedText2)
         return attributedText
         

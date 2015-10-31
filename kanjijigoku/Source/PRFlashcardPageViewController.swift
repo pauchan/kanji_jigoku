@@ -22,14 +22,14 @@ class PRFlashcardPageViewController : UIPageViewController, UIPageViewController
         if _flashcardSet.count == 0
         {
             let vc = UIViewController()
-            var vcArray = [vc] as [AnyObject]
+            let vcArray = [vc] as [UIViewController]?
             self.setViewControllers(vcArray, direction: .Forward, animated: false, completion: nil)
         }
         else
         {
             let vc = PRFlashcardViewController(nibName: "PRFlashcardViewController", bundle: nil)
             vc.flashcard = _flashcardSet[0] as! Flashcard
-            var vcArray = [vc] as [AnyObject]
+            let vcArray = [vc] as [UIViewController]?
             self.setViewControllers(vcArray, direction: .Forward, animated: false, completion: nil)
         }
         

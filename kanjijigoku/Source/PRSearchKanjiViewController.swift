@@ -23,7 +23,7 @@ class PRSearchKanjiViewController: UIViewController, UITableViewDelegate, UITabl
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -55,7 +55,7 @@ class PRSearchKanjiViewController: UIViewController, UITableViewDelegate, UITabl
         
         if indexPath.section == 0
         {
-            let cell = tableView.dequeueReusableCellWithIdentifier("PRKanjiCell", forIndexPath: indexPath) as! UITableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("PRKanjiCell", forIndexPath: indexPath) 
             cell.textLabel?.text = characterSearchArray[indexPath.row].kanji
             return cell
         }
@@ -91,10 +91,10 @@ class PRSearchKanjiViewController: UIViewController, UITableViewDelegate, UITabl
             selectedKanji = sentenceSearchArray[indexPath.row].character
         }
         
-        var vc = PRKanjiPageViewController()
+        let vc = PRKanjiPageViewController()
         vc._kanjiTable = PRDatabaseHelper().getSelectedObjects("Kanji", level: Int(selectedKanji!.level), lesson: Int(selectedKanji!.lesson)) as! [Kanji]
         
-        vc._selectedIndex = find(vc._kanjiTable, selectedKanji!)!
+        vc._selectedIndex = vc._kanjiTable.indexOf(selectedKanji!)!
         
         //self.tabBarController?.selectedIndex = 0
         
@@ -117,7 +117,6 @@ class PRSearchKanjiViewController: UIViewController, UITableViewDelegate, UITabl
                 detailedText = exampleSearchArray[indexPath.row].meaning + " " + exampleSearchArray[indexPath.row].note.removeReferenceSubstring()
             }
             else { // == .Sentences
-                let indexPAth = indexPath.row
                 text = sentenceSearchArray[indexPath.row].getExplainedSentence().string
                 detailedText = sentenceSearchArray[indexPath.row].meaning
             }
@@ -190,12 +189,12 @@ class PRSearchKanjiViewController: UIViewController, UITableViewDelegate, UITabl
     func searchBarSearchButtonClicked(searchBar: UISearchBar)
     {
         
-        characterSearchArray = PRDatabaseHelper().fetchObjectsContainingPhrase("Kanji", phrase: searchBar.text) as! [Kanji]
-        exampleSearchArray = PRDatabaseHelper().fetchObjectsContainingPhrase("Example", phrase: searchBar.text) as! [Example]
-        sentenceSearchArray = PRDatabaseHelper().fetchObjectsContainingPhrase("Sentence", phrase: searchBar.text) as! [Sentence]
-        println("character array count \(characterSearchArray.count)")
-        println("example array count \(exampleSearchArray.count)")
-        println("search array count \(sentenceSearchArray.count)")
+        characterSearchArray = PRDatabaseHelper().fetchObjectsContainingPhrase("Kanji", phrase: searchBar.text!) as! [Kanji]
+        exampleSearchArray = PRDatabaseHelper().fetchObjectsContainingPhrase("Example", phrase: searchBar.text!) as! [Example]
+        sentenceSearchArray = PRDatabaseHelper().fetchObjectsContainingPhrase("Sentence", phrase: searchBar.text!) as! [Sentence]
+        print("character array count \(characterSearchArray.count)")
+        print("example array count \(exampleSearchArray.count)")
+        print("search array count \(sentenceSearchArray.count)")
         kanjiSearchTable.reloadData()
         searchBar.resignFirstResponder()
         

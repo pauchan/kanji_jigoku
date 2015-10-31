@@ -98,7 +98,7 @@ class PRFilterController: NSObject, UIPickerViewDataSource, UIPickerViewDelegate
     {
         
         let arr : [Kanji]  = PRDatabaseHelper().getSelectedObjects("Kanji", level: level, lesson: lesson) as! [Kanji]
-        var bla : String =  arr.map
+        let bla : String =  arr.map
             {
                 (kanji: Kanji) -> String in kanji.kanji
             }.reduce("")
@@ -108,7 +108,7 @@ class PRFilterController: NSObject, UIPickerViewDataSource, UIPickerViewDelegate
         return bla
     }
     
-    func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView!) -> UIView {
+    func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView?) -> UIView {
         
         var labView : UILabel? = view as? UILabel
         

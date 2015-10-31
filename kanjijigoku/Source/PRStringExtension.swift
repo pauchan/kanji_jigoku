@@ -13,13 +13,13 @@ extension String
     
     func removeReferenceSubstring() -> String {
         
-        let regex = NSRegularExpression(pattern: "\\|.*?\\|" , options: .CaseInsensitive, error: nil)
-        let regex2 = NSRegularExpression(pattern: "[\\[\\]]" , options: .CaseInsensitive, error: nil)
+        let regex = try? NSRegularExpression(pattern: "\\|.*?\\|" , options: .CaseInsensitive)
+        let regex2 = try? NSRegularExpression(pattern: "[\\[\\]]" , options: .CaseInsensitive)
         
-        var  mutString : NSMutableString = NSMutableString(string: self)
+        let  mutString : NSMutableString = NSMutableString(string: self)
         
-        regex!.replaceMatchesInString(mutString, options: nil, range: NSMakeRange(0, count(self)), withTemplate: "")
-        regex2!.replaceMatchesInString(mutString, options: nil, range: NSMakeRange(0, mutString.length), withTemplate: "")
+        regex!.replaceMatchesInString(mutString, options: [], range: NSMakeRange(0, self.characters.count), withTemplate: "")
+        regex2!.replaceMatchesInString(mutString, options: [], range: NSMakeRange(0, mutString.length), withTemplate: "")
         return mutString as String
     }
     
@@ -46,10 +46,10 @@ extension String
     
     func isAlhpabetWithCharacters(characters: String) -> Bool {
         
-        let regex = NSRegularExpression(pattern: characters , options: .CaseInsensitive, error: nil)
-        var  mutString : NSMutableString = NSMutableString(string: self)
+        let regex = try? NSRegularExpression(pattern: characters , options: .CaseInsensitive)
+        let  mutString : NSMutableString = NSMutableString(string: self)
         
-        let bla = regex!.replaceMatchesInString(mutString, options: nil, range: NSMakeRange(0, count(self)), withTemplate: "")
+        regex!.replaceMatchesInString(mutString, options: [], range: NSMakeRange(0, self.characters.count), withTemplate: "")
         if mutString.length == 0 {
             
             return true

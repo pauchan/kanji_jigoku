@@ -29,14 +29,14 @@ class PRDatabaseHelper
         
         if(!shouldUpdateDb())
         {
-            println("database up to date")
+            print("database up to date")
             return true
         }
         
         if downloadDbFile()
         {
-            let documentsFolder = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as! String
-            let path = documentsFolder.stringByAppendingPathComponent("clientDB.db")
+            let documentsFolder = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] 
+            let path = documentsFolder.stringByAppendingString("/clientDB.db")
             
             let database = FMDatabase(path: path)
             
@@ -44,23 +44,23 @@ class PRDatabaseHelper
             {
                 if parseDb(database)
                 {
-                    println("parsed db succesfully")
+                    print("parsed db succesfully")
                     return true
                 }
                 else
                 {
-                    println("db parse failed")
+                    print("db parse failed")
                 }
                 database.close()
             }
             else
             {
-                println("Unable to open database")
+                print("Unable to open database")
             }
         }
         else
         {
-            println("Download db file failed")
+            print("Download db file failed")
         }
         return false
     }
@@ -74,10 +74,10 @@ class PRDatabaseHelper
         {
             if let urlData : NSData = NSData(contentsOfURL: url)
             {
-                var paths : NSArray = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+                let paths : NSArray = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
                 if let documentsDirectory = (paths[0] as? String)
                 {
-                    let filePath : String = documentsDirectory.stringByAppendingPathComponent("clientDB.db")
+                    let filePath : String = documentsDirectory.stringByAppendingString("/clientDB.db")
                     return  urlData.writeToFile(filePath, atomically: true)
                 }
             }
@@ -95,25 +95,25 @@ class PRDatabaseHelper
             {
                 if let urlData : NSData = NSData(contentsOfURL: url)
                 {
-                    if var timestamp = NSString(data: urlData, encoding: NSUTF8StringEncoding)
+                    if let timestamp = NSString(data: urlData, encoding: NSUTF8StringEncoding)
                     {
                         if(appDbUpdate.isEqualToString(timestamp as String))
                         {
                             //_timestamp = timestamp
-                            println("there is no new version of db")
+                            print("there is no new version of db")
                             return false
                         }
                         else
                         {
                             _timestamp = timestamp
-                            println("new version - updating")
+                            print("new version - updating")
                             return true
                         }
                     }
                 }
             }
             // there was some data error or connectivity errror. We still ha
-            println("connetivity error. Using old version of db")
+            print("connetivity error. Using old version of db")
             return false
         }
         else
@@ -136,13 +136,13 @@ class PRDatabaseHelper
         
         if !parseKanjis(database)
         {
-            println("failed to parse characters")
+            print("failed to parse characters")
             return false
         }
 
-        println("Timestamp: \(_timestamp)")
+        print("Timestamp: \(_timestamp)")
         NSUserDefaults.standardUserDefaults().setObject(_timestamp, forKey: "PRKanjiJigokuDbUpdate")
-        println("Update successful")
+        print("Update successful")
         
         return true
     }
@@ -188,12 +188,15 @@ class PRDatabaseHelper
                     
                 }
             } else {
-                println("select failed: \(database.lastErrorMessage())")
+                print("select failed: \(database.lastErrorMessage())")
                 return false
             }
             var error: NSError?
-            if !managedContext.save(&error) {
-                println("Could not save \(error), \(error?.userInfo)")
+            do {
+                try managedContext.save()
+            } catch let error1 as NSError {
+                error = error1
+                print("Could not save \(error), \(error?.userInfo)")
                 return false
             }
             
@@ -208,7 +211,7 @@ class PRDatabaseHelper
             
             let entity = NSEntityDescription.entityForName("Sentence", inManagedObjectContext: managedContext)!
             
-            var outSet : NSMutableSet = NSMutableSet()
+            let outSet : NSMutableSet = NSMutableSet()
             if let rs = database.executeQuery("select * from zdania where kanji='\(character)'", withArgumentsInArray: nil) {
                 while rs.next() {
                     
@@ -230,7 +233,7 @@ class PRDatabaseHelper
                     //count++
                 }
             } else {
-                println("select failed: \(database.lastErrorMessage())")
+                print("select failed: \(database.lastErrorMessage())")
             }            
             return outSet.copy() as! NSSet
             
@@ -243,7 +246,7 @@ class PRDatabaseHelper
             
             let entity = NSEntityDescription.entityForName("Kunyomi", inManagedObjectContext: managedContext)!
             
-            var outSet : NSMutableSet = NSMutableSet()
+            let outSet : NSMutableSet = NSMutableSet()
             
             if let rs = database.executeQuery("select * from kunyomi where kanji='\(character)'", withArgumentsInArray: nil) {
                 while rs.next() {
@@ -265,7 +268,7 @@ class PRDatabaseHelper
                     outSet.addObject(kunyomi)
                 }
             } else {
-                println("select failed: \(database.lastErrorMessage())")
+                print("select failed: \(database.lastErrorMessage())")
             }
             
             return outSet.copy() as! NSSet
@@ -279,7 +282,7 @@ class PRDatabaseHelper
             
             let entity = NSEntityDescription.entityForName("Onyomi", inManagedObjectContext: managedContext)!
             
-            var outSet : NSMutableSet = NSMutableSet()
+            let outSet : NSMutableSet = NSMutableSet()
             
             if let rs = database.executeQuery("select * from onyomi where kanji='\(character)'", withArgumentsInArray: nil) {
                 while rs.next() {
@@ -301,7 +304,7 @@ class PRDatabaseHelper
                     outSet.addObject(onyomi)
                 }
             } else {
-                println("select failed: \(database.lastErrorMessage())")
+                print("select failed: \(database.lastErrorMessage())")
                 //return outSet
             }
             
@@ -316,7 +319,7 @@ class PRDatabaseHelper
             
             let entity = NSEntityDescription.entityForName("Example", inManagedObjectContext: managedContext)!
             
-            var outSet : NSMutableSet = NSMutableSet()
+            let outSet : NSMutableSet = NSMutableSet()
             
             if let rs = database.executeQuery("select * from zlozenia where kanji='\(character)'", withArgumentsInArray: nil) {
                 while rs.next() {
@@ -339,7 +342,7 @@ class PRDatabaseHelper
                     outSet.addObject(example)
                 }
             } else {
-                println("select failed: \(database.lastErrorMessage())")
+                print("select failed: \(database.lastErrorMessage())")
             }
             
             return outSet.copy() as! NSSet
@@ -352,7 +355,7 @@ class PRDatabaseHelper
             
             let entity = NSEntityDescription.entityForName("Radical", inManagedObjectContext: managedContext)!
             
-            var outSet : NSMutableSet = NSMutableSet()
+            let outSet : NSMutableSet = NSMutableSet()
             
             if let rs = database.executeQuery("select * from pierwiastki where numer=\(number)", withArgumentsInArray: nil) {
                 while rs.next() {
@@ -366,7 +369,7 @@ class PRDatabaseHelper
                     outSet.addObject(radical)
                 }
             } else {
-                println("select failed: \(database.lastErrorMessage())")
+                print("select failed: \(database.lastErrorMessage())")
             }
             
             return outSet.copy() as! NSSet
@@ -383,7 +386,7 @@ class PRDatabaseHelper
         let fetchRequest = NSFetchRequest(entityName: description)
         
         var error : NSError?
-        let fetchedRequest = managedContext.executeFetchRequest(fetchRequest, error: &error) as! [NSManagedObject]
+        let fetchedRequest = (try! managedContext.executeFetchRequest(fetchRequest)) as! [NSManagedObject]
         
         //let objects = fetchedRequest as? [NSManagedObjects]
         
@@ -394,8 +397,11 @@ class PRDatabaseHelper
         }
         
 
-        if !managedContext.save(&error) {
-            println("Could not save \(error), \(error?.userInfo)")
+        do {
+            try managedContext.save()
+        } catch let error1 as NSError {
+            error = error1
+            print("Could not save \(error), \(error?.userInfo)")
         }
     }
     
@@ -404,9 +410,7 @@ class PRDatabaseHelper
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext!
         
-        let fetchRequest : NSFetchRequest = NSFetchRequest(entityName: name)
-        let entity = NSEntityDescription.entityForName(name, inManagedObjectContext: managedContext)!
-        
+        let fetchRequest : NSFetchRequest = NSFetchRequest(entityName: name)        
         if name == "Kanji"
         {
             fetchRequest.predicate = NSPredicate(format: "level=\(level) AND lesson=\(lesson)")
@@ -426,7 +430,7 @@ class PRDatabaseHelper
             fetchRequest.predicate = NSCompoundPredicate(type: NSCompoundPredicateType.AndPredicateType, subpredicates: predicates)
         }
         
-        let outArray: NSArray = managedContext.executeFetchRequest(fetchRequest, error: nil)!
+        let outArray: NSArray = try! managedContext.executeFetchRequest(fetchRequest)
         debugLog("returning \(outArray.count) objects")
         return outArray
     }
@@ -438,14 +442,13 @@ class PRDatabaseHelper
             let managedContext = appDelegate.managedObjectContext!
             
             let fetchRequest : NSFetchRequest = NSFetchRequest(entityName: "Kanji")
-            let entity = NSEntityDescription.entityForName("Kanji", inManagedObjectContext: managedContext)!
             //fetchRequest.resultType =
             fetchRequest.propertiesToFetch = ["lesson"]
             fetchRequest.returnsDistinctResults = true
             fetchRequest.predicate = NSPredicate(format: "level=\(currentLevel)")
             fetchRequest.sortDescriptors = [NSSortDescriptor(key: "lesson", ascending: true)]
             fetchRequest.resultType = .DictionaryResultType;
-            let outResponse: NSArray = managedContext.executeFetchRequest(fetchRequest, error: nil)!
+            let outResponse: NSArray = try! managedContext.executeFetchRequest(fetchRequest)
         
             var outArray = [Int]()
             for object in outResponse
@@ -463,13 +466,12 @@ class PRDatabaseHelper
             let managedContext = appDelegate.managedObjectContext!
             
             let fetchRequest :NSFetchRequest = NSFetchRequest(entityName: "Kanji")
-            let entity = NSEntityDescription.entityForName("Kanji", inManagedObjectContext: managedContext)!
             //fetchRequest.resultType =
             fetchRequest.propertiesToFetch = ["level"]
             fetchRequest.sortDescriptors = [NSSortDescriptor(key: "level", ascending: true)]
             fetchRequest.returnsDistinctResults = true
             fetchRequest.resultType = .DictionaryResultType;
-            let outResponse : NSArray = managedContext.executeFetchRequest(fetchRequest, error: nil)!
+            let outResponse : NSArray = try! managedContext.executeFetchRequest(fetchRequest)
             var outArray = [Int]()
             for object in outResponse
             {
@@ -485,8 +487,6 @@ class PRDatabaseHelper
         let managedContext = appDelegate.managedObjectContext!
         
         let fetchRequest :NSFetchRequest = NSFetchRequest(entityName: object)
-        let entity = NSEntityDescription.entityForName(object, inManagedObjectContext: managedContext)!
-    
         var predicate : NSPredicate
         if object == "Kanji"
         {
@@ -506,7 +506,7 @@ class PRDatabaseHelper
         }
         fetchRequest.propertiesToFetch = [property]
         fetchRequest.predicate = predicate
-        let outResponse = managedContext.executeFetchRequest(fetchRequest, error: nil)! //as! [String]
+        let outResponse = try! managedContext.executeFetchRequest(fetchRequest) //as! [String]
 
         var newResponse: [String] = [String]()
         
@@ -518,7 +518,7 @@ class PRDatabaseHelper
         {
             let object = outResponse[objectId] as! NSManagedObject
             let proposedValue : String = object.valueForKey(property) as! String
-            if proposedValue != properAnswer && !(contains(newResponse, proposedValue))
+            if proposedValue != properAnswer && !(newResponse.contains(proposedValue))
             {
                 newResponse.append(proposedValue)
             }
@@ -528,7 +528,7 @@ class PRDatabaseHelper
             }
             objectId = generateRandomIdsArray(1, arrayCount: outResponse.count)[0]
         }
-        println("Response array count \(newResponse.count), should be 3")
+        print("Response array count \(newResponse.count), should be 3")
         return newResponse
     }
 
@@ -538,11 +538,11 @@ class PRDatabaseHelper
     func generateRandomIdsArray(limit: Int, arrayCount: Int) -> [Int]
     {
         var bla = [Int]()
-        var count : UInt32 = UInt32(arrayCount)
+        let count : UInt32 = UInt32(arrayCount)
         while bla.count < limit
         {
             let randomId = Int(arc4random_uniform(count))
-            if !(contains(bla, randomId))
+            if !(bla.contains(randomId))
             {
                 bla.append(randomId)
             }
@@ -555,38 +555,27 @@ class PRDatabaseHelper
     {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext!
-        
         let fetchRequest :NSFetchRequest = NSFetchRequest(entityName: "Example")
-        let entity = NSEntityDescription.entityForName("Example", inManagedObjectContext: managedContext)!
-        
         fetchRequest.predicate = NSPredicate(format: "example CONTAINS '\(kanji)'")
 
-        return managedContext.executeFetchRequest(fetchRequest, error: nil)! as! [Example]
+        return (try! managedContext.executeFetchRequest(fetchRequest)) as! [Example]
     }
 
     func fetchRelatedKanjis(kanji: Kanji) -> [Kanji]
     {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext!
-        
         let fetchRequest :NSFetchRequest = NSFetchRequest(entityName: "Kanji")
-        let entity = NSEntityDescription.entityForName("Kanji", inManagedObjectContext: managedContext)!
-        
         fetchRequest.predicate = NSPredicate(format: "relatedKanji='\(kanji.relatedKanji)' AND (NOT kanji='\(kanji.kanji)')")
-        
-        return managedContext.executeFetchRequest(fetchRequest, error: nil)! as! [Kanji]
+        return (try! managedContext.executeFetchRequest(fetchRequest)) as! [Kanji]
     }
     
     
     func fetchObjectsContainingPhrase(object: String, phrase: String) -> [NSManagedObject]
     {
-    
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext!
-        
         let fetchRequest :NSFetchRequest = NSFetchRequest(entityName: object)
-        let entity = NSEntityDescription.entityForName(object, inManagedObjectContext: managedContext)!
-        
         var predicates = [NSPredicate]()
         /*
         we are looking for a match in 3 places:
@@ -597,7 +586,7 @@ class PRDatabaseHelper
         */
         var hiraganaPhrase = phrase
         var katakanaPhrase = phrase
-        var kanjiPhrase = phrase
+        let kanjiPhrase = phrase
         
         if phrase.isRomaji() {
             hiraganaPhrase = PRRomajiKanaConverter().convert(phrase, from: AlphabetType.Romaji, to: AlphabetType.Hiragana)
@@ -621,7 +610,7 @@ class PRDatabaseHelper
         // generate compound predicate based on the specific phrase type
         fetchRequest.predicate = NSCompoundPredicate(type: NSCompoundPredicateType.OrPredicateType, subpredicates: predicates)
         
-        return managedContext.executeFetchRequest(fetchRequest, error: nil)! as! [NSManagedObject]
+        return (try! managedContext.executeFetchRequest(fetchRequest)) as! [NSManagedObject]
     }
     
     func fetchSingleKanji(kanji: String) -> Kanji? {
@@ -629,10 +618,9 @@ class PRDatabaseHelper
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext!
         let fetchRequest :NSFetchRequest = NSFetchRequest(entityName: "Kanji")
-        let entity = NSEntityDescription.entityForName("Kanji", inManagedObjectContext: managedContext)!
         fetchRequest.predicate = NSPredicate(format: "kanji='\(kanji)'")
         fetchRequest.fetchLimit = 1
-        let object = managedContext.executeFetchRequest(fetchRequest, error: nil)! as! [NSManagedObject]
+        let object = (try! managedContext.executeFetchRequest(fetchRequest)) as! [NSManagedObject]
         if object.count > 0 {
             return object.first as? Kanji
         } else {

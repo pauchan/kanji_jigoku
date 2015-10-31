@@ -68,7 +68,7 @@ class PRSettingsViewController: UITableViewController {
             switch(indexPath.row)
             {
             case 0:
-                var cell : UITableViewCell? = tableView.dequeueReusableCellWithIdentifier("PRSettingsCell") as? UITableViewCell
+                var cell : UITableViewCell? = tableView.dequeueReusableCellWithIdentifier("PRSettingsCell") as UITableViewCell!
                 if cell == nil
                 {
                     cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "PRSettingsCell")
@@ -78,7 +78,7 @@ class PRSettingsViewController: UITableViewController {
                 }
                 return cell!
             case 1:
-                var cell : UITableViewCell? = tableView.dequeueReusableCellWithIdentifier("PRSettingsCell") as? UITableViewCell
+                var cell : UITableViewCell? = tableView.dequeueReusableCellWithIdentifier("PRSettingsCell") as UITableViewCell!
                 if cell == nil
                 {
                     cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "PRSettingsCell")
@@ -92,7 +92,7 @@ class PRSettingsViewController: UITableViewController {
                 cell!.tintColor = (NSUserDefaults.standardUserDefaults().objectForKey("PRKanjiJigokuAutoDbUpdate") != nil) ? UIColor.blueColor() : UIColor.grayColor()
                 return cell!
             case 2:
-                var cell : UITableViewCell? = tableView.dequeueReusableCellWithIdentifier("PRSettingsCell") as? UITableViewCell
+                var cell : UITableViewCell? = tableView.dequeueReusableCellWithIdentifier("PRSettingsCell") as UITableViewCell!
                 if cell == nil
                 {
                     cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "PRSettingsCell")
@@ -105,7 +105,7 @@ class PRSettingsViewController: UITableViewController {
                 }
                 return cell!
             default:
-                var cell : UITableViewCell? = tableView.dequeueReusableCellWithIdentifier("PRSettingsCell") as? UITableViewCell
+                let cell : UITableViewCell? = tableView.dequeueReusableCellWithIdentifier("PRSettingsCell") as UITableViewCell!
                 return cell!
             }
         }
@@ -136,16 +136,16 @@ class PRSettingsViewController: UITableViewController {
             }
             else if indexPath.row == 1
             {
-                if let cell = tableView.cellForRowAtIndexPath(indexPath)
+                if let _ = tableView.cellForRowAtIndexPath(indexPath)
                 {
                     if NSUserDefaults.standardUserDefaults().objectForKey("PRKanjiJigokuAutoDbUpdate") != nil
                     {
-                        println("becoming nil")
+                        print("becoming nil")
                         NSUserDefaults.standardUserDefaults().setObject(nil, forKey: "PRKanjiJigokuAutoDbUpdate")
                     }
                     else
                     {
-                        println("becoming true")
+                        print("becoming true")
                         NSUserDefaults.standardUserDefaults().setObject(true, forKey: "PRKanjiJigokuAutoDbUpdate")
                     }
                     NSUserDefaults.standardUserDefaults().synchronize()

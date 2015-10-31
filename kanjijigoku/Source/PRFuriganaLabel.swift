@@ -12,10 +12,14 @@ import CoreText
 class PRFuriganaLabel : UIView
 {
 
+    var printExplanation : Bool!
     var furiganaText : NSAttributedString!
+
     
     override func drawRect(rect: CGRect) {
-                
+
+        self.backgroundColor = UIColor.redColor()
+
         let context = UIGraphicsGetCurrentContext()
         
         CGContextSetRGBFillColor(context, 1.0, 0.0, 1.0, 1.0)
@@ -24,7 +28,8 @@ class PRFuriganaLabel : UIView
         CGContextTranslateCTM(context, 0, self.bounds.size.height);
         CGContextScaleCTM(context, 1.0, -1.0)
         
-        var attributedText = furiganaText as? NSMutableAttributedString
+        
+        let attributedText = furiganaText as? NSMutableAttributedString
         
         let newFont = self.fontSizeToFitView(UIFont().appFontOfSize(24.0), text: furiganaText.string)
         debugLog("font size: \(newFont.pointSize)")
@@ -35,27 +40,28 @@ class PRFuriganaLabel : UIView
         
 
         
-        if attributedText != nil {
+        if (attributedText != nil && self.printExplanation != nil) {
             
-            var alignment = CTTextAlignment.TextAlignmentCenter
+            var alignment = CTTextAlignment.Center
             let alignmentSetting = [CTParagraphStyleSetting(spec: .Alignment, valueSize: Int(sizeofValue(alignment)), value: &alignment)]
             let paragraphStyle = CTParagraphStyleCreate(alignmentSetting, 1)
             CFAttributedStringSetAttribute(attributedText, CFRangeMake(0, CFAttributedStringGetLength(attributedText)), kCTParagraphStyleAttributeName, paragraphStyle)
             
-            var path: CGMutablePathRef = CGPathCreateMutable()
+            let path: CGMutablePathRef = CGPathCreateMutable()
             CGPathAddRect(path, nil, self.bounds)
             
-            let frameSetter : CTFramesetterRef = CTFramesetterCreateWithAttributedString(attributedText)
+            let frameSetter : CTFramesetterRef = CTFramesetterCreateWithAttributedString(attributedText!)
             let frame = CTFramesetterCreateFrame(frameSetter, CFRangeMake(0, attributedText!.length), path, nil)
             
-            CTFrameDraw(frame, context)
+            CTFrameDraw(frame, context!)
         } else {
         
             let line = CTLineCreateWithAttributedString(furiganaText)
             let width : Float = Float(CTLineGetTypographicBounds(line, nil, nil, nil))
             let yCenter : Float = (Float(rect.width)-width)/2.0
             CGContextTranslateCTM(context,CGFloat(yCenter) , 0.0)
-            CTLineDraw(line, context)
+            CTLineDraw(line, context!)
+            
         }
     }
 

@@ -8,6 +8,6 @@
 
 import UIKit
 
-let kPRKanjiJigokuAttributedBoldBig : [NSObject : AnyObject] = [NSFontAttributeName : UIFont().appFontOfSize(20.0)]
-let kPRKanjiJigokuAttributedSmall : [NSObject : AnyObject] = [NSFontAttributeName : UIFont().appFontOfSize(14.0)]
+let kPRKanjiJigokuAttributedBoldBig : [String : AnyObject] = [NSFontAttributeName : UIFont().appFontOfSize(20.0)]
+let kPRKanjiJigokuAttributedSmall : [String : AnyObject] = [NSFontAttributeName : UIFont().appFontOfSize(14.0)]
 

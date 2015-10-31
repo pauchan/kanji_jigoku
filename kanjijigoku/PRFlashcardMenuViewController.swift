@@ -14,7 +14,7 @@ let kExamplesOption : Int = 2
 let kSentenceOption : Int = 3
 let kCustomFlashCardOption : Int = 4
 
-class PRFlashcardMenuViewController : UITableViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate
+class PRFlashcardMenuViewController : UITableViewController, UITextFieldDelegate
 {
     var _tableItems : NSArray!
     var _headerCoordinator : PRHeaderCoordinator!
@@ -57,7 +57,7 @@ override func viewDidLoad() {
     }
         else
     {
-        let cell = tableView.dequeueReusableCellWithIdentifier("PRFlashcardCell", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("PRFlashcardCell", forIndexPath: indexPath) 
         cell.textLabel?.text = _tableItems[indexPath.row] as? String
         return cell
     }
@@ -83,12 +83,12 @@ override func viewDidLoad() {
             }
             if flashcardsArray.count == 0 {
             
-                var toast : UIAlertView = UIAlertView(title: "Brak fiszek", message: "Brak fiszek dla zadanej kategorii", delegate: self, cancelButtonTitle: "Zamknij")
+                let toast : UIAlertView = UIAlertView(title: "Brak fiszek", message: "Brak fiszek dla zadanej kategorii", delegate: self, cancelButtonTitle: "Zamknij")
                 toast.show()
                 return
             }
 
-            var vc = PRFlashcardPageViewController()
+            let vc = PRFlashcardPageViewController()
             vc._flashcardSet = flashcardsArray
             navigationController?.pushViewController(vc, animated: false)
             

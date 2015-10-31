@@ -30,13 +30,13 @@ func debugLog(logMessage: String, filename: String = __FILE__, function: String 
     
     if debugOn {
         dispatch_async(dispatch_get_main_queue(),{
-            println("\(filename.lastPathComponent)|\(function)|\(line): \(logMessage)")
+            print("\(filename)|\(function)|\(line): \(logMessage)")
         })
     }
 }
 
 func warningLog(logMessage: String, filename: String = __FILE__, function: String = __FUNCTION__, line: Int = __LINE__ ) {
     dispatch_async(dispatch_get_main_queue(),{
-        println("\(filename.lastPathComponent)|\(function)|\(line): \(logMessage)")
+        print("\(filename)|\(function)|\(line): \(logMessage)")
     })
 }

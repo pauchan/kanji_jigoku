@@ -32,7 +32,7 @@ class PRTestResultsViewController: UITableViewController {
         
         if(indexPath.section == 0)
         {
-            let cell = tableView.dequeueReusableCellWithIdentifier("PRTestResultCell", forIndexPath: indexPath) as! UITableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("PRTestResultCell", forIndexPath: indexPath) 
             cell.selectionStyle = UITableViewCellSelectionStyle.None
             cell.textLabel?.text = "\(descriptionText) : \(correctAnswers)/\(questions.count)"
             return cell
@@ -40,7 +40,7 @@ class PRTestResultsViewController: UITableViewController {
         }
         else
         {
-            let cell = tableView.dequeueReusableCellWithIdentifier("PRTestResultCell", forIndexPath: indexPath) as! UITableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("PRTestResultCell", forIndexPath: indexPath) 
             cell.selectionStyle = UITableViewCellSelectionStyle.None
             cell.textLabel?.attributedText = questions[indexPath.row].questionSummaryString
             return cell

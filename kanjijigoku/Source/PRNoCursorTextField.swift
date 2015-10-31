@@ -10,7 +10,7 @@ import UIKit
 
 class PRNoCursorTextField: UITextField {
 
-    override func caretRectForPosition(position: UITextPosition!) -> CGRect
+    override func caretRectForPosition(position: UITextPosition) -> CGRect
     {
         
         return CGRectZero

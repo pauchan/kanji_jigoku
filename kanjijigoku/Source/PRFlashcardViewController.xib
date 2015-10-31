@@ -2,12 +2,10 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PRFlashcardViewController" customModule="kanjijigoku" customModuleProvider="target">
             <connections>
-                <outlet property="characterLabel" destination="LZe-it-cXK" id="ErA-zS-miy"/>
                 <outlet property="meaningLabel" destination="IMk-Kd-H5Y" id="UPP-f7-cSl"/>
                 <outlet property="readingLabel" destination="j7J-Sh-apf" id="786-nP-jCH"/>
                 <outlet property="view" destination="iN0-l3-epB" id="pYJ-sm-o0H"/>
@@ -18,17 +16,8 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="clip" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.20000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="LZe-it-cXK">
-                    <rect key="frame" x="15" y="120" width="570" height="160"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="160" id="dnG-fK-aGD"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="48"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IMk-Kd-H5Y">
-                    <rect key="frame" x="15" y="400" width="570" height="130"/>
+                    <rect key="frame" x="15" y="440" width="570" height="90"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="100" id="eO5-gM-A4E"/>
                     </constraints>
@@ -42,10 +31,10 @@
                     </variation>
                 </label>
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j7J-Sh-apf" customClass="PRFuriganaLabel" customModule="kanjijigoku" customModuleProvider="target">
-                    <rect key="frame" x="15" y="300" width="570" height="80"/>
+                    <rect key="frame" x="15" y="20" width="570" height="400"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="80" id="wMA-jD-aHf"/>
+                        <constraint firstAttribute="height" constant="400" id="wMA-jD-aHf"/>
                     </constraints>
                 </view>
             </subviews>
@@ -54,14 +43,10 @@
             <constraints>
                 <constraint firstItem="IMk-Kd-H5Y" firstAttribute="top" secondItem="j7J-Sh-apf" secondAttribute="bottom" constant="20" id="2OW-2o-F6n"/>
                 <constraint firstItem="j7J-Sh-apf" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="7Kq-vG-oqe"/>
-                <constraint firstItem="LZe-it-cXK" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="D0m-q9-0mQ"/>
-                <constraint firstItem="j7J-Sh-apf" firstAttribute="top" secondItem="LZe-it-cXK" secondAttribute="bottom" constant="20" id="HjA-aV-lSO"/>
                 <constraint firstItem="j7J-Sh-apf" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="UdE-R7-mZZ"/>
+                <constraint firstItem="j7J-Sh-apf" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="Wah-wr-AyT"/>
                 <constraint firstItem="IMk-Kd-H5Y" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="aux-aa-bAo"/>
-                <constraint firstAttribute="trailing" secondItem="LZe-it-cXK" secondAttribute="trailing" constant="15" id="f8S-7M-zQA"/>
-                <constraint firstItem="LZe-it-cXK" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="top" constant="200" id="fOc-TL-Dx0"/>
                 <constraint firstAttribute="trailing" secondItem="IMk-Kd-H5Y" secondAttribute="trailing" constant="15" id="fge-s2-tDg"/>
-                <constraint firstItem="LZe-it-cXK" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="jGp-zS-Isi"/>
                 <constraint firstAttribute="trailing" secondItem="j7J-Sh-apf" secondAttribute="trailing" constant="15" id="lAa-ek-DTJ"/>
                 <constraint firstAttribute="bottom" secondItem="IMk-Kd-H5Y" secondAttribute="bottom" constant="70" id="ldk-7m-Wme"/>
                 <constraint firstItem="IMk-Kd-H5Y" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="zzG-fw-xvE"/>

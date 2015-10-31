@@ -28,8 +28,8 @@ class PRKanjiPageViewController: UIViewController, UIPageViewControllerDelegate,
         vc.currentPage = _selectedIndex
         vc.sameLessonKanjis = _kanjiTable
 
-        var vcArray = [vc] as [AnyObject]
-        
+        let vcArray = [vc] as [UIViewController]?
+    
         self.navigationItem.title = vc.kanji.kanji
         
         pageViewController.setViewControllers(vcArray, direction: .Forward, animated: false, completion: nil)
@@ -41,7 +41,7 @@ class PRKanjiPageViewController: UIViewController, UIPageViewControllerDelegate,
         var tapRecognizer: UIGestureRecognizer
         for  recognizer in self.pageViewController.gestureRecognizers {
             if  recognizer is UITapGestureRecognizer {
-                tapRecognizer = recognizer as! UIGestureRecognizer
+                tapRecognizer = recognizer 
                 self.view.removeGestureRecognizer(tapRecognizer)
                 self.pageViewController.view.removeGestureRecognizer(tapRecognizer)
                 

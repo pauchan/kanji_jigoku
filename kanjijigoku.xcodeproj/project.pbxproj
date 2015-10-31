@@ -167,7 +167,6 @@
 		FB67D6EC1A861B8A00926E38 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		FB67D6EF1A861B8A00926E38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		FB67D6F51A861B8B00926E38 /* kanjijigokuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = kanjijigokuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		FB67D6FA1A861B8B00926E38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = kanjijigokuTests/Info.plist; sourceTree = SOURCE_ROOT; };
 		FB67D6FB1A861B8B00926E38 /* kanjijigokuTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kanjijigokuTests.swift; sourceTree = "<group>"; };
 		FB67D7071A8622F400926E38 /* kanjijigoku-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "kanjijigoku-Bridging-Header.h"; sourceTree = "<group>"; };
 		FB67D7081A86232E00926E38 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
@@ -322,7 +321,6 @@
 				FB67D6E21A861B8A00926E38 /* AppDelegate.swift */,
 				FB67D6E11A861B8A00926E38 /* Info.plist */,
 				18D170691A89BBE800672203 /* flashcardItems.plist */,
-				FB67D6FA1A861B8B00926E38 /* Info.plist */,
 				18C5DA261A9314EC007FF4A3 /* testPairing.plist */,
 			);
 			name = "Supporting Files";
@@ -456,8 +454,9 @@
 		FB67D6D51A861B8A00926E38 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftMigration = 0700;
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0610;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Pawel Rusin";
 				TargetAttributes = {
 					FB67D6DC1A861B8A00926E38 = {
@@ -696,6 +695,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -764,6 +764,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Pawel Rusin (ASR7WNYKP5)";
 				INFOPLIST_FILE = kanjijigoku/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.pawel.rusin.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "06f119b9-4889-4964-8a54-3b4d5e08635d";
 				SWIFT_OBJC_BRIDGING_HEADER = "kanjijigoku/kanjijigoku-Bridging-Header.h";
@@ -779,6 +780,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Pawel Rusin (ASR7WNYKP5)";
 				INFOPLIST_FILE = kanjijigoku/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.pawel.rusin.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "06f119b9-4889-4964-8a54-3b4d5e08635d";
 				SWIFT_OBJC_BRIDGING_HEADER = "kanjijigoku/kanjijigoku-Bridging-Header.h";
@@ -800,6 +802,7 @@
 				);
 				INFOPLIST_FILE = kanjijigokuTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.pawel.rusin.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/kanjijigoku.app/kanjijigoku";
 			};
@@ -816,6 +819,7 @@
 				);
 				INFOPLIST_FILE = kanjijigokuTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.pawel.rusin.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/kanjijigoku.app/kanjijigoku";
 			};

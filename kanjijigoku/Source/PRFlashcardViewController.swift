@@ -11,12 +11,7 @@ import CoreData
 
 class PRFlashcardViewController : UIViewController, UIGestureRecognizerDelegate {
     
-    @IBOutlet weak var characterLabel: UILabel!
-    
-    
     @IBOutlet weak var readingLabel: PRFuriganaLabel!
-    
-    
     @IBOutlet weak var meaningLabel: UILabel!
     
     var flashcard : Flashcard! 
@@ -28,9 +23,10 @@ class PRFlashcardViewController : UIViewController, UIGestureRecognizerDelegate 
         let tap : UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "tapReceived:")
         tap.delegate = self
         self.view.addGestureRecognizer(tap)
-        characterLabel?.text = flashcard.text
+        //characterLabel?.text = flashcard.text
+        readingLabel?.printExplanation = false
         readingLabel?.furiganaText = flashcard.furiganaReading
-        meaningLabel?.text = flashcard.meaning        
+        meaningLabel?.text = flashcard.meaning
     }
 
     func tapReceived(sender: UITapGestureRecognizer) {
@@ -38,7 +34,10 @@ class PRFlashcardViewController : UIViewController, UIGestureRecognizerDelegate 
         tapCount++
         if tapCount == 1
         {
-            readingLabel?.hidden = false
+            readingLabel?.printExplanation = true
+            //readingLabel?.
+            //readingLabel?.furiganaText = flashcard.furiganaReading
+
         }
         else if tapCount == 2
         {
@@ -54,7 +53,7 @@ class PRFlashcardViewController : UIViewController, UIGestureRecognizerDelegate 
     override func viewDidLayoutSubviews() {
         
         super.viewDidLayoutSubviews()
-        characterLabel.font = characterLabel.fontSizeToFitView(UIFont().appFontOfSize(36.0), text: flashcard.text)
+//        characterLabel.font = characterLabel.fontSizeToFitView(UIFont().appFontOfSize(36.0), text: flashcard.text)
         meaningLabel?.font = meaningLabel.fontSizeToFitView(UIFont.systemFontOfSize(22.0), text: flashcard.meaning)
 
     }

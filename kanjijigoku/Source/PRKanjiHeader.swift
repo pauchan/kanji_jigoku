@@ -20,7 +20,7 @@ class PRKanjiHeader: UIView {
         super.init(frame: frame)
     }
 
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
 
         
         super.init(coder: aDecoder)
@@ -51,7 +51,7 @@ class PRKanjiHeader: UIView {
         }
 
         self.backgroundColor = UIColor.whiteColor()
-        for v in self.subviews as! [UIView]
+        for v in self.subviews 
         {
             v.removeFromSuperview()
         }
@@ -60,16 +60,16 @@ class PRKanjiHeader: UIView {
     
     func setupView(frame: CGRect)
     {
-        for v in self.subviews as! [UIView]
+        for v in self.subviews 
         {
             v.removeFromSuperview()
         }
         
-        for (index, value : UIImage) in enumerate(inactiveImagesArray)
+        for (index, value): (Int, UIImage) in inactiveImagesArray.enumerate()
         {
             let leftMargin : CGFloat = (((1.0 / CGFloat(inactiveImagesArray.count)) * frame.size.width - value.size.width) / 2.0) as CGFloat
             let rect = CGRectMake(frame.origin.x + leftMargin + (CGFloat(index) / CGFloat(inactiveImagesArray.count)) * frame.size.width, 10.0, value.size.width, value.size.height)
-            var imgView : UIImageView = UIImageView(frame: rect)
+            let imgView : UIImageView = UIImageView(frame: rect)
             if index == self.currentPage
             {
                 imgView.image = activeImagesArray[index]

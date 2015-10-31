@@ -21,7 +21,7 @@ class PRInitController: UIViewController {
         
         let view = NSBundle.mainBundle().loadNibNamed("LaunchScreen", owner: self, options: nil).first! as! UIView
         let label = UILabel(frame: CGRectMake(0.0, 500.0, SCREEN_WIDTH, 30.0))
-        label.text = "Trwa ladowanie bazy danych..."
+        label.text = "Trwa ładowanie bazy danych..."
         label.textAlignment = .Center
         UIView.animateWithDuration(3.0, delay: 0.0,
             options: .Repeat, animations: {

@@ -55,7 +55,7 @@ class PRTestMenuViewController : UITableViewController
         }
         else
         {
-            let cell = tableView.dequeueReusableCellWithIdentifier("PRFlashcardCell", forIndexPath: indexPath) as! UITableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("PRFlashcardCell", forIndexPath: indexPath) 
             let testDict = _tableItems[indexPath.row] as! [String: String]
             cell.textLabel?.text = testDict["label"]
             return cell
@@ -67,7 +67,7 @@ class PRTestMenuViewController : UITableViewController
         if indexPath.section != 0
         {
     
-                var vc = PRTestViewController(nibName: "PRTestViewController", bundle: nil)
+                let vc = PRTestViewController(nibName: "PRTestViewController", bundle: nil)
                 let testDict : [String: String] = _tableItems[indexPath.row] as! [String: String]
                 vc.questions = generateTest(testDict)
                 vc.descriptionText = testDict["label"]!
@@ -138,8 +138,8 @@ class PRTestMenuViewController : UITableViewController
                     falseAnswers = PRDatabaseHelper().fetchFalseAnswers(testDict["questionObject"]!, property: testDict["answerProperty"]!, properAnswer: properAnswer, partOfSpeechIndex:0, maxLevel: PRStateSingleton.sharedInstance.currentLevel, maxLesson: PRStateSingleton.sharedInstance.currentLesson)
                 }
 
-                var meaning = object.valueForKey("meaning") as! String
-                println("Meanning: \(meaning)")
+                let meaning = object.valueForKey("meaning") as! String
+                print("Meanning: \(meaning)")
 
                 let question = Question(question: questionString, correctOption: properAnswer,  falseOptions: falseAnswers, meaning: meaning)
                 newResponse.append(question)
