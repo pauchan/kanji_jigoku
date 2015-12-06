@@ -52,6 +52,8 @@ override func viewDidLoad() {
     {
         let cell = tableView.dequeueReusableCellWithIdentifier("PRHeaderViewCell", forIndexPath: indexPath) as! PRHeaderViewCell
         _headerCoordinator = PRHeaderCoordinator(headerCell: cell)
+        cell.contentView.userInteractionEnabled = false
+        cell.selectionStyle = .None
         return cell
         
     }
