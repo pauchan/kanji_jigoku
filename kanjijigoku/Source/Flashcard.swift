@@ -8,6 +8,11 @@
 
 import Foundation
 
+enum FlashcardType: Int {
+    
+    case Kunyomi = 0, Onyomi, Example, Sentence
+}
+
 class Flashcard
 {
 
@@ -15,14 +20,16 @@ class Flashcard
     var reading : String = ""
     var meaning : String = ""
     var furiganaReading : NSAttributedString!
+    var type : FlashcardType
 
-    init(text :String, reading: String, meaning: String)
+    init(text :String, reading: String, meaning: String, type: FlashcardType)
     {
         //self.init()
         self.text = text
         self.reading = reading
         self.meaning = meaning
         self.furiganaReading = NSAttributedString(string: self.reading)
+        self.type = type
     }
     
 

@@ -11,6 +11,9 @@ import CoreData
 
 class PRFlashcardViewController : UIViewController, UIGestureRecognizerDelegate {
     
+    
+    @IBOutlet weak var textLabel: UILabel!
+    @IBOutlet weak var spellingLabel: UILabel!
     @IBOutlet weak var readingLabel: PRFuriganaLabel!
     @IBOutlet weak var meaningLabel: UILabel!
     
@@ -23,10 +26,17 @@ class PRFlashcardViewController : UIViewController, UIGestureRecognizerDelegate 
         let tap : UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "tapReceived:")
         tap.delegate = self
         self.view.addGestureRecognizer(tap)
-        //characterLabel?.text = flashcard.text
-        readingLabel?.printExplanation = false
+        textLabel?.text = flashcard.text
+        spellingLabel?.text = flashcard.reading
         readingLabel?.furiganaText = flashcard.furiganaReading
         meaningLabel?.text = flashcard.meaning
+        
+        if flashcard.type == .Sentence {
+            textLabel.hidden = true
+            spellingLabel.hidden = true
+        } else {
+            readingLabel.removeFromSuperview()
+        }
     }
 
     func tapReceived(sender: UITapGestureRecognizer) {
@@ -34,10 +44,11 @@ class PRFlashcardViewController : UIViewController, UIGestureRecognizerDelegate 
         tapCount++
         if tapCount == 1
         {
-            readingLabel?.printExplanation = true
-            //readingLabel?.
-            //readingLabel?.furiganaText = flashcard.furiganaReading
-
+            if flashcard.type == .Sentence {
+                readingLabel?.furiganaText = flashcard.furiganaReading
+            } else {
+                spellingLabel.hidden = false
+            }
         }
         else if tapCount == 2
         {
