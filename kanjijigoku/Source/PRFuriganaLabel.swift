@@ -18,51 +18,46 @@ class PRFuriganaLabel : UIView
     
     override func drawRect(rect: CGRect) {
 
-        self.backgroundColor = UIColor.redColor()
-
         let context = UIGraphicsGetCurrentContext()
         
-        CGContextSetRGBFillColor(context, 1.0, 0.0, 1.0, 1.0)
-        
-        CGContextSetTextMatrix(context, CGAffineTransformIdentity);
-        CGContextTranslateCTM(context, 0, self.bounds.size.height);
-        CGContextScaleCTM(context, 1.0, -1.0)
-        
-        
         let attributedText = furiganaText as? NSMutableAttributedString
-        
-        let newFont = self.fontSizeToFitView(UIFont().appFontOfSize(24.0), text: furiganaText.string)
-        debugLog("font size: \(newFont.pointSize)")
-        
+        print(attributedText?.string)
+        print(furiganaText?.string)
+        let newFont = self.fontSizeToFitView(UIFont().appFontOfSize(22.0), text: furiganaText.string)
         attributedText?.removeAttribute(NSFontAttributeName, range: NSRange(location: 0, length: furiganaText.length))
         attributedText?.addAttribute(NSFontAttributeName, value: newFont, range: NSRange(location: 0,length: furiganaText.length))
         
+        // vertically align text
+        let paragraphStyle : NSMutableParagraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = NSTextAlignment.Center
         
+        attributedText?.addAttribute(NSParagraphStyleAttributeName, value: paragraphStyle, range: NSRange(location: 0, length: furiganaText.length))
+        
+        
+        if (attributedText != nil) { // this one determines if there is one line or more than one line for text
 
-        
-        if (attributedText != nil && self.printExplanation != nil) {
-            
-            var alignment = CTTextAlignment.Center
-            let alignmentSetting = [CTParagraphStyleSetting(spec: .Alignment, valueSize: Int(sizeofValue(alignment)), value: &alignment)]
-            let paragraphStyle = CTParagraphStyleCreate(alignmentSetting, 1)
-            CFAttributedStringSetAttribute(attributedText, CFRangeMake(0, CFAttributedStringGetLength(attributedText)), kCTParagraphStyleAttributeName, paragraphStyle)
-            
             let path: CGMutablePathRef = CGPathCreateMutable()
-            CGPathAddRect(path, nil, self.bounds)
             
             let frameSetter : CTFramesetterRef = CTFramesetterCreateWithAttributedString(attributedText!)
+            
+            //flip context is required every time to prevent text bein
+            
+            CGContextSetTextMatrix(context, CGAffineTransformIdentity)
+            CGContextTranslateCTM(context, 0, self.bounds.size.height)
+            CGContextScaleCTM(context, 1.0, -1.0)
+            
+            CGPathAddRect(path, nil, CGRectMake(0, rect.origin.y-(self.frame.size.height/2.0), self.frame.size.width, self.frame.size.height))
+
             let frame = CTFramesetterCreateFrame(frameSetter, CFRangeMake(0, attributedText!.length), path, nil)
             
             CTFrameDraw(frame, context!)
         } else {
-        
             let line = CTLineCreateWithAttributedString(furiganaText)
-            let width : Float = Float(CTLineGetTypographicBounds(line, nil, nil, nil))
-            let yCenter : Float = (Float(rect.width)-width)/2.0
-            CGContextTranslateCTM(context,CGFloat(yCenter) , 0.0)
+            CGContextSetTextMatrix(context, CGAffineTransformIdentity)
+            CGContextTranslateCTM(context, 0, 50.0)
+            CGContextScaleCTM(context, 1.0, -1.0)
             CTLineDraw(line, context!)
             
         }
     }
-
 }
