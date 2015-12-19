@@ -1,4 +1,4 @@
-//
+    //
 //  PRKanjiPageViewController.swift
 //  kanjijigoku
 //
@@ -27,9 +27,9 @@ class PRKanjiPageViewController: UIViewController, UIPageViewControllerDelegate,
         vc.kanji = _kanjiTable[_selectedIndex] as Kanji
         vc.currentPage = _selectedIndex
         vc.sameLessonKanjis = _kanjiTable
-
+        
         let vcArray = [vc] as [UIViewController]?
-    
+        
         self.navigationItem.title = vc.kanji.kanji
         
         pageViewController.setViewControllers(vcArray, direction: .Forward, animated: false, completion: nil)
@@ -37,7 +37,7 @@ class PRKanjiPageViewController: UIViewController, UIPageViewControllerDelegate,
         
         self.view.gestureRecognizers = self.pageViewController.gestureRecognizers;
         
-        // Find the tap gesture recognizer so we can remove it!
+        // Remove tap recoginzer
         var tapRecognizer: UIGestureRecognizer
         for  recognizer in self.pageViewController.gestureRecognizers {
             if  recognizer is UITapGestureRecognizer {
@@ -58,12 +58,10 @@ class PRKanjiPageViewController: UIViewController, UIPageViewControllerDelegate,
         }
         else
         {
-            _selectedIndex--
             let vc = PRKanjiTableViewController()
-            vc.kanji  = _kanjiTable[_selectedIndex] as Kanji
+            vc.kanji  = _kanjiTable[_selectedIndex-1] as Kanji
             vc.sameLessonKanjis = _kanjiTable
-            vc.currentPage = _selectedIndex
-            self.navigationItem.title = vc.kanji.kanji
+            vc.currentPage = _selectedIndex-1
             return vc
         }
         
@@ -77,14 +75,24 @@ class PRKanjiPageViewController: UIViewController, UIPageViewControllerDelegate,
         }
         else
         {
-            _selectedIndex++
             let vc = PRKanjiTableViewController()
-            vc.kanji  = _kanjiTable[_selectedIndex] as Kanji
+            vc.kanji  = _kanjiTable[_selectedIndex+1] as Kanji
             vc.sameLessonKanjis = _kanjiTable
-            vc.currentPage = _selectedIndex
-            self.navigationItem.title = vc.kanji.kanji
+            vc.currentPage = _selectedIndex+1
             return vc
         }
+    }
+    
+    func pageViewController(pageViewController: UIPageViewController, willTransitionToViewControllers pendingViewControllers: [UIViewController]) {
+        let nextKanjiPage = pendingViewControllers[0] as! PRKanjiTableViewController
+        self.navigationItem.title = nextKanjiPage.kanji.kanji
+        _selectedIndex = nextKanjiPage.currentPage
+        print("called")
+    }
+    
+    func pageViewController(pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        
+        print("called")
     }
     
     
