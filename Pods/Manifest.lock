@@ -1,14 +1,12 @@
 PODS:
-  - FMDB (2.5):
-    - FMDB/standard (= 2.5)
-  - FMDB/common (2.5)
-  - FMDB/standard (2.5):
-    - FMDB/common
+  - ChameleonFramework/Default (2.0.6)
+  - ChameleonFramework/Swift (2.0.6):
+    - ChameleonFramework/Default
 
 DEPENDENCIES:
-  - FMDB
+  - ChameleonFramework/Swift
 
 SPEC CHECKSUMS:
-  FMDB: 96e8f1bcc1329e269330f99770ad4285d9003e52
+  ChameleonFramework: a6b466873ff9a4ce3a5196c20bccf1a97ad9f446
 
-COCOAPODS: 0.35.0
+COCOAPODS: 0.39.0
