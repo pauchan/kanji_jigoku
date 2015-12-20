@@ -8,9 +8,10 @@
 
 import UIKit
 import CoreData
+import ChameleonFramework
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, FinishedLoadingDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, FinishedLoadingDelegate, UITabBarControllerDelegate {
 
     var window: UIWindow?
 
@@ -21,11 +22,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, FinishedLoadingDelegate {
         stateSingleton.levelArray = PRDatabaseHelper().getLevelArray()
         stateSingleton.lessonArray = PRDatabaseHelper().getLessonArray(stateSingleton.currentLevel)
         
+        Chameleon.setGlobalThemeUsingPrimaryColor(UIColor().appColor(), withContentStyle: UIContentStyle.Dark)
         
-        UITabBar.appearance().barTintColor = UIColor().fadedOrangeColor()
-        UINavigationBar.appearance().barTintColor = UIColor().fadedOrangeColor()
-        UINavigationBar.appearance().tintColor = UIColor.grayColor()
-
+        UITabBar.appearance().barTintColor = UIColor().appColor()
+        
+        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.blackColor()], forState: UIControlState.Normal)
+        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.whiteColor()], forState: UIControlState.Selected)
+        
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         let viewContr = PRInitController()
         viewContr.delegate = self
@@ -39,7 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, FinishedLoadingDelegate {
     
 
         let tabBarController : UITabBarController = UITabBarController()
-
+        tabBarController.delegate = self
         
         let kanjiViewController = PRKanjiMenuViewController()
         kanjiViewController._kanjiTable = PRDatabaseHelper().getSelectedObjects("Kanji", level: PRStateSingleton.sharedInstance.currentLevel, lesson: PRStateSingleton.sharedInstance.currentLesson) as! [Kanji]
@@ -49,24 +52,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate, FinishedLoadingDelegate {
         let testsNavigationController : UINavigationController = UINavigationController(rootViewController: PRTestMenuViewController())
         let flashcardController : UINavigationController = UINavigationController(rootViewController: PRFlashcardMenuViewController(style: UITableViewStyle.Plain))
         
-        kanjiNavigationController.tabBarItem = UITabBarItem(title: "Lekcja", image: generateKanjiImage() , tag: 0)
-        searchNavigationController.tabBarItem = UITabBarItem(title: "Szukaj", image: UIImage(named: "SearchIcon"), tag: 1)
-        testsNavigationController.tabBarItem = UITabBarItem(title: "Testy", image: UIImage(named: "TestIcon"), tag: 2)
-        flashcardController.tabBarItem = UITabBarItem(title: "Fiszki", image: UIImage(named: "FlashcardIcon"), tag: 3)
+        kanjiNavigationController.tabBarItem = UITabBarItem(title: "Lekcja", image: generateKanjiImage(UIColor.blackColor()) , tag: 0)
+        kanjiNavigationController.tabBarItem.selectedImage = generateKanjiImage(UIColor.whiteColor()).imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+        searchNavigationController.tabBarItem = UITabBarItem(title: "Szukaj", image: UIImage(named: "SearchIcon")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), tag: 1)
+        searchNavigationController.tabBarItem.selectedImage = UIImage(named: "SearchIconWhite")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+        testsNavigationController.tabBarItem = UITabBarItem(title: "Testy", image: UIImage(named: "TestIcon")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), tag: 2)
+        testsNavigationController.tabBarItem.selectedImage = UIImage(named: "TestIconWhite")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+        flashcardController.tabBarItem = UITabBarItem(title: "Fiszki", image: UIImage(named: "FlashcardIcon")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), tag: 3)
+        flashcardController.tabBarItem.selectedImage = UIImage(named: "FlashcardIconWhite")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
         
         tabBarController.viewControllers = [kanjiNavigationController, searchNavigationController, testsNavigationController, flashcardController]
         
-        for vc in tabBarController.viewControllers as! [UINavigationController]
-        {
-            if vc.respondsToSelector("interactivePopGestureRecognizer")
-            {
+        for vc in tabBarController.viewControllers as! [UINavigationController] {
+            if vc.respondsToSelector("interactivePopGestureRecognizer") {
                 vc.interactivePopGestureRecognizer!.enabled = false
             }
         }
         
         self.window?.rootViewController = tabBarController
         self.window?.makeKeyAndVisible()
-
     }
 
     func applicationWillResignActive(application: UIApplication) {
@@ -160,17 +164,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, FinishedLoadingDelegate {
                     // Replace this implementation with code to handle the error appropriately.
                     // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
                     NSLog("Unresolved error \(error), \(error!.userInfo)")
-                    abort()
                 }
             }
         }
     }
     
-    func settings()
-    {
-    
-    
+    func tabBarController(tabBarController: UITabBarController, didSelectViewController viewController: UIViewController) {
+        
+        if viewController.isKindOfClass(UINavigationController) {
+            let navController = viewController as! UINavigationController
+            navController.popToRootViewControllerAnimated(false)
+        }
     }
-
 }
 
