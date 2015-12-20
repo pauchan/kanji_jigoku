@@ -13,74 +13,55 @@ class PRSettingsViewController: UITableViewController {
     var filterController : PRFilterController!
         
     override func viewDidLoad() {
+        
         super.viewDidLoad()
-        
         self.tableView = UITableView(frame: self.view.frame, style:  UITableViewStyle.Grouped)
-        
         let nib = UINib(nibName: "PRFilterCell", bundle: nil)
         self.tableView.registerNib(nib, forCellReuseIdentifier: "PRFilterCell")
         self.navigationItem.title = "Ustawienia"
     }
-
-
+    
     // MARK: - Table view data source
-
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 2
     }
     
-
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0
-        {
+        if section == 0 {
             return 3
-        }
-        else
-        {
+        } else {
             return 1
         }
     }
 
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        
-        if section == 0
-        {
+        if section == 0 {
             return "Baza danych"
-        }
-        else
-        {
+        } else {
             return "Filtr"
         }
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        
-        if indexPath.section == 1
-        {
+        if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCellWithIdentifier("PRFilterCell", forIndexPath: indexPath) as! PRFilterCell
+            cell.contentView.userInteractionEnabled = false
             filterController = PRFilterController(filterCell: cell)
             return cell
-            
-        }
-        else
-        {
-            switch(indexPath.row)
-            {
+        } else {
+            switch(indexPath.row) {
             case 0:
                 var cell : UITableViewCell? = tableView.dequeueReusableCellWithIdentifier("PRSettingsCell") as UITableViewCell!
-                if cell == nil
-                {
+                if cell == nil {
                     cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "PRSettingsCell")
                     cell!.selectionStyle = UITableViewCellSelectionStyle.None
-                    cell!.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
                     cell!.textLabel?.text = "Aktualizacja bazy danych"
                 }
                 return cell!
             case 1:
                 var cell : UITableViewCell? = tableView.dequeueReusableCellWithIdentifier("PRSettingsCell") as UITableViewCell!
-                if cell == nil
-                {
+                if cell == nil {
                     cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "PRSettingsCell")
                     cell!.selectionStyle = UITableViewCellSelectionStyle.None
                     cell!.accessoryType = UITableViewCellAccessoryType.Checkmark
@@ -97,7 +78,6 @@ class PRSettingsViewController: UITableViewController {
                 {
                     cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "PRSettingsCell")
                     cell!.selectionStyle = UITableViewCellSelectionStyle.None
-                    cell!.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
                     cell!.textLabel?.text = "Reset Aplikacji"
                     cell!.detailTextLabel?.text = "Ustawienia aplikacji zostana zresetowane, a baza danych ponownie zaladowana do sieci."
                     cell!.detailTextLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping

@@ -7,7 +7,7 @@
 //
 
 
-#import "FMDB.h"
+#import "Source/fmdb/FMDB.h"
 
 
 //#ifndef kanjijigoku_kanjijigoku_Bridging_Header_h

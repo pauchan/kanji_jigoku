@@ -10,27 +10,27 @@ import UIKit
 
 extension UIColor
 {
-    
+    func appColor() -> UIColor
+    {
+        return UIColor.flatGreenColorDark()
+    }
     
     
     // a little bit pale
     func brightOrangeColor() -> UIColor
     {
-    
         return UIColor(red: 1.0, green: 136.0/255.0, blue: 92.0/255.0, alpha: 1.0)
     }
     
     // f08313 more fresh that the previous one
     func liveOrangeColor() -> UIColor
     {
-        
         return UIColor(red: 240.0/255.0, green: 131.0/255.0, blue: 19.0/255.0, alpha: 1.0)
     }
 
     // fcd364 more fresh that the previous one
     func transparentOrangeColor() -> UIColor
     {
-        
         return UIColor(red: 252.0/255.0, green: 211.0/255.0, blue: 100.0/255.0, alpha: 1.0)
     }
     

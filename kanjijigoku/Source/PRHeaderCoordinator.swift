@@ -17,7 +17,8 @@ class PRHeaderCoordinator: NSObject, UIPickerViewDataSource, UIPickerViewDelegat
     
     
     init(headerCell : PRHeaderViewCell) {
-        
+
+        super.init()
         
         self.headerCell = headerCell
         
@@ -27,7 +28,6 @@ class PRHeaderCoordinator: NSObject, UIPickerViewDataSource, UIPickerViewDelegat
         self.headerCell.levelComboBox?.text = "Poziom \(PRStateSingleton.sharedInstance.currentLevel)"
         self.headerCell.lessonComboBox?.text = "Lekcja \(PRStateSingleton.sharedInstance.currentLesson)"
         
-        super.init()
         
         self.headerCell.extraMaterialSwitch?.addTarget(self, action: "enableMaterial:", forControlEvents: UIControlEvents.ValueChanged)
         self.headerCell.extraMaterialSwitch?.selected = PRStateSingleton.sharedInstance.extraMaterial

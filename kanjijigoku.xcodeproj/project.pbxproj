@@ -70,8 +70,14 @@
 		18D26D9B1A883ED800A8908C /* PRDatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D26D9A1A883ED800A8908C /* PRDatabaseHelper.swift */; };
 		18E4E6871A8D81B30038F86B /* Flashcard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E4E6861A8D81B30038F86B /* Flashcard.swift */; };
 		18E4E6891A8D8B330038F86B /* PRCharacterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E4E6881A8D8B330038F86B /* PRCharacterExtension.swift */; };
-		9890196ACBA1DBB36C220747 /* libPods-kanjijigoku.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16ED305BDA73EF495F1CC7A3 /* libPods-kanjijigoku.a */; };
-		DDA8FCCE07D8A23426327FF9 /* libPods-kanjijigokuTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 48DDE60AB133AD9253EF4C92 /* libPods-kanjijigokuTests.a */; };
+		20C3EED96B6587AC6FC7C699 /* Pods_kanjijigoku.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F25467472E303D1DF986320D /* Pods_kanjijigoku.framework */; };
+		2FCB73BECFAB97A33A94AB6E /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 064766009EFF4D181DAF83BA /* Pods.framework */; };
+		E099F6C0C44D122B00F2C3D1 /* Pods_kanjijigokuTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94FB5FAC2AA67C125C23E0B5 /* Pods_kanjijigokuTests.framework */; };
+		FB1C248C1C1D5F9400BB02F5 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = FB1C24821C1D5F9400BB02F5 /* FMDatabase.m */; settings = {ASSET_TAGS = (); }; };
+		FB1C248D1C1D5F9400BB02F5 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = FB1C24841C1D5F9400BB02F5 /* FMDatabaseAdditions.m */; settings = {ASSET_TAGS = (); }; };
+		FB1C248E1C1D5F9400BB02F5 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = FB1C24861C1D5F9400BB02F5 /* FMDatabasePool.m */; settings = {ASSET_TAGS = (); }; };
+		FB1C248F1C1D5F9400BB02F5 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = FB1C24881C1D5F9400BB02F5 /* FMDatabaseQueue.m */; settings = {ASSET_TAGS = (); }; };
+		FB1C24901C1D5F9400BB02F5 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = FB1C248B1C1D5F9400BB02F5 /* FMResultSet.m */; settings = {ASSET_TAGS = (); }; };
 		FB67D6E31A861B8A00926E38 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB67D6E21A861B8A00926E38 /* AppDelegate.swift */; };
 		FB67D6E61A861B8A00926E38 /* kanjijigoku.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FB67D6E41A861B8A00926E38 /* kanjijigoku.xcdatamodeld */; };
 		FB67D6E81A861B8A00926E38 /* PRKanjiMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB67D6E71A861B8A00926E38 /* PRKanjiMenuViewController.swift */; };
@@ -93,7 +99,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		16ED305BDA73EF495F1CC7A3 /* libPods-kanjijigoku.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-kanjijigoku.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		064766009EFF4D181DAF83BA /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		180ABC971A9D5CFB0053A7F6 /* PRFilterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PRFilterCell.xib; path = Source/PRFilterCell.xib; sourceTree = "<group>"; };
 		1812D5421AA9A35E004C91D0 /* PRNoCursorTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRNoCursorTextField.swift; path = Source/PRNoCursorTextField.swift; sourceTree = "<group>"; };
 		1812D5441AA9A771004C91D0 /* PRFilterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRFilterCell.swift; path = Source/PRFilterCell.swift; sourceTree = "<group>"; };
@@ -154,11 +160,23 @@
 		18D26D9A1A883ED800A8908C /* PRDatabaseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRDatabaseHelper.swift; sourceTree = "<group>"; };
 		18E4E6861A8D81B30038F86B /* Flashcard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Flashcard.swift; path = Source/Flashcard.swift; sourceTree = "<group>"; };
 		18E4E6881A8D8B330038F86B /* PRCharacterExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRCharacterExtension.swift; path = Source/PRCharacterExtension.swift; sourceTree = "<group>"; };
-		48DDE60AB133AD9253EF4C92 /* libPods-kanjijigokuTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-kanjijigokuTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		94CC88092ADA2AB93CF98660 /* Pods-kanjijigoku.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kanjijigoku.debug.xcconfig"; path = "Pods/Target Support Files/Pods-kanjijigoku/Pods-kanjijigoku.debug.xcconfig"; sourceTree = "<group>"; };
+		94FB5FAC2AA67C125C23E0B5 /* Pods_kanjijigokuTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_kanjijigokuTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6263FED85E89D9DE53C6A64 /* Pods-kanjijigokuTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kanjijigokuTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-kanjijigokuTests/Pods-kanjijigokuTests.release.xcconfig"; sourceTree = "<group>"; };
 		A827BE30AC2E4D1D915162FD /* Pods-kanjijigoku.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kanjijigoku.release.xcconfig"; path = "Pods/Target Support Files/Pods-kanjijigoku/Pods-kanjijigoku.release.xcconfig"; sourceTree = "<group>"; };
 		EC920A004B844BFB66E7F71F /* Pods-kanjijigokuTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kanjijigokuTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-kanjijigokuTests/Pods-kanjijigokuTests.debug.xcconfig"; sourceTree = "<group>"; };
+		F25467472E303D1DF986320D /* Pods_kanjijigoku.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_kanjijigoku.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB1C24811C1D5F9400BB02F5 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDatabase.h; path = Source/fmdb/FMDatabase.h; sourceTree = "<group>"; };
+		FB1C24821C1D5F9400BB02F5 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMDatabase.m; path = Source/fmdb/FMDatabase.m; sourceTree = "<group>"; };
+		FB1C24831C1D5F9400BB02F5 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDatabaseAdditions.h; path = Source/fmdb/FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		FB1C24841C1D5F9400BB02F5 /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMDatabaseAdditions.m; path = Source/fmdb/FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		FB1C24851C1D5F9400BB02F5 /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDatabasePool.h; path = Source/fmdb/FMDatabasePool.h; sourceTree = "<group>"; };
+		FB1C24861C1D5F9400BB02F5 /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMDatabasePool.m; path = Source/fmdb/FMDatabasePool.m; sourceTree = "<group>"; };
+		FB1C24871C1D5F9400BB02F5 /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDatabaseQueue.h; path = Source/fmdb/FMDatabaseQueue.h; sourceTree = "<group>"; };
+		FB1C24881C1D5F9400BB02F5 /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMDatabaseQueue.m; path = Source/fmdb/FMDatabaseQueue.m; sourceTree = "<group>"; };
+		FB1C24891C1D5F9400BB02F5 /* FMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDB.h; path = Source/fmdb/FMDB.h; sourceTree = "<group>"; };
+		FB1C248A1C1D5F9400BB02F5 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMResultSet.h; path = Source/fmdb/FMResultSet.h; sourceTree = "<group>"; };
+		FB1C248B1C1D5F9400BB02F5 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMResultSet.m; path = Source/fmdb/FMResultSet.m; sourceTree = "<group>"; };
 		FB67D6DD1A861B8A00926E38 /* kanjijigoku.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = kanjijigoku.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB67D6E11A861B8A00926E38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FB67D6E21A861B8A00926E38 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -179,7 +197,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				FB67D7091A86232E00926E38 /* libsqlite3.dylib in Frameworks */,
-				9890196ACBA1DBB36C220747 /* libPods-kanjijigoku.a in Frameworks */,
+				20C3EED96B6587AC6FC7C699 /* Pods_kanjijigoku.framework in Frameworks */,
+				2FCB73BECFAB97A33A94AB6E /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -187,7 +206,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DDA8FCCE07D8A23426327FF9 /* libPods-kanjijigokuTests.a in Frameworks */,
+				E099F6C0C44D122B00F2C3D1 /* Pods_kanjijigokuTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,10 +292,29 @@
 		D8DE428794ABFD26C4A868BF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				16ED305BDA73EF495F1CC7A3 /* libPods-kanjijigoku.a */,
-				48DDE60AB133AD9253EF4C92 /* libPods-kanjijigokuTests.a */,
+				F25467472E303D1DF986320D /* Pods_kanjijigoku.framework */,
+				94FB5FAC2AA67C125C23E0B5 /* Pods_kanjijigokuTests.framework */,
+				064766009EFF4D181DAF83BA /* Pods.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FB1C24801C1D5F8700BB02F5 /* FMDB */ = {
+			isa = PBXGroup;
+			children = (
+				FB1C24811C1D5F9400BB02F5 /* FMDatabase.h */,
+				FB1C24821C1D5F9400BB02F5 /* FMDatabase.m */,
+				FB1C24831C1D5F9400BB02F5 /* FMDatabaseAdditions.h */,
+				FB1C24841C1D5F9400BB02F5 /* FMDatabaseAdditions.m */,
+				FB1C24851C1D5F9400BB02F5 /* FMDatabasePool.h */,
+				FB1C24861C1D5F9400BB02F5 /* FMDatabasePool.m */,
+				FB1C24871C1D5F9400BB02F5 /* FMDatabaseQueue.h */,
+				FB1C24881C1D5F9400BB02F5 /* FMDatabaseQueue.m */,
+				FB1C24891C1D5F9400BB02F5 /* FMDB.h */,
+				FB1C248A1C1D5F9400BB02F5 /* FMResultSet.h */,
+				FB1C248B1C1D5F9400BB02F5 /* FMResultSet.m */,
+			);
+			name = FMDB;
 			sourceTree = "<group>";
 		};
 		FB67D6D41A861B8A00926E38 = {
@@ -303,6 +341,7 @@
 		FB67D6DF1A861B8A00926E38 /* kanjijigoku */ = {
 			isa = PBXGroup;
 			children = (
+				FB1C24801C1D5F8700BB02F5 /* FMDB */,
 				FBB1FF781A87252700F323D0 /* Helper */,
 				FBB1FF771A87250700F323D0 /* View */,
 				FBB1FF761A8724FC00F323D0 /* Controller */,
@@ -418,6 +457,7 @@
 				FB67D6DA1A861B8A00926E38 /* Frameworks */,
 				FB67D6DB1A861B8A00926E38 /* Resources */,
 				F14E4A72249583AA8617D028 /* Copy Pods Resources */,
+				898D20BAE0118628F637A624 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -437,6 +477,7 @@
 				FB67D6F21A861B8B00926E38 /* Frameworks */,
 				FB67D6F31A861B8B00926E38 /* Resources */,
 				0F99C4B71E760CC0F37A36BF /* Copy Pods Resources */,
+				F313422F1B496C90D91AC695 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -564,6 +605,21 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		898D20BAE0118628F637A624 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		F14E4A72249583AA8617D028 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -576,7 +632,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-kanjijigoku/Pods-kanjijigoku-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F313422F1B496C90D91AC695 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-kanjijigokuTests/Pods-kanjijigokuTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -599,8 +670,10 @@
 				18BD12211B4E057F00D76B2D /* PRSentenceExtension.swift in Sources */,
 				18D0CB141A9C63E80027DD8F /* PRKanjiTableViewHeaderCell.swift in Sources */,
 				18C4948E1A95B7AB00095A7E /* PRKanjiTableViewController.swift in Sources */,
+				FB1C248E1C1D5F9400BB02F5 /* FMDatabasePool.m in Sources */,
 				18D26D9B1A883ED800A8908C /* PRDatabaseHelper.swift in Sources */,
 				FB67D6E81A861B8A00926E38 /* PRKanjiMenuViewController.swift in Sources */,
+				FB1C248C1C1D5F9400BB02F5 /* FMDatabase.m in Sources */,
 				18D170761A89F3E200672203 /* PRFlashcardViewController.swift in Sources */,
 				188945901B4FBBF9006F9564 /* BaseEntity.swift in Sources */,
 				18E4E6871A8D81B30038F86B /* Flashcard.swift in Sources */,
@@ -614,6 +687,8 @@
 				18D170601A8997D700672203 /* PRTestsMenuViewController.swift in Sources */,
 				1899D5881A9F0F1E006B63B0 /* PRMenuViewExtension.swift in Sources */,
 				18C23D461A8C734D00AB5817 /* Kanji.swift in Sources */,
+				FB1C24901C1D5F9400BB02F5 /* FMResultSet.m in Sources */,
+				FB1C248F1C1D5F9400BB02F5 /* FMDatabaseQueue.m in Sources */,
 				18D1705E1A8997C700672203 /* PRFlashcardMenuViewController.swift in Sources */,
 				18D1706E1A89D77B00672203 /* PRStateSingleton.swift in Sources */,
 				18C23D481A8C734D00AB5817 /* Reading.swift in Sources */,
@@ -633,6 +708,7 @@
 				18BD12231B4E05B900D76B2D /* PRExampleExtension.swift in Sources */,
 				FB67D6E31A861B8A00926E38 /* AppDelegate.swift in Sources */,
 				18BD12291B4E2EBB00D76B2D /* PRViewExtension.swift in Sources */,
+				FB1C248D1C1D5F9400BB02F5 /* FMDatabaseAdditions.m in Sources */,
 				18C4948C1A95B78900095A7E /* PRKanjiPageViewController.swift in Sources */,
 				1871527F1AE5F67B008AD647 /* PRImageGenerator.swift in Sources */,
 				18C23D4A1A8C734D00AB5817 /* Onyomi.swift in Sources */,

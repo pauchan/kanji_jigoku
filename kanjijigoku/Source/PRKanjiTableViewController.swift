@@ -22,6 +22,7 @@ class PRKanjiTableViewController: UIViewController, UITableViewDelegate,UITableV
     var tableView : UITableView!
     var pageControl : PRKanjiHeader!
     var currentPage: Int!
+    weak var pageViewController : PRKanjiPageViewController?
     
     override func viewDidLoad()
     {
@@ -37,6 +38,7 @@ class PRKanjiTableViewController: UIViewController, UITableViewDelegate,UITableV
         self.tableView.dataSource = self
         self.view.addSubview(self.tableView)
         pageControl.currentPage = self.currentPage
+        self.navigationItem.title = kanji.kanji
         pageControl.setupView(CGRectMake(0, self.view.frame.size.height*0.85, self.view.frame.size.width, self.view.frame.size.height*0.15))
         self.view.addSubview(pageControl)
         
@@ -282,12 +284,19 @@ class PRKanjiTableViewController: UIViewController, UITableViewDelegate,UITableV
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         
-        
         let vc = PRKanjiTableViewController()
-        vc.kanji  = relatedKanjis[indexPath.row] as Kanji
+        let kanji = relatedKanjis[indexPath.row] as Kanji
+        vc.kanji  = kanji
         vc.sameLessonKanjis = []
         vc.currentPage = 0
-        self.presentViewController(vc, animated: true, completion: nil)
+        if self.pageViewController != nil {
+        
+            let vc = PRKanjiPageViewController()
+            vc._kanjiTable = PRDatabaseHelper().getSelectedObjects("Kanji", level: Int(kanji.level), lesson: Int(kanji.lesson)) as! [Kanji]
+            vc._selectedIndex = vc._kanjiTable.indexOf(kanji)!
+            pageViewController!.navigationController?.pushViewController(vc, animated: true)
+        }
+            //presentViewController(vc, animated: true, completion: nil)
         
     }
     

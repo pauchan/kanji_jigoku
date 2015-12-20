@@ -77,9 +77,8 @@ class PRSearchKanjiViewController: UIViewController, UITableViewDelegate, UITabl
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
-        
         var selectedKanji: Kanji? = nil
-        if indexPath.section == 0 // if its kanji,
+        if indexPath.section == 0 // if its kanji, 
         {
             selectedKanji = characterSearchArray[indexPath.row]
             
@@ -90,16 +89,10 @@ class PRSearchKanjiViewController: UIViewController, UITableViewDelegate, UITabl
             
             selectedKanji = sentenceSearchArray[indexPath.row].character
         }
-        
         let vc = PRKanjiPageViewController()
         vc._kanjiTable = PRDatabaseHelper().getSelectedObjects("Kanji", level: Int(selectedKanji!.level), lesson: Int(selectedKanji!.lesson)) as! [Kanji]
-        
         vc._selectedIndex = vc._kanjiTable.indexOf(selectedKanji!)!
-        
-        //self.tabBarController?.selectedIndex = 0
-        
         navigationController?.pushViewController(vc, animated: false)
-
     }
     
     

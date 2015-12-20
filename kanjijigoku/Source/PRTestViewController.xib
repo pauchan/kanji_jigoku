@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1509" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PRTestViewController" customModule="kanjijigoku" customModuleProvider="target">
@@ -33,12 +34,17 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="5" id="1io-TO-fXr"/>
                     </constraints>
+                    <variation key="heightClass=compact" misplaced="YES">
+                        <rect key="frame" x="15" y="315" width="570" height="5"/>
+                    </variation>
                 </progressView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="ntx-CP-Oln">
-                    <rect key="frame" x="30" y="286" width="540" height="40"/>
+                    <rect key="frame" x="30" y="306" width="540" height="50"/>
                     <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="40" id="HiS-Xu-ynv"/>
+                        <constraint firstAttribute="height" constant="50" id="HiS-Xu-ynv">
+                            <variation key="heightClass=compact" constant="30"/>
+                        </constraint>
                     </constraints>
                     <fontDescription key="fontDescription" name="HiraMinProN-W3" family="Hiragino Mincho ProN" pointSize="17"/>
                     <state key="normal">
@@ -46,10 +52,12 @@
                     </state>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="2sc-uW-rfX">
-                    <rect key="frame" x="30" y="341" width="540" height="40"/>
+                    <rect key="frame" x="30" y="371" width="540" height="50"/>
                     <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="40" id="w8m-5X-lH1"/>
+                        <constraint firstAttribute="height" constant="50" id="w8m-5X-lH1">
+                            <variation key="heightClass=compact" constant="30"/>
+                        </constraint>
                     </constraints>
                     <fontDescription key="fontDescription" name="HiraMinProN-W3" family="Hiragino Mincho ProN" pointSize="17"/>
                     <state key="normal">
@@ -57,10 +65,12 @@
                     </state>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="EHD-QF-baa">
-                    <rect key="frame" x="30" y="231" width="540" height="40"/>
+                    <rect key="frame" x="30" y="241" width="540" height="50"/>
                     <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="40" id="blB-Xv-53d"/>
+                        <constraint firstAttribute="height" constant="50" id="blB-Xv-53d">
+                            <variation key="heightClass=compact" constant="30"/>
+                        </constraint>
                     </constraints>
                     <fontDescription key="fontDescription" name="HiraMinProN-W3" family="Hiragino Mincho ProN" pointSize="17"/>
                     <state key="normal">
@@ -77,18 +87,21 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="IPh-bC-VMs">
-                    <rect key="frame" x="30" y="176" width="540" height="40"/>
+                    <rect key="frame" x="30" y="176" width="540" height="50"/>
                     <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="40" id="Jc1-cF-eOD"/>
+                        <constraint firstAttribute="height" constant="50" id="Jc1-cF-eOD">
+                            <variation key="heightClass=compact" constant="30"/>
+                        </constraint>
                     </constraints>
                     <fontDescription key="fontDescription" name="HiraMinProN-W3" family="Hiragino Mincho ProN" pointSize="17"/>
                     <state key="normal">
+                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yrR-js-Mvu">
-                    <rect key="frame" x="30" y="396" width="540" height="40"/>
+                    <rect key="frame" x="30" y="436" width="540" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="59u-c9-GLs"/>
                     </constraints>
@@ -107,10 +120,14 @@
                 <constraint firstItem="IPh-bC-VMs" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="30" id="KL3-xY-1hs"/>
                 <constraint firstItem="Xwj-Bp-RDN" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="80" id="LoJ-81-bfR"/>
                 <constraint firstItem="EHD-QF-baa" firstAttribute="top" secondItem="IPh-bC-VMs" secondAttribute="bottom" constant="15" id="MmM-se-6mt"/>
-                <constraint firstItem="DAs-cy-EYS" firstAttribute="top" secondItem="Xwj-Bp-RDN" secondAttribute="bottom" constant="30" id="O3P-aO-0iP"/>
+                <constraint firstItem="DAs-cy-EYS" firstAttribute="top" secondItem="Xwj-Bp-RDN" secondAttribute="bottom" constant="30" id="O3P-aO-0iP">
+                    <variation key="heightClass=compact" constant="10"/>
+                </constraint>
                 <constraint firstItem="yrR-js-Mvu" firstAttribute="top" secondItem="2sc-uW-rfX" secondAttribute="bottom" constant="15" id="QQZ-ka-Tyi"/>
                 <constraint firstAttribute="trailing" secondItem="IPh-bC-VMs" secondAttribute="trailing" constant="30" id="Ra1-Ak-3Xq"/>
-                <constraint firstAttribute="bottom" secondItem="eXC-Jb-vSq" secondAttribute="bottom" constant="80" id="THR-QP-Xvc"/>
+                <constraint firstAttribute="bottom" secondItem="eXC-Jb-vSq" secondAttribute="bottom" constant="80" id="THR-QP-Xvc">
+                    <variation key="heightClass=compact" constant="60"/>
+                </constraint>
                 <constraint firstItem="yrR-js-Mvu" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="30" id="UkS-0a-9EZ"/>
                 <constraint firstItem="IPh-bC-VMs" firstAttribute="top" secondItem="DAs-cy-EYS" secondAttribute="bottom" constant="15" id="VI7-C5-D6k"/>
                 <constraint firstItem="eXC-Jb-vSq" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="XbN-8o-2u3"/>

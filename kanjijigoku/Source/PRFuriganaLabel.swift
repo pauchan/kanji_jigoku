@@ -23,30 +23,29 @@ class PRFuriganaLabel : UIView
         let attributedText = furiganaText as? NSMutableAttributedString
         print(attributedText?.string)
         print(furiganaText?.string)
-        let newFont = self.fontSizeToFitView(UIFont().appFontOfSize(22.0), text: furiganaText.string)
+        let fontSize = self.fontSizeForCharacterCount((attributedText?.length)!)
+        let newFont = self.fontSizeToFitView(UIFont().appFontOfSize(fontSize), text: furiganaText.string)
         attributedText?.removeAttribute(NSFontAttributeName, range: NSRange(location: 0, length: furiganaText.length))
         attributedText?.addAttribute(NSFontAttributeName, value: newFont, range: NSRange(location: 0,length: furiganaText.length))
         
         // vertically align text
         let paragraphStyle : NSMutableParagraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = NSTextAlignment.Center
-        
         attributedText?.addAttribute(NSParagraphStyleAttributeName, value: paragraphStyle, range: NSRange(location: 0, length: furiganaText.length))
-        
         
         if (attributedText != nil) { // this one determines if there is one line or more than one line for text
 
             let path: CGMutablePathRef = CGPathCreateMutable()
-            
             let frameSetter : CTFramesetterRef = CTFramesetterCreateWithAttributedString(attributedText!)
             
-            //flip context is required every time to prevent text bein
-            
+            //flip context is required every time to prevent text beining drawn upside down
             CGContextSetTextMatrix(context, CGAffineTransformIdentity)
             CGContextTranslateCTM(context, 0, self.bounds.size.height)
             CGContextScaleCTM(context, 1.0, -1.0)
-            
-            CGPathAddRect(path, nil, CGRectMake(0, rect.origin.y-(self.frame.size.height/2.0), self.frame.size.width, self.frame.size.height))
+
+            print("characters \(attributedText?.length)")
+            // TODO: 250 is not enough for the very long texts
+            CGPathAddRect(path, nil, CGRectMake(0, rect.origin.y-(self.frame.size.height-220.0), self.frame.size.width, self.frame.size.height))
 
             let frame = CTFramesetterCreateFrame(frameSetter, CFRangeMake(0, attributedText!.length), path, nil)
             
@@ -59,5 +58,10 @@ class PRFuriganaLabel : UIView
             CTLineDraw(line, context!)
             
         }
+    }
+    
+    func fontSizeForCharacterCount(count: Int) -> CGFloat
+    {
+        return CGFloat(24-2*(count/25))
     }
 }

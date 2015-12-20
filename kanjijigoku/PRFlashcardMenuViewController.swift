@@ -155,7 +155,6 @@ override func viewDidLoad() {
                     let example = e as! Example
                     if example.obligatory {
                         let flashcard = Flashcard(text: example.example, reading: example.reading, meaning: example.meaning, type: .Example)
-                        //flashcard.furiganaReading = example.replaceExplainedSentence(example.reading)
                         returnArray.append(flashcard)
                         
                     }
@@ -169,8 +168,6 @@ override func viewDidLoad() {
                     let sentence = s as! Sentence
                     if sentence.obligatory {
                         let flashcard = Flashcard(text: sentence.sentence, reading: sentence.sentence, meaning: sentence.meaning, type: .Sentence)
-                        flashcard.furiganaReading = sentence.replaceExplainedSentence(sentence.sentence)
-                        flashcard.text = (sentence.replaceExplainedSentence(sentence.sentence)).string
                         returnArray.append(flashcard)
                     }
                 }

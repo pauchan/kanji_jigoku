@@ -8,11 +8,12 @@
 
 import UIKit
 
-func generateKanjiImage() -> UIImage {
+func generateKanjiImage(color: UIColor) -> UIImage {
     
-    let kanji :NSAttributedString = NSAttributedString(string: "漢字", attributes: [NSFontAttributeName : UIFont().appFontOfSize(20.0)])
+    let kanji :NSAttributedString = NSAttributedString(string: "漢字", attributes: [NSFontAttributeName : UIFont().appFontOfSize(20.0), NSForegroundColorAttributeName : color])
     UIGraphicsBeginImageContextWithOptions(kanji.size(), false, 0.0)
-    kanji.drawAtPoint(CGPointMake(0.0, 0.0)) //, withAttributes: [NSFontAttributeName : font!])
+    
+    kanji.drawAtPoint(CGPointMake(0.0, 0.0))
     let img = UIGraphicsGetImageFromCurrentImageContext()
     UIGraphicsEndImageContext()
     return img

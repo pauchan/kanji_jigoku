@@ -28,7 +28,7 @@ class PRFlashcardViewController : UIViewController, UIGestureRecognizerDelegate 
         self.view.addGestureRecognizer(tap)
         textLabel?.text = flashcard.text
         spellingLabel?.text = flashcard.reading
-        readingLabel?.furiganaText = flashcard.furiganaReading
+        readingLabel?.furiganaText = flashcard.text.furiganaExtractedSentence()
         meaningLabel?.text = flashcard.meaning
         
         if flashcard.type == .Sentence {
@@ -45,7 +45,9 @@ class PRFlashcardViewController : UIViewController, UIGestureRecognizerDelegate 
         if tapCount == 1
         {
             if flashcard.type == .Sentence {
-                readingLabel?.furiganaText = flashcard.furiganaReading
+                //readingLabel?.furiganaText = flashcard.furiganaReading
+                readingLabel?.furiganaText = flashcard.text.furiganaExplainedSentence()
+                readingLabel?.setNeedsDisplay()
             } else {
                 spellingLabel.hidden = false
             }

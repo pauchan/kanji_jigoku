@@ -45,7 +45,6 @@ extension Sentence
         
         while let group :NSTextCheckingResult = regex?.firstMatchInString(sentence2, options: [], range: range)
         {
-            
             attributedString.replaceCharactersInRange(group.range, withAttributedString: generateFuriganaString(parsedSentence.substringWithRange(group.rangeAtIndex(1)), furiganaString: parsedSentence.substringWithRange(group.rangeAtIndex(2))))
             parsedSentence = NSString(string: attributedString.string)
             sentence2 = String(parsedSentence)
@@ -76,5 +75,4 @@ extension Sentence
         }
         return attributedString
     }
-    
 }

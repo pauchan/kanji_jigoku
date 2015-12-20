@@ -26,6 +26,7 @@ class PRKanjiPageViewController: UIViewController, UIPageViewControllerDelegate,
         let vc = PRKanjiTableViewController()
         vc.kanji = _kanjiTable[_selectedIndex] as Kanji
         vc.currentPage = _selectedIndex
+        vc.pageViewController = self
         vc.sameLessonKanjis = _kanjiTable
         
         let vcArray = [vc] as [UIViewController]?
@@ -87,6 +88,7 @@ class PRKanjiPageViewController: UIViewController, UIPageViewControllerDelegate,
         let nextKanjiPage = pendingViewControllers[0] as! PRKanjiTableViewController
         self.navigationItem.title = nextKanjiPage.kanji.kanji
         _selectedIndex = nextKanjiPage.currentPage
+        nextKanjiPage.pageViewController = self
         print("called")
     }
     

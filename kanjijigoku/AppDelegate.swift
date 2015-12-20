@@ -52,7 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, FinishedLoadingDelegate, 
         let testsNavigationController : UINavigationController = UINavigationController(rootViewController: PRTestMenuViewController())
         let flashcardController : UINavigationController = UINavigationController(rootViewController: PRFlashcardMenuViewController(style: UITableViewStyle.Plain))
         
-        kanjiNavigationController.tabBarItem = UITabBarItem(title: "Lekcja", image: generateKanjiImage(UIColor.blackColor()) , tag: 0)
+        kanjiNavigationController.tabBarItem = UITabBarItem(title: "Lekcja", image: generateKanjiImage(UIColor.blackColor()).imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal) , tag: 0)
         kanjiNavigationController.tabBarItem.selectedImage = generateKanjiImage(UIColor.whiteColor()).imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
         searchNavigationController.tabBarItem = UITabBarItem(title: "Szukaj", image: UIImage(named: "SearchIcon")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), tag: 1)
         searchNavigationController.tabBarItem.selectedImage = UIImage(named: "SearchIconWhite")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)

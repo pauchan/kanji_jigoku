@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ChameleonFramework
 
 class PRTestViewController: UIViewController {
     
@@ -51,7 +52,7 @@ class PRTestViewController: UIViewController {
                 if !correctMarked
                 {
                     correctMarked = true
-                    button.backgroundColor = UIColor.greenColor()
+                    button.backgroundColor = UIColor.flatGreenColorDark()
                     answerLabel.hidden = false
                     if !wrongAnswer
                     {
@@ -82,7 +83,7 @@ class PRTestViewController: UIViewController {
             {
                 if !correctMarked
                 {
-                    button.backgroundColor = UIColor.redColor()
+                    button.backgroundColor = UIColor.flatRedColor()
                     wrongAnswer = true
                     button.enabled = false
                 }
@@ -111,7 +112,7 @@ class PRTestViewController: UIViewController {
                 button.clipsToBounds = true
                 
                 button.enabled = true
-                button.backgroundColor = UIColor().brightOrangeColor()
+                button.backgroundColor = UIColor.flatWhiteColor()
                 button.setTitle(questions[questionNumber].options[index], forState: UIControlState.Normal)
                 
                 button.titleLabel?.adjustsFontSizeToFitWidth = true
@@ -136,7 +137,7 @@ class PRTestViewController: UIViewController {
         
         for button in testOptionButtons
         {
-            let atrStr = NSAttributedString(string: button.titleForState(UIControlState.Normal)!, attributes: [NSForegroundColorAttributeName : button.backgroundColor!, NSFontAttributeName : UIFont().appFont()])
+            let atrStr = NSAttributedString(string: button.titleForState(UIControlState.Normal)!, attributes: [NSForegroundColorAttributeName : UIColor().appColor(), NSFontAttributeName : UIFont().appFont()])
             tempString.appendAttributedString(atrStr)
             tempString.appendAttributedString(NSAttributedString(string: " "))
         }
