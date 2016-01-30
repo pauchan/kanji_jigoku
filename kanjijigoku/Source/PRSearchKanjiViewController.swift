@@ -107,11 +107,11 @@ class PRSearchKanjiViewController: UIViewController, UITableViewDelegate, UITabl
             var detailedText = ""
             if indexPath.section == 1 {
                 text = exampleSearchArray[indexPath.row].generateDescriptionString().string
-                detailedText = exampleSearchArray[indexPath.row].meaning + " " + exampleSearchArray[indexPath.row].note.removeReferenceSubstring()
+                detailedText = exampleSearchArray[indexPath.row].meaning! + " " + exampleSearchArray[indexPath.row].note!.removeReferenceSubstring()
             }
             else { // == .Sentences
                 text = sentenceSearchArray[indexPath.row].getExplainedSentence().string
-                detailedText = sentenceSearchArray[indexPath.row].meaning
+                detailedText = sentenceSearchArray[indexPath.row].meaning!
             }
             
             let font = UIFont(name: "HiraKakuProN-W3", size: 15.0)!

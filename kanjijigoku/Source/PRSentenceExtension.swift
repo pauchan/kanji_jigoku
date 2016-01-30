@@ -57,20 +57,20 @@ extension Sentence
     
     func getExplainedSentence() -> NSAttributedString
     {
-        var parsedSentence : NSString = NSString(string: sentence)
-        var range = NSMakeRange(0, sentence.characters.count)
+        var parsedSentence : NSString = NSString(string: sentence!)
+        var range = NSMakeRange(0, sentence!.characters.count)
         let attributedString = NSMutableAttributedString(string: parsedSentence as String)
         let regex = try? NSRegularExpression(pattern:"\\{(.*?);(.*?)\\}", options: [])
         
         var sentence2 = sentence
         
-        while let group :NSTextCheckingResult = regex?.firstMatchInString(sentence2, options: [], range: range)
+        while let group :NSTextCheckingResult = regex?.firstMatchInString(sentence!, options: [], range: range)
         {
             
             attributedString.replaceCharactersInRange(group.range, withAttributedString: generateFuriganaString(parsedSentence.substringWithRange(group.rangeAtIndex(1)), furiganaString: parsedSentence.substringWithRange(group.rangeAtIndex(2))))
             parsedSentence = NSString(string: attributedString.string)
             sentence2 = String(parsedSentence)
-            range = NSMakeRange(0, sentence2.characters.count)
+            range = NSMakeRange(0, sentence2!.characters.count)
             
         }
         return attributedString

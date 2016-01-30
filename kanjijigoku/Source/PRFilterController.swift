@@ -100,7 +100,7 @@ class PRFilterController: NSObject, UIPickerViewDataSource, UIPickerViewDelegate
         let arr : [Kanji]  = PRDatabaseHelper().getSelectedObjects("Kanji", level: level, lesson: lesson) as! [Kanji]
         let bla : String =  arr.map
             {
-                (kanji: Kanji) -> String in kanji.kanji
+                (kanji: Kanji) -> String in kanji.kanji!
             }.reduce("")
                 {
                     (base,append) in base + append + " "

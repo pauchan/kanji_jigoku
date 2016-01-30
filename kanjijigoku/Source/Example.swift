@@ -1,20 +1,17 @@
 //
 //  Example.swift
-//  kanjijigoku
+//  
 //
-//  Created by Paweł Rusin on 2015/02/12.
-//  Copyright (c) 2015年 Pawel Rusin. All rights reserved.
+//  Created by Pawel Rusin on 1/30/16.
+//
 //
 
 import Foundation
 import CoreData
 
+
 class Example: Testable {
 
-    @NSManaged var example: String
-    @NSManaged var exampleId: Int32
-    @NSManaged var note: String
-    @NSManaged var character: Kanji
-    @NSManaged var sentences: NSSet
+// Insert code here to add functionality to your managed object subclass
 
 }

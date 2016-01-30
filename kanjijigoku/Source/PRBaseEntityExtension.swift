@@ -15,7 +15,7 @@ extension BaseEntity {
         get {
             
             debugLog("code is \(self.code)")
-            if self.code.rangeOfString("8") == nil {
+            if self.code!.rangeOfString("8") == nil {
                 
                 return true
             }

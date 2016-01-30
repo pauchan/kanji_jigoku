@@ -19,6 +19,7 @@ class PRSettingsViewController: UITableViewController {
         let nib = UINib(nibName: "PRFilterCell", bundle: nil)
         self.tableView.registerNib(nib, forCellReuseIdentifier: "PRFilterCell")
         self.navigationItem.title = "Ustawienia"
+        
     }
     
     // MARK: - Table view data source
@@ -56,6 +57,7 @@ class PRSettingsViewController: UITableViewController {
                 if cell == nil {
                     cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "PRSettingsCell")
                     cell!.selectionStyle = UITableViewCellSelectionStyle.None
+                    cell!.contentView.userInteractionEnabled = false
                     cell!.textLabel?.text = "Aktualizacja bazy danych"
                 }
                 return cell!
@@ -63,14 +65,20 @@ class PRSettingsViewController: UITableViewController {
                 var cell : UITableViewCell? = tableView.dequeueReusableCellWithIdentifier("PRSettingsCell") as UITableViewCell!
                 if cell == nil {
                     cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "PRSettingsCell")
-                    cell!.selectionStyle = UITableViewCellSelectionStyle.None
+                    cell!.selectionStyle = UITableViewCellSelectionStyle.Blue
+                    
+                    cell!.contentView.userInteractionEnabled = false
+                    cell!.tintColor = UIColor.whiteColor()
+                    
+                    let checkmark = UIImageView(image: generateCheckmarkImage())
+                    cell!.accessoryView = checkmark
                     cell!.accessoryType = UITableViewCellAccessoryType.Checkmark
                     cell!.textLabel?.text = "Automatyczne aktualizacje"
                     cell!.detailTextLabel?.text = "Automatycznie sprawdzaj aktualizacje bazy po uruchomieniu aplikacji, jesli urzadzenie jest polaczone z internetem."
                     cell!.detailTextLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
                     cell!.detailTextLabel?.numberOfLines = 0
-                }
-                cell!.tintColor = (NSUserDefaults.standardUserDefaults().objectForKey("PRKanjiJigokuAutoDbUpdate") != nil) ? UIColor.blueColor() : UIColor.grayColor()
+                }   
+                cell!.accessoryView?.hidden = !NSUserDefaults.standardUserDefaults().boolForKey("PRKanjiJigokuAutoDbUpdate")
                 return cell!
             case 2:
                 var cell : UITableViewCell? = tableView.dequeueReusableCellWithIdentifier("PRSettingsCell") as UITableViewCell!
@@ -80,6 +88,7 @@ class PRSettingsViewController: UITableViewController {
                     cell!.selectionStyle = UITableViewCellSelectionStyle.None
                     cell!.textLabel?.text = "Reset Aplikacji"
                     cell!.detailTextLabel?.text = "Ustawienia aplikacji zostana zresetowane, a baza danych ponownie zaladowana do sieci."
+                    cell!.contentView.userInteractionEnabled = false
                     cell!.detailTextLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
                     cell!.detailTextLabel?.numberOfLines = 0
                 }
@@ -91,7 +100,7 @@ class PRSettingsViewController: UITableViewController {
         }
         
     }
-    
+        
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         
         
@@ -114,19 +123,15 @@ class PRSettingsViewController: UITableViewController {
             {
                 PRDatabaseHelper().syncDatabase()
             }
-            else if indexPath.row == 1
-            {
-                if let _ = tableView.cellForRowAtIndexPath(indexPath)
-                {
-                    if NSUserDefaults.standardUserDefaults().objectForKey("PRKanjiJigokuAutoDbUpdate") != nil
-                    {
-                        print("becoming nil")
-                        NSUserDefaults.standardUserDefaults().setObject(nil, forKey: "PRKanjiJigokuAutoDbUpdate")
-                    }
-                    else
-                    {
-                        print("becoming true")
-                        NSUserDefaults.standardUserDefaults().setObject(true, forKey: "PRKanjiJigokuAutoDbUpdate")
+            else if indexPath.row == 1 {
+                
+                if let cell = tableView.cellForRowAtIndexPath(indexPath) {
+                    if NSUserDefaults.standardUserDefaults().boolForKey("PRKanjiJigokuAutoDbUpdate") {
+                        NSUserDefaults.standardUserDefaults().setBool(false, forKey: "PRKanjiJigokuAutoDbUpdate")
+                        cell.accessoryView?.hidden = true
+                    } else {
+                        cell.accessoryView?.hidden = false
+                        NSUserDefaults.standardUserDefaults().setBool(true, forKey: "PRKanjiJigokuAutoDbUpdate")
                     }
                     NSUserDefaults.standardUserDefaults().synchronize()
                     tableView.reloadData()

@@ -32,7 +32,6 @@ override func viewDidLoad() {
     {
         self._tableItems = []
     }
-    
     //self.tableView.keyboardDismissMode = .OnDrag
     
     self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "SettingsIcon"), style: .Plain,  target: self, action: "prKanjiJigokuRightBarItemShowSettings:")
@@ -44,6 +43,12 @@ override func viewDidLoad() {
     self.tableView.tableFooterView = UIView()
     
 }
+    
+    override func viewWillAppear(animated: Bool)
+    {
+        super.viewDidAppear(animated)
+        self._headerCoordinator?.updateHeaderState()
+    }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
@@ -132,11 +137,11 @@ override func viewDidLoad() {
         for kanji in characters
         {
             if(option == kOnyomiOption){
-                returnArray.append(Flashcard(text: kanji.kanji, reading: kanji.generateReadingString(kanji.onyomis), meaning: kanji.meaning, type: .Onyomi))
+                returnArray.append(Flashcard(text: kanji.kanji!, reading: kanji.generateReadingString(kanji.onyomis!), meaning: kanji.meaning!, type: .Onyomi))
             }
             else // option == kKunyomiOption
             {
-                returnArray.append(Flashcard(text: kanji.kanji, reading: kanji.generateReadingString(kanji.kunyomis), meaning: kanji.meaning, type: .Kunyomi))
+                returnArray.append(Flashcard(text: kanji.kanji!, reading: kanji.generateReadingString(kanji.kunyomis!), meaning: kanji.meaning!, type: .Kunyomi))
             }
         }
         return returnArray
@@ -150,11 +155,11 @@ override func viewDidLoad() {
         {
             if(option == kExamplesOption)
             {
-                for e in character.examples
+                for e in character.examples!
                 {
                     let example = e as! Example
                     if example.obligatory {
-                        let flashcard = Flashcard(text: example.example, reading: example.reading, meaning: example.meaning, type: .Example)
+                        let flashcard = Flashcard(text: example.example!, reading: example.reading!, meaning: example.meaning!, type: .Example)
                         returnArray.append(flashcard)
                         
                     }
@@ -162,12 +167,12 @@ override func viewDidLoad() {
             }
             else
             {
-                debugLog("for kanji \(character.kanji) sententces count \(character.sentences.count)")
-                for s in character.sentences
+                debugLog("for kanji \(character.kanji) sententces count \(character.sentences!.count)")
+                for s in character.sentences!
                 {
                     let sentence = s as! Sentence
                     if sentence.obligatory {
-                        let flashcard = Flashcard(text: sentence.sentence, reading: sentence.sentence, meaning: sentence.meaning, type: .Sentence)
+                        let flashcard = Flashcard(text: sentence.sentence!, reading: sentence.sentence!, meaning: sentence.meaning!, type: .Sentence)
                         returnArray.append(flashcard)
                     }
                 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14D136" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="14F1509" minimumToolsVersion="Automatic">
     <entity name="BaseEntity" representedClassName="PRODUCT_MODULE_NAME.BaseEntity" syncable="YES">
         <attribute name="code" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
@@ -29,6 +29,7 @@
         <relationship name="sentences" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Sentence" inverseName="character" inverseEntity="Sentence" syncable="YES"/>
     </entity>
     <entity name="Kunyomi" representedClassName="kanjijigoku.Kunyomi" parentEntity="Reading" syncable="YES">
+        <attribute name="hiraganaReading" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="speechPart" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <relationship name="character" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Kanji" inverseName="kunyomis" inverseEntity="Kanji" syncable="YES"/>
     </entity>
@@ -60,14 +61,14 @@
         <attribute name="reading" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
+        <element name="BaseEntity" positionX="-6210" positionY="-1978" width="128" height="58"/>
         <element name="Example" positionX="-5258" positionY="-1906" width="128" height="118"/>
         <element name="Kanji" positionX="-5960" positionY="-2107" width="128" height="283"/>
-        <element name="Kunyomi" positionX="-5285" positionY="-2178" width="128" height="73"/>
+        <element name="Kunyomi" positionX="-5285" positionY="-2178" width="128" height="90"/>
         <element name="Onyomi" positionX="-5276" positionY="-2052" width="128" height="58"/>
         <element name="Radical" positionX="-5798" positionY="-1728" width="128" height="103"/>
         <element name="Reading" positionX="-5519" positionY="-2182" width="128" height="73"/>
         <element name="Sentence" positionX="-5463" positionY="-1765" width="128" height="148"/>
         <element name="Testable" positionX="-5780" positionY="-2178" width="128" height="88"/>
-        <element name="BaseEntity" positionX="-6210" positionY="-1978" width="128" height="58"/>
     </elements>
 </model>

@@ -43,6 +43,12 @@ class PRTestMenuViewController : UITableViewController
         
     }
     
+    override func viewWillAppear(animated: Bool) {
+    
+        super.viewDidAppear(animated)
+        self._headerCoordinator?.updateHeaderState()
+    }
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         

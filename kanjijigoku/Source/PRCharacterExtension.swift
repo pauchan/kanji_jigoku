@@ -23,7 +23,7 @@ extension Kanji
         {
             if let reading = itObject as? Reading
             {
-                returnString += reading.reading + "・"
+                returnString += reading.reading! + "・"
             }
         }
         return returnString.substringWithRange(Range<String.Index>(start: returnString.startIndex, end: returnString.endIndex.advancedBy(-1)))
@@ -32,10 +32,10 @@ extension Kanji
     
     func generateRadicalsString() -> String {
         
-        let arr = self.radicals.allObjects as! [Radical]
+        let arr = self.radicals!.allObjects as! [Radical]
         return arr.map
             {
-                (radical : Radical) -> String in radical.radical
+                (radical : Radical) -> String in radical.radical!
                 
             }.reduce("")
                 {
@@ -50,12 +50,12 @@ extension Kanji
         {
             if i != arrayOfReadings.count-1
             {
-                let str = arrayOfReadings[i].reading+", "
+                let str = arrayOfReadings[i].reading!+", "
                 appStr += str
             }
             else
             {
-                appStr += arrayOfReadings[i].reading
+                appStr += arrayOfReadings[i].reading!
             }
         }
         return appStr

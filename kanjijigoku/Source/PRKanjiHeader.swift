@@ -37,8 +37,8 @@ class PRKanjiHeader: UIView {
         for ch in kanjis
         {
             let font = UIFont().appFontOfSize(17.0)
-            let kanji :NSAttributedString = NSAttributedString(string: ch.kanji, attributes: [NSFontAttributeName : font])
-            let activeKanji :NSAttributedString = NSAttributedString(string: ch.kanji, attributes: [NSFontAttributeName : font, NSForegroundColorAttributeName : UIColor.redColor()])
+            let kanji :NSAttributedString = NSAttributedString(string: ch.kanji!, attributes: [NSFontAttributeName : font])
+            let activeKanji :NSAttributedString = NSAttributedString(string: ch.kanji!, attributes: [NSFontAttributeName : font, NSForegroundColorAttributeName : UIColor.redColor()])
 
             
             UIGraphicsBeginImageContextWithOptions(kanji.size(), false, 0.0)

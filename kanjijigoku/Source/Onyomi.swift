@@ -1,16 +1,17 @@
 //
 //  Onyomi.swift
-//  kanjijigoku
+//  
 //
-//  Created by Paweł Rusin on 2015/02/12.
-//  Copyright (c) 2015年 Pawel Rusin. All rights reserved.
+//  Created by Pawel Rusin on 1/30/16.
+//
 //
 
 import Foundation
 import CoreData
 
+
 class Onyomi: Reading {
 
-    @NSManaged var character: Kanji
+// Insert code here to add functionality to your managed object subclass
 
 }

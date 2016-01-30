@@ -121,5 +121,25 @@ extension String
         }
         return attributedString
     }
+    
+    func kanjiWithOkurigana(kanji: String) -> String
+        {
+            do {
+                let regexp = try NSRegularExpression(pattern: ".*（", options: [NSRegularExpressionOptions.CaseInsensitive])
+                let mutReading = NSMutableString(string: self)
+                regexp.replaceMatchesInString(mutReading, options: [], range: NSRange(location: 0,length: mutReading.length), withTemplate: kanji)
+                let fullWidthBracketesSet = NSCharacterSet(charactersInString: "（）")
+                return mutReading.stringByTrimmingCharactersInSet(fullWidthBracketesSet)
+            } catch {
+                print("Error while regexping string. Return default value.")
+                return self
+            }
+    }
+    
+    
+    func plainHiragana() -> String
+        {
+            return self.stringByReplacingOccurrencesOfString("（", withString: "").stringByReplacingOccurrencesOfString("）", withString: "")
+    }
 }
 

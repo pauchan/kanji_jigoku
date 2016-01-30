@@ -179,11 +179,11 @@ class PRDatabaseHelper
                     // skipping column 13 id_sql
                     character.code = String(rs.intForColumnIndex(14))
                     
-                    character.kunyomis = parseKunyomi(database, character: character.kanji)
-                    character.onyomis = parseOnyomi(database, character: character.kanji)
-                    character.examples = parseExamples(database, character: character.kanji)
-                    character.sentences = parseSentences(database, character: character.kanji)
-                    debugLog("for kanji \(character.kanji) sententces count \(character.sentences.count)")
+                    character.kunyomis = parseKunyomi(database, character: character.kanji!)
+                    character.onyomis = parseOnyomi(database, character: character.kanji!)
+                    character.examples = parseExamples(database, character: character.kanji!)
+                    character.sentences = parseSentences(database, character: character.kanji!)
+                    debugLog("for kanji \(character.kanji) sententces count \(character.sentences!.count)")
                     character.radicals = parseRadicals(database, number: Int(character.radical))
                     
                 }
@@ -264,6 +264,7 @@ class PRDatabaseHelper
                     kunyomi.readingId = rs.intForColumnIndex(3)
                     kunyomi.code = String(rs.intForColumnIndex(4))
                     kunyomi.note = rs.stringForColumnIndex(5)
+                    kunyomi.hiraganaReading = kunyomi.reading?.plainHiragana()
                     
                     outSet.addObject(kunyomi)
                 }
@@ -598,7 +599,11 @@ class PRDatabaseHelper
             //let predicateA = NSPredicate(format: "ANY kunyomis.reading='\(hiraganaPhrase)'")
             //let predicateB = NSPredicate(format: "ANY onyomis.reading='\(katakanaPhrase)'")
             
-            predicates = [NSPredicate(format: "ANY kunyomis.reading='\(hiraganaPhrase)'"), NSPredicate(format: "ANY onyomis.reading='\(katakanaPhrase)'")]
+            // TODO:
+            // find a way to remove par
+            
+            predicates = [NSPredicate(format: "ANY kunyomis.reading='\(hiraganaPhrase)'"), NSPredicate(format: "ANY onyomis.reading='\(katakanaPhrase)'"),
+                NSPredicate(format: "ANY kunyomis.hiraganaReading='\(hiraganaPhrase)'")]
         case "Example":
             predicates = [NSPredicate(format: "reading CONTAINS '\(hiraganaPhrase)'"), NSPredicate(format: "example CONTAINS '\(kanjiPhrase)'")]
         case "Sentence":

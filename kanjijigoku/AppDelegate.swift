@@ -38,9 +38,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, FinishedLoadingDelegate, 
         return true
     }
     
-    func splashDidFinishLoading() {
-    
-
+    func splashDidFinishLoading()
+    {
         let tabBarController : UITabBarController = UITabBarController()
         tabBarController.delegate = self
         

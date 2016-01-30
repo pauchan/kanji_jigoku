@@ -45,4 +45,17 @@ class PRStringExtensionTest: XCTestCase {
         let mixedString = "mieszanyStringこれは"
         XCTAssertFalse(mixedString.isRomaji(), "This mixed string (not romaji)")
     }
+    
+//    func testPlainHiragana() {
+//        let testString = "た（べる）";
+//        XCTAssertEqual(testString.plainHiragana(), "たべる")
+//    }
+//    
+//    func testExplained() {
+//        let testString = "た（べる）";
+//        let kanji = "食"
+//        XCTAssertEqual(testString.kanjiWithOkurigana(kanji), "食べる")
+//    }
 }
+
+

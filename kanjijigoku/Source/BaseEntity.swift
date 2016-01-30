@@ -2,15 +2,16 @@
 //  BaseEntity.swift
 //  
 //
-//  Created by Paweł Rusin on 2015/07/10.
+//  Created by Pawel Rusin on 1/30/16.
 //
 //
 
 import Foundation
 import CoreData
 
+
 class BaseEntity: NSManagedObject {
 
-    @NSManaged var code: String
+// Insert code here to add functionality to your managed object subclass
 
 }

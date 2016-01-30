@@ -14,8 +14,6 @@ class PRHeaderCoordinator: NSObject, UIPickerViewDataSource, UIPickerViewDelegat
     var levelPickerView = UIPickerView()
     var lessonPickerView = UIPickerView()
     
-    
-    
     init(headerCell : PRHeaderViewCell) {
 
         super.init()
@@ -25,13 +23,9 @@ class PRHeaderCoordinator: NSObject, UIPickerViewDataSource, UIPickerViewDelegat
         self.headerCell.levelComboBox?.inputView = levelPickerView
         self.headerCell.lessonComboBox?.inputView = lessonPickerView
         
-        self.headerCell.levelComboBox?.text = "Poziom \(PRStateSingleton.sharedInstance.currentLevel)"
-        self.headerCell.lessonComboBox?.text = "Lekcja \(PRStateSingleton.sharedInstance.currentLesson)"
-        
-        
         self.headerCell.extraMaterialSwitch?.addTarget(self, action: "enableMaterial:", forControlEvents: UIControlEvents.ValueChanged)
-        self.headerCell.extraMaterialSwitch?.selected = PRStateSingleton.sharedInstance.extraMaterial
-
+        
+        self.updateHeaderState()
         
         levelPickerView.delegate = self
         lessonPickerView.delegate = self
@@ -80,7 +74,7 @@ class PRHeaderCoordinator: NSObject, UIPickerViewDataSource, UIPickerViewDelegat
     let arr : [Kanji]  = PRDatabaseHelper().getSelectedObjects("Kanji", level: level, lesson: lesson) as! [Kanji]
         let bla : String =  arr.map
             {
-                (kanji: Kanji) -> String in kanji.kanji
+                (kanji: Kanji) -> String in kanji.kanji!
             }.reduce("")
             {
                 (base,append) in base + append + " "
@@ -115,7 +109,14 @@ class PRHeaderCoordinator: NSObject, UIPickerViewDataSource, UIPickerViewDelegat
     
     func enableMaterial(sender: AnyObject) {
     
-        PRStateSingleton.sharedInstance.extraMaterial = self.headerCell.extraMaterialSwitch!.selected
+        PRStateSingleton.sharedInstance.extraMaterial = self.headerCell.extraMaterialSwitch!.on
+    }
+    
+    func updateHeaderState() {
+    
+        self.headerCell.levelComboBox?.text = "Poziom \(PRStateSingleton.sharedInstance.currentLevel)"
+        self.headerCell.lessonComboBox?.text = "Lekcja \(PRStateSingleton.sharedInstance.currentLesson)"
+        self.headerCell.extraMaterialSwitch?.on = PRStateSingleton.sharedInstance.extraMaterial
     }
     
 }

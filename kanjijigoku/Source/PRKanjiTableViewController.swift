@@ -51,8 +51,8 @@ class PRKanjiTableViewController: UIViewController, UITableViewDelegate,UITableV
         let nib2 : UINib = UINib(nibName: "PRRelatedKanjiCell", bundle: nil)
         self.tableView.registerNib(nib2, forCellReuseIdentifier: "PRRelatedKanjiCell")
         
-        additionalExamples = PRDatabaseHelper().fetchAdditionalExamples(kanji.kanji)
-        if kanji.relatedKanji.isEmpty
+        additionalExamples = PRDatabaseHelper().fetchAdditionalExamples(kanji.kanji!)
+        if kanji.relatedKanji!.isEmpty
         {
             relatedKanjis = [Kanji]()
         }
@@ -78,18 +78,18 @@ class PRKanjiTableViewController: UIViewController, UITableViewDelegate,UITableV
         case .Summary:
             return 1
         case .Notes:
-            return (kanji.note.isEmpty || kanji.note == "0") ? 0 : 1
+            return (kanji.note!.isEmpty || kanji.note == "0") ? 0 : 1
         case .Kunyomi:
-            return kanji.kunyomis.count > 0  ? 1 : 0
+            return kanji.kunyomis!.count > 0  ? 1 : 0
         case .Onyomi:
-            return kanji.onyomis.count > 0  ? 1 : 0
+            return kanji.onyomis!.count > 0  ? 1 : 0
         case .Examples:
-            return kanji.examples.count
+            return kanji.examples!.count
         case .AdditionalExamples:
             return additionalExamples.count
         case .Sentences:
-            print("sentences count: \(kanji.sentences.count)")
-            return kanji.sentences.count
+            print("sentences count: \(kanji.sentences!.count)")
+            return kanji.sentences!.count
         }
     }
     
@@ -128,14 +128,14 @@ class PRKanjiTableViewController: UIViewController, UITableViewDelegate,UITableV
         case .Kunyomi:
             debugLog("kunyomi")
             let cell = tableView.dequeueReusableCellWithIdentifier("PRKanjiCell", forIndexPath: indexPath) 
-            let arr = kanji.kunyomis.allObjects as! [Kunyomi]
+            let arr = kanji.kunyomis!.allObjects as! [Kunyomi]
             cell.textLabel?.text = kanji.generateCommaSeparatedString(arr)
             cell.selectionStyle = .None
             return cell
             
         case .Onyomi:
             let cell = tableView.dequeueReusableCellWithIdentifier("PRKanjiCell", forIndexPath: indexPath) 
-            let arr = kanji.onyomis.allObjects as! [Onyomi]
+            let arr = kanji.onyomis!.allObjects as! [Onyomi]
             cell.textLabel?.text = kanji.generateCommaSeparatedString(arr)
             cell.selectionStyle = .None
             return cell
@@ -143,10 +143,10 @@ class PRKanjiTableViewController: UIViewController, UITableViewDelegate,UITableV
         case .Examples:
             debugLog("examples")
             let cell = tableView.dequeueReusableCellWithIdentifier("PRKanjiCell2") as? PRDetailedKanjiCell
-            let example = kanji.examples.allObjects as! [Example]
+            let example = kanji.examples!.allObjects as! [Example]
             let descriptionString = example[indexPath.row].markIfImportant(example[indexPath.row].generateDescriptionString().string)
             cell!.textLabel?.attributedText =  (PRStateSingleton.sharedInstance.filterOn) ? self.filterOutAdvancedKanji(descriptionString.string) : descriptionString
-            cell!.detailTextLabel?.text = example[indexPath.row].meaning + " " + example[indexPath.row].note.removeReferenceSubstring()
+            cell!.detailTextLabel?.text = example[indexPath.row].meaning! + " " + example[indexPath.row].note!.removeReferenceSubstring()
             return cell!
             
         case .AdditionalExamples:
@@ -154,13 +154,13 @@ class PRKanjiTableViewController: UIViewController, UITableViewDelegate,UITableV
             let cell = tableView.dequeueReusableCellWithIdentifier("PRKanjiCell2") as? PRDetailedKanjiCell
             let descriptionString = additionalExamples[indexPath.row].generateDescriptionString()
             cell!.textLabel?.attributedText = (PRStateSingleton.sharedInstance.filterOn) ? self.filterOutAdvancedKanji(descriptionString.string) : descriptionString
-            cell!.detailTextLabel?.text = additionalExamples[indexPath.row].meaning + " " + additionalExamples[indexPath.row].note.removeReferenceSubstring()
+            cell!.detailTextLabel?.text = additionalExamples[indexPath.row].meaning! + " " + additionalExamples[indexPath.row].note!.removeReferenceSubstring()
             return cell!
             
         case .Sentences:
             debugLog("sentences")
             let cell = tableView.dequeueReusableCellWithIdentifier("PRKanjiCell2") as? PRDetailedKanjiCell
-            let sentence = kanji.sentences.allObjects as! [Sentence]
+            let sentence = kanji.sentences!.allObjects as! [Sentence]
             print("explanation: \(sentence[indexPath.row].getExplainedSentence())")
             cell!.textLabel?.attributedText = (PRStateSingleton.sharedInstance.filterOn) ? self.filterOutAdvancedKanji(sentence[indexPath.row].getExplainedSentence().string) : NSAttributedString(string: sentence[indexPath.row].getExplainedSentence().string)
             cell!.detailTextLabel?.text = sentence[indexPath.row].meaning
@@ -180,7 +180,7 @@ class PRKanjiTableViewController: UIViewController, UITableViewDelegate,UITableV
         }
         else if displaySection == .Sentences
         {
-            return kanji.sentences.count > 0 ? 30.0 : 0.0
+            return kanji.sentences!.count > 0 ? 30.0 : 0.0
         }
         else
         {
@@ -226,16 +226,16 @@ class PRKanjiTableViewController: UIViewController, UITableViewDelegate,UITableV
             var text = ""
             var detailedText = ""
             if displaySection == .Examples {
-                let example = kanji.examples.allObjects as! [Example]
+                let example = kanji.examples!.allObjects as! [Example]
                 text = example[indexPath.row].generateDescriptionString().string
-                detailedText = example[indexPath.row].meaning + " " + example[indexPath.row].note.removeReferenceSubstring()
+                detailedText = example[indexPath.row].meaning! + " " + example[indexPath.row].note!.removeReferenceSubstring()
             } else if displaySection == .AdditionalExamples {
                 text = additionalExamples[indexPath.row].generateDescriptionString().string
-                detailedText = additionalExamples[indexPath.row].meaning + " " + additionalExamples[indexPath.row].note.removeReferenceSubstring()
+                detailedText = additionalExamples[indexPath.row].meaning! + " " + additionalExamples[indexPath.row].note!.removeReferenceSubstring()
             } else { // == .Sentences
-                let sentence = kanji.sentences.allObjects as! [Sentence]
+                let sentence = kanji.sentences!.allObjects as! [Sentence]
                 text = sentence[indexPath.row].getExplainedSentence().string
-                detailedText = sentence[indexPath.row].meaning
+                detailedText = sentence[indexPath.row].meaning!
             }
             
             let font = UIFont().appFontOfSize(15.0)
@@ -254,17 +254,17 @@ class PRKanjiTableViewController: UIViewController, UITableViewDelegate,UITableV
         let label = UILabel(frame: CGRectMake(0, 0, cell.frame.size.width, cell.frame.size.height))
         label.text = relatedKanjis[indexPath.row].kanji
         
-        let onyomiSet = kanji.onyomis.allObjects as! [Onyomi]
-        let onyomiSet2 = relatedKanjis[indexPath.row].onyomis.allObjects as! [Onyomi]
+        let onyomiSet = kanji.onyomis!.allObjects as! [Onyomi]
+        let onyomiSet2 = relatedKanjis[indexPath.row].onyomis!.allObjects as! [Onyomi]
         
         let test = onyomiSet.map({
             
-            (onyomi) -> String in onyomi.reading
+            (onyomi) -> String in onyomi.reading!
         })
         
         let testBool = onyomiSet2.filter({
             
-            (onyomi : Onyomi) in test.contains(onyomi.reading)
+            (onyomi : Onyomi) in test.contains(onyomi.reading!)
         })
         
         

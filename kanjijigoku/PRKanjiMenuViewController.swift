@@ -26,60 +26,53 @@ class PRKanjiMenuViewController: UITableViewController
                 
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "lessonUpdated:", name: "PRKanjiJigokuLessonUpdated", object: nil)
 }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        self._headerCoordinator?.updateHeaderState()
+    }
 
 override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
 {
-    
-    if indexPath.section == 0
-    {
+    if indexPath.section == 0 {
         let cell = tableView.dequeueReusableCellWithIdentifier("PRHeaderViewCell", forIndexPath: indexPath) as! PRHeaderViewCell
         _headerCoordinator = PRHeaderCoordinator(headerCell: cell)
         cell.contentView.userInteractionEnabled = false
         cell.selectionStyle = .None
         return cell
-    }
-    else
-    {
+    } else {
         let cell = tableView.dequeueReusableCellWithIdentifier("PRKanjiCell", forIndexPath: indexPath) 
         cell.textLabel?.text = _kanjiTable[indexPath.row].kanji
+        cell.selectionStyle = .None
         return cell
     }
 }
 
 override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
 {
-    if indexPath.section != 0
-    {
-        
+    if indexPath.section != 0 {
         let vc = PRKanjiPageViewController()
         vc._kanjiTable = _kanjiTable
         vc._selectedIndex = indexPath.row
         navigationController?.pushViewController(vc, animated: false)
     }
-    
 }
 
 
-override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-    
-    if indexPath.section == 0 && indexPath.row == 0
-    {
+override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
+{
+    if indexPath.section == 0 && indexPath.row == 0 {
         return 90.0
-    }
-    else
-    {
+    } else {
         return 45.0
     }
 }
 
 override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
 {
-    if(section == 0)
-    {
+    if(section == 0) {
         return 1
-    }
-    else
-    {
+    } else {
         return _kanjiTable.count
     }
 }
@@ -94,6 +87,5 @@ func lessonUpdated(notification: NSNotification)
         _kanjiTable = PRDatabaseHelper().getSelectedObjects("Kanji", level: PRStateSingleton.sharedInstance.currentLevel, lesson: PRStateSingleton.sharedInstance.currentLesson) as! [Kanji]
         self.tableView.reloadData()
 }
-
     
 }
