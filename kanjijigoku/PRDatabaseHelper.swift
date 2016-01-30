@@ -179,9 +179,12 @@ class PRDatabaseHelper
                     // skipping column 13 id_sql
                     character.code = String(rs.intForColumnIndex(14))
                     
-                    character.kunyomis = parseKunyomi(database, character: character.kanji!)
+                    let (kunyomiSet, exampleSet) = parseKunyomi(database, character: character.kanji!)
+                    
+                    character.kunyomis = kunyomiSet
                     character.onyomis = parseOnyomi(database, character: character.kanji!)
-                    character.examples = parseExamples(database, character: character.kanji!)
+                    let mutExampleSet = parseExamples(database, character: character.kanji!)
+                    character.examples = mutExampleSet.setByAddingObjectsFromSet(exampleSet as Set<NSObject>)
                     character.sentences = parseSentences(database, character: character.kanji!)
                     debugLog("for kanji \(character.kanji) sententces count \(character.sentences!.count)")
                     character.radicals = parseRadicals(database, number: Int(character.radical))
@@ -191,12 +194,10 @@ class PRDatabaseHelper
                 print("select failed: \(database.lastErrorMessage())")
                 return false
             }
-            var error: NSError?
             do {
                 try managedContext.save()
-            } catch let error1 as NSError {
-                error = error1
-                print("Could not save \(error), \(error?.userInfo)")
+            } catch {
+                print("Could not save")
                 return false
             }
             
@@ -239,14 +240,17 @@ class PRDatabaseHelper
             
         }
         
-        func parseKunyomi(database : FMDatabase, character : String) -> NSSet
+        func parseKunyomi(database : FMDatabase, character : String) -> (NSSet, NSSet)
         {
             let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
             let managedContext = appDelegate.managedObjectContext!
             
             let entity = NSEntityDescription.entityForName("Kunyomi", inManagedObjectContext: managedContext)!
             
-            let outSet : NSMutableSet = NSMutableSet()
+            let exampleEntity = NSEntityDescription.entityForName("Example", inManagedObjectContext: managedContext)!
+            
+            let kunyomiSet : NSMutableSet = NSMutableSet()
+            let examplesSet : NSMutableSet = NSMutableSet()
             
             if let rs = database.executeQuery("select * from kunyomi where kanji='\(character)'", withArgumentsInArray: nil) {
                 while rs.next() {
@@ -266,13 +270,25 @@ class PRDatabaseHelper
                     kunyomi.note = rs.stringForColumnIndex(5)
                     kunyomi.hiraganaReading = kunyomi.reading?.plainHiragana()
                     
-                    outSet.addObject(kunyomi)
+                    kunyomiSet.addObject(kunyomi)
+                    
+                    // for kunyomis we also are creating
+                    let example = NSManagedObject(entity: exampleEntity, insertIntoManagedObjectContext: managedContext) as! Example
+                    example.kanji = rs.stringForColumnIndex(0)
+                    example.reading = rs.stringForColumnIndex(1).plainHiragana()
+                    example.example = rs.stringForColumnIndex(1).kanjiWithOkurigana(rs.stringForColumnIndex(0))
+                    example.meaning = rs.stringForColumnIndex(2)
+                    example.code = "0"
+                    example.note = rs.stringForColumnIndex(5)
+                
+                    examplesSet.addObject(example)
+                    
                 }
             } else {
                 print("select failed: \(database.lastErrorMessage())")
             }
             
-            return outSet.copy() as! NSSet
+            return (kunyomiSet.copy() as! NSSet,examplesSet.copy() as! NSSet)
             
         }
         
@@ -386,7 +402,6 @@ class PRDatabaseHelper
         
         let fetchRequest = NSFetchRequest(entityName: description)
         
-        var error : NSError?
         let fetchedRequest = (try! managedContext.executeFetchRequest(fetchRequest)) as! [NSManagedObject]
         
         //let objects = fetchedRequest as? [NSManagedObjects]
@@ -396,13 +411,10 @@ class PRDatabaseHelper
         
             managedContext.deleteObject(object)
         }
-        
-
         do {
             try managedContext.save()
-        } catch let error1 as NSError {
-            error = error1
-            print("Could not save \(error), \(error?.userInfo)")
+        } catch {
+            print("Could not save")
         }
     }
     
