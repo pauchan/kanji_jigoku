@@ -55,7 +55,7 @@ class PRTestViewController: UIViewController {
                     button.backgroundColor = UIColor.flatGreenColorDark()
                     answerLabel.hidden = false
                     if !wrongAnswer
-                    {
+                    {1
                         properAnswersCount++
                     }
                 }

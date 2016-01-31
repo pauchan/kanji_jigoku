@@ -66,6 +66,8 @@ override func viewDidLoad() {
     {
         let cell = tableView.dequeueReusableCellWithIdentifier("PRFlashcardCell", forIndexPath: indexPath) 
         cell.textLabel?.text = _tableItems[indexPath.row] as? String
+        cell.textLabel?.font = UIFont().appFontOfSize(20.0)
+        cell.textLabel?.textAlignment = .Center
         return cell
     }
     }
@@ -103,26 +105,20 @@ override func viewDidLoad() {
         
     }
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        
-        if(indexPath.section == 0)
-        {
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
+    {
+        if(indexPath.section == 0) {
             return 90.0
-        }
-        else
-        {
-            return 45.0
+        } else {
+            return 80.0
         }
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-    if(section == 0)
-    {
+    if(section == 0) {
         return 1
-    }
-    else
-    {
+    } else {
         return _tableItems.count
     }
 }
