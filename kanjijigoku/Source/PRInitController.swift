@@ -45,6 +45,10 @@ class PRInitController: UIViewController {
             debugLog("dont auto-update db...")
         }
         // delegate method
+        let stateSingleton : PRStateSingleton = PRStateSingleton.sharedInstance
+        stateSingleton.levelArray = PRDatabaseHelper().getLevelArray()
+        stateSingleton.lessonArray = PRDatabaseHelper().getLessonArray(stateSingleton.currentLevel)
+        
         delegate?.splashDidFinishLoading()
     }
     

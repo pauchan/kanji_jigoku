@@ -61,7 +61,7 @@ class PRKanjiTableViewController: UIViewController, UITableViewDelegate,UITableV
             relatedKanjis = PRDatabaseHelper().fetchRelatedKanjis(kanji)
         }
         
-        self.tableView.tableFooterView = UIView(frame: CGRectMake(0.0, 0.0, self.view.frame.size.width, 45.0))    }
+        self.tableView.tableFooterView = UIView(frame: CGRectMake(0.0, 0.0, self.view.frame.size.width, 90.0))    }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int
     {

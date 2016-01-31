@@ -595,7 +595,6 @@ class PRDatabaseHelper
         1. for kanji we are looking for a kanji-match, onyomi-match, kunyomi match
         2. for examples we are looking for a kanji-match in examples and onyomi match in readings
         3. for sentences we are looking for a kanji-match in sentence and onyomi match in meaning
-        
         */
         var hiraganaPhrase = phrase
         var katakanaPhrase = phrase
@@ -605,15 +604,8 @@ class PRDatabaseHelper
             hiraganaPhrase = PRRomajiKanaConverter().convert(phrase, from: AlphabetType.Romaji, to: AlphabetType.Hiragana)
             katakanaPhrase = PRRomajiKanaConverter().convert(phrase, from: AlphabetType.Romaji, to: AlphabetType.Katakana)
         }
-        switch object
-        {
+        switch object {
         case "Kanji":
-            //let predicateA = NSPredicate(format: "ANY kunyomis.reading='\(hiraganaPhrase)'")
-            //let predicateB = NSPredicate(format: "ANY onyomis.reading='\(katakanaPhrase)'")
-            
-            // TODO:
-            // find a way to remove par
-            
             predicates = [NSPredicate(format: "ANY kunyomis.reading='\(hiraganaPhrase)'"), NSPredicate(format: "ANY onyomis.reading='\(katakanaPhrase)'"),
                 NSPredicate(format: "ANY kunyomis.hiraganaReading='\(hiraganaPhrase)'")]
         case "Example":

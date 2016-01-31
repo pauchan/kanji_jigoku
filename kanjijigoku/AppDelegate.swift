@@ -18,10 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, FinishedLoadingDelegate, 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        let stateSingleton : PRStateSingleton = PRStateSingleton.sharedInstance
-        stateSingleton.levelArray = PRDatabaseHelper().getLevelArray()
-        stateSingleton.lessonArray = PRDatabaseHelper().getLessonArray(stateSingleton.currentLevel)
-        
         Chameleon.setGlobalThemeUsingPrimaryColor(UIColor().appColor(), withContentStyle: UIContentStyle.Dark)
         
         UITabBar.appearance().barTintColor = UIColor().appColor()

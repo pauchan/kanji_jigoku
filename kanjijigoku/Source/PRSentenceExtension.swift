@@ -57,6 +57,8 @@ extension Sentence
     
     func getExplainedSentence() -> NSAttributedString
     {
+        print(self.sentence)
+        // TODO: check if format of explained sentences havent changed!!!
         var parsedSentence : NSString = NSString(string: sentence!)
         var range = NSMakeRange(0, sentence!.characters.count)
         let attributedString = NSMutableAttributedString(string: parsedSentence as String)
@@ -73,6 +75,9 @@ extension Sentence
             range = NSMakeRange(0, sentence2!.characters.count)
             
         }
+        
+        print(attributedString.string)
+        
         return attributedString
     }
 }
