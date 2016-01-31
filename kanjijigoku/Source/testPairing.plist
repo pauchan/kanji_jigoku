@@ -82,15 +82,5 @@
 		<key>answerProperty</key>
 		<string>example</string>
 	</dict>
-	<dict>
-		<key>label</key>
-		<string>Czytanie słow</string>
-		<key>questionObject</key>
-		<string>Example</string>
-		<key>questionProperty</key>
-		<string>meaning</string>
-		<key>answerProperty</key>
-		<string>example</string>
-	</dict>
 </array>
 </plist>

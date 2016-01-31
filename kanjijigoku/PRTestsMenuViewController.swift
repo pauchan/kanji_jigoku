@@ -66,6 +66,7 @@ class PRTestMenuViewController : UITableViewController
             let cell = tableView.dequeueReusableCellWithIdentifier("PRFlashcardCell", forIndexPath: indexPath) 
             let testDict = _tableItems[indexPath.row] as! [String: String]
             cell.textLabel?.text = testDict["label"]
+            cell.selectionStyle = .None
             return cell
         }
     }
