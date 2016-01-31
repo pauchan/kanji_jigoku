@@ -9,7 +9,7 @@
 import UIKit
 import ChameleonFramework
 
-class PRTestViewController: UIViewController {
+class PRTestViewController: UIViewController, UIAlertViewDelegate {
     
     var descriptionText = ""
     
@@ -19,12 +19,10 @@ class PRTestViewController: UIViewController {
     var properAnswersCount = 0
     var maxQuestionCount = 10
     var wrongAnswer = false
-    var correctMarked = false
     
     @IBOutlet var testOptionButtons: [UIButton]!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var testProgressLabel: UIProgressView!
-    @IBOutlet weak var answerLabel: UILabel!
     @IBOutlet weak var questionLabel: UILabel!
     
     override func viewDidLoad() {
@@ -44,70 +42,36 @@ class PRTestViewController: UIViewController {
     func testButtonClicked(sender : AnyObject)
     {
         let button = sender as! UIButton
-        if let index = testOptionButtons.indexOf(button)
-        {
-            print("Selected index = \(index)")
-            if index == questions[questionsCount].properAnswerIndex
-            {
-                if !correctMarked
-                {
-                    correctMarked = true
+        if let index = testOptionButtons.indexOf(button) {
+            if index == questions[questionsCount].properAnswerIndex {
+                
+                if (questions[questionsCount].meaning != "") {
+                
                     button.backgroundColor = UIColor.flatGreenColorDark()
-                    answerLabel.hidden = false
-                    if !wrongAnswer
-                    {1
+                    let toast : UIAlertView = UIAlertView(title: questions[questionsCount].meaning, message: nil, delegate: self, cancelButtonTitle: "Dalej")
+                    toast.show()
+                } else {
+                        self.processProperAnswer()
+                }
+                    if !wrongAnswer {
                         properAnswersCount++
                     }
                 }
-                else
-                {
-                    questionsCount++
-                    generateSummary()
-
-                    if questionsCount >= maxQuestionCount
-                    {
-                        let vc = PRTestResultsViewController()
-                        vc.descriptionText = descriptionText
-                        vc.questions = questions
-                        vc.correctAnswers = properAnswersCount
-                        self.navigationController?.pushViewController(vc, animated: false)
-                    }
-                    else
-                    {
-                        // generate summary for the currentquestion
-                        loadQuestion(questionsCount)
-                    }
-                }
-            }
-            else
-            {
-                if !correctMarked
-                {
+            else {
                     button.backgroundColor = UIColor.flatRedColor()
                     wrongAnswer = true
                     button.enabled = false
-                }
-
             }
         }
     }
     
     func loadQuestion(questionNumber: Int)
     {
-        correctMarked = false
         testProgressLabel.setProgress(Float(questionNumber)/Float(maxQuestionCount), animated: true)
         wrongAnswer = false
-        answerLabel.hidden = true
-        answerLabel.text = questions[questionNumber].meaning
-        
-        answerLabel.adjustsFontSizeToFitWidth = true
-        answerLabel.textAlignment = NSTextAlignment.Center
-        
         questionLabel.text = questions[questionNumber].question
-        for button in testOptionButtons
-        {
-            if let index = testOptionButtons.indexOf(button)
-            {
+        for button in testOptionButtons {
+            if let index = testOptionButtons.indexOf(button) {
                 button.layer.cornerRadius = 10 // this value vary as per your desire
                 button.clipsToBounds = true
                 
@@ -120,7 +84,6 @@ class PRTestViewController: UIViewController {
                 
                 button.addTarget(self, action: "testButtonClicked:", forControlEvents: UIControlEvents.TouchUpInside)
             }
-            
         }
     }
     
@@ -145,4 +108,23 @@ class PRTestViewController: UIViewController {
     
     }
     
+    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
+        
+        self.processProperAnswer()
+    }
+    
+    func processProperAnswer() {
+        questionsCount++
+        generateSummary()
+        
+        if questionsCount >= maxQuestionCount {
+            let vc = PRTestResultsViewController()
+            vc.descriptionText = descriptionText
+            vc.questions = questions
+            vc.correctAnswers = properAnswersCount
+            self.navigationController?.pushViewController(vc, animated: false)
+        } else {
+            loadQuestion(questionsCount)
+        }
+    }
 }

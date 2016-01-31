@@ -8,7 +8,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PRTestViewController" customModule="kanjijigoku" customModuleProvider="target">
             <connections>
-                <outlet property="answerLabel" destination="yrR-js-Mvu" id="gtz-07-39n"/>
                 <outlet property="descriptionLabel" destination="Xwj-Bp-RDN" id="L0p-f0-fX4"/>
                 <outlet property="questionLabel" destination="DAs-cy-EYS" id="yyu-UT-Y5i"/>
                 <outlet property="testProgressLabel" destination="eXC-Jb-vSq" id="Hcz-Vz-XXc"/>
@@ -87,18 +86,6 @@
                         </mask>
                     </variation>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yrR-js-Mvu">
-                    <rect key="frame" x="30" y="542" width="708" height="30"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="30" id="59u-c9-GLs"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                    <variation key="heightClass=compact" misplaced="YES">
-                        <rect key="frame" x="30" y="316" width="540" height="40"/>
-                    </variation>
-                </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="EHD-QF-baa">
                     <rect key="frame" x="30" y="257" width="708" height="82"/>
                     <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -117,6 +104,9 @@
                     </constraints>
                     <variation key="heightClass=compact" misplaced="YES">
                         <rect key="frame" x="15" y="315" width="570" height="5"/>
+                    </variation>
+                    <variation key="heightClass=regular" misplaced="YES">
+                        <rect key="frame" x="15" y="547" width="738" height="5"/>
                     </variation>
                     <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
                         <rect key="frame" x="15" y="715" width="770" height="5"/>
@@ -138,25 +128,34 @@
                 <constraint firstItem="DAs-cy-EYS" firstAttribute="top" secondItem="Xwj-Bp-RDN" secondAttribute="bottom" constant="15" id="O3P-aO-0iP">
                     <variation key="heightClass=compact" constant="10"/>
                 </constraint>
-                <constraint firstItem="yrR-js-Mvu" firstAttribute="top" secondItem="2sc-uW-rfX" secondAttribute="bottom" constant="10" id="QQZ-ka-Tyi"/>
                 <constraint firstAttribute="trailing" secondItem="IPh-bC-VMs" secondAttribute="trailing" constant="30" id="Ra1-Ak-3Xq"/>
                 <constraint firstItem="ntx-CP-Oln" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.08" id="Rln-BV-zT3"/>
-                <constraint firstItem="yrR-js-Mvu" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="30" id="UkS-0a-9EZ"/>
+                <constraint firstItem="eXC-Jb-vSq" firstAttribute="top" secondItem="2sc-uW-rfX" secondAttribute="bottom" constant="15" id="Sse-kT-WVP">
+                    <variation key="heightClass=regular" constant="20"/>
+                </constraint>
                 <constraint firstItem="IPh-bC-VMs" firstAttribute="top" secondItem="DAs-cy-EYS" secondAttribute="bottom" constant="15" id="VI7-C5-D6k"/>
                 <constraint firstItem="eXC-Jb-vSq" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="XbN-8o-2u3"/>
                 <constraint firstItem="2sc-uW-rfX" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="30" id="ZZ3-1I-P54"/>
                 <constraint firstItem="EHD-QF-baa" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="30" id="kx2-De-r69"/>
                 <constraint firstItem="ntx-CP-Oln" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="30" id="mGw-Om-j3L"/>
                 <constraint firstItem="IPh-bC-VMs" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.08" id="nJl-o6-6gl"/>
-                <constraint firstAttribute="trailing" secondItem="yrR-js-Mvu" secondAttribute="trailing" constant="30" id="nj3-Re-n7C"/>
                 <constraint firstAttribute="trailing" secondItem="2sc-uW-rfX" secondAttribute="trailing" constant="30" id="o77-hV-bch"/>
                 <constraint firstAttribute="trailing" secondItem="ntx-CP-Oln" secondAttribute="trailing" constant="30" id="qxS-Cu-ITD"/>
                 <constraint firstAttribute="trailing" secondItem="eXC-Jb-vSq" secondAttribute="trailing" constant="15" id="si9-qp-bKq"/>
-                <constraint firstItem="eXC-Jb-vSq" firstAttribute="top" secondItem="yrR-js-Mvu" secondAttribute="bottom" constant="15" id="viT-Ut-Qpg"/>
                 <constraint firstItem="2sc-uW-rfX" firstAttribute="top" secondItem="ntx-CP-Oln" secondAttribute="bottom" constant="15" id="wZc-bV-rdt"/>
                 <constraint firstAttribute="trailing" secondItem="DAs-cy-EYS" secondAttribute="trailing" constant="15" id="zH6-NA-bmN"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="Sse-kT-WVP"/>
+                </mask>
+            </variation>
+            <variation key="heightClass=regular">
+                <mask key="constraints">
+                    <include reference="Sse-kT-WVP"/>
+                </mask>
+            </variation>
             <point key="canvasLocation" x="149" y="151"/>
         </view>
     </objects>
