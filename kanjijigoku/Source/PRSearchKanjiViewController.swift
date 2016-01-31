@@ -69,7 +69,7 @@ class PRSearchKanjiViewController: UIViewController, UITableViewDelegate, UITabl
         else
         {
             let cell = tableView.dequeueReusableCellWithIdentifier("PRDetailedKanjiCell", forIndexPath: indexPath) as! PRDetailedKanjiCell
-            cell.textLabel?.text = sentenceSearchArray[indexPath.row].getExplainedSentence().string
+            cell.textLabel?.text = sentenceSearchArray[indexPath.row].replaceExplainedSentence()
             cell.detailTextLabel?.text = sentenceSearchArray[indexPath.row].meaning
             return cell
         }
@@ -110,7 +110,7 @@ class PRSearchKanjiViewController: UIViewController, UITableViewDelegate, UITabl
                 detailedText = exampleSearchArray[indexPath.row].meaning! + " " + exampleSearchArray[indexPath.row].note!.removeReferenceSubstring()
             }
             else { // == .Sentences
-                text = sentenceSearchArray[indexPath.row].getExplainedSentence().string
+                text = sentenceSearchArray[indexPath.row].replaceExplainedSentence()
                 detailedText = sentenceSearchArray[indexPath.row].meaning!
             }
             

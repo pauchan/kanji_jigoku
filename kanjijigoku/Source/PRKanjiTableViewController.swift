@@ -150,7 +150,6 @@ class PRKanjiTableViewController: UIViewController, UITableViewDelegate,UITableV
             return cell!
             
         case .AdditionalExamples:
-            debugLog("additional examples")
             let cell = tableView.dequeueReusableCellWithIdentifier("PRKanjiCell2") as? PRDetailedKanjiCell
             let descriptionString = additionalExamples[indexPath.row].generateDescriptionString()
             cell!.textLabel?.attributedText = (PRStateSingleton.sharedInstance.filterOn) ? self.filterOutAdvancedKanji(descriptionString.string) : descriptionString
@@ -158,11 +157,9 @@ class PRKanjiTableViewController: UIViewController, UITableViewDelegate,UITableV
             return cell!
             
         case .Sentences:
-            debugLog("sentences")
             let cell = tableView.dequeueReusableCellWithIdentifier("PRKanjiCell2") as? PRDetailedKanjiCell
             let sentence = kanji.sentences!.allObjects as! [Sentence]
-            print("explanation: \(sentence[indexPath.row].getExplainedSentence())")
-            cell!.textLabel?.attributedText = (PRStateSingleton.sharedInstance.filterOn) ? self.filterOutAdvancedKanji(sentence[indexPath.row].getExplainedSentence().string) : NSAttributedString(string: sentence[indexPath.row].getExplainedSentence().string)
+            cell!.textLabel?.attributedText = (PRStateSingleton.sharedInstance.filterOn) ? self.filterOutAdvancedKanji(sentence[indexPath.row].replaceExplainedSentence()) : NSAttributedString(string: sentence[indexPath.row].replaceExplainedSentence())
             cell!.detailTextLabel?.text = sentence[indexPath.row].meaning
             return cell!
         }
@@ -234,7 +231,7 @@ class PRKanjiTableViewController: UIViewController, UITableViewDelegate,UITableV
                 detailedText = additionalExamples[indexPath.row].meaning! + " " + additionalExamples[indexPath.row].note!.removeReferenceSubstring()
             } else { // == .Sentences
                 let sentence = kanji.sentences!.allObjects as! [Sentence]
-                text = sentence[indexPath.row].getExplainedSentence().string
+                text = sentence[indexPath.row].replaceExplainedSentence()
                 detailedText = sentence[indexPath.row].meaning!
             }
             

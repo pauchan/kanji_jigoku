@@ -34,50 +34,21 @@ extension Sentence
         
     }
     
-    func replaceExplainedSentence(sentence: String) -> NSAttributedString
+    func replaceExplainedSentence() -> String
     {
-        var parsedSentence : NSString = NSString(string: sentence)
-        var range = NSMakeRange(0, sentence.characters.count)
-        let attributedString = NSMutableAttributedString(string: sentence)
+        var tempSentence = sentence!
+        
+        var range = NSMakeRange(0, self.sentence!.characters.count)
+        let mutString = NSMutableString(string: self.sentence!)
         let regex = try? NSRegularExpression(pattern:"\\{(.*?);(.*?)\\}", options: [])
         
-        var sentence2 = sentence
-        
-        while let group :NSTextCheckingResult = regex?.firstMatchInString(sentence2, options: [], range: range)
-        {
-            attributedString.replaceCharactersInRange(group.range, withAttributedString: generateFuriganaString(parsedSentence.substringWithRange(group.rangeAtIndex(1)), furiganaString: parsedSentence.substringWithRange(group.rangeAtIndex(2))))
-            parsedSentence = NSString(string: attributedString.string)
-            sentence2 = String(parsedSentence)
-            range = NSMakeRange(0, sentence2.characters.count)
+        while let group :NSTextCheckingResult = regex?.firstMatchInString(tempSentence, options: [], range: range) {
             
+            mutString.replaceCharactersInRange(group.range, withString: mutString.substringWithRange(group.rangeAtIndex(1)))
+            tempSentence = String(mutString)
+            range = NSMakeRange(0, tempSentence.characters.count)
         }
-        return attributedString
+        return String(mutString)
     }
     
-    
-    func getExplainedSentence() -> NSAttributedString
-    {
-        print(self.sentence)
-        // TODO: check if format of explained sentences havent changed!!!
-        var parsedSentence : NSString = NSString(string: sentence!)
-        var range = NSMakeRange(0, sentence!.characters.count)
-        let attributedString = NSMutableAttributedString(string: parsedSentence as String)
-        let regex = try? NSRegularExpression(pattern:"\\{(.*?);(.*?)\\}", options: [])
-        
-        var sentence2 = sentence
-        
-        while let group :NSTextCheckingResult = regex?.firstMatchInString(sentence!, options: [], range: range)
-        {
-            
-            attributedString.replaceCharactersInRange(group.range, withAttributedString: generateFuriganaString(parsedSentence.substringWithRange(group.rangeAtIndex(1)), furiganaString: parsedSentence.substringWithRange(group.rangeAtIndex(2))))
-            parsedSentence = NSString(string: attributedString.string)
-            sentence2 = String(parsedSentence)
-            range = NSMakeRange(0, sentence2!.characters.count)
-            
-        }
-        
-        print(attributedString.string)
-        
-        return attributedString
-    }
 }
