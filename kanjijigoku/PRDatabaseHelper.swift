@@ -272,7 +272,11 @@ class PRDatabaseHelper
                     
                     kunyomiSet.addObject(kunyomi)
                     
-                    // for kunyomis we also are creating
+                    // for kunyomis we also are creating example object (provided it has non-empty meaning)
+                    if (kunyomi.reading == "") {
+                        continue
+                    }
+                    
                     let example = NSManagedObject(entity: exampleEntity, insertIntoManagedObjectContext: managedContext) as! Example
                     example.kanji = rs.stringForColumnIndex(0)
                     example.reading = rs.stringForColumnIndex(1).plainHiragana()

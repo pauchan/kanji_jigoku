@@ -44,18 +44,15 @@ class PRTestViewController: UIViewController, UIAlertViewDelegate {
         let button = sender as! UIButton
         if let index = testOptionButtons.indexOf(button) {
             if index == questions[questionsCount].properAnswerIndex {
-                
-                if (questions[questionsCount].meaning != "") {
-                
-                    button.backgroundColor = UIColor.flatGreenColorDark()
-                    let toast : UIAlertView = UIAlertView(title: questions[questionsCount].meaning, message: nil, delegate: self, cancelButtonTitle: "Dalej")
-                    toast.show()
-                } else {
-                        self.processProperAnswer()
+
+                if !wrongAnswer {
+                    properAnswersCount++
                 }
-                    if !wrongAnswer {
-                        properAnswersCount++
-                    }
+                let answerLabel = (questions[questionsCount].meaning != "") ? "\(questions[questionsCount].question) → \(questions[questionsCount].meaning)" : "\(questions[questionsCount].question)　→ \(questions[questionsCount].options[index])"
+
+                button.backgroundColor = UIColor.flatGreenColorDark()
+                let toast : UIAlertView = UIAlertView(title: "Prawidłowa odpowiedź!", message: answerLabel, delegate: self, cancelButtonTitle: "Dalej")
+                toast.show()
                 }
             else {
                     button.backgroundColor = UIColor.flatRedColor()
