@@ -428,12 +428,9 @@ class PRDatabaseHelper
         let managedContext = appDelegate.managedObjectContext!
         
         let fetchRequest : NSFetchRequest = NSFetchRequest(entityName: name)        
-        if name == "Kanji"
-        {
+        if name == "Kanji" {
             fetchRequest.predicate = NSPredicate(format: "level=\(level) AND lesson=\(lesson)")
-        }
-        else
-        {
+        } else {
             var predicates = [NSPredicate(format: "character.level=\(level)"), NSPredicate(format: "character.lesson=\(lesson)"), NSPredicate(format: "NOT (reading CONTAINS '-')")]
             if !PRStateSingleton.sharedInstance.extraMaterial {
             
@@ -446,6 +443,8 @@ class PRDatabaseHelper
             }
             fetchRequest.predicate = NSCompoundPredicate(type: NSCompoundPredicateType.AndPredicateType, subpredicates: predicates)
         }
+        let sortDescriptor = NSSortDescriptor(key: "kanjiId", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
         
         let outArray: NSArray = try! managedContext.executeFetchRequest(fetchRequest)
         debugLog("returning \(outArray.count) objects")
@@ -572,10 +571,24 @@ class PRDatabaseHelper
     {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext!
-        let fetchRequest :NSFetchRequest = NSFetchRequest(entityName: "Example")
-        fetchRequest.predicate = NSPredicate(format: "example CONTAINS '\(kanji)'")
 
-        return (try! managedContext.executeFetchRequest(fetchRequest)) as! [Example]
+        let chFetchRequest :NSFetchRequest = NSFetchRequest(entityName: "Kanji")
+        chFetchRequest.predicate = NSPredicate(format: "kanji = '\(kanji)'")
+        do {
+            let characters = try managedContext.executeFetchRequest(chFetchRequest)
+            let character = characters[0] as! Kanji
+            
+            let fetchRequest :NSFetchRequest = NSFetchRequest(entityName: "Example")
+            fetchRequest.predicate = NSPredicate(format: "example CONTAINS '\(kanji)'")
+            
+            let examples = try managedContext.executeFetchRequest(fetchRequest)
+            let mutSet = NSMutableSet(array: examples)
+            mutSet.minusSet(character.examples! as Set<NSObject>)
+            return mutSet.allObjects as! [Example]
+            
+        } catch {
+            return []
+        }
     }
 
     func fetchRelatedKanjis(kanji: Kanji) -> [Kanji]

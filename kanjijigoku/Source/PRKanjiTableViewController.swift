@@ -107,24 +107,21 @@ class PRKanjiTableViewController: UIViewController, UITableViewDelegate,UITableV
             return cell
             
         case .Summary:
-            debugLog("summary")
             let headerCell = tableView.dequeueReusableCellWithIdentifier("PRKanjiHeaderCell", forIndexPath: indexPath) as! PRKanjiTableViewHeaderCell
             headerCell.kanjiLabel.text = kanji.kanji
-            headerCell.detailsLabel.text = " \(kanji.strokeCount)画 【\(kanji.generateRadicalsString())】"
+            headerCell.detailsLabel.text = " \(kanji.strokeCount)画 【\(kanji.generateRadicalsString())】\(kanji.generateAdditionalKanjiString())"
             headerCell.explanationLabel.text = kanji.meaning
             headerCell.selectionStyle = .None
             return headerCell
             
         case .Notes:
-            debugLog("notes")
-            let cell = tableView.dequeueReusableCellWithIdentifier("PRKanjiCell", forIndexPath: indexPath) 
+            let cell = tableView.dequeueReusableCellWithIdentifier("PRKanjiCell", forIndexPath: indexPath)
             cell.textLabel?.text = kanji.note
             cell.selectionStyle = .None
             return cell
             
         case .Kunyomi:
-            debugLog("kunyomi")
-            let cell = tableView.dequeueReusableCellWithIdentifier("PRKanjiCell", forIndexPath: indexPath) 
+            let cell = tableView.dequeueReusableCellWithIdentifier("PRKanjiCell", forIndexPath: indexPath)
             let arr = kanji.kunyomis!.allObjects as! [Kunyomi]
             cell.textLabel?.text = kanji.generateCommaSeparatedString(arr)
             cell.selectionStyle = .None
@@ -161,9 +158,6 @@ class PRKanjiTableViewController: UIViewController, UITableViewDelegate,UITableV
             return cell!
         }
     }
-    
-    
-    
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         

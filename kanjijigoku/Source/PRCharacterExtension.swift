@@ -43,6 +43,15 @@ extension Kanji
         }
     }
     
+    func generateAdditionalKanjiString() -> String {
+    
+        if self.alternativeKanji != nil {
+            return " \(self.alternativeKanji!)"
+        } else {
+            return ""
+        }
+    }
+    
     func generateCommaSeparatedString(arrayOfReadings : [Reading]) -> String
     {
         var appStr : String = ""
