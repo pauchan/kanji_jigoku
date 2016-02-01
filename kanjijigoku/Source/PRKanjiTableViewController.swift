@@ -28,18 +28,18 @@ class PRKanjiTableViewController: UIViewController, UITableViewDelegate,UITableV
     {
         super.viewDidLoad()
         
-        // we might add this to be able to display bottom of the table
-        // hidden by page indicator
-        //self.tableView.contentInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)
-        pageControl = PRKanjiHeader(kanjis: sameLessonKanjis, frame: CGRectMake(0, self.view.frame.size.height*0.85, self.view.frame.size.width, self.view.frame.size.height*0.15))
+        // TODO: make nice pagination for page control
+        let pageControlHeight: CGFloat = (sameLessonKanjis.count < 15) ? 0.15 : 0.0
         
-        self.tableView = UITableView(frame: CGRectMake(0, 64.0, self.view.frame.size.width, self.view.frame.size.height*0.85))
+        pageControl = PRKanjiHeader(kanjis: sameLessonKanjis, frame: CGRectMake(0, self.view.frame.size.height*(1-pageControlHeight), self.view.frame.size.width, self.view.frame.size.height*pageControlHeight))
+        
+        self.tableView = UITableView(frame: CGRectMake(0, 64.0, self.view.frame.size.width, self.view.frame.size.height*(1-pageControlHeight)))
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.view.addSubview(self.tableView)
         pageControl.currentPage = self.currentPage
         self.navigationItem.title = kanji.kanji
-        pageControl.setupView(CGRectMake(0, self.view.frame.size.height*0.85, self.view.frame.size.width, self.view.frame.size.height*0.15))
+        pageControl.setupView(CGRectMake(0, self.view.frame.size.height*(1-pageControlHeight), self.view.frame.size.width, self.view.frame.size.height*pageControlHeight))
         self.view.addSubview(pageControl)
         
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "PRKanjiCell")
@@ -52,12 +52,9 @@ class PRKanjiTableViewController: UIViewController, UITableViewDelegate,UITableV
         self.tableView.registerNib(nib2, forCellReuseIdentifier: "PRRelatedKanjiCell")
         
         additionalExamples = PRDatabaseHelper().fetchAdditionalExamples(kanji.kanji!)
-        if kanji.relatedKanji!.isEmpty
-        {
+        if kanji.relatedKanji!.isEmpty {
             relatedKanjis = [Kanji]()
-        }
-        else
-        {
+        } else {
             relatedKanjis = PRDatabaseHelper().fetchRelatedKanjis(kanji)
         }
         

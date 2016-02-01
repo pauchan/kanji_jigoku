@@ -53,19 +53,15 @@ class PRKanjiPageViewController: UIViewController, UIPageViewControllerDelegate,
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
         
-        if _selectedIndex == 0
-        {
+        if _selectedIndex == 0 {
             return nil
-        }
-        else
-        {
+        } else {
             let vc = PRKanjiTableViewController()
             vc.kanji  = _kanjiTable[_selectedIndex-1] as Kanji
             vc.sameLessonKanjis = _kanjiTable
             vc.currentPage = _selectedIndex-1
             return vc
         }
-        
     }
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
@@ -89,12 +85,6 @@ class PRKanjiPageViewController: UIViewController, UIPageViewControllerDelegate,
         self.navigationItem.title = nextKanjiPage.kanji.kanji
         _selectedIndex = nextKanjiPage.currentPage
         nextKanjiPage.pageViewController = self
-        print("called")
-    }
-    
-    func pageViewController(pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
-        
-        print("called")
     }
     
     
