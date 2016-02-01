@@ -429,6 +429,10 @@ class PRDatabaseHelper
         
         let fetchRequest : NSFetchRequest = NSFetchRequest(entityName: name)        
         if name == "Kanji" {
+            
+            let sortDescriptor = NSSortDescriptor(key: "kanjiId", ascending: true)
+            fetchRequest.sortDescriptors = [sortDescriptor]
+            
             fetchRequest.predicate = NSPredicate(format: "level=\(level) AND lesson=\(lesson)")
         } else {
             var predicates = [NSPredicate(format: "character.level=\(level)"), NSPredicate(format: "character.lesson=\(lesson)"), NSPredicate(format: "NOT (reading CONTAINS '-')")]
@@ -443,8 +447,6 @@ class PRDatabaseHelper
             }
             fetchRequest.predicate = NSCompoundPredicate(type: NSCompoundPredicateType.AndPredicateType, subpredicates: predicates)
         }
-        let sortDescriptor = NSSortDescriptor(key: "kanjiId", ascending: true)
-        fetchRequest.sortDescriptors = [sortDescriptor]
         
         let outArray: NSArray = try! managedContext.executeFetchRequest(fetchRequest)
         debugLog("returning \(outArray.count) objects")

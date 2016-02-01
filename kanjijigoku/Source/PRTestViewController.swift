@@ -97,7 +97,7 @@ class PRTestViewController: UIViewController, UIAlertViewDelegate {
         
         for button in testOptionButtons
         {
-            let atrStr = NSAttributedString(string: button.titleForState(UIControlState.Normal)!, attributes: [NSForegroundColorAttributeName : UIColor().appColor(), NSFontAttributeName : UIFont().appFont()])
+            let atrStr = NSAttributedString(string: button.titleForState(UIControlState.Normal)!, attributes: [NSForegroundColorAttributeName : button.backgroundColor!, NSFontAttributeName : UIFont().appFont()])
             tempString.appendAttributedString(atrStr)
             tempString.appendAttributedString(NSAttributedString(string: " "))
         }
