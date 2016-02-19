@@ -12,6 +12,16 @@ import CoreData
 
 class BaseEntity: NSManagedObject {
 
-// Insert code here to add functionality to your managed object subclass
-
+    var obligatory: Bool {
+        
+        get {
+            
+            debugLog("code is \(self.code)")
+            if self.code!.rangeOfString("8") == nil {
+                
+                return true
+            }
+            return false
+        }
+    }
 }

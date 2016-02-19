@@ -24,7 +24,14 @@ let IS_IPHONE_5 = (IS_IPHONE && SCREEN_MAX_LENGTH == 568.0)
 let IS_IPHONE_6 = (IS_IPHONE && SCREEN_MAX_LENGTH == 667.0)
 let IS_IPHONE_6P = (IS_IPHONE && SCREEN_MAX_LENGTH == 736.0)
 
+let appColor = UIColor.flatGreenColorDark()
+
+let appFont = UIFont(name: "HiraKakuProN-W3", size: 12.0)!
+
 let kPRstarCharacter: Character = "\u{2B50}"
+
+let kPRKanjiJigokuAttributedBoldBig : [String : AnyObject] = [NSFontAttributeName : UIFont().appFontOfSize(20.0)]
+let kPRKanjiJigokuAttributedSmall : [String : AnyObject] = [NSFontAttributeName : UIFont().appFontOfSize(14.0)]
 
 func debugLog(logMessage: String, filename: String = __FILE__, function: String = __FUNCTION__, line: Int = __LINE__ ) {
     

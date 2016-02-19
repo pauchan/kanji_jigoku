@@ -1,4 +1,4 @@
-//
+        //
 //  PRDatabaseHelper.swift
 //  kanjijigoku
 //
@@ -569,6 +569,10 @@ class PRDatabaseHelper
         return bla
     }
     
+    
+    // we need to fetch additional example containing given word MINUS:
+    // - the ones that are already in kanji related examples
+    // -
     func fetchAdditionalExamples(kanji : String) -> [Example]
     {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -582,10 +586,17 @@ class PRDatabaseHelper
             
             let fetchRequest :NSFetchRequest = NSFetchRequest(entityName: "Example")
             fetchRequest.predicate = NSPredicate(format: "example CONTAINS '\(kanji)'")
+            //  AND example.example NOT IN \(character.examples)
+            
+//            character.examples.map({ (x: Example) -> [String] in
+//                x.example
+//            }).reduce
             
             let examples = try managedContext.executeFetchRequest(fetchRequest)
+            print("example count \(examples.count)")
             let mutSet = NSMutableSet(array: examples)
             mutSet.minusSet(character.examples! as Set<NSObject>)
+            print("example count \(mutSet.count)")
             return mutSet.allObjects as! [Example]
             
         } catch {

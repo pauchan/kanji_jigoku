@@ -18,9 +18,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, FinishedLoadingDelegate, 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        Chameleon.setGlobalThemeUsingPrimaryColor(UIColor().appColor(), withContentStyle: UIContentStyle.Dark)
+        Chameleon.setGlobalThemeUsingPrimaryColor(appColor, withContentStyle: UIContentStyle.Dark)
         
-        UITabBar.appearance().barTintColor = UIColor().appColor()
+        UITabBar.appearance().barTintColor = appColor
         
         UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.blackColor()], forState: UIControlState.Normal)
         UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.whiteColor()], forState: UIControlState.Selected)
