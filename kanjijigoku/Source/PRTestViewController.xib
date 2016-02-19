@@ -106,7 +106,7 @@
                         <rect key="frame" x="15" y="315" width="570" height="5"/>
                     </variation>
                     <variation key="heightClass=regular" misplaced="YES">
-                        <rect key="frame" x="15" y="547" width="738" height="5"/>
+                        <rect key="frame" x="15" y="552" width="738" height="5"/>
                     </variation>
                     <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
                         <rect key="frame" x="15" y="715" width="770" height="5"/>
