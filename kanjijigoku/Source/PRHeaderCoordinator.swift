@@ -72,14 +72,13 @@ class PRHeaderCoordinator: NSObject, UIPickerViewDataSource, UIPickerViewDelegat
     {
     
     let arr : [Kanji]  = PRDatabaseHelper().getSelectedObjects("Kanji", level: level, lesson: lesson) as! [Kanji]
-        let bla : String =  arr.map
-            {
+        let summary : String =  arr.map {
                 (kanji: Kanji) -> String in kanji.kanji!
             }.reduce("")
             {
                 (base,append) in base + append + " "
             }
-        return bla
+        return summary
     }
     
     func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView?) -> UIView {
