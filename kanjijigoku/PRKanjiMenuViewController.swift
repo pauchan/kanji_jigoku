@@ -17,7 +17,7 @@ class PRKanjiMenuViewController: UITableViewController
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "SettingsIcon"), style: .Plain,  target: self, action: "prKanjiJigokuRightBarItemShowSettings:")
-        self.navigationItem.title = "Kanji Jigoku"
+        self.navigationItem.title = "Słownik"
         
         let nib : UINib = UINib(nibName: "PRHeaderViewCell", bundle: nil)
         self.tableView.registerNib(nib, forCellReuseIdentifier: "PRHeaderViewCell")
