@@ -20,19 +20,27 @@ class PRInitController: UIViewController {
     override func viewDidLoad() {
         
         let view = NSBundle.mainBundle().loadNibNamed("LaunchScreen", owner: self, options: nil).first! as! UIView
-        let label = UILabel(frame: CGRectMake(0.0, 500.0, SCREEN_WIDTH, 30.0))
-        label.text = "Trwa ładowanie bazy danych..."
+        let label = UILabel(frame: CGRectMake(0.0, SCREEN_HEIGHT-100.0, SCREEN_WIDTH, 30.0))
+        label.text = "Trwa aktualizowanie danych..."
+        label.font = UIFont().appFontOfSize(20.0)
         label.textAlignment = .Center
-        UIView.animateWithDuration(3.0, delay: 0.0,
-            options: .Repeat, animations: {
-                label.alpha = 0.0
-                label.alpha = 1.0
+        
+        UIView.animateWithDuration(3.0, delay: 0.0, options: [.Repeat, .Autoreverse] , animations: { () -> Void in
+            
+            label.alpha = 0.0
             }, completion: nil)
-        
-        
+
         view.addSubview(label)
-        self.view = view
         
+        let explanationLabel = UILabel(frame: CGRectMake(0.0, SCREEN_HEIGHT-50.0, SCREEN_WIDTH, 40.0))
+        explanationLabel.text = "(W zależności od połączenia internetowego ładowanie może potrwać do kilku minut)"
+        explanationLabel.textAlignment = .Center
+        explanationLabel.lineBreakMode = .ByWordWrapping
+        explanationLabel.numberOfLines = 0
+        explanationLabel.font = UIFont().appFontOfSize(10.0)
+        view.addSubview(explanationLabel)
+        
+        self.view = view
     }
     
     override func viewDidAppear(animated: Bool) {
