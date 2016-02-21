@@ -181,7 +181,7 @@ class PRKanjiTableViewController: UIViewController, UITableViewDelegate,UITableV
         let displaySection: PRKanjiJigokuKanjiOptions = PRKanjiJigokuKanjiOptions(rawValue: section)!
         if displaySection == .AdditionalExamples
         {
-            return "Material z innych lekcji"
+            return "Materiał z innych lekcji"
         }
         else if displaySection == .Sentences
         {
