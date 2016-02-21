@@ -508,14 +508,13 @@ class PRDatabaseHelper
             let characters = try managedContext.executeFetchRequest(chFetchRequest)
             let character = characters[0] as! Kanji
             
+            let inList = character.examples!.valueForKeyPath("example") as! NSSet
+            let inListArray = inList.allObjects
+            
             let fetchRequest :NSFetchRequest = NSFetchRequest(entityName: "Example")
-            fetchRequest.predicate = NSPredicate(format: "example CONTAINS '\(kanji)'")
+            fetchRequest.predicate = NSPredicate(format: "example CONTAINS '\(kanji)' AND NOT (example IN %@)", inListArray)
             //  AND example.example NOT IN \(character.examples)
-            
-//            character.examples.map({ (x: Example) -> [String] in
-//                x.example
-//            }).reduce
-            
+            // create list of examples separated by comma, remove comma after the last element
             let examples = try managedContext.executeFetchRequest(fetchRequest)
             print("example count \(examples.count)")
             let mutSet = NSMutableSet(array: examples)
@@ -588,7 +587,6 @@ class PRDatabaseHelper
         } else {
             return nil
         }
-    
     }
     
     // if obli code is 7 or 9, do not save the entity in db
