@@ -240,7 +240,7 @@ class PRDatabaseHelper
                     kunyomiSet.addObject(kunyomi)
                     
                     // for kunyomis we also are creating example object (provided it has non-empty meaning)
-                    if (kunyomi.reading == "") {
+                    if (kunyomi.meaning == "") {
                         continue
                     }
                     
