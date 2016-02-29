@@ -101,6 +101,7 @@
 
 /* Begin PBXFileReference section */
 		064766009EFF4D181DAF83BA /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1729E683549FEFF65CF20003 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		180ABC971A9D5CFB0053A7F6 /* PRFilterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PRFilterCell.xib; path = Source/PRFilterCell.xib; sourceTree = "<group>"; };
 		1812D5421AA9A35E004C91D0 /* PRNoCursorTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRNoCursorTextField.swift; path = Source/PRNoCursorTextField.swift; sourceTree = "<group>"; };
 		1812D5441AA9A771004C91D0 /* PRFilterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRFilterCell.swift; path = Source/PRFilterCell.swift; sourceTree = "<group>"; };
@@ -143,11 +144,8 @@
 		18D170731A89F13100672203 /* PRFlashcardViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PRFlashcardViewController.xib; path = Source/PRFlashcardViewController.xib; sourceTree = "<group>"; };
 		18D170751A89F3E200672203 /* PRFlashcardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRFlashcardViewController.swift; path = Source/PRFlashcardViewController.swift; sourceTree = "<group>"; };
 		18D26D9A1A883ED800A8908C /* PRDatabaseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRDatabaseHelper.swift; sourceTree = "<group>"; };
-		94CC88092ADA2AB93CF98660 /* Pods-kanjijigoku.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kanjijigoku.debug.xcconfig"; path = "Pods/Target Support Files/Pods-kanjijigoku/Pods-kanjijigoku.debug.xcconfig"; sourceTree = "<group>"; };
+		626BAA0C450EFA437D6AF1B2 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		94FB5FAC2AA67C125C23E0B5 /* Pods_kanjijigokuTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_kanjijigokuTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A6263FED85E89D9DE53C6A64 /* Pods-kanjijigokuTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kanjijigokuTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-kanjijigokuTests/Pods-kanjijigokuTests.release.xcconfig"; sourceTree = "<group>"; };
-		A827BE30AC2E4D1D915162FD /* Pods-kanjijigoku.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kanjijigoku.release.xcconfig"; path = "Pods/Target Support Files/Pods-kanjijigoku/Pods-kanjijigoku.release.xcconfig"; sourceTree = "<group>"; };
-		EC920A004B844BFB66E7F71F /* Pods-kanjijigokuTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kanjijigokuTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-kanjijigokuTests/Pods-kanjijigokuTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F25467472E303D1DF986320D /* Pods_kanjijigoku.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_kanjijigoku.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB1C24811C1D5F9400BB02F5 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDatabase.h; path = Source/fmdb/FMDatabase.h; sourceTree = "<group>"; };
 		FB1C24821C1D5F9400BB02F5 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMDatabase.m; path = Source/fmdb/FMDatabase.m; sourceTree = "<group>"; };
@@ -218,10 +216,8 @@
 		162AC272485DC3223C6F11A8 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				94CC88092ADA2AB93CF98660 /* Pods-kanjijigoku.debug.xcconfig */,
-				A827BE30AC2E4D1D915162FD /* Pods-kanjijigoku.release.xcconfig */,
-				EC920A004B844BFB66E7F71F /* Pods-kanjijigokuTests.debug.xcconfig */,
-				A6263FED85E89D9DE53C6A64 /* Pods-kanjijigokuTests.release.xcconfig */,
+				1729E683549FEFF65CF20003 /* Pods.debug.xcconfig */,
+				626BAA0C450EFA437D6AF1B2 /* Pods.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -837,7 +833,7 @@
 		};
 		FB67D7001A861B8B00926E38 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 94CC88092ADA2AB93CF98660 /* Pods-kanjijigoku.debug.xcconfig */;
+			baseConfigurationReference = 1729E683549FEFF65CF20003 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -853,7 +849,7 @@
 		};
 		FB67D7011A861B8B00926E38 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A827BE30AC2E4D1D915162FD /* Pods-kanjijigoku.release.xcconfig */;
+			baseConfigurationReference = 626BAA0C450EFA437D6AF1B2 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -869,7 +865,6 @@
 		};
 		FB67D7031A861B8B00926E38 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EC920A004B844BFB66E7F71F /* Pods-kanjijigokuTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -890,7 +885,6 @@
 		};
 		FB67D7041A861B8B00926E38 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A6263FED85E89D9DE53C6A64 /* Pods-kanjijigokuTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
