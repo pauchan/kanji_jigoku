@@ -11,7 +11,9 @@ import UIKit
 import CoreData
 
 let kPRKanjiJigokuDBUpdateRequest = "http://serwer1456650.home.pl/getUpdateTime.php"
-let kPRKanjiJigokuDBLocation = "http://serwer1456650.home.pl/clientDB.db"
+//let kPRKanjiJigokuDBLocation = "http://serwer1456650.home.pl/clientDB.db"
+let kPRKanjiJigokuDBRequest = "http://serwer1456650.home.pl/KanjiJigokuDatabase.php?AUTH="
+
 
 let kPRKanjiJigokuFalseAnswerAmount = 3
 
@@ -53,7 +55,7 @@ class PRDatabaseHelper
     
     func downloadDbFile() -> Bool
     {
-        let stringURL : String = kPRKanjiJigokuDBLocation
+        let stringURL : String = String("\(kPRKanjiJigokuDBRequest)\(NSUserDefaults.standardUserDefaults().integerForKey("PRKanjiJigokuAuthKey"))")
         
         if let url : NSURL = NSURL(string: stringURL) {
             if let urlData : NSData = NSData(contentsOfURL: url) {
@@ -596,6 +598,20 @@ class PRDatabaseHelper
             return false
         } else {
             return true
+        }
+    }
+    
+    func updateAuthToken(database: FMDatabase) {
+        if let rs = database.executeQuery("SELECT auth FROM update_time", withArgumentsInArray: nil) {
+            while rs.next() {
+                let authFlag = rs.boolForColumnIndex(0)
+                if authFlag {
+                    NSUserDefaults.standardUserDefaults().setBool(authFlag, forKey: "PRKanjiJigokuAuthKey")
+                    NSUserDefaults.standardUserDefaults().synchronize()
+                }
+            }
+        } else {
+         print("auth query failed")
         }
     }
 }
