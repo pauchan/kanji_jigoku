@@ -111,6 +111,9 @@ class PRKanjiTableViewController: UIViewController, UITableViewDelegate,UITableV
             headerCell.kanjiLabel.text = kanji.kanji
             headerCell.detailsLabel.text = " \(kanji.strokeCount)画 【\(kanji.generateRadicalsString())】\(kanji.generateAdditionalKanjiString())"
             headerCell.explanationLabel.text = kanji.meaning
+            headerCell.explanationLabel.adjustsFontSizeToFitWidth = true
+            //headerCell.explanationLabel.numberOfLines = 2
+            //headerCell.explanationLabel.sizeToFit()
             headerCell.selectionStyle = .None
             return headerCell
             
@@ -124,6 +127,9 @@ class PRKanjiTableViewController: UIViewController, UITableViewDelegate,UITableV
             let cell = tableView.dequeueReusableCellWithIdentifier("PRKanjiCell", forIndexPath: indexPath)
             let arr = kanji.kunyomis!.allObjects as! [Kunyomi]
             cell.textLabel?.text = kanji.generateCommaSeparatedString(arr)
+            cell.textLabel?.adjustsFontSizeToFitWidth = true
+            cell.textLabel?.numberOfLines = 2
+            cell.textLabel?.sizeToFit()
             cell.selectionStyle = .None
             return cell
             

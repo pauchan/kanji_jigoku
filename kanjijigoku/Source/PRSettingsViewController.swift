@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 class PRSettingsViewController: UITableViewController {
     
@@ -121,7 +122,11 @@ class PRSettingsViewController: UITableViewController {
         {
             if indexPath.row == 0
             {
+                let view = UIView(frame: self.tableView.frame)
+                view.backgroundColor = UIColor(colorLiteralRed: 0.0, green: 0.0, blue: 0.0, alpha: 0.5)
+                self.tableView.addSubview(view)
                 PRDatabaseHelper().syncDatabase()
+                view.removeFromSuperview()
             }
             else if indexPath.row == 1 {
                 
@@ -139,8 +144,13 @@ class PRSettingsViewController: UITableViewController {
             }
             else // row == 2 
             {
+                let loadingNotification = MBProgressHUD.showHUDAddedTo(self.tableView, animated: true)
+                loadingNotification.mode = MBProgressHUDMode.Determinate
+                loadingNotification.labelText = "Trwa wczytywanie bazy danych"
+                
                 NSUserDefaults.standardUserDefaults().setObject(nil, forKey: "PRKanjiJigokuDbUpdate")
                 PRDatabaseHelper().syncDatabase()
+                MBProgressHUD.hideAllHUDsForView(self.tableView, animated: true)
                 self.navigationController?.popToRootViewControllerAnimated(false)
             }
         }
