@@ -85,7 +85,6 @@ class PRKanjiTableViewController: UIViewController, UITableViewDelegate,UITableV
         case .AdditionalExamples:
             return additionalExamples.count
         case .Sentences:
-            print("sentences count: \(kanji.sentences!.count)")
             return kanji.sentences!.count
         }
     }

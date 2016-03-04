@@ -185,9 +185,6 @@ class PRSearchKanjiViewController: UIViewController, UITableViewDelegate, UITabl
         characterSearchArray = PRDatabaseHelper().fetchObjectsContainingPhrase("Kanji", phrase: searchBar.text!) as! [Kanji]
         exampleSearchArray = PRDatabaseHelper().fetchObjectsContainingPhrase("Example", phrase: searchBar.text!) as! [Example]
         sentenceSearchArray = PRDatabaseHelper().fetchObjectsContainingPhrase("Sentence", phrase: searchBar.text!) as! [Sentence]
-        print("character array count \(characterSearchArray.count)")
-        print("example array count \(exampleSearchArray.count)")
-        print("search array count \(sentenceSearchArray.count)")
         kanjiSearchTable.reloadData()
         searchBar.resignFirstResponder()
         

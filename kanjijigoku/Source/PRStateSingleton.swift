@@ -14,9 +14,7 @@ class PRStateSingleton {
 
     var currentLevel = 1
     var currentLesson : Int = 1{
-        didSet{
-        
-            print("setter called")
+        didSet{        
             NSNotificationCenter.defaultCenter().postNotificationName("PRKanjiJigokuLessonUpdated", object: nil)
         }
     }

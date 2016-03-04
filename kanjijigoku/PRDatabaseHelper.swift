@@ -399,7 +399,6 @@ class PRDatabaseHelper
             fetchRequest.predicate = NSCompoundPredicate(type: NSCompoundPredicateType.AndPredicateType, subpredicates: predicates)
         }
         let outArray: NSArray = try! managedContext.executeFetchRequest(fetchRequest)
-        debugLog("returning \(outArray.count) objects")
         return outArray
     }
     
@@ -479,7 +478,6 @@ class PRDatabaseHelper
             }
             objectId = generateRandomIdsArray(1, arrayCount: outResponse.count)[0]
         }
-        print("Response array count \(newResponse.count), should be 3")
         return newResponse
     }
 
@@ -518,10 +516,8 @@ class PRDatabaseHelper
             //  AND example.example NOT IN \(character.examples)
             // create list of examples separated by comma, remove comma after the last element
             let examples = try managedContext.executeFetchRequest(fetchRequest)
-            print("example count \(examples.count)")
             let mutSet = NSMutableSet(array: examples)
             mutSet.minusSet(character.examples! as Set<NSObject>)
-            print("example count \(mutSet.count)")
             return mutSet.allObjects as! [Example]
             
         } catch {

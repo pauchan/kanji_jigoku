@@ -148,7 +148,6 @@ class PRTestMenuViewController : UITableViewController
                 }
 
                 let meaning = object.valueForKey("meaning") as! String
-                print("Meanning: \(meaning)")
 
                 let question = Question(question: questionString, correctOption: properAnswer,  falseOptions: falseAnswers, meaning: meaning)
                 newResponse.append(question)
