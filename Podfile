@@ -5,7 +5,7 @@ use_frameworks!
 source 'https://github.com/CocoaPods/Specs.git'
 
 pod 'ChameleonFramework/Swift'
-
+pod 'MBProgressHUD', '~> 0.9.2'
 
 target 'kanjijigoku' do
     
