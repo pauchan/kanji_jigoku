@@ -10,29 +10,19 @@ import UIKit
 
 class PRKanjiHeader: UIView {
 
-    var inactiveImagesArray : [UIImage]!
-    var activeImagesArray : [UIImage]!
+    var inactiveImagesArray : [UIImage] = []
+    var activeImagesArray : [UIImage] = []
     var currentPage: Int = 0
     
-    override init(frame: CGRect) {
-        
-        
-        super.init(frame: frame)
-    }
-
     required init?(coder aDecoder: NSCoder) {
-
-        
-        super.init(coder: aDecoder)
+        fatalError("init(coder:) has not been implemented")
     }
 
     init(kanjis : [Kanji], frame: CGRect) {
 
         super.init(frame : frame)
-        
         inactiveImagesArray = [UIImage]()
         activeImagesArray = [UIImage]()
-
         
         for ch in kanjis
         {
@@ -42,7 +32,7 @@ class PRKanjiHeader: UIView {
 
             
             UIGraphicsBeginImageContextWithOptions(kanji.size(), false, 0.0)
-            kanji.drawAtPoint(CGPointMake(0.0, 0.0)) //, withAttributes: [NSFontAttributeName : font!])
+            kanji.drawAtPoint(CGPointMake(0.0, 0.0))
             inactiveImagesArray.append(UIGraphicsGetImageFromCurrentImageContext())
             activeKanji.drawAtPoint(CGPointMake(0.0, 0.0))
             activeImagesArray.append(UIGraphicsGetImageFromCurrentImageContext())
@@ -51,17 +41,14 @@ class PRKanjiHeader: UIView {
         }
 
         self.backgroundColor = UIColor.whiteColor()
-        for v in self.subviews 
-        {
+        for v in self.subviews  {
             v.removeFromSuperview()
         }
-        
     }
     
     func setupView(frame: CGRect)
     {
-        for v in self.subviews 
-        {
+        for v in self.subviews  {
             v.removeFromSuperview()
         }
         
@@ -70,17 +57,12 @@ class PRKanjiHeader: UIView {
             let leftMargin : CGFloat = (((1.0 / CGFloat(inactiveImagesArray.count)) * frame.size.width - value.size.width) / 2.0) as CGFloat
             let rect = CGRectMake(frame.origin.x + leftMargin + (CGFloat(index) / CGFloat(inactiveImagesArray.count)) * frame.size.width, 10.0, value.size.width, value.size.height)
             let imgView : UIImageView = UIImageView(frame: rect)
-            if index == self.currentPage
-            {
+            if index == self.currentPage {
                 imgView.image = activeImagesArray[index]
-            }
-            else
-            {
+            } else {
                 imgView.image = value
             }
             self.addSubview(imgView)
         }
-        
     }
-    
 }
