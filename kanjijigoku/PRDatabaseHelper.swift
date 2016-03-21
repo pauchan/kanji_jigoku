@@ -114,8 +114,7 @@ class PRDatabaseHelper
             print("failed to parse characters")
             return false
         }
-
-        print("Timestamp: \(_timestamp)")
+        
         NSUserDefaults.standardUserDefaults().setObject(_timestamp, forKey: "PRKanjiJigokuDbUpdate")
         print("Update successful")
         
@@ -596,18 +595,36 @@ class PRDatabaseHelper
             return true
         }
     }
+    // if there is already auth key in the settings, dont display copyright alert
+    func readAuthToken(database: FMDatabase) -> (Bool, Bool) {
     
-    func updateAuthToken(database: FMDatabase) {
+        if let authKey = NSUserDefaults.standardUserDefaults().objectForKey("PRKanjiJigokuAuthKey") {
+            if authKey.boolValue {
+                return true
+            } else {
+                requestAuthToken(database)
+            }
+            
+            return true
+        } else {
+            return false
+        }
+    
+    }
+    
+    func requestAuthToken(database: FMDatabase) -> Bool {
         if let rs = database.executeQuery("SELECT auth FROM update_time", withArgumentsInArray: nil) {
             while rs.next() {
                 let authFlag = rs.boolForColumnIndex(0)
                 if authFlag {
                     NSUserDefaults.standardUserDefaults().setBool(authFlag, forKey: "PRKanjiJigokuAuthKey")
                     NSUserDefaults.standardUserDefaults().synchronize()
+                    return authFlag
                 }
             }
         } else {
          print("auth query failed")
         }
+        return false
     }
 }
