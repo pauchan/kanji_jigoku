@@ -85,9 +85,9 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-kanjijigoku/ChameleonFramework.framework"
-  install_framework "Pods-kanjijigoku/MBProgressHUD.framework"
+  install_framework "Pods-kanjijigoku/FMDB.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-kanjijigoku/ChameleonFramework.framework"
-  install_framework "Pods-kanjijigoku/MBProgressHUD.framework"
+  install_framework "Pods-kanjijigoku/FMDB.framework"
 fi

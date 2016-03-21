@@ -2,14 +2,16 @@ PODS:
   - ChameleonFramework/Default (2.0.6)
   - ChameleonFramework/Swift (2.0.6):
     - ChameleonFramework/Default
-  - MBProgressHUD (0.9.2)
+  - FMDB (2.6):
+    - FMDB/standard (= 2.6)
+  - FMDB/standard (2.6)
 
 DEPENDENCIES:
   - ChameleonFramework/Swift
-  - MBProgressHUD (~> 0.9.2)
+  - FMDB
 
 SPEC CHECKSUMS:
   ChameleonFramework: a6b466873ff9a4ce3a5196c20bccf1a97ad9f446
-  MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
+  FMDB: c1968bab3ab0aed38f66cb778ae1e7fa9a652b6e
 
 COCOAPODS: 0.39.0

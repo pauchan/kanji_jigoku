@@ -9,6 +9,7 @@
 
 import UIKit
 import CoreData
+import FMDB
 
 let kPRKanjiJigokuDBUpdateRequest = "http://serwer1456650.home.pl/getUpdateTime.php"
 //let kPRKanjiJigokuDBLocation = "http://serwer1456650.home.pl/clientDB.db"
@@ -596,10 +597,10 @@ class PRDatabaseHelper
         }
     }
     // if there is already auth key in the settings, dont display copyright alert
-    func readAuthToken(database: FMDatabase) -> (Bool, Bool) {
+    func readAuthToken(database: FMDatabase) -> Bool {
     
         if let authKey = NSUserDefaults.standardUserDefaults().objectForKey("PRKanjiJigokuAuthKey") {
-            if authKey.boolValue {
+            if (authKey.boolValue != nil) {
                 return true
             } else {
                 requestAuthToken(database)
