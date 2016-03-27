@@ -15,6 +15,8 @@ let kPRKanjiJigokuDBUpdateRequest = "http://serwer1456650.home.pl/getUpdateTime.
 //let kPRKanjiJigokuDBLocation = "http://serwer1456650.home.pl/clientDB.db"
 let kPRKanjiJigokuDBRequest = "http://serwer1456650.home.pl/KanjiJigokuDatabase.php?AUTH="
 
+let kFullAccessMessage = "Posiadasz pełny dostęp do bazy."
+let kLimitedAccessMessage = "Posiadasz ograniczony dostęp do bazy, ponieważ nie jesteś zalogowany do sieci Uniwersytetu Jagiellońskiego. Zaloguj urządzenie do sieci uniwersyteckiej i zaktualizuj bazę. Kolejne aktualizacje już nie wymagają połączenia z siecią UJ."
 
 let kPRKanjiJigokuFalseAnswerAmount = 3
 
@@ -596,21 +598,25 @@ class PRDatabaseHelper
             return true
         }
     }
-    // if there is already auth key in the settings, dont display copyright alert
-    func readAuthToken(database: FMDatabase) -> Bool {
+
+    func updateAlertMessage(readToken: Bool?, requestedToken: Bool) -> String? {
     
-        if let authKey = NSUserDefaults.standardUserDefaults().objectForKey("PRKanjiJigokuAuthKey") {
-            if (authKey.boolValue != nil) {
-                return true
-            } else {
-                requestAuthToken(database)
+        if readToken != nil {
+            if !readToken! && requestedToken {
+                return kFullAccessMessage
             }
-            
-            return true
         } else {
-            return false
+            return (requestedToken) ? kFullAccessMessage : kLimitedAccessMessage
         }
+        return nil
+    }
     
+    func readAuthToken() -> Bool? {
+        if let object = NSUserDefaults.standardUserDefaults().objectForKey("PRKanjiJigokuAuthKey") {
+            return object.boolValue
+        } else {
+            return nil
+        }
     }
     
     func requestAuthToken(database: FMDatabase) -> Bool {

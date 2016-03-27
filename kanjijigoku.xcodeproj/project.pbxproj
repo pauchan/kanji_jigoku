@@ -83,6 +83,8 @@
 		FBF343B71C5C8FCD00077C9D /* Example.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF343A51C5C8FCD00077C9D /* Example.swift */; };
 		FBF343BA1C5CD1E200077C9D /* Kunyomi+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF343B81C5CD1E200077C9D /* Kunyomi+CoreDataProperties.swift */; };
 		FBF343BB1C5CD1E200077C9D /* Kunyomi.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF343B91C5CD1E200077C9D /* Kunyomi.swift */; };
+		FBF399BA1CA78FE000D00631 /* PRAuthTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF399B91CA78FE000D00631 /* PRAuthTest.swift */; };
+		FBF399BB1CA791E300D00631 /* PRDatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D26D9A1A883ED800A8908C /* PRDatabaseHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -175,6 +177,7 @@
 		FBF343A51C5C8FCD00077C9D /* Example.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Example.swift; path = Source/Example.swift; sourceTree = "<group>"; };
 		FBF343B81C5CD1E200077C9D /* Kunyomi+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Kunyomi+CoreDataProperties.swift"; path = "Source/Kunyomi+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		FBF343B91C5CD1E200077C9D /* Kunyomi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Kunyomi.swift; path = Source/Kunyomi.swift; sourceTree = "<group>"; };
+		FBF399B91CA78FE000D00631 /* PRAuthTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRAuthTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -336,6 +339,7 @@
 				FB67D6FB1A861B8B00926E38 /* kanjijigokuTests.swift */,
 				188B81A71B60B7BB00B1543A /* PRRomajiKanaConverterTest.swift */,
 				188B81AD1B60E0F500B1543A /* PRStringExtensionTest.swift */,
+				FBF399B91CA78FE000D00631 /* PRAuthTest.swift */,
 			);
 			path = kanjijigokuTests;
 			sourceTree = "<group>";
@@ -684,10 +688,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FBF399BB1CA791E300D00631 /* PRDatabaseHelper.swift in Sources */,
 				1848284B1B4CE8E9001AB41F /* PRStringExtension.swift in Sources */,
 				FB67D6FC1A861B8B00926E38 /* kanjijigokuTests.swift in Sources */,
 				188B81AC1B60CCCD00B1543A /* PRRomajiKanaConverter.swift in Sources */,
 				188B81A81B60B7BB00B1543A /* PRRomajiKanaConverterTest.swift in Sources */,
+				FBF399BA1CA78FE000D00631 /* PRAuthTest.swift in Sources */,
 				188B81AE1B60E0F500B1543A /* PRStringExtensionTest.swift in Sources */,
 				188B81AB1B60CC9900B1543A /* PRStateSingleton.swift in Sources */,
 			);
