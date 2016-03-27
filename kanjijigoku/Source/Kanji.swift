@@ -60,7 +60,7 @@ class Kanji: BaseEntity {
         {
             if i != arrayOfReadings.count-1
             {
-                let str = arrayOfReadings[i].reading!+", "
+                let str = arrayOfReadings[i].reading!+"　"
                 appStr += str
             }
             else
