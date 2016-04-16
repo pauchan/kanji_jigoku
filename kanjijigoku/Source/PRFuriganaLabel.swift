@@ -43,8 +43,7 @@ class PRFuriganaLabel : UIView
             CGContextTranslateCTM(context, 0, self.bounds.size.height)
             CGContextScaleCTM(context, 1.0, -1.0)
 
-            // TODO: 250 is not enough for the very long texts
-            CGPathAddRect(path, nil, CGRectMake(0, rect.origin.y-(self.frame.size.height-220.0), self.frame.size.width, self.frame.size.height))
+            CGPathAddRect(path, nil, CGRectMake(0, -20.0, self.frame.size.width, self.frame.size.height))
 
             let frame = CTFramesetterCreateFrame(frameSetter, CFRangeMake(0, attributedText!.length), path, nil)
             
