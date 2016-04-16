@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import MBProgressHUD
 
 class PRSettingsViewController: UITableViewController {
     
@@ -144,13 +143,9 @@ class PRSettingsViewController: UITableViewController {
             }
             else // row == 2 
             {
-                let loadingNotification = MBProgressHUD.showHUDAddedTo(self.tableView, animated: true)
-                loadingNotification.mode = MBProgressHUDMode.Determinate
-                loadingNotification.labelText = "Trwa wczytywanie bazy danych"
-                
+
                 NSUserDefaults.standardUserDefaults().setObject(nil, forKey: "PRKanjiJigokuDbUpdate")
                 PRDatabaseHelper().syncDatabase()
-                MBProgressHUD.hideAllHUDsForView(self.tableView, animated: true)
                 self.navigationController?.popToRootViewControllerAnimated(false)
             }
         }
