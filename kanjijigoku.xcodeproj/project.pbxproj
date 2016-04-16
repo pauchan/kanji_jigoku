@@ -11,7 +11,6 @@
 		1812D5431AA9A35E004C91D0 /* PRNoCursorTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1812D5421AA9A35E004C91D0 /* PRNoCursorTextField.swift */; };
 		1812D5451AA9A771004C91D0 /* PRFilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1812D5441AA9A771004C91D0 /* PRFilterCell.swift */; };
 		1848284A1B4CDFC1001AB41F /* PRStringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184828491B4CDFC1001AB41F /* PRStringExtension.swift */; };
-		1848284B1B4CE8E9001AB41F /* PRStringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184828491B4CDFC1001AB41F /* PRStringExtension.swift */; };
 		1848284D1B4CF964001AB41F /* PRDetailedKanjiCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1848284C1B4CF964001AB41F /* PRDetailedKanjiCell.swift */; };
 		1860524E1A9AF44C0046247B /* PRKanjiHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1860524D1A9AF44C0046247B /* PRKanjiHeader.swift */; };
 		18648AA71A9DB5EF00B5472D /* PRSearchKanjiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18648AA51A9DB5EF00B5472D /* PRSearchKanjiViewController.swift */; };
@@ -21,8 +20,6 @@
 		188B81A41B60AB3D00B1543A /* PRRomajiKanaConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188B81A31B60AB3D00B1543A /* PRRomajiKanaConverter.swift */; };
 		188B81A81B60B7BB00B1543A /* PRRomajiKanaConverterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188B81A71B60B7BB00B1543A /* PRRomajiKanaConverterTest.swift */; };
 		188B81AA1B60BE8C00B1543A /* RomajiKanaConversionArray.plist in Resources */ = {isa = PBXBuildFile; fileRef = 188B81A91B60BE8C00B1543A /* RomajiKanaConversionArray.plist */; };
-		188B81AB1B60CC9900B1543A /* PRStateSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D1706D1A89D77B00672203 /* PRStateSingleton.swift */; };
-		188B81AC1B60CCCD00B1543A /* PRRomajiKanaConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188B81A31B60AB3D00B1543A /* PRRomajiKanaConverter.swift */; };
 		188B81AE1B60E0F500B1543A /* PRStringExtensionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188B81AD1B60E0F500B1543A /* PRStringExtensionTest.swift */; };
 		188C73691A9EE6E600D1634C /* PRRelatedKanjiCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188C73671A9EE6E600D1634C /* PRRelatedKanjiCell.swift */; };
 		188C736A1A9EE6E600D1634C /* PRRelatedKanjiCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 188C73681A9EE6E600D1634C /* PRRelatedKanjiCell.xib */; };
@@ -62,6 +59,58 @@
 		FB67D6F01A861B8A00926E38 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB67D6EE1A861B8A00926E38 /* LaunchScreen.xib */; };
 		FB67D6FC1A861B8B00926E38 /* kanjijigokuTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB67D6FB1A861B8B00926E38 /* kanjijigokuTests.swift */; };
 		FB67D7091A86232E00926E38 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FB67D7081A86232E00926E38 /* libsqlite3.dylib */; };
+		FB803FE71CC2560A00E75C8B /* PRDatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D26D9A1A883ED800A8908C /* PRDatabaseHelper.swift */; };
+		FB803FE81CC2560A00E75C8B /* PRStateSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D1706D1A89D77B00672203 /* PRStateSingleton.swift */; };
+		FB803FE91CC2560A00E75C8B /* PRImageGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1871527E1AE5F67B008AD647 /* PRImageGenerator.swift */; };
+		FB803FEA1CC2560A00E75C8B /* AppDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188945851B4F7F41006F9564 /* AppDefaults.swift */; };
+		FB803FEB1CC2560A00E75C8B /* PRRomajiKanaConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188B81A31B60AB3D00B1543A /* PRRomajiKanaConverter.swift */; };
+		FB803FEC1CC2560A00E75C8B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB67D6E21A861B8A00926E38 /* AppDelegate.swift */; };
+		FB803FED1CC2561800E75C8B /* PRFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BD12241B4E15EF00D76B2D /* PRFontExtension.swift */; };
+		FB803FEE1CC2561800E75C8B /* PRMenuViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1899D5871A9F0F1E006B63B0 /* PRMenuViewExtension.swift */; };
+		FB803FEF1CC2561800E75C8B /* PRStringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184828491B4CDFC1001AB41F /* PRStringExtension.swift */; };
+		FB803FF01CC2561800E75C8B /* PRViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BD12281B4E2EBB00D76B2D /* PRViewExtension.swift */; };
+		FB803FF11CC2562300E75C8B /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C5DA241A92FEF2007FF4A3 /* Question.swift */; };
+		FB803FF21CC2562300E75C8B /* Flashcard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF343921C5C8C3E00077C9D /* Flashcard.swift */; };
+		FB803FF31CC2562300E75C8B /* Kanji+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF343941C5C8FCD00077C9D /* Kanji+CoreDataProperties.swift */; };
+		FB803FF41CC2562300E75C8B /* Kanji.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF343951C5C8FCD00077C9D /* Kanji.swift */; };
+		FB803FF51CC2562300E75C8B /* BaseEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF343961C5C8FCD00077C9D /* BaseEntity+CoreDataProperties.swift */; };
+		FB803FF61CC2562300E75C8B /* BaseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF343971C5C8FCD00077C9D /* BaseEntity.swift */; };
+		FB803FF71CC2562400E75C8B /* Radical+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF343981C5C8FCD00077C9D /* Radical+CoreDataProperties.swift */; };
+		FB803FF81CC2562400E75C8B /* Radical.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF343991C5C8FCD00077C9D /* Radical.swift */; };
+		FB803FF91CC2562400E75C8B /* Reading+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF3439A1C5C8FCD00077C9D /* Reading+CoreDataProperties.swift */; };
+		FB803FFA1CC2562400E75C8B /* Reading.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF3439B1C5C8FCD00077C9D /* Reading.swift */; };
+		FB803FFB1CC2562400E75C8B /* Testable+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF3439C1C5C8FCD00077C9D /* Testable+CoreDataProperties.swift */; };
+		FB803FFC1CC2562400E75C8B /* Testable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF3439D1C5C8FCD00077C9D /* Testable.swift */; };
+		FB803FFD1CC2562400E75C8B /* Onyomi+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF3439E1C5C8FCD00077C9D /* Onyomi+CoreDataProperties.swift */; };
+		FB803FFE1CC2562400E75C8B /* Onyomi.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF3439F1C5C8FCD00077C9D /* Onyomi.swift */; };
+		FB803FFF1CC2562400E75C8B /* Sentence+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF343A01C5C8FCD00077C9D /* Sentence+CoreDataProperties.swift */; };
+		FB8040001CC2562400E75C8B /* Sentence.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF343A11C5C8FCD00077C9D /* Sentence.swift */; };
+		FB8040011CC2562400E75C8B /* Example+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF343A41C5C8FCD00077C9D /* Example+CoreDataProperties.swift */; };
+		FB8040021CC2562400E75C8B /* Example.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF343A51C5C8FCD00077C9D /* Example.swift */; };
+		FB8040031CC2562400E75C8B /* Kunyomi+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF343B81C5CD1E200077C9D /* Kunyomi+CoreDataProperties.swift */; };
+		FB8040041CC2562400E75C8B /* Kunyomi.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF343B91C5CD1E200077C9D /* Kunyomi.swift */; };
+		FB8040051CC2563100E75C8B /* PRSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189369411A9D4DFD001DEFC4 /* PRSettingsViewController.swift */; };
+		FB8040061CC2563100E75C8B /* PRHeaderCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C494871A95A55000095A7E /* PRHeaderCoordinator.swift */; };
+		FB8040071CC2563100E75C8B /* PRFilterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C27A091AA4332200B8621C /* PRFilterController.swift */; };
+		FB8040081CC2563100E75C8B /* PRInitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBBA5A561B5A72FE00CAAC92 /* PRInitController.swift */; };
+		FB8040091CC257F500E75C8B /* PRFilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1812D5441AA9A771004C91D0 /* PRFilterCell.swift */; };
+		FB80400A1CC257F500E75C8B /* PRFuriganaLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C64F1B1A917AC5000F5641 /* PRFuriganaLabel.swift */; };
+		FB80400B1CC257F500E75C8B /* PRHeaderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D170631A89A49B00672203 /* PRHeaderViewCell.swift */; };
+		FB80400C1CC257F500E75C8B /* PRKanjiHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1860524D1A9AF44C0046247B /* PRKanjiHeader.swift */; };
+		FB80400D1CC257F500E75C8B /* PRRelatedKanjiCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188C73671A9EE6E600D1634C /* PRRelatedKanjiCell.swift */; };
+		FB80400E1CC257F500E75C8B /* PRNoCursorTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1812D5421AA9A35E004C91D0 /* PRNoCursorTextField.swift */; };
+		FB80400F1CC257F500E75C8B /* PRDetailedKanjiCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1848284C1B4CF964001AB41F /* PRDetailedKanjiCell.swift */; };
+		FB8040101CC257F500E75C8B /* PRSearchKanjiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18648AA51A9DB5EF00B5472D /* PRSearchKanjiViewController.swift */; };
+		FB8040111CC257F500E75C8B /* PRKanjiMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB67D6E71A861B8A00926E38 /* PRKanjiMenuViewController.swift */; };
+		FB8040121CC257F500E75C8B /* PRKanjiPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C4948B1A95B78900095A7E /* PRKanjiPageViewController.swift */; };
+		FB8040131CC257F500E75C8B /* PRKanjiTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C4948D1A95B7AB00095A7E /* PRKanjiTableViewController.swift */; };
+		FB8040141CC257F500E75C8B /* PRKanjiTableViewHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D0CB131A9C63E80027DD8F /* PRKanjiTableViewHeaderCell.swift */; };
+		FB8040151CC257F500E75C8B /* PRTestsMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D1705F1A8997D700672203 /* PRTestsMenuViewController.swift */; };
+		FB8040161CC257F500E75C8B /* PRTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C64F251A9203C1000F5641 /* PRTestViewController.swift */; };
+		FB8040171CC257F500E75C8B /* PRTestResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C64F271A920400000F5641 /* PRTestResultsViewController.swift */; };
+		FB8040181CC257F500E75C8B /* PRFlashcardPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D170711A89F03100672203 /* PRFlashcardPageViewController.swift */; };
+		FB8040191CC257F500E75C8B /* PRFlashcardMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D1705D1A8997C700672203 /* PRFlashcardMenuViewController.swift */; };
+		FB80401A1CC257F500E75C8B /* PRFlashcardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D170751A89F3E200672203 /* PRFlashcardViewController.swift */; };
 		FBBA5A571B5A72FE00CAAC92 /* PRInitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBBA5A561B5A72FE00CAAC92 /* PRInitController.swift */; };
 		FBD813201CA0374400725593 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FBD8131F1CA0374400725593 /* Settings.bundle */; };
 		FBF343931C5C8C3E00077C9D /* Flashcard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF343921C5C8C3E00077C9D /* Flashcard.swift */; };
@@ -84,7 +133,6 @@
 		FBF343BA1C5CD1E200077C9D /* Kunyomi+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF343B81C5CD1E200077C9D /* Kunyomi+CoreDataProperties.swift */; };
 		FBF343BB1C5CD1E200077C9D /* Kunyomi.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF343B91C5CD1E200077C9D /* Kunyomi.swift */; };
 		FBF399BA1CA78FE000D00631 /* PRAuthTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF399B91CA78FE000D00631 /* PRAuthTest.swift */; };
-		FBF399BB1CA791E300D00631 /* PRDatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D26D9A1A883ED800A8908C /* PRDatabaseHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -688,14 +736,62 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FBF399BB1CA791E300D00631 /* PRDatabaseHelper.swift in Sources */,
-				1848284B1B4CE8E9001AB41F /* PRStringExtension.swift in Sources */,
+				FB8040091CC257F500E75C8B /* PRFilterCell.swift in Sources */,
+				FB80400A1CC257F500E75C8B /* PRFuriganaLabel.swift in Sources */,
+				FB80400B1CC257F500E75C8B /* PRHeaderViewCell.swift in Sources */,
+				FB80400C1CC257F500E75C8B /* PRKanjiHeader.swift in Sources */,
+				FB80400D1CC257F500E75C8B /* PRRelatedKanjiCell.swift in Sources */,
+				FB80400E1CC257F500E75C8B /* PRNoCursorTextField.swift in Sources */,
+				FB80400F1CC257F500E75C8B /* PRDetailedKanjiCell.swift in Sources */,
+				FB8040101CC257F500E75C8B /* PRSearchKanjiViewController.swift in Sources */,
+				FB8040111CC257F500E75C8B /* PRKanjiMenuViewController.swift in Sources */,
+				FB8040121CC257F500E75C8B /* PRKanjiPageViewController.swift in Sources */,
+				FB8040131CC257F500E75C8B /* PRKanjiTableViewController.swift in Sources */,
+				FB8040141CC257F500E75C8B /* PRKanjiTableViewHeaderCell.swift in Sources */,
+				FB8040151CC257F500E75C8B /* PRTestsMenuViewController.swift in Sources */,
+				FB8040161CC257F500E75C8B /* PRTestViewController.swift in Sources */,
+				FB8040171CC257F500E75C8B /* PRTestResultsViewController.swift in Sources */,
+				FB8040181CC257F500E75C8B /* PRFlashcardPageViewController.swift in Sources */,
+				FB8040191CC257F500E75C8B /* PRFlashcardMenuViewController.swift in Sources */,
+				FB80401A1CC257F500E75C8B /* PRFlashcardViewController.swift in Sources */,
+				FB8040051CC2563100E75C8B /* PRSettingsViewController.swift in Sources */,
+				FB8040061CC2563100E75C8B /* PRHeaderCoordinator.swift in Sources */,
+				FB8040071CC2563100E75C8B /* PRFilterController.swift in Sources */,
+				FB8040081CC2563100E75C8B /* PRInitController.swift in Sources */,
+				FB803FF11CC2562300E75C8B /* Question.swift in Sources */,
+				FB803FF21CC2562300E75C8B /* Flashcard.swift in Sources */,
+				FB803FF31CC2562300E75C8B /* Kanji+CoreDataProperties.swift in Sources */,
+				FB803FF41CC2562300E75C8B /* Kanji.swift in Sources */,
+				FB803FF51CC2562300E75C8B /* BaseEntity+CoreDataProperties.swift in Sources */,
+				FB803FF61CC2562300E75C8B /* BaseEntity.swift in Sources */,
+				FB803FF71CC2562400E75C8B /* Radical+CoreDataProperties.swift in Sources */,
+				FB803FF81CC2562400E75C8B /* Radical.swift in Sources */,
+				FB803FF91CC2562400E75C8B /* Reading+CoreDataProperties.swift in Sources */,
+				FB803FFA1CC2562400E75C8B /* Reading.swift in Sources */,
+				FB803FFB1CC2562400E75C8B /* Testable+CoreDataProperties.swift in Sources */,
+				FB803FFC1CC2562400E75C8B /* Testable.swift in Sources */,
+				FB803FFD1CC2562400E75C8B /* Onyomi+CoreDataProperties.swift in Sources */,
+				FB803FFE1CC2562400E75C8B /* Onyomi.swift in Sources */,
+				FB803FFF1CC2562400E75C8B /* Sentence+CoreDataProperties.swift in Sources */,
+				FB8040001CC2562400E75C8B /* Sentence.swift in Sources */,
+				FB8040011CC2562400E75C8B /* Example+CoreDataProperties.swift in Sources */,
+				FB8040021CC2562400E75C8B /* Example.swift in Sources */,
+				FB8040031CC2562400E75C8B /* Kunyomi+CoreDataProperties.swift in Sources */,
+				FB8040041CC2562400E75C8B /* Kunyomi.swift in Sources */,
+				FB803FED1CC2561800E75C8B /* PRFontExtension.swift in Sources */,
+				FB803FEE1CC2561800E75C8B /* PRMenuViewExtension.swift in Sources */,
+				FB803FEF1CC2561800E75C8B /* PRStringExtension.swift in Sources */,
+				FB803FF01CC2561800E75C8B /* PRViewExtension.swift in Sources */,
+				FB803FE71CC2560A00E75C8B /* PRDatabaseHelper.swift in Sources */,
+				FB803FE81CC2560A00E75C8B /* PRStateSingleton.swift in Sources */,
+				FB803FE91CC2560A00E75C8B /* PRImageGenerator.swift in Sources */,
+				FB803FEA1CC2560A00E75C8B /* AppDefaults.swift in Sources */,
+				FB803FEB1CC2560A00E75C8B /* PRRomajiKanaConverter.swift in Sources */,
+				FB803FEC1CC2560A00E75C8B /* AppDelegate.swift in Sources */,
 				FB67D6FC1A861B8B00926E38 /* kanjijigokuTests.swift in Sources */,
-				188B81AC1B60CCCD00B1543A /* PRRomajiKanaConverter.swift in Sources */,
 				188B81A81B60B7BB00B1543A /* PRRomajiKanaConverterTest.swift in Sources */,
 				FBF399BA1CA78FE000D00631 /* PRAuthTest.swift in Sources */,
 				188B81AE1B60E0F500B1543A /* PRStringExtensionTest.swift in Sources */,
-				188B81AB1B60CC9900B1543A /* PRStateSingleton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
