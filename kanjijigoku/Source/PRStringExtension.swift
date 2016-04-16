@@ -141,5 +141,10 @@ extension String
         {
             return self.stringByReplacingOccurrencesOfString("（", withString: "").stringByReplacingOccurrencesOfString("）", withString: "")
     }
+    
+    func replaceBracketWithHalfWidth() -> String
+    {
+        return self.stringByReplacingOccurrencesOfString("（", withString: "(").stringByReplacingOccurrencesOfString("）", withString: ")")
+    }
 }
 
