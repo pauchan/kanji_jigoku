@@ -108,9 +108,9 @@ override func viewDidLoad() {
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
     {
         if(indexPath.section == 0) {
-            return 90.0
+            return 90.0*scaleForDevice
         } else {
-            return 80.0
+            return 80.0*scaleForDevice
         }
     }
     

@@ -26,9 +26,9 @@ let IS_IPHONE_6P = (IS_IPHONE && SCREEN_MAX_LENGTH == 736.0)
 
 let appColor = UIColor.flatGreenColorDark()
 
-let appFont = UIFont(name: "HiraKakuProN-W3", size: 12.0)!
-
 let kPRstarCharacter: Character = "\u{2B50}"
+
+let scaleForDevice : CGFloat = (IS_IPAD) ? 2.0 : 1.0
 
 let kPRKanjiJigokuAttributedBoldBig : [String : AnyObject] = [NSFontAttributeName : UIFont().appFontOfSize(20.0)]
 let kPRKanjiJigokuAttributedSmall : [String : AnyObject] = [NSFontAttributeName : UIFont().appFontOfSize(14.0)]

@@ -88,16 +88,16 @@ class PRTestViewController: UIViewController, UIAlertViewDelegate {
     {
     
         let kanjiString : String = questions[questionsCount-1].question as String
-        let attrArr = [NSFontAttributeName : appFont]
+        let attrArr = [NSFontAttributeName : UIFont().appFontOfSize(12.0)]
         let beginningAtrStr = NSAttributedString(string: kanjiString , attributes: attrArr)
         let tempString : NSMutableAttributedString = NSMutableAttributedString(attributedString: beginningAtrStr)
         tempString.appendAttributedString(NSAttributedString(string: " "))
-        tempString.appendAttributedString(NSAttributedString(string: questions[questionsCount-1].meaning, attributes: [NSFontAttributeName : appFont]))
+        tempString.appendAttributedString(NSAttributedString(string: questions[questionsCount-1].meaning, attributes: [NSFontAttributeName : UIFont().appFontOfSize(12.0)]))
         tempString.appendAttributedString(NSAttributedString(string: " "))
         
         for button in testOptionButtons
         {
-            let atrStr = NSAttributedString(string: button.titleForState(UIControlState.Normal)!, attributes: [NSForegroundColorAttributeName : button.backgroundColor!, NSFontAttributeName : appFont])
+            let atrStr = NSAttributedString(string: button.titleForState(UIControlState.Normal)!, attributes: [NSForegroundColorAttributeName : button.backgroundColor!, NSFontAttributeName : UIFont().appFontOfSize(12.0)])
             tempString.appendAttributedString(atrStr)
             tempString.appendAttributedString(NSAttributedString(string: " "))
         }

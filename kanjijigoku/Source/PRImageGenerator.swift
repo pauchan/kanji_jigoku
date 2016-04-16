@@ -10,7 +10,8 @@ import UIKit
 
 func generateKanjiImage(color: UIColor) -> UIImage {
     
-    let kanji :NSAttributedString = NSAttributedString(string: "漢字", attributes: [NSFontAttributeName : UIFont().appFontOfSize(20.0), NSForegroundColorAttributeName : color])
+    let kanjiFont = UIFont(name: "HiraKakuProN-W3", size: 20.0)
+    let kanji :NSAttributedString = NSAttributedString(string: "漢字", attributes: [NSFontAttributeName : kanjiFont!, NSForegroundColorAttributeName : color])
     UIGraphicsBeginImageContextWithOptions(kanji.size(), false, 0.0)
     
     kanji.drawAtPoint(CGPointMake(0.0, 0.0))

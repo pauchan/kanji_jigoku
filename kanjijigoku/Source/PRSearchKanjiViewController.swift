@@ -100,7 +100,7 @@ class PRSearchKanjiViewController: UIViewController, UITableViewDelegate, UITabl
     {
         if indexPath.section == 0 {
         
-            return 30.0
+            return 30.0 * scaleForDevice
         } else {
         
             var text = ""
@@ -114,13 +114,12 @@ class PRSearchKanjiViewController: UIViewController, UITableViewDelegate, UITabl
                 detailedText = sentenceSearchArray[indexPath.row].meaning!
             }
             
-            let font = UIFont(name: "HiraKakuProN-W3", size: 15.0)!
-            let detailedFont = UIFont.systemFontOfSize(12.0)
+            let font = UIFont().appFontOfSize(15.0)
+            let detailedFont = UIFont().appFontOfSize(12.0)
             let constraintsSize = CGSizeMake(tableView.bounds.size.width, CGFloat(MAXFLOAT))
             let labelSize = text.boundingRectWithSize(constraintsSize, options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: [NSFontAttributeName: font], context: nil)
             let detailedLabelSize = detailedText.boundingRectWithSize(constraintsSize, options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: [NSFontAttributeName: detailedFont], context: nil)
             
-            //debugLog("Cell height: \(labelSize.height + detailedLabelSize.height + 20.0)")
             return labelSize.height + detailedLabelSize.height + 20.0
         
         }

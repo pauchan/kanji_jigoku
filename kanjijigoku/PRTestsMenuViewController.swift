@@ -65,6 +65,7 @@ class PRTestMenuViewController : UITableViewController
         {
             let cell = tableView.dequeueReusableCellWithIdentifier("PRFlashcardCell", forIndexPath: indexPath) 
             let testDict = _tableItems[indexPath.row] as! [String: String]
+            cell.textLabel?.font = UIFont().appFontOfSize(12.0)
             cell.textLabel?.text = testDict["label"]
             cell.selectionStyle = .None
             return cell
@@ -90,11 +91,11 @@ class PRTestMenuViewController : UITableViewController
         
         if(indexPath.section == 0)
         {
-            return 90.0
+            return 90.0*scaleForDevice
         }
         else
         {
-            return 45.0
+            return 45.0*scaleForDevice
         }
     }
     

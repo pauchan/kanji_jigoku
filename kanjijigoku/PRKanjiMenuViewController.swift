@@ -43,6 +43,7 @@ override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath:
     } else {
         let cell = tableView.dequeueReusableCellWithIdentifier("PRKanjiCell", forIndexPath: indexPath) 
         cell.textLabel?.text = _kanjiTable[indexPath.row].kanji
+        cell.textLabel?.font = UIFont().appFontOfSize(12.0)
         cell.selectionStyle = .None
         return cell
     }
@@ -62,9 +63,9 @@ override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPat
 override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
 {
     if indexPath.section == 0 && indexPath.row == 0 {
-        return 90.0
+        return 90.0 * scaleForDevice
     } else {
-        return 45.0
+        return 45.0 * scaleForDevice
     }
 }
 
