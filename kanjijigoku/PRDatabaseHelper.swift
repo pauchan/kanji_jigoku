@@ -12,7 +12,7 @@ import CoreData
 import FMDB
 
 let kPRKanjiJigokuDBUpdateRequest = "http://serwer1456650.home.pl/getUpdateTime.php"
-//let kPRKanjiJigokuDBLocation = "http://serwer1456650.home.pl/clientDB.db"
+let kPRKanjiJigokuDBLocation = "http://serwer1456650.home.pl/clientDB.db"
 let kPRKanjiJigokuDBRequest = "http://serwer1456650.home.pl/KanjiJigokuDatabase.php?AUTH="
 
 let kFullAccessMessage = "Posiadasz pełny dostęp do bazy."
@@ -32,8 +32,8 @@ class PRDatabaseHelper
             print("database up to date")
             return true
         }
-        
-        if downloadDbFile() {
+        if downloadFullAccessDb() {
+        //if downloadDbFile() {
             let documentsFolder = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] 
             let path = documentsFolder.stringByAppendingString("/clientDB.db")
             
@@ -52,6 +52,22 @@ class PRDatabaseHelper
             }
         } else {
             print("Download db file failed")
+        }
+        return false
+    }
+    
+    func downloadFullAccessDb() -> Bool {
+        
+        let stringURL : String = kPRKanjiJigokuDBLocation
+        
+        if let url : NSURL = NSURL(string: stringURL) {
+            if let urlData : NSData = NSData(contentsOfURL: url) {
+                let paths : NSArray = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+                if let documentsDirectory = (paths[0] as? String) {
+                    let filePath : String = documentsDirectory.stringByAppendingString("/clientDB.db")
+                    return  urlData.writeToFile(filePath, atomically: true)
+                }
+            }
         }
         return false
     }
