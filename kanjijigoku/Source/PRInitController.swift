@@ -8,6 +8,8 @@
 
 import UIKit
 
+let kLabelHorizontalMargin: CGFloat = 10.0
+
 protocol FinishedLoadingDelegate {
  
     func splashDidFinishLoading()
@@ -20,7 +22,7 @@ class PRInitController: UIViewController {
     override func viewDidLoad() {
         
         let view = NSBundle.mainBundle().loadNibNamed("LaunchScreen", owner: self, options: nil).first! as! UIView
-        let label = UILabel(frame: CGRectMake(0.0, SCREEN_HEIGHT-100.0, SCREEN_WIDTH, 30.0))
+        let label = UILabel(frame: CGRectMake(kLabelHorizontalMargin, SCREEN_HEIGHT-100.0*scaleForDevice, SCREEN_WIDTH-2*kLabelHorizontalMargin, 30.0*scaleForDevice))
         label.text = "Trwa aktualizowanie danych..."
         label.font = UIFont().appFontOfSize(20.0)
         label.textAlignment = .Center
@@ -32,7 +34,7 @@ class PRInitController: UIViewController {
 
         view.addSubview(label)
         
-        let explanationLabel = UILabel(frame: CGRectMake(0.0, SCREEN_HEIGHT-50.0, SCREEN_WIDTH, 40.0))
+        let explanationLabel = UILabel(frame: CGRectMake(kLabelHorizontalMargin, SCREEN_HEIGHT-50.0*scaleForDevice, SCREEN_WIDTH-2*kLabelHorizontalMargin, 40.0*scaleForDevice))
         explanationLabel.text = "(W zależności od połączenia internetowego ładowanie może potrwać do kilku minut)"
         explanationLabel.textAlignment = .Center
         explanationLabel.lineBreakMode = .ByWordWrapping
