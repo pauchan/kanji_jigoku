@@ -12,7 +12,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kanji Jigoku" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NeK-BR-kZE">
-                    <rect key="frame" x="107" y="84" width="267" height="68"/>
+                    <rect key="frame" x="107" y="62" width="267" height="68"/>
                     <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="48"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -20,8 +20,16 @@
                         <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="96"/>
                     </variation>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="KanjiLogo" translatesAutoresizingMaskIntoConstraints="NO" id="eMT-pe-Pgg">
-                    <rect key="frame" x="202" y="202" width="76" height="76"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="KanjiLogoBig" translatesAutoresizingMaskIntoConstraints="NO" id="eMT-pe-Pgg">
+                    <rect key="frame" x="180" y="180" width="120" height="120"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="120" id="2Ny-lh-Abd">
+                            <variation key="heightClass=regular-widthClass=regular" constant="180"/>
+                        </constraint>
+                        <constraint firstAttribute="width" constant="120" id="M4J-Sg-2Z3">
+                            <variation key="heightClass=regular-widthClass=regular" constant="180"/>
+                        </constraint>
+                    </constraints>
                 </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -37,6 +45,6 @@
         </view>
     </objects>
     <resources>
-        <image name="KanjiLogo" width="76" height="76"/>
+        <image name="KanjiLogoBig" width="180" height="180"/>
     </resources>
 </document>

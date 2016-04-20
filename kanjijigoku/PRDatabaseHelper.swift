@@ -32,8 +32,8 @@ class PRDatabaseHelper
             print("database up to date")
             return true
         }
-        if downloadFullAccessDb() {
-        //if downloadDbFile() {
+        //if downloadFullAccessDb() {
+        if downloadDbFile() {
             let documentsFolder = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] 
             let path = documentsFolder.stringByAppendingString("/clientDB.db")
             
