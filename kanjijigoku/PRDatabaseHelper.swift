@@ -267,6 +267,7 @@ class PRDatabaseHelper
                     let example = NSManagedObject(entity: exampleEntity, insertIntoManagedObjectContext: managedContext) as! Example
                     example.kanji = rs.stringForColumnIndex(0)
                     example.reading = rs.stringForColumnIndex(1).plainHiragana()
+                    print(rs.stringForColumnIndex(1))
                     example.example = rs.stringForColumnIndex(1).kanjiWithOkurigana(rs.stringForColumnIndex(0))
                     example.meaning = rs.stringForColumnIndex(2)
                     example.code = "0"
