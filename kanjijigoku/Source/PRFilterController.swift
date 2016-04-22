@@ -34,30 +34,8 @@ class PRFilterController: NSObject, UIPickerViewDataSource, UIPickerViewDelegate
     
     func filterSwitch(sender: UISwitch) {
         
-        
-        if sender.on
-        {
-            PRStateSingleton.sharedInstance.filterOn = true
-            PRStateSingleton.sharedInstance.filterLevel = PRStateSingleton.sharedInstance.filterLevel
-            PRStateSingleton.sharedInstance.filterLesson = PRStateSingleton.sharedInstance.filterLesson
-            
-            self.filterCell.levelComboBox?.text = "Poziom \(PRStateSingleton.sharedInstance.filterLevel)"
-            self.filterCell.lessonComboBox?.text = "Lekcja \(PRStateSingleton.sharedInstance.filterLesson)"
-        
-            filterCell.levelComboBox.enabled = true
-            filterCell.lessonComboBox.enabled = true
-            
-            
-        }
-        else
-        {
-            PRStateSingleton.sharedInstance.filterOn = false
-        
-            filterCell.levelComboBox.enabled = false
-            filterCell.lessonComboBox.enabled = false
-            filterCell.levelComboBox.text = ""
-            filterCell.lessonComboBox.text = ""
-        }
+        PRStateSingleton.sharedInstance.filterOn = sender.on
+        self.updateFilterCell(PRStateSingleton.sharedInstance.filterOn)
     }
     
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int
@@ -132,6 +110,23 @@ class PRFilterController: NSObject, UIPickerViewDataSource, UIPickerViewDelegate
         
         return labView!
     }
-
     
+    func updateFilterCell(filterEnabled: Bool) {
+        if filterEnabled {
+            PRStateSingleton.sharedInstance.filterLevel = PRStateSingleton.sharedInstance.filterLevel
+            PRStateSingleton.sharedInstance.filterLesson = PRStateSingleton.sharedInstance.filterLesson
+            
+            self.filterCell.levelComboBox?.text = "Poziom \(PRStateSingleton.sharedInstance.filterLevel)"
+            self.filterCell.lessonComboBox?.text = "Lekcja \(PRStateSingleton.sharedInstance.filterLesson)"
+            
+            filterCell.levelComboBox.enabled = filterEnabled
+            filterCell.lessonComboBox.enabled = filterEnabled
+        } else {
+            filterCell.levelComboBox.enabled = filterEnabled
+            filterCell.lessonComboBox.enabled = filterEnabled
+            
+            filterCell.levelComboBox.text = ""
+            filterCell.lessonComboBox.text = ""
+        }
+    }
 }

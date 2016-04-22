@@ -22,6 +22,11 @@ class PRSettingsViewController: UITableViewController {
         
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        self.filterController?.updateFilterCell(PRStateSingleton.sharedInstance.filterOn)
+    }
+    
     // MARK: - Table view data source
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 2
