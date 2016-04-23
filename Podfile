@@ -6,6 +6,8 @@ source 'https://github.com/CocoaPods/Specs.git'
 
 pod 'ChameleonFramework/Swift'
 pod 'FMDB'
+pod 'Fabric'
+pod 'Crashlytics'
 
 target 'kanjijigoku' do
     

@@ -477,6 +477,7 @@
 				FB67D6DB1A861B8A00926E38 /* Resources */,
 				F14E4A72249583AA8617D028 /* Copy Pods Resources */,
 				898D20BAE0118628F637A624 /* Embed Pods Frameworks */,
+				FB1713BD1CCB1B5800525299 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -497,6 +498,7 @@
 				FB67D6F31A861B8B00926E38 /* Resources */,
 				0F99C4B71E760CC0F37A36BF /* Copy Pods Resources */,
 				F313422F1B496C90D91AC695 /* Embed Pods Frameworks */,
+				FB1713BC1CCB1B0B00525299 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -668,6 +670,32 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-kanjijigokuTests/Pods-kanjijigokuTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		FB1713BC1CCB1B0B00525299 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "";
+		};
+		FB1713BD1CCB1B5800525299 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" fed7f26637faa2599f2aa786450fa22921d72a5f 8de527d218b06011f2c60e0a41405a9e2ea65de663eb159c09d5c278cb9518dc";
 		};
 /* End PBXShellScriptBuildPhase section */
 

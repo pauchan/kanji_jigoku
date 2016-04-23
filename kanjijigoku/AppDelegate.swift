@@ -9,14 +9,18 @@
 import UIKit
 import CoreData
 import ChameleonFramework
+import Fabric
+import Crashlytics
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, FinishedLoadingDelegate, UITabBarControllerDelegate {
 
     var window: UIWindow?
 
-
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
+        Fabric.with([Crashlytics.self])
+        Fabric.sharedSDK().debug = true
         
         Chameleon.setGlobalThemeUsingPrimaryColor(appColor, withContentStyle: UIContentStyle.Dark)
         

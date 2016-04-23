@@ -8,6 +8,8 @@
 
 import UIKit
 import ChameleonFramework
+import Fabric
+import Crashlytics
 
 class PRTestViewController: UIViewController, UIAlertViewDelegate {
     
@@ -39,8 +41,8 @@ class PRTestViewController: UIViewController, UIAlertViewDelegate {
         self.navigationItem.title = "Test"
     }
     
-    func testButtonClicked(sender : AnyObject)
-    {
+    func testButtonClicked(sender : AnyObject) {
+        
         let button = sender as! UIButton
         if let index = testOptionButtons.indexOf(button) {
             if index == questions[questionsCount].properAnswerIndex {
@@ -62,8 +64,8 @@ class PRTestViewController: UIViewController, UIAlertViewDelegate {
         }
     }
     
-    func loadQuestion(questionNumber: Int)
-    {
+    func loadQuestion(questionNumber: Int) {
+        
         testProgressLabel.setProgress(Float(questionNumber)/Float(maxQuestionCount), animated: true)
         wrongAnswer = false
         questionLabel.text = questions[questionNumber].question
@@ -84,8 +86,7 @@ class PRTestViewController: UIViewController, UIAlertViewDelegate {
         }
     }
     
-    func generateSummary()
-    {
+    func generateSummary() {
     
         let kanjiString : String = questions[questionsCount-1].question as String
         let attrArr = [NSFontAttributeName : UIFont().appFontOfSize(12.0)]
@@ -95,18 +96,15 @@ class PRTestViewController: UIViewController, UIAlertViewDelegate {
         tempString.appendAttributedString(NSAttributedString(string: questions[questionsCount-1].meaning, attributes: [NSFontAttributeName : UIFont().appFontOfSize(12.0)]))
         tempString.appendAttributedString(NSAttributedString(string: " "))
         
-        for button in testOptionButtons
-        {
+        for button in testOptionButtons {
             let atrStr = NSAttributedString(string: button.titleForState(UIControlState.Normal)!, attributes: [NSForegroundColorAttributeName : button.backgroundColor!, NSFontAttributeName : UIFont().appFontOfSize(12.0)])
             tempString.appendAttributedString(atrStr)
             tempString.appendAttributedString(NSAttributedString(string: " "))
         }
         questions[questionsCount-1].questionSummaryString = tempString
-    
     }
     
     func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
-        
         self.processProperAnswer()
     }
     
