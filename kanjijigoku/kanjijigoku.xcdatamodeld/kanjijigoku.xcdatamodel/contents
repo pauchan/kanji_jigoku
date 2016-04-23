@@ -55,6 +55,14 @@
         <relationship name="character" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Kanji" inverseName="sentences" inverseEntity="Kanji" syncable="YES"/>
         <relationship name="examples" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Example" inverseName="sentences" inverseEntity="Example" syncable="YES"/>
     </entity>
+    <entity name="Settings" representedClassName=".Settings" syncable="YES">
+        <attribute name="currentLesson" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="currentLevel" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="extraMaterial" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="filterLesson" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="filterLevel" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="filterOn" optional="YES" attributeType="Boolean" syncable="YES"/>
+    </entity>
     <entity name="Testable" representedClassName="kanjijigoku.Testable" isAbstract="YES" parentEntity="BaseEntity" syncable="YES">
         <attribute name="kanji" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="meaning" optional="YES" attributeType="String" syncable="YES"/>
@@ -70,5 +78,6 @@
         <element name="Reading" positionX="-5519" positionY="-2182" width="128" height="73"/>
         <element name="Sentence" positionX="-5463" positionY="-1765" width="128" height="148"/>
         <element name="Testable" positionX="-5780" positionY="-2178" width="128" height="88"/>
+        <element name="Settings" positionX="-6003" positionY="-2034" width="128" height="135"/>
     </elements>
 </model>

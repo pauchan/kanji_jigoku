@@ -651,4 +651,58 @@ class PRDatabaseHelper
         }
         return false
     }
+    
+    func saveAppSettings() {
+    
+        let appState = PRStateSingleton.sharedInstance
+        
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext!
+        
+        let entity = NSEntityDescription.entityForName("Settings", inManagedObjectContext: managedContext)!
+
+        let fetchRequest :NSFetchRequest = NSFetchRequest(entityName: "Settings")
+        fetchRequest.fetchLimit = 1
+        let objects = (try! managedContext.executeFetchRequest(fetchRequest)) as! [NSManagedObject]
+        
+        
+        let settings = (objects.count == 1) ? objects.first as! Settings : NSManagedObject(entity: entity, insertIntoManagedObjectContext: managedContext) as! Settings
+        
+        settings.currentLevel = appState.currentLevel
+        settings.currentLesson = appState.currentLesson
+        settings.filterLevel = appState.filterLevel
+        settings.filterLesson = appState.filterLesson
+        settings.filterOn = appState.filterOn
+        settings.extraMaterial = appState.extraMaterial
+        
+        do {
+            try managedContext.save()
+        } catch {
+            print("Could not save")
+        }
+    }
+    
+    func loadAppSettings() {
+        
+        let appState = PRStateSingleton.sharedInstance
+        
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext!
+        
+        let fetchRequest :NSFetchRequest = NSFetchRequest(entityName: "Settings")
+        fetchRequest.fetchLimit = 1
+        let objects = (try! managedContext.executeFetchRequest(fetchRequest)) as! [NSManagedObject]
+        
+        if objects.count == 1 {
+        
+            let settings = objects.first as! Settings
+            
+            appState.currentLevel = settings.currentLevel!.integerValue
+            appState.currentLesson = settings.currentLesson!.integerValue
+            appState.filterLevel = settings.filterLevel!.integerValue
+            appState.filterLesson = settings.filterLesson!.integerValue
+            appState.filterOn = settings.filterOn!.boolValue
+            appState.extraMaterial = settings.extraMaterial!.boolValue
+        }
+    }
 }

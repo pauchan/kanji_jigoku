@@ -44,6 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, FinishedLoadingDelegate, 
         tabBarController.delegate = self
         
         let kanjiViewController = PRKanjiMenuViewController()
+        PRDatabaseHelper().loadAppSettings()
         kanjiViewController._kanjiTable = PRDatabaseHelper().getSelectedObjects("Kanji", level: PRStateSingleton.sharedInstance.currentLevel, lesson: PRStateSingleton.sharedInstance.currentLesson) as! [Kanji]
         
         let kanjiNavigationController : UINavigationController = UINavigationController(rootViewController: kanjiViewController)
@@ -80,10 +81,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, FinishedLoadingDelegate, 
     func applicationDidEnterBackground(application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        PRDatabaseHelper().saveAppSettings()
     }
 
     func applicationWillEnterForeground(application: UIApplication) {
         // Called as! part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+        PRDatabaseHelper().loadAppSettings()
     }
 
     func applicationDidBecomeActive(application: UIApplication) {
