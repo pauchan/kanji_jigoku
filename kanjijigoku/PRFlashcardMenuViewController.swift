@@ -96,6 +96,8 @@ override func viewDidLoad() {
                 toast.show()
                 return
             }
+            
+            flashcardsArray = self.randomizeFlashcardsOrder(flashcardsArray)
             let vc = PRFlashcardPageViewController(flashcardSet: flashcardsArray)
             navigationController?.pushViewController(vc, animated: false)
         }
@@ -168,5 +170,18 @@ override func viewDidLoad() {
             }
         }
         return returnArray
+    }
+    
+    func randomizeFlashcardsOrder(var flashcards : [Flashcard]) -> [Flashcard] {
+        
+        var newArray: [Flashcard] = [Flashcard]()
+        var oldCount = flashcards.count
+        while oldCount > 0 {
+            let newCount = Int(arc4random_uniform(UInt32(oldCount)))
+            newArray.append(flashcards[newCount])
+            flashcards.removeAtIndex(newCount)
+            oldCount--
+        }
+        return newArray
     }
 }
