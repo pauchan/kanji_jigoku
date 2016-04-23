@@ -10,26 +10,23 @@ import UIKit
 
 class PRFilterController: NSObject, UIPickerViewDataSource, UIPickerViewDelegate  {
 
-    
     var levelPickerView = UIPickerView()
     var lessonPickerView = UIPickerView()
     
     var filterCell : PRFilterCell! // = PRFilterCell()
     
-    init(filterCell: PRFilterCell)
-    {
+    override init() {
+        super.init()
+        levelPickerView.delegate = self
+        lessonPickerView.delegate = self
+    }
+    
+    func updateWithCell(filterCell: PRFilterCell) {
         self.filterCell = filterCell
         
         self.filterCell.levelComboBox?.inputView = levelPickerView
         self.filterCell.lessonComboBox?.inputView = lessonPickerView
-        
-        super.init()
-        
-        levelPickerView.delegate = self
-        lessonPickerView.delegate = self
-        
         self.filterCell.filterSwitch?.addTarget(self, action: "filterSwitch:", forControlEvents: UIControlEvents.ValueChanged)
-        
     }
     
     func filterSwitch(sender: UISwitch) {
@@ -56,31 +53,26 @@ class PRFilterController: NSObject, UIPickerViewDataSource, UIPickerViewDelegate
     }
     
     
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
-    {
-    if pickerView == levelPickerView {
-        
-        self.filterCell.levelComboBox?.text = "Poziom \(PRStateSingleton.sharedInstance.levelArray[row])"
-        PRStateSingleton.sharedInstance.filterLevel = PRStateSingleton.sharedInstance.levelArray[row]
-        self.filterCell.lessonComboBox?.becomeFirstResponder()
-    }
-    else {
-        self.filterCell.lessonComboBox?.text = "Lekcja \(PRStateSingleton.sharedInstance.lessonArray[row])"
-        PRStateSingleton.sharedInstance.filterLesson = PRStateSingleton.sharedInstance.lessonArray[row]
-        self.filterCell.lessonComboBox?.resignFirstResponder()
-    }
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if pickerView == levelPickerView {
+            
+            self.filterCell.levelComboBox?.text = "Poziom \(PRStateSingleton.sharedInstance.levelArray[row])"
+            PRStateSingleton.sharedInstance.filterLevel = PRStateSingleton.sharedInstance.levelArray[row]
+            self.filterCell.lessonComboBox?.becomeFirstResponder()
+        }
+        else {
+            self.filterCell.lessonComboBox?.text = "Lekcja \(PRStateSingleton.sharedInstance.lessonArray[row])"
+            PRStateSingleton.sharedInstance.filterLesson = PRStateSingleton.sharedInstance.lessonArray[row]
+            self.filterCell.lessonComboBox?.resignFirstResponder()
+        }
     }
     
-    
-    func generateLessonSummaryString(level: Int, lesson: Int) -> String
-    {
+    func generateLessonSummaryString(level: Int, lesson: Int) -> String {
         
         let arr : [Kanji]  = PRDatabaseHelper().getSelectedObjects("Kanji", level: level, lesson: lesson) as! [Kanji]
-        let bla : String =  arr.map
-            {
+        let bla : String =  arr.map {
                 (kanji: Kanji) -> String in kanji.kanji!
-            }.reduce("")
-                {
+            }.reduce("") {
                     (base,append) in base + append + " "
         }
         return bla
@@ -90,41 +82,33 @@ class PRFilterController: NSObject, UIPickerViewDataSource, UIPickerViewDelegate
         
         var labView : UILabel? = view as? UILabel
         
-        if labView == nil
-        {
+        if labView == nil {
             labView = UILabel()
             labView?.textAlignment = NSTextAlignment.Center
-            if pickerView == lessonPickerView
-            {
+            if pickerView == lessonPickerView {
                 labView!.font = UIFont().appFontOfSize(14.0)
             }
         }
-        if pickerView == levelPickerView
-        {
+        if pickerView == levelPickerView {
             labView!.text = "Poziom \(PRStateSingleton.sharedInstance.levelArray[row])"
         }
-        else
-        {
+        else {
             labView!.text = "Lekcja \(PRStateSingleton.sharedInstance.lessonArray[row]): \(generateLessonSummaryString(PRStateSingleton.sharedInstance.filterLevel, lesson: PRStateSingleton.sharedInstance.lessonArray[row]))"
         }
-        
         return labView!
     }
     
     func updateFilterCell(filterEnabled: Bool) {
+        filterCell.filterSwitch.on = filterEnabled
+        filterCell.levelComboBox.enabled = filterEnabled
+        filterCell.lessonComboBox.enabled = filterEnabled
         if filterEnabled {
             PRStateSingleton.sharedInstance.filterLevel = PRStateSingleton.sharedInstance.filterLevel
             PRStateSingleton.sharedInstance.filterLesson = PRStateSingleton.sharedInstance.filterLesson
             
             self.filterCell.levelComboBox?.text = "Poziom \(PRStateSingleton.sharedInstance.filterLevel)"
             self.filterCell.lessonComboBox?.text = "Lekcja \(PRStateSingleton.sharedInstance.filterLesson)"
-            
-            filterCell.levelComboBox.enabled = filterEnabled
-            filterCell.lessonComboBox.enabled = filterEnabled
         } else {
-            filterCell.levelComboBox.enabled = filterEnabled
-            filterCell.lessonComboBox.enabled = filterEnabled
-            
             filterCell.levelComboBox.text = ""
             filterCell.lessonComboBox.text = ""
         }

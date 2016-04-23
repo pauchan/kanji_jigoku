@@ -19,12 +19,7 @@ class PRSettingsViewController: UITableViewController {
         let nib = UINib(nibName: "PRFilterCell", bundle: nil)
         self.tableView.registerNib(nib, forCellReuseIdentifier: "PRFilterCell")
         self.navigationItem.title = "Ustawienia"
-        
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        self.filterController?.updateFilterCell(PRStateSingleton.sharedInstance.filterOn)
+        self.filterController = PRFilterController()
     }
     
     // MARK: - Table view data source
@@ -53,7 +48,8 @@ class PRSettingsViewController: UITableViewController {
         if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCellWithIdentifier("PRFilterCell", forIndexPath: indexPath) as! PRFilterCell
             cell.contentView.userInteractionEnabled = false
-            filterController = PRFilterController(filterCell: cell)
+            self.filterController.updateWithCell(cell)
+            self.filterController?.updateFilterCell(PRStateSingleton.sharedInstance.filterOn)
             return cell
         } else {
             switch(indexPath.row) {
