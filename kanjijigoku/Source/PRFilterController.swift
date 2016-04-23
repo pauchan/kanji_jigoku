@@ -35,21 +35,17 @@ class PRFilterController: NSObject, UIPickerViewDataSource, UIPickerViewDelegate
         self.updateFilterCell(PRStateSingleton.sharedInstance.filterOn)
     }
     
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int
-    {
-    if pickerView == levelPickerView
-    {
-    return PRStateSingleton.sharedInstance.levelArray.count
-    }
-    else
-    {
-    return PRStateSingleton.sharedInstance.lessonArray.count
-    }
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        if pickerView == levelPickerView {
+            return PRStateSingleton.sharedInstance.levelArray.count
+        }
+        else {
+            return PRStateSingleton.sharedInstance.lessonArray.count
+        }
     }
     
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
-    
-    return 1
+        return 1
     }
     
     

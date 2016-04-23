@@ -10,72 +10,47 @@ import UIKit
 
 class PRFlashcardPageViewController : UIPageViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource
 {
-    var _flashcardSet : NSArray = [Flashcard]()
-    var _selectedIndex : Int = 0
+    let flashcardSet: [Flashcard]
+    var flashcardViewControllers = [PRFlashcardViewController]()
     
-    override func viewDidLoad()
-    {
-        self.navigationItem.title = "Fiszki"
-        
-        self.dataSource = self
-        
-        if _flashcardSet.count == 0
-        {
-            let vc = UIViewController()
-            let vcArray = [vc] as [UIViewController]?
-            self.setViewControllers(vcArray, direction: .Forward, animated: false, completion: nil)
-        }
-        else
-        {
-            let vc = PRFlashcardViewController(nibName: "PRFlashcardViewController", bundle: nil)
-            vc.flashcard = _flashcardSet[0] as! Flashcard
-            let vcArray = [vc] as [UIViewController]?
-            self.setViewControllers(vcArray, direction: .Forward, animated: false, completion: nil)
-        }
-        
+    init(flashcardSet : [Flashcard]) {
+        self.flashcardSet = flashcardSet
+        super.init(transitionStyle: .PageCurl, navigationOrientation: .Horizontal, options: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
+    override func viewDidLoad() {
+        self.navigationItem.title = "Fiszki"
+        self.dataSource = self
+        
+        for flashcard in self.flashcardSet {
+            let vc = PRFlashcardViewController(nibName: "PRFlashcardViewController", bundle: nil)
+            vc.flashcard = flashcard
+            self.flashcardViewControllers.append(vc)
+        }
+        self.setViewControllers([self.flashcardViewControllers.first!], direction: .Forward, animated: false, completion: nil)
+    }
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
         
-        if _selectedIndex == 0
-        {
+        var pageIndex = self.flashcardViewControllers.indexOf(viewController as! PRFlashcardViewController)
+        if pageIndex == 0 {
             return nil
+        } else {
+            return self.flashcardViewControllers[--pageIndex!]
         }
-        else
-        {
-            _selectedIndex--
-            let vc = PRFlashcardViewController(nibName: "PRFlashcardViewController", bundle: nil)
-            vc.flashcard  = _flashcardSet[_selectedIndex] as! Flashcard
-            return vc
-        }
-        
     }
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
         
-        if _selectedIndex == _flashcardSet.count - 1 
-        {
+        var pageIndex = self.flashcardViewControllers.indexOf(viewController as! PRFlashcardViewController)
+        if pageIndex == self.flashcardSet.count - 1 {
             return nil
+        } else {
+            return self.flashcardViewControllers[++pageIndex!]
         }
-        else
-        {
-            _selectedIndex++
-            let vc = PRFlashcardViewController(nibName: "PRFlashcardViewController", bundle: nil)
-            vc.flashcard  = _flashcardSet[_selectedIndex] as! Flashcard
-            return vc
-        }
-    }
-    
-    //func page
-    
-    func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
-        
-        return _flashcardSet.count
-    }
-    
-    func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
-        
-        return _selectedIndex
     }
 }

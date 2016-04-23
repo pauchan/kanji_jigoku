@@ -15,13 +15,11 @@ class BaseEntity: NSManagedObject {
     var obligatory: Bool {
         
         get {
-            
-            debugLog("code is \(self.code)")
             if self.code!.rangeOfString("8") == nil {
-                
                 return true
+            } else {
+                return false
             }
-            return false
         }
     }
 }

@@ -96,13 +96,9 @@ override func viewDidLoad() {
                 toast.show()
                 return
             }
-
-            let vc = PRFlashcardPageViewController()
-            vc._flashcardSet = flashcardsArray
+            let vc = PRFlashcardPageViewController(flashcardSet: flashcardsArray)
             navigationController?.pushViewController(vc, animated: false)
-            
         }
-        
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
@@ -143,21 +139,18 @@ override func viewDidLoad() {
         return returnArray
     }
     
-    func generateFlashcardsArrayForExamples(characters: [Kanji], option : Int) -> [Flashcard]
-    {
+    func generateFlashcardsArrayForExamples(characters: [Kanji], option : Int) -> [Flashcard] {
         
         var returnArray : [Flashcard] = [Flashcard]()
-        for character in characters
-        {
-            if(option == kExamplesOption)
-            {
-                for e in character.examples!
-                {
+        for character in characters {
+            if(option == kExamplesOption) {
+                for e in character.examples! {
                     let example = e as! Example
                     if example.obligatory {
                         let flashcard = Flashcard(text: example.example!, reading: example.reading!, meaning: example.meaning!, type: .Example)
+                        // in case filtering distinct flashcards is needed
+                        //let array = returnArray.filter({(f: Flashcard) in f.text == flashcard.text && f.reading == flashcard.reading})
                         returnArray.append(flashcard)
-                        
                     }
                 }
             }

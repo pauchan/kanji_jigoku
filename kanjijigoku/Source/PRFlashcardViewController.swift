@@ -42,8 +42,7 @@ class PRFlashcardViewController : UIViewController, UIGestureRecognizerDelegate 
     func tapReceived(sender: UITapGestureRecognizer) {
         
         tapCount++
-        if tapCount == 1
-        {
+        if tapCount == 1 {
             if flashcard.type == .Sentence {
                 //readingLabel?.furiganaText = flashcard.furiganaReading
                 readingLabel?.furiganaText = flashcard.text.furiganaExplainedSentence()
@@ -52,15 +51,12 @@ class PRFlashcardViewController : UIViewController, UIGestureRecognizerDelegate 
                 spellingLabel.hidden = false
             }
         }
-        else if tapCount == 2
-        {
+        else if tapCount == 2 {
             meaningLabel?.hidden = false
         }
-        else
-        {
+        else {
             // do nothing
         }
-        
     }
     
     override func viewDidLayoutSubviews() {
