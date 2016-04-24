@@ -12,7 +12,7 @@ let kLabelHorizontalMargin: CGFloat = 10.0
 
 protocol FinishedLoadingDelegate {
  
-    func splashDidFinishLoading()
+    func splashDidFinishLoading(message: String?)
 }
 
 class PRInitController: UIViewController {
@@ -47,10 +47,11 @@ class PRInitController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         
+        var message: String?
         if NSUserDefaults.standardUserDefaults().objectForKey("PRKanjiJigokuAutoDbUpdate") == nil || NSUserDefaults.standardUserDefaults().objectForKey("PRKanjiJigokuAutoDbUpdate") as! Bool == true
         {
             debugLog("syncing database")
-            PRDatabaseHelper().syncDatabase()
+            message = PRDatabaseHelper().syncDatabase()
         } else {
             debugLog("dont auto-update db...")
         }
@@ -59,7 +60,7 @@ class PRInitController: UIViewController {
         stateSingleton.levelArray = PRDatabaseHelper().getLevelArray()
         stateSingleton.lessonArray = PRDatabaseHelper().getLessonArray(stateSingleton.currentLevel)
         
-        delegate?.splashDidFinishLoading()
+        delegate?.splashDidFinishLoading(message)
     }
     
 }

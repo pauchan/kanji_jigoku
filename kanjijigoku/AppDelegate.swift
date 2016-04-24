@@ -38,7 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, FinishedLoadingDelegate, 
         return true
     }
     
-    func splashDidFinishLoading()
+    func splashDidFinishLoading(message: String?)
     {
         let tabBarController : UITabBarController = UITabBarController()
         tabBarController.delegate = self
@@ -71,6 +71,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, FinishedLoadingDelegate, 
         
         self.window?.rootViewController = tabBarController
         self.window?.makeKeyAndVisible()
+        if message != nil {
+            let toast : UIAlertView = UIAlertView(title: "Baza danych", message: message, delegate: self, cancelButtonTitle: "Zamknij")
+            toast.show()
+        }
     }
 
     func applicationWillResignActive(application: UIApplication) {

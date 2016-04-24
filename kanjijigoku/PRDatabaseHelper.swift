@@ -26,11 +26,11 @@ class PRDatabaseHelper
 {
     var _timestamp : NSString = NSString()
     
-    func syncDatabase() -> Bool
+    func syncDatabase() -> String?
     {
         if(!shouldUpdateDb()) {
             print("database up to date")
-            return true
+            return nil
         }
         //if downloadFullAccessDb() {
         if downloadDbFile() {
@@ -42,7 +42,7 @@ class PRDatabaseHelper
             if database.open() {
                 if parseDb(database) {
                     print("parsed db succesfully")
-                    return true
+                    return updateAlertMessage(readAuthToken(), requestedToken: requestAuthToken(database))
                 } else {
                     print("db parse failed")
                 }
@@ -53,7 +53,7 @@ class PRDatabaseHelper
         } else {
             print("Download db file failed")
         }
-        return false
+        return nil
     }
     
     func downloadFullAccessDb() -> Bool {
