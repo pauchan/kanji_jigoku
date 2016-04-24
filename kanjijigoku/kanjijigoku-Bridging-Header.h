@@ -2,14 +2,13 @@
 //  kanjijigoku-Bridging-Header.h
 //  kanjijigoku
 //
-//  Created by Pawel Rusin on 2/7/15.
-//  Copyright (c) 2015 Pawel Rusin. All rights reserved.
+//  Created by Pawel Rusin on 4/24/16.
+//  Copyright © 2016 Pawel Rusin. All rights reserved.
 //
 
+#ifndef kanjijigoku_Bridging_Header_h
+#define kanjijigoku_Bridging_Header_h
 
+#import "UIScrollView+EmptyDataSet.h"
 
-//#ifndef kanjijigoku_kanjijigoku_Bridging_Header_h
-//#define kanjijigoku_kanjijigoku_Bridging_Header_h
-//
-//
-//#endif
+#endif /* kanjijigoku_Bridging_Header_h */

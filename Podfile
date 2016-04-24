@@ -8,6 +8,7 @@ pod 'ChameleonFramework/Swift'
 pod 'FMDB'
 pod 'Fabric'
 pod 'Crashlytics'
+pod 'DZNEmptyDataSet'
 
 target 'kanjijigoku' do
     

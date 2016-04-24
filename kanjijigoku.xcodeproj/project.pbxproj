@@ -199,6 +199,7 @@
 		F25467472E303D1DF986320D /* Pods_kanjijigoku.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_kanjijigoku.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB1713C21CCB263D00525299 /* Settings+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Settings+CoreDataProperties.swift"; path = "Source/Settings+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		FB1713C31CCB263D00525299 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Settings.swift; path = Source/Settings.swift; sourceTree = "<group>"; };
+		FB1713CD1CCCAEDB00525299 /* kanjijigoku-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "kanjijigoku-Bridging-Header.h"; sourceTree = "<group>"; };
 		FB67D6DD1A861B8A00926E38 /* kanjijigoku.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = kanjijigoku.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB67D6E11A861B8A00926E38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FB67D6E21A861B8A00926E38 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -208,7 +209,6 @@
 		FB67D6EF1A861B8A00926E38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		FB67D6F51A861B8B00926E38 /* kanjijigokuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = kanjijigokuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB67D6FB1A861B8B00926E38 /* kanjijigokuTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kanjijigokuTests.swift; sourceTree = "<group>"; };
-		FB67D7071A8622F400926E38 /* kanjijigoku-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "kanjijigoku-Bridging-Header.h"; sourceTree = "<group>"; };
 		FB67D7081A86232E00926E38 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		FBBA5A561B5A72FE00CAAC92 /* PRInitController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRInitController.swift; path = Source/PRInitController.swift; sourceTree = "<group>"; };
 		FBD8131F1CA0374400725593 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
@@ -364,6 +364,7 @@
 		FB67D6DF1A861B8A00926E38 /* kanjijigoku */ = {
 			isa = PBXGroup;
 			children = (
+				FB1713CD1CCCAEDB00525299 /* kanjijigoku-Bridging-Header.h */,
 				FBB1FF781A87252700F323D0 /* Helper */,
 				FBB1FF771A87250700F323D0 /* View */,
 				FBB1FF761A8724FC00F323D0 /* Controller */,
@@ -461,7 +462,6 @@
 		FBB1FF781A87252700F323D0 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				FB67D7071A8622F400926E38 /* kanjijigoku-Bridging-Header.h */,
 				18D26D9A1A883ED800A8908C /* PRDatabaseHelper.swift */,
 				18D1706D1A89D77B00672203 /* PRStateSingleton.swift */,
 				1871527E1AE5F67B008AD647 /* PRImageGenerator.swift */,
@@ -897,8 +897,10 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "kanjijigoku-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "Pods/**";
 			};
 			name = Debug;
 		};
@@ -934,7 +936,9 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "kanjijigoku-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "Pods/**";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

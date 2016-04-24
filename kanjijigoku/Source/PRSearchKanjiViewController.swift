@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PRSearchKanjiViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate
+class PRSearchKanjiViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate
 {
     @IBOutlet weak var kanjiSearchTable: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -36,6 +36,9 @@ class PRSearchKanjiViewController: UIViewController, UITableViewDelegate, UITabl
         
         kanjiSearchTable.delegate = self
         kanjiSearchTable.dataSource = self
+        
+        kanjiSearchTable.emptyDataSetSource = self
+        kanjiSearchTable.emptyDataSetDelegate = self
         
         searchBar.delegate = self
 
@@ -186,8 +189,21 @@ class PRSearchKanjiViewController: UIViewController, UITableViewDelegate, UITabl
         sentenceSearchArray = PRDatabaseHelper().fetchObjectsContainingPhrase("Sentence", phrase: searchBar.text!) as! [Sentence]
         kanjiSearchTable.reloadData()
         searchBar.resignFirstResponder()
-        
-        
+    }
+    
+    func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+        let str = "Możliwe tryby wyszukiwania"
+        let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)]
+        return NSAttributedString(string: str, attributes: attrs)
+    }
+    
+    func descriptionForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+        let str = "Wyszukiwanie znaków: 金, 　食べる, 連絡 \n" +
+        "Wyszukiwanie na postawie kany: かね, たべる, れんらく \n" +
+        "Wyszukiwanie na podstawie czytania fonetycznego: kane, taberu, renraku \n" +
+        "Wyszukiwanie znaczeń: pieniadze, jesc, kontakt \n"
+        let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleBody)]
+        return NSAttributedString(string: str, attributes: attrs)
     }
 
 }

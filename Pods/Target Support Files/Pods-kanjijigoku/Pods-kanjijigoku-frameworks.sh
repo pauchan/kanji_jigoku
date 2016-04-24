@@ -85,9 +85,11 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-kanjijigoku/ChameleonFramework.framework"
+  install_framework "Pods-kanjijigoku/DZNEmptyDataSet.framework"
   install_framework "Pods-kanjijigoku/FMDB.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-kanjijigoku/ChameleonFramework.framework"
+  install_framework "Pods-kanjijigoku/DZNEmptyDataSet.framework"
   install_framework "Pods-kanjijigoku/FMDB.framework"
 fi
