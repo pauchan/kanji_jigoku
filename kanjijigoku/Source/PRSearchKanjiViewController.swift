@@ -198,7 +198,7 @@ class PRSearchKanjiViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func descriptionForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
-        let str = "Wyszukiwanie znaków: 金, 　食べる, 連絡 \n" +
+        let str = "Wyszukiwanie znaków: 金, 食べる, 連絡 \n" +
         "Wyszukiwanie na postawie kany: かね, たべる, れんらく \n" +
         "Wyszukiwanie na podstawie czytania fonetycznego: kane, taberu, renraku \n" +
         "Wyszukiwanie znaczeń: pieniadze, jesc, kontakt \n"

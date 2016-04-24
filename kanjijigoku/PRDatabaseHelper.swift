@@ -128,6 +128,7 @@ class PRDatabaseHelper
         deleteObjects("Sentence")
         deleteObjects("Example")
         deleteObjects("Radical")
+        deleteObjects("Settings")
         
         if !parseKanjis(database) {
             print("failed to parse characters")
@@ -579,9 +580,9 @@ class PRDatabaseHelper
             predicates = [NSPredicate(format: "ANY kunyomis.reading='\(hiraganaPhrase)'"), NSPredicate(format: "ANY onyomis.reading='\(katakanaPhrase)'"),
                 NSPredicate(format: "ANY kunyomis.hiraganaReading='\(hiraganaPhrase)'")]
         case "Example":
-            predicates = [NSPredicate(format: "reading CONTAINS '\(hiraganaPhrase)'"), NSPredicate(format: "example CONTAINS '\(kanjiPhrase)'")]
+            predicates = [NSPredicate(format: "reading CONTAINS '\(hiraganaPhrase)'"), NSPredicate(format: "example CONTAINS '\(kanjiPhrase)'"), NSPredicate(format: "meaning CONTAINS[c] '\(phrase)'")]
         case "Sentence":
-            predicates = [NSPredicate(format: "sentence CONTAINS '\(hiraganaPhrase)'"), NSPredicate(format: "meaning CONTAINS '\(phrase)'")]
+            predicates = [NSPredicate(format: "sentence CONTAINS '\(hiraganaPhrase)'"), NSPredicate(format: "meaning CONTAINS[c] '\(phrase)'")]
         default:
             predicates = [NSPredicate]()
         }

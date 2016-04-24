@@ -118,15 +118,9 @@ class PRSettingsViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        if indexPath.section == 0
-        {
-            if indexPath.row == 0
-            {
-                let view = UIView(frame: self.tableView.frame)
-                view.backgroundColor = UIColor(colorLiteralRed: 0.0, green: 0.0, blue: 0.0, alpha: 0.5)
-                self.tableView.addSubview(view)
-                PRDatabaseHelper().syncDatabase()
-                view.removeFromSuperview()
+        if indexPath.section == 0 {
+            if indexPath.row == 0 {
+                updateDb()
             }
             else if indexPath.row == 1 {
                 
@@ -142,12 +136,10 @@ class PRSettingsViewController: UITableViewController {
                     tableView.reloadData()
                 }
             }
-            else // row == 2 
-            {
-
-                NSUserDefaults.standardUserDefaults().setObject(nil, forKey: "PRKanjiJigokuDbUpdate")
-                PRDatabaseHelper().syncDatabase()
-                self.navigationController?.popToRootViewControllerAnimated(false)
+            else { // row == 2
+                let appDomain = NSBundle.mainBundle().bundleIdentifier
+                NSUserDefaults.standardUserDefaults().removePersistentDomainForName(appDomain!)
+                updateDb()
             }
         }
         else //section == 1
@@ -156,7 +148,21 @@ class PRSettingsViewController: UITableViewController {
         }
     }
 
-
-    
-    
+    func updateDb() {
+        let backgroundView = UIView(frame: UIScreen.mainScreen().bounds)
+        backgroundView.backgroundColor = UIColor(colorLiteralRed: 0, green: 0, blue: 0, alpha: 0.5)
+        let indicator = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
+        backgroundView.addSubview(indicator)
+        indicator.startAnimating()
+        self.tableView.addSubview(backgroundView)
+        let priority = DISPATCH_QUEUE_PRIORITY_BACKGROUND
+        dispatch_async(dispatch_get_global_queue(priority, 0)) {
+            // do some task
+            PRDatabaseHelper().syncDatabase()
+            dispatch_async(dispatch_get_main_queue()) {
+                backgroundView.removeFromSuperview()
+                self.navigationController?.popToRootViewControllerAnimated(false)
+            }
+        }
+    }
 }
