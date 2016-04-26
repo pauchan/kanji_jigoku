@@ -56,6 +56,8 @@
 		FB1713C51CCB263D00525299 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1713C31CCB263D00525299 /* Settings.swift */; };
 		FB1713C61CCB2A5A00525299 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1713C31CCB263D00525299 /* Settings.swift */; };
 		FB1713C71CCB2A5D00525299 /* Settings+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1713C21CCB263D00525299 /* Settings+CoreDataProperties.swift */; };
+		FB1713D01CCCF09300525299 /* Testable+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1713CE1CCCF09300525299 /* Testable+CoreDataProperties.swift */; };
+		FB1713D11CCCF09300525299 /* Testable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1713CF1CCCF09300525299 /* Testable.swift */; };
 		FB67D6E31A861B8A00926E38 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB67D6E21A861B8A00926E38 /* AppDelegate.swift */; };
 		FB67D6E61A861B8A00926E38 /* kanjijigoku.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FB67D6E41A861B8A00926E38 /* kanjijigoku.xcdatamodeld */; };
 		FB67D6E81A861B8A00926E38 /* PRKanjiMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB67D6E71A861B8A00926E38 /* PRKanjiMenuViewController.swift */; };
@@ -83,8 +85,6 @@
 		FB803FF81CC2562400E75C8B /* Radical.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF343991C5C8FCD00077C9D /* Radical.swift */; };
 		FB803FF91CC2562400E75C8B /* Reading+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF3439A1C5C8FCD00077C9D /* Reading+CoreDataProperties.swift */; };
 		FB803FFA1CC2562400E75C8B /* Reading.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF3439B1C5C8FCD00077C9D /* Reading.swift */; };
-		FB803FFB1CC2562400E75C8B /* Testable+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF3439C1C5C8FCD00077C9D /* Testable+CoreDataProperties.swift */; };
-		FB803FFC1CC2562400E75C8B /* Testable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF3439D1C5C8FCD00077C9D /* Testable.swift */; };
 		FB803FFD1CC2562400E75C8B /* Onyomi+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF3439E1C5C8FCD00077C9D /* Onyomi+CoreDataProperties.swift */; };
 		FB803FFE1CC2562400E75C8B /* Onyomi.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF3439F1C5C8FCD00077C9D /* Onyomi.swift */; };
 		FB803FFF1CC2562400E75C8B /* Sentence+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF343A01C5C8FCD00077C9D /* Sentence+CoreDataProperties.swift */; };
@@ -126,8 +126,6 @@
 		FBF343AB1C5C8FCD00077C9D /* Radical.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF343991C5C8FCD00077C9D /* Radical.swift */; };
 		FBF343AC1C5C8FCD00077C9D /* Reading+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF3439A1C5C8FCD00077C9D /* Reading+CoreDataProperties.swift */; };
 		FBF343AD1C5C8FCD00077C9D /* Reading.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF3439B1C5C8FCD00077C9D /* Reading.swift */; };
-		FBF343AE1C5C8FCD00077C9D /* Testable+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF3439C1C5C8FCD00077C9D /* Testable+CoreDataProperties.swift */; };
-		FBF343AF1C5C8FCD00077C9D /* Testable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF3439D1C5C8FCD00077C9D /* Testable.swift */; };
 		FBF343B01C5C8FCD00077C9D /* Onyomi+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF3439E1C5C8FCD00077C9D /* Onyomi+CoreDataProperties.swift */; };
 		FBF343B11C5C8FCD00077C9D /* Onyomi.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF3439F1C5C8FCD00077C9D /* Onyomi.swift */; };
 		FBF343B21C5C8FCD00077C9D /* Sentence+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF343A01C5C8FCD00077C9D /* Sentence+CoreDataProperties.swift */; };
@@ -200,6 +198,8 @@
 		FB1713C21CCB263D00525299 /* Settings+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Settings+CoreDataProperties.swift"; path = "Source/Settings+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		FB1713C31CCB263D00525299 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Settings.swift; path = Source/Settings.swift; sourceTree = "<group>"; };
 		FB1713CD1CCCAEDB00525299 /* kanjijigoku-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "kanjijigoku-Bridging-Header.h"; sourceTree = "<group>"; };
+		FB1713CE1CCCF09300525299 /* Testable+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Testable+CoreDataProperties.swift"; path = "Source/fmdb/Testable+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		FB1713CF1CCCF09300525299 /* Testable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Testable.swift; path = Source/fmdb/Testable.swift; sourceTree = "<group>"; };
 		FB67D6DD1A861B8A00926E38 /* kanjijigoku.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = kanjijigoku.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB67D6E11A861B8A00926E38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FB67D6E21A861B8A00926E38 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -221,8 +221,6 @@
 		FBF343991C5C8FCD00077C9D /* Radical.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Radical.swift; path = Source/Radical.swift; sourceTree = "<group>"; };
 		FBF3439A1C5C8FCD00077C9D /* Reading+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Reading+CoreDataProperties.swift"; path = "Source/Reading+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		FBF3439B1C5C8FCD00077C9D /* Reading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Reading.swift; path = Source/Reading.swift; sourceTree = "<group>"; };
-		FBF3439C1C5C8FCD00077C9D /* Testable+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Testable+CoreDataProperties.swift"; path = "Source/Testable+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		FBF3439D1C5C8FCD00077C9D /* Testable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Testable.swift; path = Source/Testable.swift; sourceTree = "<group>"; };
 		FBF3439E1C5C8FCD00077C9D /* Onyomi+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Onyomi+CoreDataProperties.swift"; path = "Source/Onyomi+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		FBF3439F1C5C8FCD00077C9D /* Onyomi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Onyomi.swift; path = Source/Onyomi.swift; sourceTree = "<group>"; };
 		FBF343A01C5C8FCD00077C9D /* Sentence+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Sentence+CoreDataProperties.swift"; path = "Source/Sentence+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -402,6 +400,8 @@
 		FBB1FF751A8724DD00F323D0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FB1713CE1CCCF09300525299 /* Testable+CoreDataProperties.swift */,
+				FB1713CF1CCCF09300525299 /* Testable.swift */,
 				FB1713C21CCB263D00525299 /* Settings+CoreDataProperties.swift */,
 				FB1713C31CCB263D00525299 /* Settings.swift */,
 				18C5DA241A92FEF2007FF4A3 /* Question.swift */,
@@ -414,8 +414,6 @@
 				FBF343991C5C8FCD00077C9D /* Radical.swift */,
 				FBF3439A1C5C8FCD00077C9D /* Reading+CoreDataProperties.swift */,
 				FBF3439B1C5C8FCD00077C9D /* Reading.swift */,
-				FBF3439C1C5C8FCD00077C9D /* Testable+CoreDataProperties.swift */,
-				FBF3439D1C5C8FCD00077C9D /* Testable.swift */,
 				FBF3439E1C5C8FCD00077C9D /* Onyomi+CoreDataProperties.swift */,
 				FBF3439F1C5C8FCD00077C9D /* Onyomi.swift */,
 				FBF343A01C5C8FCD00077C9D /* Sentence+CoreDataProperties.swift */,
@@ -723,6 +721,7 @@
 				1848284D1B4CF964001AB41F /* PRDetailedKanjiCell.swift in Sources */,
 				FB1713C51CCB263D00525299 /* Settings.swift in Sources */,
 				FBF343B11C5C8FCD00077C9D /* Onyomi.swift in Sources */,
+				FB1713D01CCCF09300525299 /* Testable+CoreDataProperties.swift in Sources */,
 				FBF343931C5C8C3E00077C9D /* Flashcard.swift in Sources */,
 				FBF343AA1C5C8FCD00077C9D /* Radical+CoreDataProperties.swift in Sources */,
 				18D0CB141A9C63E80027DD8F /* PRKanjiTableViewHeaderCell.swift in Sources */,
@@ -731,6 +730,7 @@
 				18D26D9B1A883ED800A8908C /* PRDatabaseHelper.swift in Sources */,
 				FB67D6E81A861B8A00926E38 /* PRKanjiMenuViewController.swift in Sources */,
 				18D170761A89F3E200672203 /* PRFlashcardViewController.swift in Sources */,
+				FB1713D11CCCF09300525299 /* Testable.swift in Sources */,
 				FBBA5A571B5A72FE00CAAC92 /* PRInitController.swift in Sources */,
 				FBF343A81C5C8FCD00077C9D /* BaseEntity+CoreDataProperties.swift in Sources */,
 				18C494881A95A55000095A7E /* PRHeaderCoordinator.swift in Sources */,
@@ -760,8 +760,6 @@
 				18648AA71A9DB5EF00B5472D /* PRSearchKanjiViewController.swift in Sources */,
 				1812D5431AA9A35E004C91D0 /* PRNoCursorTextField.swift in Sources */,
 				1812D5451AA9A771004C91D0 /* PRFilterCell.swift in Sources */,
-				FBF343AE1C5C8FCD00077C9D /* Testable+CoreDataProperties.swift in Sources */,
-				FBF343AF1C5C8FCD00077C9D /* Testable.swift in Sources */,
 				FB67D6E31A861B8A00926E38 /* AppDelegate.swift in Sources */,
 				18BD12291B4E2EBB00D76B2D /* PRViewExtension.swift in Sources */,
 				18C4948C1A95B78900095A7E /* PRKanjiPageViewController.swift in Sources */,
@@ -807,8 +805,6 @@
 				FB803FF81CC2562400E75C8B /* Radical.swift in Sources */,
 				FB803FF91CC2562400E75C8B /* Reading+CoreDataProperties.swift in Sources */,
 				FB803FFA1CC2562400E75C8B /* Reading.swift in Sources */,
-				FB803FFB1CC2562400E75C8B /* Testable+CoreDataProperties.swift in Sources */,
-				FB803FFC1CC2562400E75C8B /* Testable.swift in Sources */,
 				FB803FFD1CC2562400E75C8B /* Onyomi+CoreDataProperties.swift in Sources */,
 				FB803FFE1CC2562400E75C8B /* Onyomi.swift in Sources */,
 				FB803FFF1CC2562400E75C8B /* Sentence+CoreDataProperties.swift in Sources */,

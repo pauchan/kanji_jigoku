@@ -150,5 +150,9 @@ extension String
     {
         return self.stringByReplacingOccurrencesOfString("（", withString: "(").stringByReplacingOccurrencesOfString("）", withString: ")")
     }
+    
+    func substituteRemainingPolishChars() -> String {
+        return self.stringByReplacingOccurrencesOfString("ł", withString: "l", options: NSStringCompareOptions.CaseInsensitiveSearch, range: self.rangeOfString(self))
+    }
 }
 

@@ -17,6 +17,7 @@ extension Sentence {
     @NSManaged var example: String?
     @NSManaged var kanji: String?
     @NSManaged var meaning: String?
+    @NSManaged var ascii_meaning: String?
     @NSManaged var sentence: String?
     @NSManaged var sentenceId: Int32
     @NSManaged var character: Kanji?

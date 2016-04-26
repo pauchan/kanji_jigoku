@@ -47,6 +47,7 @@
         <attribute name="readingId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
     </entity>
     <entity name="Sentence" representedClassName="kanjijigoku.Sentence" parentEntity="BaseEntity" syncable="YES">
+        <attribute name="ascii_meaning" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="example" attributeType="String" syncable="YES"/>
         <attribute name="kanji" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="meaning" optional="YES" attributeType="String" syncable="YES"/>
@@ -64,6 +65,7 @@
         <attribute name="filterOn" optional="YES" attributeType="Boolean" syncable="YES"/>
     </entity>
     <entity name="Testable" representedClassName="kanjijigoku.Testable" isAbstract="YES" parentEntity="BaseEntity" syncable="YES">
+        <attribute name="ascii_meaning" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="kanji" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="meaning" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="reading" optional="YES" attributeType="String" syncable="YES"/>
@@ -76,8 +78,8 @@
         <element name="Onyomi" positionX="-5276" positionY="-2052" width="128" height="58"/>
         <element name="Radical" positionX="-5798" positionY="-1728" width="128" height="103"/>
         <element name="Reading" positionX="-5519" positionY="-2182" width="128" height="73"/>
-        <element name="Sentence" positionX="-5463" positionY="-1765" width="128" height="148"/>
-        <element name="Testable" positionX="-5780" positionY="-2178" width="128" height="88"/>
+        <element name="Sentence" positionX="-5463" positionY="-1765" width="128" height="165"/>
+        <element name="Testable" positionX="-5780" positionY="-2178" width="128" height="105"/>
         <element name="Settings" positionX="-6003" positionY="-2034" width="128" height="135"/>
     </elements>
 </model>

@@ -217,6 +217,7 @@ class PRDatabaseHelper
                     sentence.example = rs.stringForColumnIndex(1)
                     sentence.sentence = rs.stringForColumnIndex(2)
                     sentence.meaning = rs.stringForColumnIndex(3)
+                    sentence.ascii_meaning = sentence.meaning!.stringByFoldingWithOptions(.DiacriticInsensitiveSearch, locale: NSLocale.currentLocale())
                     sentence.code = String(rs.intForColumnIndex(4))
                     sentence.sentenceId = rs.intForColumnIndex(5)
                     
@@ -271,6 +272,9 @@ class PRDatabaseHelper
                     print(rs.stringForColumnIndex(1))
                     example.example = rs.stringForColumnIndex(1).kanjiWithOkurigana(rs.stringForColumnIndex(0))
                     example.meaning = rs.stringForColumnIndex(2)
+                    print ("locale: \(NSLocale.currentLocale())")
+                    example.ascii_meaning = example.meaning!.stringByFoldingWithOptions(.DiacriticInsensitiveSearch, locale: NSLocale(localeIdentifier: "pl")).substituteRemainingPolishChars()
+                    print("meaning: \(example.ascii_meaning)")
                     example.code = "0"
                     example.note = rs.stringForColumnIndex(5)
                 
@@ -555,7 +559,7 @@ class PRDatabaseHelper
     }
     
     
-    func fetchObjectsContainingPhrase(object: String, phrase: String) -> [NSManagedObject]
+    func fetchObjectsContainingPhrase(object: String, var phrase: String) -> [NSManagedObject]
     {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext!
@@ -574,15 +578,16 @@ class PRDatabaseHelper
         if phrase.isRomaji() {
             hiraganaPhrase = PRRomajiKanaConverter().convert(phrase, from: AlphabetType.Romaji, to: AlphabetType.Hiragana)
             katakanaPhrase = PRRomajiKanaConverter().convert(phrase, from: AlphabetType.Romaji, to: AlphabetType.Katakana)
+            phrase = phrase.stringByFoldingWithOptions(.DiacriticInsensitiveSearch, locale: NSLocale(localeIdentifier: "pl")).substituteRemainingPolishChars()
         }
         switch object {
         case "Kanji":
             predicates = [NSPredicate(format: "ANY kunyomis.reading='\(hiraganaPhrase)'"), NSPredicate(format: "ANY onyomis.reading='\(katakanaPhrase)'"),
                 NSPredicate(format: "ANY kunyomis.hiraganaReading='\(hiraganaPhrase)'")]
         case "Example":
-            predicates = [NSPredicate(format: "reading CONTAINS '\(hiraganaPhrase)'"), NSPredicate(format: "example CONTAINS '\(kanjiPhrase)'"), NSPredicate(format: "meaning CONTAINS[c] '\(phrase)'")]
+            predicates = [NSPredicate(format: "reading CONTAINS '\(hiraganaPhrase)'"), NSPredicate(format: "example CONTAINS '\(kanjiPhrase)'"), NSPredicate(format: "ascii_meaning CONTAINS[c] '\(phrase)'")]
         case "Sentence":
-            predicates = [NSPredicate(format: "sentence CONTAINS '\(hiraganaPhrase)'"), NSPredicate(format: "meaning CONTAINS[c] '\(phrase)'")]
+            predicates = [NSPredicate(format: "sentence CONTAINS '\(hiraganaPhrase)'"), NSPredicate(format: "ascii_meaning CONTAINS[c] '\(phrase)'")]
         default:
             predicates = [NSPredicate]()
         }
