@@ -127,12 +127,10 @@ class PRTestMenuViewController : UITableViewController
             // 2. randomly select 10 of them
             let idsArray = PRDatabaseHelper().generateRandomIdsArray(10, arrayCount: wideArray.count)
             
-            for selectedId in idsArray
-            {
+            for selectedId in idsArray {
 
                 let object: AnyObject = wideArray[selectedId]
                 let questionString : String = object.valueForKey(testDict["questionProperty"]!) as! String
-                
                 
                 let properAnswer = object.valueForKey(testDict["answerProperty"]!) as! String
                 
@@ -142,20 +140,22 @@ class PRTestMenuViewController : UITableViewController
                 {
                     let kunyomiObject = object as! Kunyomi
                     falseAnswers = PRDatabaseHelper().fetchFalseAnswers(testDict["questionObject"]!, property: testDict["answerProperty"]!, properAnswer: properAnswer, partOfSpeechIndex: Int(kunyomiObject.speechPart), maxLevel: PRStateSingleton.sharedInstance.currentLevel, maxLesson: PRStateSingleton.sharedInstance.currentLesson)
-                }
-                else
-                {
+                } else {
                     falseAnswers = PRDatabaseHelper().fetchFalseAnswers(testDict["questionObject"]!, property: testDict["answerProperty"]!, properAnswer: properAnswer, partOfSpeechIndex:0, maxLevel: PRStateSingleton.sharedInstance.currentLevel, maxLesson: PRStateSingleton.sharedInstance.currentLesson)
                 }
-
-                let meaning = object.valueForKey("meaning") as! String
-
+                var meaning: String = ""
+                if testDict["questionObject"]! == "Onyomi" && testDict["questionProperty"]! == "kanji" {
+                    let onyomi = object as! Onyomi
+                    meaning = (onyomi.character?.meaning!)!
+                } else {
+                    meaning = object.valueForKey("meaning") as! String
+                }
+                
                 let question = Question(question: questionString, correctOption: properAnswer,  falseOptions: falseAnswers, meaning: meaning)
                 newResponse.append(question)
             }
         }
         return newResponse
-        
     }
     
     
