@@ -116,6 +116,7 @@
 		FB8040191CC257F500E75C8B /* PRFlashcardMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D1705D1A8997C700672203 /* PRFlashcardMenuViewController.swift */; };
 		FB80401A1CC257F500E75C8B /* PRFlashcardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D170751A89F3E200672203 /* PRFlashcardViewController.swift */; };
 		FBBA5A571B5A72FE00CAAC92 /* PRInitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBBA5A561B5A72FE00CAAC92 /* PRInitController.swift */; };
+		FBC6C71D1CCF865F009E5598 /* ImportOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC6C71C1CCF865F009E5598 /* ImportOperation.swift */; };
 		FBD813201CA0374400725593 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FBD8131F1CA0374400725593 /* Settings.bundle */; };
 		FBF343931C5C8C3E00077C9D /* Flashcard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF343921C5C8C3E00077C9D /* Flashcard.swift */; };
 		FBF343A61C5C8FCD00077C9D /* Kanji+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF343941C5C8FCD00077C9D /* Kanji+CoreDataProperties.swift */; };
@@ -211,6 +212,7 @@
 		FB67D6FB1A861B8B00926E38 /* kanjijigokuTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kanjijigokuTests.swift; sourceTree = "<group>"; };
 		FB67D7081A86232E00926E38 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		FBBA5A561B5A72FE00CAAC92 /* PRInitController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRInitController.swift; path = Source/PRInitController.swift; sourceTree = "<group>"; };
+		FBC6C71C1CCF865F009E5598 /* ImportOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImportOperation.swift; path = Source/fmdb/ImportOperation.swift; sourceTree = "<group>"; };
 		FBD8131F1CA0374400725593 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		FBF343921C5C8C3E00077C9D /* Flashcard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Flashcard.swift; path = Source/Flashcard.swift; sourceTree = "<group>"; };
 		FBF343941C5C8FCD00077C9D /* Kanji+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Kanji+CoreDataProperties.swift"; path = "Source/Kanji+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -466,6 +468,7 @@
 				188945851B4F7F41006F9564 /* AppDefaults.swift */,
 				188B81A31B60AB3D00B1543A /* PRRomajiKanaConverter.swift */,
 				FB67D6E21A861B8A00926E38 /* AppDelegate.swift */,
+				FBC6C71C1CCF865F009E5598 /* ImportOperation.swift */,
 			);
 			name = Helper;
 			sourceTree = "<group>";
@@ -762,6 +765,7 @@
 				1812D5451AA9A771004C91D0 /* PRFilterCell.swift in Sources */,
 				FB67D6E31A861B8A00926E38 /* AppDelegate.swift in Sources */,
 				18BD12291B4E2EBB00D76B2D /* PRViewExtension.swift in Sources */,
+				FBC6C71D1CCF865F009E5598 /* ImportOperation.swift in Sources */,
 				18C4948C1A95B78900095A7E /* PRKanjiPageViewController.swift in Sources */,
 				FBF343BB1C5CD1E200077C9D /* Kunyomi.swift in Sources */,
 				1871527F1AE5F67B008AD647 /* PRImageGenerator.swift in Sources */,

@@ -51,16 +51,22 @@ class PRInitController: UIViewController {
         if NSUserDefaults.standardUserDefaults().objectForKey("PRKanjiJigokuAutoDbUpdate") == nil || NSUserDefaults.standardUserDefaults().objectForKey("PRKanjiJigokuAutoDbUpdate") as! Bool == true
         {
             debugLog("syncing database")
-            message = PRDatabaseHelper().syncDatabase()
+//            message = PRDatabaseHelper().syncDatabase()
+            let operationQueue = NSOperationQueue()
+            let importOperation = ImportOperation()
+            importOperation.completionBlock = {
+                
+                // delegate method
+                let stateSingleton : PRStateSingleton = PRStateSingleton.sharedInstance
+                stateSingleton.levelArray = PRDatabaseHelper().getLevelArray()
+                stateSingleton.lessonArray = PRDatabaseHelper().getLessonArray(stateSingleton.currentLevel)
+                
+                self.delegate?.splashDidFinishLoading(importOperation.updateMessage)
+            }
+            operationQueue.addOperation(importOperation)
         } else {
             debugLog("dont auto-update db...")
         }
-        // delegate method
-        let stateSingleton : PRStateSingleton = PRStateSingleton.sharedInstance
-        stateSingleton.levelArray = PRDatabaseHelper().getLevelArray()
-        stateSingleton.lessonArray = PRDatabaseHelper().getLessonArray(stateSingleton.currentLevel)
-        
-        delegate?.splashDidFinishLoading(message)
     }
     
 }

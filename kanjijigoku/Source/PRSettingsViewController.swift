@@ -152,17 +152,23 @@ class PRSettingsViewController: UITableViewController {
         let backgroundView = UIView(frame: UIScreen.mainScreen().bounds)
         backgroundView.backgroundColor = UIColor(colorLiteralRed: 0, green: 0, blue: 0, alpha: 0.5)
         let indicator = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
+        indicator.center = self.tableView.center
         backgroundView.addSubview(indicator)
         indicator.startAnimating()
-        self.tableView.addSubview(backgroundView)
-        let priority = DISPATCH_QUEUE_PRIORITY_BACKGROUND
-        dispatch_async(dispatch_get_global_queue(priority, 0)) {
+        UIApplication.sharedApplication().keyWindow!.addSubview(backgroundView)
             // do some task
-            PRDatabaseHelper().syncDatabase()
-            dispatch_async(dispatch_get_main_queue()) {
-                backgroundView.removeFromSuperview()
-                self.navigationController?.popToRootViewControllerAnimated(false)
+            //PRDatabaseHelper().syncDatabase()
+            let operationQueue = NSOperationQueue()
+            let importOperation = ImportOperation()
+            importOperation.completionBlock = {
+                    dispatch_async(dispatch_get_main_queue(), {
+                        backgroundView.removeFromSuperview()
+                        PRDatabaseHelper().loadAppSettings()
+                        self.navigationController?.popToRootViewControllerAnimated(false)
+                        })
             }
-        }
+            operationQueue.addOperation(importOperation)
+        
+        
     }
 }
