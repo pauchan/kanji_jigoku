@@ -201,7 +201,7 @@ class PRSearchKanjiViewController: UIViewController, UITableViewDelegate, UITabl
         let str = "Wyszukiwanie znaków: 金, 食べる, 連絡 \n" +
         "Wyszukiwanie na postawie kany: かね, たべる, れんらく \n" +
         "Wyszukiwanie na podstawie czytania fonetycznego: kane, taberu, renraku \n" +
-        "Wyszukiwanie znaczeń: pieniadze, jesc, kontakt \n"
+        "Wyszukiwanie znaczeń: pieniądze, jeść, kontakt \n"
         let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleBody)]
         return NSAttributedString(string: str, attributes: attrs)
     }

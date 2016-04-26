@@ -38,7 +38,7 @@ class ImportOperation: NSOperation {
     func importDB() {
         
         if(!shouldUpdateDb()) {
-            print("database up to date")
+            debugLog("database up to date")
             return
         }
         //if downloadFullAccessDb() {
@@ -50,7 +50,7 @@ class ImportOperation: NSOperation {
             
             if database.open() {
                 if parseDb(database) {
-                    print("parsed db succesfully")
+                    debugLog("parsed db succesfully")
                     self.updateMessage = updateAlertMessage(readAuthToken(), requestedToken: requestAuthToken(database))
                     return
                 } else {
@@ -190,7 +190,6 @@ class ImportOperation: NSOperation {
                 let mutExampleSet = parseExamples(database, character: character.kanji!)
                 character.examples = mutExampleSet.setByAddingObjectsFromSet(exampleSet as Set<NSObject>)
                 character.sentences = parseSentences(database, character: character.kanji!)
-                debugLog("for kanji \(character.kanji) sententces count \(character.sentences!.count)")
                 character.radicals = parseRadicals(database, number: Int(character.radical))
                 
             }
@@ -280,12 +279,9 @@ class ImportOperation: NSOperation {
                 let example = NSManagedObject(entity: exampleEntity, insertIntoManagedObjectContext: managedContext) as! Example
                 example.kanji = rs.stringForColumnIndex(0)
                 example.reading = rs.stringForColumnIndex(1).plainHiragana()
-                print(rs.stringForColumnIndex(1))
                 example.example = rs.stringForColumnIndex(1).kanjiWithOkurigana(rs.stringForColumnIndex(0))
                 example.meaning = rs.stringForColumnIndex(2)
-                print ("locale: \(NSLocale.currentLocale())")
                 example.ascii_meaning = example.meaning!.stringByFoldingWithOptions(.DiacriticInsensitiveSearch, locale: NSLocale(localeIdentifier: "pl")).substituteRemainingPolishChars()
-                print("meaning: \(example.ascii_meaning)")
                 example.code = "0"
                 example.note = rs.stringForColumnIndex(5)
                 
@@ -449,7 +445,7 @@ class ImportOperation: NSOperation {
                 }
             }
         } else {
-            print("auth query failed")
+            debugLog("auth query failed")
         }
         return false
     }
