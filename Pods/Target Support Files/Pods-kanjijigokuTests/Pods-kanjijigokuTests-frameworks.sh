@@ -87,9 +87,11 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-kanjijigokuTests/ChameleonFramework.framework"
   install_framework "Pods-kanjijigokuTests/DZNEmptyDataSet.framework"
   install_framework "Pods-kanjijigokuTests/FMDB.framework"
+  install_framework "Pods-kanjijigokuTests/FlatUIKit.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-kanjijigokuTests/ChameleonFramework.framework"
   install_framework "Pods-kanjijigokuTests/DZNEmptyDataSet.framework"
   install_framework "Pods-kanjijigokuTests/FMDB.framework"
+  install_framework "Pods-kanjijigokuTests/FlatUIKit.framework"
 fi

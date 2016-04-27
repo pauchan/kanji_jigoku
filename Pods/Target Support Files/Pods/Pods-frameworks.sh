@@ -87,9 +87,11 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods/ChameleonFramework.framework"
   install_framework "Pods/DZNEmptyDataSet.framework"
   install_framework "Pods/FMDB.framework"
+  install_framework "Pods/FlatUIKit.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods/ChameleonFramework.framework"
   install_framework "Pods/DZNEmptyDataSet.framework"
   install_framework "Pods/FMDB.framework"
+  install_framework "Pods/FlatUIKit.framework"
 fi

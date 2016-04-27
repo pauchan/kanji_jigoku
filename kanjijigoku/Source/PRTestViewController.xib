@@ -97,10 +97,10 @@
                         <rect key="frame" x="30" y="196" width="540" height="25"/>
                     </variation>
                 </button>
-                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" misplaced="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="eXC-Jb-vSq">
-                    <rect key="frame" x="15" y="587" width="738" height="5"/>
+                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eXC-Jb-vSq">
+                    <rect key="frame" x="15" y="587" width="738" height="15"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="5" id="1io-TO-fXr"/>
+                        <constraint firstAttribute="height" constant="15" id="1io-TO-fXr"/>
                     </constraints>
                     <variation key="heightClass=compact" misplaced="YES">
                         <rect key="frame" x="15" y="315" width="570" height="5"/>
@@ -134,6 +134,7 @@
                     <variation key="heightClass=regular" constant="20"/>
                 </constraint>
                 <constraint firstItem="IPh-bC-VMs" firstAttribute="top" secondItem="DAs-cy-EYS" secondAttribute="bottom" constant="15" id="VI7-C5-D6k"/>
+                <constraint firstItem="eXC-Jb-vSq" firstAttribute="top" secondItem="2sc-uW-rfX" secondAttribute="bottom" constant="55" id="Wri-0B-AXl"/>
                 <constraint firstItem="eXC-Jb-vSq" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="XbN-8o-2u3"/>
                 <constraint firstItem="2sc-uW-rfX" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="30" id="ZZ3-1I-P54"/>
                 <constraint firstItem="EHD-QF-baa" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="30" id="kx2-De-r69"/>

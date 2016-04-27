@@ -10,5 +10,6 @@
 #define kanjijigoku_Bridging_Header_h
 
 #import "UIScrollView+EmptyDataSet.h"
+#import "FlatUIKit.h"
 
 #endif /* kanjijigoku_Bridging_Header_h */
