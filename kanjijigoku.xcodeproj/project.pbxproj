@@ -16,7 +16,6 @@
 		18648AA71A9DB5EF00B5472D /* PRSearchKanjiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18648AA51A9DB5EF00B5472D /* PRSearchKanjiViewController.swift */; };
 		18648AA81A9DB5EF00B5472D /* PRSearchKanjiViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18648AA61A9DB5EF00B5472D /* PRSearchKanjiViewController.xib */; };
 		1871527F1AE5F67B008AD647 /* PRImageGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1871527E1AE5F67B008AD647 /* PRImageGenerator.swift */; };
-		188945861B4F7F41006F9564 /* AppDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188945851B4F7F41006F9564 /* AppDefaults.swift */; };
 		188B81A41B60AB3D00B1543A /* PRRomajiKanaConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188B81A31B60AB3D00B1543A /* PRRomajiKanaConverter.swift */; };
 		188B81A81B60B7BB00B1543A /* PRRomajiKanaConverterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188B81A71B60B7BB00B1543A /* PRRomajiKanaConverterTest.swift */; };
 		188B81AA1B60BE8C00B1543A /* RomajiKanaConversionArray.plist in Resources */ = {isa = PBXBuildFile; fileRef = 188B81A91B60BE8C00B1543A /* RomajiKanaConversionArray.plist */; };
@@ -26,7 +25,6 @@
 		189369431A9D4DFD001DEFC4 /* PRSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189369411A9D4DFD001DEFC4 /* PRSettingsViewController.swift */; };
 		1899D5881A9F0F1E006B63B0 /* PRMenuViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1899D5871A9F0F1E006B63B0 /* PRMenuViewExtension.swift */; };
 		18BD12251B4E15EF00D76B2D /* PRFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BD12241B4E15EF00D76B2D /* PRFontExtension.swift */; };
-		18BD12291B4E2EBB00D76B2D /* PRViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BD12281B4E2EBB00D76B2D /* PRViewExtension.swift */; };
 		18C27A0A1AA4332200B8621C /* PRFilterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C27A091AA4332200B8621C /* PRFilterController.swift */; };
 		18C494881A95A55000095A7E /* PRHeaderCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C494871A95A55000095A7E /* PRHeaderCoordinator.swift */; };
 		18C4948C1A95B78900095A7E /* PRKanjiPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C4948B1A95B78900095A7E /* PRKanjiPageViewController.swift */; };
@@ -39,8 +37,6 @@
 		18C64F2A1A920400000F5641 /* PRTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18C64F281A920400000F5641 /* PRTestViewController.xib */; };
 		18D0CB121A9C5E060027DD8F /* PRKanjiTableViewHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18D0CB111A9C5E060027DD8F /* PRKanjiTableViewHeaderCell.xib */; };
 		18D0CB141A9C63E80027DD8F /* PRKanjiTableViewHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D0CB131A9C63E80027DD8F /* PRKanjiTableViewHeaderCell.swift */; };
-		18D1705E1A8997C700672203 /* PRFlashcardMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D1705D1A8997C700672203 /* PRFlashcardMenuViewController.swift */; };
-		18D170601A8997D700672203 /* PRTestsMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D1705F1A8997D700672203 /* PRTestsMenuViewController.swift */; };
 		18D170621A89A0B000672203 /* PRHeaderViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18D170611A89A0B000672203 /* PRHeaderViewCell.xib */; };
 		18D170641A89A49B00672203 /* PRHeaderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D170631A89A49B00672203 /* PRHeaderViewCell.swift */; };
 		18D1706A1A89BBE800672203 /* flashcardItems.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18D170691A89BBE800672203 /* flashcardItems.plist */; };
@@ -48,7 +44,6 @@
 		18D170721A89F03100672203 /* PRFlashcardPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D170711A89F03100672203 /* PRFlashcardPageViewController.swift */; };
 		18D170741A89F13100672203 /* PRFlashcardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18D170731A89F13100672203 /* PRFlashcardViewController.xib */; };
 		18D170761A89F3E200672203 /* PRFlashcardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D170751A89F3E200672203 /* PRFlashcardViewController.swift */; };
-		18D26D9B1A883ED800A8908C /* PRDatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D26D9A1A883ED800A8908C /* PRDatabaseHelper.swift */; };
 		20C3EED96B6587AC6FC7C699 /* Pods_kanjijigoku.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F25467472E303D1DF986320D /* Pods_kanjijigoku.framework */; };
 		2FCB73BECFAB97A33A94AB6E /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 064766009EFF4D181DAF83BA /* Pods.framework */; };
 		E099F6C0C44D122B00F2C3D1 /* Pods_kanjijigokuTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94FB5FAC2AA67C125C23E0B5 /* Pods_kanjijigokuTests.framework */; };
@@ -58,23 +53,17 @@
 		FB1713C71CCB2A5D00525299 /* Settings+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1713C21CCB263D00525299 /* Settings+CoreDataProperties.swift */; };
 		FB1713D01CCCF09300525299 /* Testable+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1713CE1CCCF09300525299 /* Testable+CoreDataProperties.swift */; };
 		FB1713D11CCCF09300525299 /* Testable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1713CF1CCCF09300525299 /* Testable.swift */; };
-		FB67D6E31A861B8A00926E38 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB67D6E21A861B8A00926E38 /* AppDelegate.swift */; };
 		FB67D6E61A861B8A00926E38 /* kanjijigoku.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FB67D6E41A861B8A00926E38 /* kanjijigoku.xcdatamodeld */; };
-		FB67D6E81A861B8A00926E38 /* PRKanjiMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB67D6E71A861B8A00926E38 /* PRKanjiMenuViewController.swift */; };
 		FB67D6ED1A861B8A00926E38 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB67D6EC1A861B8A00926E38 /* Images.xcassets */; };
 		FB67D6F01A861B8A00926E38 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB67D6EE1A861B8A00926E38 /* LaunchScreen.xib */; };
 		FB67D6FC1A861B8B00926E38 /* kanjijigokuTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB67D6FB1A861B8B00926E38 /* kanjijigokuTests.swift */; };
 		FB67D7091A86232E00926E38 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FB67D7081A86232E00926E38 /* libsqlite3.dylib */; };
-		FB803FE71CC2560A00E75C8B /* PRDatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D26D9A1A883ED800A8908C /* PRDatabaseHelper.swift */; };
 		FB803FE81CC2560A00E75C8B /* PRStateSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D1706D1A89D77B00672203 /* PRStateSingleton.swift */; };
 		FB803FE91CC2560A00E75C8B /* PRImageGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1871527E1AE5F67B008AD647 /* PRImageGenerator.swift */; };
-		FB803FEA1CC2560A00E75C8B /* AppDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188945851B4F7F41006F9564 /* AppDefaults.swift */; };
 		FB803FEB1CC2560A00E75C8B /* PRRomajiKanaConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188B81A31B60AB3D00B1543A /* PRRomajiKanaConverter.swift */; };
-		FB803FEC1CC2560A00E75C8B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB67D6E21A861B8A00926E38 /* AppDelegate.swift */; };
 		FB803FED1CC2561800E75C8B /* PRFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BD12241B4E15EF00D76B2D /* PRFontExtension.swift */; };
 		FB803FEE1CC2561800E75C8B /* PRMenuViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1899D5871A9F0F1E006B63B0 /* PRMenuViewExtension.swift */; };
 		FB803FEF1CC2561800E75C8B /* PRStringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184828491B4CDFC1001AB41F /* PRStringExtension.swift */; };
-		FB803FF01CC2561800E75C8B /* PRViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BD12281B4E2EBB00D76B2D /* PRViewExtension.swift */; };
 		FB803FF11CC2562300E75C8B /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C5DA241A92FEF2007FF4A3 /* Question.swift */; };
 		FB803FF21CC2562300E75C8B /* Flashcard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF343921C5C8C3E00077C9D /* Flashcard.swift */; };
 		FB803FF31CC2562300E75C8B /* Kanji+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF343941C5C8FCD00077C9D /* Kanji+CoreDataProperties.swift */; };
@@ -105,19 +94,23 @@
 		FB80400E1CC257F500E75C8B /* PRNoCursorTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1812D5421AA9A35E004C91D0 /* PRNoCursorTextField.swift */; };
 		FB80400F1CC257F500E75C8B /* PRDetailedKanjiCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1848284C1B4CF964001AB41F /* PRDetailedKanjiCell.swift */; };
 		FB8040101CC257F500E75C8B /* PRSearchKanjiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18648AA51A9DB5EF00B5472D /* PRSearchKanjiViewController.swift */; };
-		FB8040111CC257F500E75C8B /* PRKanjiMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB67D6E71A861B8A00926E38 /* PRKanjiMenuViewController.swift */; };
 		FB8040121CC257F500E75C8B /* PRKanjiPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C4948B1A95B78900095A7E /* PRKanjiPageViewController.swift */; };
 		FB8040131CC257F500E75C8B /* PRKanjiTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C4948D1A95B7AB00095A7E /* PRKanjiTableViewController.swift */; };
 		FB8040141CC257F500E75C8B /* PRKanjiTableViewHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D0CB131A9C63E80027DD8F /* PRKanjiTableViewHeaderCell.swift */; };
-		FB8040151CC257F500E75C8B /* PRTestsMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D1705F1A8997D700672203 /* PRTestsMenuViewController.swift */; };
 		FB8040161CC257F500E75C8B /* PRTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C64F251A9203C1000F5641 /* PRTestViewController.swift */; };
 		FB8040171CC257F500E75C8B /* PRTestResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C64F271A920400000F5641 /* PRTestResultsViewController.swift */; };
 		FB8040181CC257F500E75C8B /* PRFlashcardPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D170711A89F03100672203 /* PRFlashcardPageViewController.swift */; };
-		FB8040191CC257F500E75C8B /* PRFlashcardMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D1705D1A8997C700672203 /* PRFlashcardMenuViewController.swift */; };
 		FB80401A1CC257F500E75C8B /* PRFlashcardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D170751A89F3E200672203 /* PRFlashcardViewController.swift */; };
 		FBBA5A571B5A72FE00CAAC92 /* PRInitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBBA5A561B5A72FE00CAAC92 /* PRInitController.swift */; };
 		FBC6C71D1CCF865F009E5598 /* ImportOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC6C71C1CCF865F009E5598 /* ImportOperation.swift */; };
 		FBD813201CA0374400725593 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FBD8131F1CA0374400725593 /* Settings.bundle */; };
+		FBD8CB8E1D72CC940061DC52 /* AppDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD8CB8B1D72CC940061DC52 /* AppDefaults.swift */; };
+		FBD8CB8F1D72CC940061DC52 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD8CB8C1D72CC940061DC52 /* AppDelegate.swift */; };
+		FBD8CB901D72CC940061DC52 /* PRDatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD8CB8D1D72CC940061DC52 /* PRDatabaseHelper.swift */; };
+		FBD8CB921D72CCB00061DC52 /* PRViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD8CB911D72CCB00061DC52 /* PRViewExtension.swift */; };
+		FBD8CB941D72CCBC0061DC52 /* PRFlashcardMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD8CB931D72CCBC0061DC52 /* PRFlashcardMenuViewController.swift */; };
+		FBD8CB961D72CCC80061DC52 /* PRTestsMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD8CB951D72CCC80061DC52 /* PRTestsMenuViewController.swift */; };
+		FBD8CB981D72CCD30061DC52 /* PRKanjiMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD8CB971D72CCD30061DC52 /* PRKanjiMenuViewController.swift */; };
 		FBF343931C5C8C3E00077C9D /* Flashcard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF343921C5C8C3E00077C9D /* Flashcard.swift */; };
 		FBF343A61C5C8FCD00077C9D /* Kanji+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF343941C5C8FCD00077C9D /* Kanji+CoreDataProperties.swift */; };
 		FBF343A71C5C8FCD00077C9D /* Kanji.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF343951C5C8FCD00077C9D /* Kanji.swift */; };
@@ -160,7 +153,6 @@
 		18648AA51A9DB5EF00B5472D /* PRSearchKanjiViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRSearchKanjiViewController.swift; path = Source/PRSearchKanjiViewController.swift; sourceTree = "<group>"; };
 		18648AA61A9DB5EF00B5472D /* PRSearchKanjiViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PRSearchKanjiViewController.xib; path = Source/PRSearchKanjiViewController.xib; sourceTree = "<group>"; };
 		1871527E1AE5F67B008AD647 /* PRImageGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRImageGenerator.swift; path = Source/PRImageGenerator.swift; sourceTree = "<group>"; };
-		188945851B4F7F41006F9564 /* AppDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDefaults.swift; sourceTree = "<group>"; };
 		188B81A31B60AB3D00B1543A /* PRRomajiKanaConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRRomajiKanaConverter.swift; path = Source/PRRomajiKanaConverter.swift; sourceTree = "<group>"; };
 		188B81A71B60B7BB00B1543A /* PRRomajiKanaConverterTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRRomajiKanaConverterTest.swift; sourceTree = "<group>"; };
 		188B81A91B60BE8C00B1543A /* RomajiKanaConversionArray.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = RomajiKanaConversionArray.plist; sourceTree = "<group>"; };
@@ -170,7 +162,6 @@
 		189369411A9D4DFD001DEFC4 /* PRSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRSettingsViewController.swift; path = Source/PRSettingsViewController.swift; sourceTree = "<group>"; };
 		1899D5871A9F0F1E006B63B0 /* PRMenuViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRMenuViewExtension.swift; path = Source/PRMenuViewExtension.swift; sourceTree = "<group>"; };
 		18BD12241B4E15EF00D76B2D /* PRFontExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRFontExtension.swift; path = Source/PRFontExtension.swift; sourceTree = "<group>"; };
-		18BD12281B4E2EBB00D76B2D /* PRViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRViewExtension.swift; sourceTree = "<group>"; };
 		18C27A091AA4332200B8621C /* PRFilterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRFilterController.swift; path = Source/PRFilterController.swift; sourceTree = "<group>"; };
 		18C494871A95A55000095A7E /* PRHeaderCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRHeaderCoordinator.swift; path = Source/PRHeaderCoordinator.swift; sourceTree = "<group>"; };
 		18C4948B1A95B78900095A7E /* PRKanjiPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRKanjiPageViewController.swift; path = Source/PRKanjiPageViewController.swift; sourceTree = "<group>"; };
@@ -183,8 +174,6 @@
 		18C64F281A920400000F5641 /* PRTestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PRTestViewController.xib; path = Source/PRTestViewController.xib; sourceTree = "<group>"; };
 		18D0CB111A9C5E060027DD8F /* PRKanjiTableViewHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PRKanjiTableViewHeaderCell.xib; path = Source/PRKanjiTableViewHeaderCell.xib; sourceTree = "<group>"; };
 		18D0CB131A9C63E80027DD8F /* PRKanjiTableViewHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRKanjiTableViewHeaderCell.swift; path = Source/PRKanjiTableViewHeaderCell.swift; sourceTree = "<group>"; };
-		18D1705D1A8997C700672203 /* PRFlashcardMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRFlashcardMenuViewController.swift; sourceTree = "<group>"; };
-		18D1705F1A8997D700672203 /* PRTestsMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRTestsMenuViewController.swift; sourceTree = "<group>"; };
 		18D170611A89A0B000672203 /* PRHeaderViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PRHeaderViewCell.xib; path = Source/PRHeaderViewCell.xib; sourceTree = "<group>"; };
 		18D170631A89A49B00672203 /* PRHeaderViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRHeaderViewCell.swift; path = Source/PRHeaderViewCell.swift; sourceTree = "<group>"; };
 		18D170691A89BBE800672203 /* flashcardItems.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = flashcardItems.plist; sourceTree = "<group>"; };
@@ -192,7 +181,6 @@
 		18D170711A89F03100672203 /* PRFlashcardPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRFlashcardPageViewController.swift; path = Source/PRFlashcardPageViewController.swift; sourceTree = "<group>"; };
 		18D170731A89F13100672203 /* PRFlashcardViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PRFlashcardViewController.xib; path = Source/PRFlashcardViewController.xib; sourceTree = "<group>"; };
 		18D170751A89F3E200672203 /* PRFlashcardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRFlashcardViewController.swift; path = Source/PRFlashcardViewController.swift; sourceTree = "<group>"; };
-		18D26D9A1A883ED800A8908C /* PRDatabaseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRDatabaseHelper.swift; sourceTree = "<group>"; };
 		626BAA0C450EFA437D6AF1B2 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		94FB5FAC2AA67C125C23E0B5 /* Pods_kanjijigokuTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_kanjijigokuTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F25467472E303D1DF986320D /* Pods_kanjijigoku.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_kanjijigoku.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -203,9 +191,7 @@
 		FB1713CF1CCCF09300525299 /* Testable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Testable.swift; path = Source/fmdb/Testable.swift; sourceTree = "<group>"; };
 		FB67D6DD1A861B8A00926E38 /* kanjijigoku.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = kanjijigoku.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB67D6E11A861B8A00926E38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FB67D6E21A861B8A00926E38 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FB67D6E51A861B8A00926E38 /* kanjijigoku.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = kanjijigoku.xcdatamodel; sourceTree = "<group>"; };
-		FB67D6E71A861B8A00926E38 /* PRKanjiMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PRKanjiMenuViewController.swift; sourceTree = "<group>"; };
 		FB67D6EC1A861B8A00926E38 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		FB67D6EF1A861B8A00926E38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		FB67D6F51A861B8B00926E38 /* kanjijigokuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = kanjijigokuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -214,6 +200,13 @@
 		FBBA5A561B5A72FE00CAAC92 /* PRInitController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRInitController.swift; path = Source/PRInitController.swift; sourceTree = "<group>"; };
 		FBC6C71C1CCF865F009E5598 /* ImportOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImportOperation.swift; path = Source/fmdb/ImportOperation.swift; sourceTree = "<group>"; };
 		FBD8131F1CA0374400725593 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		FBD8CB8B1D72CC940061DC52 /* AppDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDefaults.swift; path = Source/AppDefaults.swift; sourceTree = "<group>"; };
+		FBD8CB8C1D72CC940061DC52 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Source/AppDelegate.swift; sourceTree = "<group>"; };
+		FBD8CB8D1D72CC940061DC52 /* PRDatabaseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRDatabaseHelper.swift; path = Source/PRDatabaseHelper.swift; sourceTree = "<group>"; };
+		FBD8CB911D72CCB00061DC52 /* PRViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRViewExtension.swift; path = Source/PRViewExtension.swift; sourceTree = "<group>"; };
+		FBD8CB931D72CCBC0061DC52 /* PRFlashcardMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRFlashcardMenuViewController.swift; path = Source/PRFlashcardMenuViewController.swift; sourceTree = "<group>"; };
+		FBD8CB951D72CCC80061DC52 /* PRTestsMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRTestsMenuViewController.swift; path = Source/PRTestsMenuViewController.swift; sourceTree = "<group>"; };
+		FBD8CB971D72CCD30061DC52 /* PRKanjiMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRKanjiMenuViewController.swift; path = Source/PRKanjiMenuViewController.swift; sourceTree = "<group>"; };
 		FBF343921C5C8C3E00077C9D /* Flashcard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Flashcard.swift; path = Source/Flashcard.swift; sourceTree = "<group>"; };
 		FBF343941C5C8FCD00077C9D /* Kanji+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Kanji+CoreDataProperties.swift"; path = "Source/Kanji+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		FBF343951C5C8FCD00077C9D /* Kanji.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Kanji.swift; path = Source/Kanji.swift; sourceTree = "<group>"; };
@@ -277,10 +270,10 @@
 		18BD121F1B4E055900D76B2D /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				FBD8CB911D72CCB00061DC52 /* PRViewExtension.swift */,
 				18BD12241B4E15EF00D76B2D /* PRFontExtension.swift */,
 				1899D5871A9F0F1E006B63B0 /* PRMenuViewExtension.swift */,
 				184828491B4CDFC1001AB41F /* PRStringExtension.swift */,
-				18BD12281B4E2EBB00D76B2D /* PRViewExtension.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -299,7 +292,7 @@
 		18C4948A1A95AE8B00095A7E /* Kanji */ = {
 			isa = PBXGroup;
 			children = (
-				FB67D6E71A861B8A00926E38 /* PRKanjiMenuViewController.swift */,
+				FBD8CB971D72CCD30061DC52 /* PRKanjiMenuViewController.swift */,
 				18C4948B1A95B78900095A7E /* PRKanjiPageViewController.swift */,
 				18C4948D1A95B7AB00095A7E /* PRKanjiTableViewController.swift */,
 				18D0CB111A9C5E060027DD8F /* PRKanjiTableViewHeaderCell.xib */,
@@ -311,7 +304,7 @@
 		18C64F221A92034E000F5641 /* Test */ = {
 			isa = PBXGroup;
 			children = (
-				18D1705F1A8997D700672203 /* PRTestsMenuViewController.swift */,
+				FBD8CB951D72CCC80061DC52 /* PRTestsMenuViewController.swift */,
 				18C64F251A9203C1000F5641 /* PRTestViewController.swift */,
 				18C64F271A920400000F5641 /* PRTestResultsViewController.swift */,
 				18C64F281A920400000F5641 /* PRTestViewController.xib */,
@@ -322,8 +315,8 @@
 		18E4E68C1A8D925C0038F86B /* Flashcard */ = {
 			isa = PBXGroup;
 			children = (
+				FBD8CB931D72CCBC0061DC52 /* PRFlashcardMenuViewController.swift */,
 				18D170711A89F03100672203 /* PRFlashcardPageViewController.swift */,
-				18D1705D1A8997C700672203 /* PRFlashcardMenuViewController.swift */,
 				18D170731A89F13100672203 /* PRFlashcardViewController.xib */,
 				18D170751A89F3E200672203 /* PRFlashcardViewController.swift */,
 			);
@@ -462,12 +455,12 @@
 		FBB1FF781A87252700F323D0 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				18D26D9A1A883ED800A8908C /* PRDatabaseHelper.swift */,
+				FBD8CB8B1D72CC940061DC52 /* AppDefaults.swift */,
+				FBD8CB8C1D72CC940061DC52 /* AppDelegate.swift */,
+				FBD8CB8D1D72CC940061DC52 /* PRDatabaseHelper.swift */,
 				18D1706D1A89D77B00672203 /* PRStateSingleton.swift */,
 				1871527E1AE5F67B008AD647 /* PRImageGenerator.swift */,
-				188945851B4F7F41006F9564 /* AppDefaults.swift */,
 				188B81A31B60AB3D00B1543A /* PRRomajiKanaConverter.swift */,
-				FB67D6E21A861B8A00926E38 /* AppDelegate.swift */,
 				FBC6C71C1CCF865F009E5598 /* ImportOperation.swift */,
 			);
 			name = Helper;
@@ -717,40 +710,41 @@
 				FBF343A91C5C8FCD00077C9D /* BaseEntity.swift in Sources */,
 				18D170721A89F03100672203 /* PRFlashcardPageViewController.swift in Sources */,
 				18C64F291A920400000F5641 /* PRTestResultsViewController.swift in Sources */,
+				FBD8CB8F1D72CC940061DC52 /* AppDelegate.swift in Sources */,
 				FBF343BA1C5CD1E200077C9D /* Kunyomi+CoreDataProperties.swift in Sources */,
 				FBF343B61C5C8FCD00077C9D /* Example+CoreDataProperties.swift in Sources */,
 				18C64F261A9203C1000F5641 /* PRTestViewController.swift in Sources */,
-				188945861B4F7F41006F9564 /* AppDefaults.swift in Sources */,
 				1848284D1B4CF964001AB41F /* PRDetailedKanjiCell.swift in Sources */,
 				FB1713C51CCB263D00525299 /* Settings.swift in Sources */,
 				FBF343B11C5C8FCD00077C9D /* Onyomi.swift in Sources */,
 				FB1713D01CCCF09300525299 /* Testable+CoreDataProperties.swift in Sources */,
+				FBD8CB921D72CCB00061DC52 /* PRViewExtension.swift in Sources */,
 				FBF343931C5C8C3E00077C9D /* Flashcard.swift in Sources */,
 				FBF343AA1C5C8FCD00077C9D /* Radical+CoreDataProperties.swift in Sources */,
 				18D0CB141A9C63E80027DD8F /* PRKanjiTableViewHeaderCell.swift in Sources */,
 				18C4948E1A95B7AB00095A7E /* PRKanjiTableViewController.swift in Sources */,
 				FBF343B21C5C8FCD00077C9D /* Sentence+CoreDataProperties.swift in Sources */,
-				18D26D9B1A883ED800A8908C /* PRDatabaseHelper.swift in Sources */,
-				FB67D6E81A861B8A00926E38 /* PRKanjiMenuViewController.swift in Sources */,
 				18D170761A89F3E200672203 /* PRFlashcardViewController.swift in Sources */,
 				FB1713D11CCCF09300525299 /* Testable.swift in Sources */,
+				FBD8CB901D72CC940061DC52 /* PRDatabaseHelper.swift in Sources */,
 				FBBA5A571B5A72FE00CAAC92 /* PRInitController.swift in Sources */,
 				FBF343A81C5C8FCD00077C9D /* BaseEntity+CoreDataProperties.swift in Sources */,
+				FBD8CB981D72CCD30061DC52 /* PRKanjiMenuViewController.swift in Sources */,
 				18C494881A95A55000095A7E /* PRHeaderCoordinator.swift in Sources */,
 				FBF343A71C5C8FCD00077C9D /* Kanji.swift in Sources */,
 				188B81A41B60AB3D00B1543A /* PRRomajiKanaConverter.swift in Sources */,
 				FBF343B71C5C8FCD00077C9D /* Example.swift in Sources */,
+				FBD8CB941D72CCBC0061DC52 /* PRFlashcardMenuViewController.swift in Sources */,
 				FBF343AB1C5C8FCD00077C9D /* Radical.swift in Sources */,
 				18C64F1C1A917AC5000F5641 /* PRFuriganaLabel.swift in Sources */,
 				188C73691A9EE6E600D1634C /* PRRelatedKanjiCell.swift in Sources */,
-				18D170601A8997D700672203 /* PRTestsMenuViewController.swift in Sources */,
 				FBF343B31C5C8FCD00077C9D /* Sentence.swift in Sources */,
 				1899D5881A9F0F1E006B63B0 /* PRMenuViewExtension.swift in Sources */,
 				FBF343AC1C5C8FCD00077C9D /* Reading+CoreDataProperties.swift in Sources */,
 				FBF343AD1C5C8FCD00077C9D /* Reading.swift in Sources */,
-				18D1705E1A8997C700672203 /* PRFlashcardMenuViewController.swift in Sources */,
 				18D1706E1A89D77B00672203 /* PRStateSingleton.swift in Sources */,
 				18BD12251B4E15EF00D76B2D /* PRFontExtension.swift in Sources */,
+				FBD8CB8E1D72CC940061DC52 /* AppDefaults.swift in Sources */,
 				FB67D6E61A861B8A00926E38 /* kanjijigoku.xcdatamodeld in Sources */,
 				FBF343A61C5C8FCD00077C9D /* Kanji+CoreDataProperties.swift in Sources */,
 				18D170641A89A49B00672203 /* PRHeaderViewCell.swift in Sources */,
@@ -760,11 +754,10 @@
 				18C27A0A1AA4332200B8621C /* PRFilterController.swift in Sources */,
 				18C5DA251A92FEF2007FF4A3 /* Question.swift in Sources */,
 				1860524E1A9AF44C0046247B /* PRKanjiHeader.swift in Sources */,
+				FBD8CB961D72CCC80061DC52 /* PRTestsMenuViewController.swift in Sources */,
 				18648AA71A9DB5EF00B5472D /* PRSearchKanjiViewController.swift in Sources */,
 				1812D5431AA9A35E004C91D0 /* PRNoCursorTextField.swift in Sources */,
 				1812D5451AA9A771004C91D0 /* PRFilterCell.swift in Sources */,
-				FB67D6E31A861B8A00926E38 /* AppDelegate.swift in Sources */,
-				18BD12291B4E2EBB00D76B2D /* PRViewExtension.swift in Sources */,
 				FBC6C71D1CCF865F009E5598 /* ImportOperation.swift in Sources */,
 				18C4948C1A95B78900095A7E /* PRKanjiPageViewController.swift in Sources */,
 				FBF343BB1C5CD1E200077C9D /* Kunyomi.swift in Sources */,
@@ -784,15 +777,12 @@
 				FB80400E1CC257F500E75C8B /* PRNoCursorTextField.swift in Sources */,
 				FB80400F1CC257F500E75C8B /* PRDetailedKanjiCell.swift in Sources */,
 				FB8040101CC257F500E75C8B /* PRSearchKanjiViewController.swift in Sources */,
-				FB8040111CC257F500E75C8B /* PRKanjiMenuViewController.swift in Sources */,
 				FB8040121CC257F500E75C8B /* PRKanjiPageViewController.swift in Sources */,
 				FB8040131CC257F500E75C8B /* PRKanjiTableViewController.swift in Sources */,
 				FB8040141CC257F500E75C8B /* PRKanjiTableViewHeaderCell.swift in Sources */,
-				FB8040151CC257F500E75C8B /* PRTestsMenuViewController.swift in Sources */,
 				FB8040161CC257F500E75C8B /* PRTestViewController.swift in Sources */,
 				FB8040171CC257F500E75C8B /* PRTestResultsViewController.swift in Sources */,
 				FB8040181CC257F500E75C8B /* PRFlashcardPageViewController.swift in Sources */,
-				FB8040191CC257F500E75C8B /* PRFlashcardMenuViewController.swift in Sources */,
 				FB80401A1CC257F500E75C8B /* PRFlashcardViewController.swift in Sources */,
 				FB1713C61CCB2A5A00525299 /* Settings.swift in Sources */,
 				FB8040051CC2563100E75C8B /* PRSettingsViewController.swift in Sources */,
@@ -821,13 +811,9 @@
 				FB803FED1CC2561800E75C8B /* PRFontExtension.swift in Sources */,
 				FB803FEE1CC2561800E75C8B /* PRMenuViewExtension.swift in Sources */,
 				FB803FEF1CC2561800E75C8B /* PRStringExtension.swift in Sources */,
-				FB803FF01CC2561800E75C8B /* PRViewExtension.swift in Sources */,
-				FB803FE71CC2560A00E75C8B /* PRDatabaseHelper.swift in Sources */,
 				FB803FE81CC2560A00E75C8B /* PRStateSingleton.swift in Sources */,
 				FB803FE91CC2560A00E75C8B /* PRImageGenerator.swift in Sources */,
-				FB803FEA1CC2560A00E75C8B /* AppDefaults.swift in Sources */,
 				FB803FEB1CC2560A00E75C8B /* PRRomajiKanaConverter.swift in Sources */,
-				FB803FEC1CC2560A00E75C8B /* AppDelegate.swift in Sources */,
 				FB67D6FC1A861B8B00926E38 /* kanjijigokuTests.swift in Sources */,
 				188B81A81B60B7BB00B1543A /* PRRomajiKanaConverterTest.swift in Sources */,
 				FBF399BA1CA78FE000D00631 /* PRAuthTest.swift in Sources */,
