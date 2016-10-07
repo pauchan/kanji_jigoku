@@ -159,7 +159,7 @@ class PRSettingsViewController: UITableViewController {
             // do some task
             //PRDatabaseHelper().syncDatabase()
             let operationQueue = NSOperationQueue()
-            let importOperation = ImportOperation()
+        let importOperation = ImportOperation(remoteImport: false)
             importOperation.completionBlock = {
                     dispatch_async(dispatch_get_main_queue(), {
                         backgroundView.removeFromSuperview()

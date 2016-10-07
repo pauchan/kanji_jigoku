@@ -21,8 +21,9 @@ private let ObligatoryFlag = "8"
 
 class ImportOperation: NSOperation {
     
-    var _timestamp : NSString = NSString()
-    var updateMessage:String?
+    var _timestamp: NSString = NSString()
+    var updateMessage: String?
+    let remoteImport: Bool
     
     override func main()
     {
@@ -35,36 +36,24 @@ class ImportOperation: NSOperation {
         }
     }
     
-    func importDB() {
-        
-        if(!shouldUpdateDb()) {
-            debugLog("database up to date")
-            return
-        }
-        //if downloadFullAccessDb() {
-        if downloadDbFile() {
-            let documentsFolder = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]
-            let path = documentsFolder.stringByAppendingString("/clientDB.db")
-            
-            let database = FMDatabase(path: path)
-            
-            if database.open() {
-                if parseDb(database) {
-                    debugLog("parsed db succesfully")
-                    self.updateMessage = updateAlertMessage(readAuthToken(), requestedToken: requestAuthToken(database))
-                    return
-                } else {
-                    print("db parse failed")
-                }
-                database.close()
-            } else {
-                print("Unable to open database")
-            }
-        } else {
-            print("Download db file failed")
-        }
-        return
+    init(remoteImport: Bool) {
+        self.remoteImport = remoteImport
+        super.init()
+    }
     
+    func importDB() {
+        let path = NSBundle.mainBundle().pathForResource("clientDB", ofType: "db")
+        let database = FMDatabase(path: path)
+        
+        guard database.open() else { fatalError("Unable to open database") }
+        
+        // TODO: parse should not fail, add guard (log?) here
+        if parseDb(database) {
+            self.updateMessage = updateAlertMessage(readAuthToken(), requestedToken: requestAuthToken(database))
+        } else {
+            print("db parse failed")
+        }
+        database.close()
     }
     
     func downloadFullAccessDb() -> Bool {
@@ -99,8 +88,7 @@ class ImportOperation: NSOperation {
         return false
     }
     
-    func shouldUpdateDb() -> Bool
-    {
+    func shouldUpdateDb() -> Bool {
         
         if let appDbUpdate : NSString = NSUserDefaults.standardUserDefaults().objectForKey("PRKanjiJigokuDbUpdate") as? String {
             

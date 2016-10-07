@@ -13,7 +13,7 @@ import Fabric
 import Crashlytics
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, FinishedLoadingDelegate, UITabBarControllerDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegate {
 
     var window: UIWindow?
 
@@ -29,17 +29,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate, FinishedLoadingDelegate, 
         UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.blackColor()], forState: UIControlState.Normal)
         UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.whiteColor()], forState: UIControlState.Selected)
         
+        self.initDb()
+        
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        let viewContr = PRInitController()
-        viewContr.delegate = self
-        self.window?.rootViewController = viewContr
+        self.window?.rootViewController = self.tabBarController()
         self.window?.makeKeyAndVisible()
         
         return true
     }
     
-    func splashDidFinishLoading(message: String?)
-    {
+    func initDb() {
+        guard !NSUserDefaults.standardUserDefaults().boolForKey("PRKanjiJigokuDBLoaded") else { return }
+        
+        let operationQueue = NSOperationQueue()
+        let importOperation = ImportOperation(remoteImport: false)
+        importOperation.completionBlock = {
+            NSUserDefaults.standardUserDefaults().setBool(true, forKey:"PRKanjiJigokuDBLoaded")
+            let stateSingleton : PRStateSingleton = PRStateSingleton.sharedInstance
+            stateSingleton.levelArray = PRDatabaseHelper().getLevelArray()
+            stateSingleton.lessonArray = PRDatabaseHelper().getLessonArray(stateSingleton.currentLevel)
+        }
+        operationQueue.addOperation(importOperation)
+    }
+    
+    func tabBarController() -> UITabBarController {
+        
         let tabBarController : UITabBarController = UITabBarController()
         tabBarController.delegate = self
         
@@ -68,18 +82,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, FinishedLoadingDelegate, 
                 vc.interactivePopGestureRecognizer!.enabled = false
             }
         }
-        
-        self.window?.rootViewController = tabBarController
-        self.window?.makeKeyAndVisible()
-        if message != nil {
-            let toast : UIAlertView = UIAlertView(title: "Baza danych", message: message, delegate: self, cancelButtonTitle: "Zamknij")
-            toast.show()
-        }
-    }
-
-    func applicationWillResignActive(application: UIApplication) {
-        // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as! an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-        // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+        return tabBarController
     }
 
     func applicationDidEnterBackground(application: UIApplication) {
@@ -91,10 +94,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, FinishedLoadingDelegate, 
     func applicationWillEnterForeground(application: UIApplication) {
         // Called as! part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
         PRDatabaseHelper().loadAppSettings()
-    }
-
-    func applicationDidBecomeActive(application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     }
 
     func applicationWillTerminate(application: UIApplication) {
@@ -129,14 +128,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, FinishedLoadingDelegate, 
         } catch var error1 as NSError {
             error = error1
             coordinator = nil
-            // Report any error we got.
             let dict = NSMutableDictionary()
             dict[NSLocalizedDescriptionKey] = "Failed to initialize the application's saved data"
             dict[NSLocalizedFailureReasonErrorKey] = failureReason
             dict[NSUnderlyingErrorKey] = error
-            error = NSError(domain: "YOUR_ERROR_DOMAIN", code: 9999, userInfo: nil)
-            // Replace this with code to handle the error appropriately.
-            // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+            error = NSError(domain: "PR_KANJIJIGOKU_ERROR_DOMAIN", code: 9999, userInfo: nil)
             NSLog("Unresolved error \(error), \(error!.userInfo)")
             abort()
         } catch {
