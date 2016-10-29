@@ -12,7 +12,7 @@ import CoreData
 
 class Kanji: BaseEntity {
 
-    func generateReadingString(set: NSSet) -> String
+    func generateReadingString(_ set: NSSet) -> String
     {
         var returnString = ""
         if set.count == 0
@@ -27,7 +27,7 @@ class Kanji: BaseEntity {
                 returnString += reading.reading! + "・"
             }
         }
-        return returnString.substringWithRange(Range<String.Index>(start: returnString.startIndex, end: returnString.endIndex.advancedBy(-1)))
+        return returnString.substring(with: (returnString.startIndex ..< returnString.characters.index(returnString.endIndex, offsetBy: -1)))
     }
     
     
@@ -53,7 +53,7 @@ class Kanji: BaseEntity {
         }
     }
     
-    func generateCommaSeparatedString(arrayOfReadings : [Reading]) -> String
+    func generateCommaSeparatedString(_ arrayOfReadings : [Reading]) -> String
     {
         var appStr : String = ""
         for i in 0..<arrayOfReadings.count

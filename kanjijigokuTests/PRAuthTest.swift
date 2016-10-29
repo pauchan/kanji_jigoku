@@ -23,11 +23,11 @@ class PRAuthTest: XCTestCase {
     
     func testReadAuthToken() {
         XCTAssertNil(PRDatabaseHelper().readAuthToken())
-        NSUserDefaults.standardUserDefaults().setBool(false, forKey: "PRKanjiJigokuAuthKey")
-        NSUserDefaults.standardUserDefaults().synchronize()
+        UserDefaults.standard.set(false, forKey: "PRKanjiJigokuAuthKey")
+        UserDefaults.standard.synchronize()
         XCTAssertFalse(PRDatabaseHelper().readAuthToken()!)
-        NSUserDefaults.standardUserDefaults().setBool(true, forKey: "PRKanjiJigokuAuthKey")
-        NSUserDefaults.standardUserDefaults().synchronize()
+        UserDefaults.standard.set(true, forKey: "PRKanjiJigokuAuthKey")
+        UserDefaults.standard.synchronize()
         XCTAssertTrue(PRDatabaseHelper().readAuthToken()!)
     }
 }

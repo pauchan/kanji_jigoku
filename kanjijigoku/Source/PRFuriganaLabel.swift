@@ -16,7 +16,7 @@ class PRFuriganaLabel : UIView
     var furiganaText : NSAttributedString!
 
     
-    override func drawRect(rect: CGRect) {
+    override func draw(_ rect: CGRect) {
 
         let context = UIGraphicsGetCurrentContext()
         
@@ -30,35 +30,35 @@ class PRFuriganaLabel : UIView
         
         // vertically align text
         let paragraphStyle : NSMutableParagraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.alignment = NSTextAlignment.Center
+        paragraphStyle.alignment = NSTextAlignment.center
         attributedText?.addAttribute(NSParagraphStyleAttributeName, value: paragraphStyle, range: NSRange(location: 0, length: furiganaText.length))
         
         if (attributedText != nil) { // this one determines if there is one line or more than one line for text
 
-            let path: CGMutablePathRef = CGPathCreateMutable()
-            let frameSetter : CTFramesetterRef = CTFramesetterCreateWithAttributedString(attributedText!)
+            let path: CGMutablePath = CGMutablePath()
+            let frameSetter : CTFramesetter = CTFramesetterCreateWithAttributedString(attributedText!)
             
             //flip context is required every time to prevent text beining drawn upside down
-            CGContextSetTextMatrix(context, CGAffineTransformIdentity)
-            CGContextTranslateCTM(context, 0, self.bounds.size.height)
-            CGContextScaleCTM(context, 1.0, -1.0)
+            context!.textMatrix = CGAffineTransform.identity
+            context?.translateBy(x: 0, y: self.bounds.size.height)
+            context?.scaleBy(x: 1.0, y: -1.0)
 
-            CGPathAddRect(path, nil, CGRectMake(0, -20.0, self.frame.size.width, self.frame.size.height))
+            path.addRect(CGRect(x: 0, y: -20.0, width: self.frame.size.width, height: self.frame.size.height))
 
             let frame = CTFramesetterCreateFrame(frameSetter, CFRangeMake(0, attributedText!.length), path, nil)
             
             CTFrameDraw(frame, context!)
         } else {
             let line = CTLineCreateWithAttributedString(furiganaText)
-            CGContextSetTextMatrix(context, CGAffineTransformIdentity)
-            CGContextTranslateCTM(context, 0, 50.0)
-            CGContextScaleCTM(context, 1.0, -1.0)
+            context!.textMatrix = CGAffineTransform.identity
+            context?.translateBy(x: 0, y: 50.0)
+            context?.scaleBy(x: 1.0, y: -1.0)
             CTLineDraw(line, context!)
             
         }
     }
     
-    func fontSizeForCharacterCount(count: Int) -> CGFloat
+    func fontSizeForCharacterCount(_ count: Int) -> CGFloat
     {
         return CGFloat(24-2*(count/25))
     }

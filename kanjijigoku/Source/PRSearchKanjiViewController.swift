@@ -18,7 +18,7 @@ class PRSearchKanjiViewController: UIViewController, UITableViewDelegate, UITabl
     var exampleSearchArray : [Example] = [Example]()
     var sentenceSearchArray : [Sentence] = [Sentence]()
  
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
@@ -31,7 +31,7 @@ class PRSearchKanjiViewController: UIViewController, UITableViewDelegate, UITabl
     {
         super.viewDidLoad()
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "SettingsIcon"), style: .Plain,  target: self, action: "prKanjiJigokuRightBarItemShowSettings:")
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "SettingsIcon"), style: .plain,  target: self, action: "prKanjiJigokuRightBarItemShowSettings:")
         self.navigationItem.title = "Szukaj"
         
         kanjiSearchTable.delegate = self
@@ -43,8 +43,8 @@ class PRSearchKanjiViewController: UIViewController, UITableViewDelegate, UITabl
         searchBar.delegate = self
 
         // Do any additional setup after loading the view.
-        kanjiSearchTable.registerClass(UITableViewCell.self, forCellReuseIdentifier: "PRKanjiCell")
-        kanjiSearchTable.registerClass(PRDetailedKanjiCell.self, forCellReuseIdentifier: "PRDetailedKanjiCell")
+        kanjiSearchTable.register(UITableViewCell.self, forCellReuseIdentifier: "PRKanjiCell")
+        kanjiSearchTable.register(PRDetailedKanjiCell.self, forCellReuseIdentifier: "PRDetailedKanjiCell")
 
         
         kanjiSearchTable.tableFooterView = UIView()
@@ -53,75 +53,75 @@ class PRSearchKanjiViewController: UIViewController, UITableViewDelegate, UITabl
     }
 
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         
-        if indexPath.section == 0
+        if (indexPath as NSIndexPath).section == 0
         {
-            let cell = tableView.dequeueReusableCellWithIdentifier("PRKanjiCell", forIndexPath: indexPath) 
-            cell.textLabel?.text = characterSearchArray[indexPath.row].kanji
+            let cell = tableView.dequeueReusableCell(withIdentifier: "PRKanjiCell", for: indexPath) 
+            cell.textLabel?.text = characterSearchArray[(indexPath as NSIndexPath).row].kanji
             return cell
         }
-        else if indexPath.section == 1
+        else if (indexPath as NSIndexPath).section == 1
         {
-            let cell = tableView.dequeueReusableCellWithIdentifier("PRDetailedKanjiCell", forIndexPath: indexPath) as! PRDetailedKanjiCell
-            cell.textLabel?.attributedText = exampleSearchArray[indexPath.row].generateDescriptionString()
-            cell.detailTextLabel?.text = exampleSearchArray[indexPath.row].meaning
+            let cell = tableView.dequeueReusableCell(withIdentifier: "PRDetailedKanjiCell", for: indexPath) as! PRDetailedKanjiCell
+            cell.textLabel?.attributedText = exampleSearchArray[(indexPath as NSIndexPath).row].generateDescriptionString()
+            cell.detailTextLabel?.text = exampleSearchArray[(indexPath as NSIndexPath).row].meaning
             return cell
         }
         else
         {
-            let cell = tableView.dequeueReusableCellWithIdentifier("PRDetailedKanjiCell", forIndexPath: indexPath) as! PRDetailedKanjiCell
-            cell.textLabel?.text = sentenceSearchArray[indexPath.row].replaceExplainedSentence()
-            cell.detailTextLabel?.text = sentenceSearchArray[indexPath.row].meaning
+            let cell = tableView.dequeueReusableCell(withIdentifier: "PRDetailedKanjiCell", for: indexPath) as! PRDetailedKanjiCell
+            cell.textLabel?.text = sentenceSearchArray[(indexPath as NSIndexPath).row].replaceExplainedSentence()
+            cell.detailTextLabel?.text = sentenceSearchArray[(indexPath as NSIndexPath).row].meaning
             return cell
         }
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
         var selectedKanji: Kanji? = nil
-        if indexPath.section == 0 // if its kanji, 
+        if (indexPath as NSIndexPath).section == 0 // if its kanji, 
         {
-            selectedKanji = characterSearchArray[indexPath.row]
+            selectedKanji = characterSearchArray[(indexPath as NSIndexPath).row]
             
-        } else if indexPath.section == 1 {
+        } else if (indexPath as NSIndexPath).section == 1 {
         
-            selectedKanji = exampleSearchArray[indexPath.row].character
-        }else if indexPath.section == 2 {
+            selectedKanji = exampleSearchArray[(indexPath as NSIndexPath).row].character
+        }else if (indexPath as NSIndexPath).section == 2 {
             
-            selectedKanji = sentenceSearchArray[indexPath.row].character
+            selectedKanji = sentenceSearchArray[(indexPath as NSIndexPath).row].character
         }
         let vc = PRKanjiPageViewController()
         vc._kanjiTable = PRDatabaseHelper().getSelectedObjects("Kanji", level: Int(selectedKanji!.level), lesson: Int(selectedKanji!.lesson)) as! [Kanji]
-        vc._selectedIndex = vc._kanjiTable.indexOf(selectedKanji!)!
+        vc._selectedIndex = vc._kanjiTable.index(of: selectedKanji!)!
         navigationController?.pushViewController(vc, animated: false)
     }
     
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
-        if indexPath.section == 0 {
+        if (indexPath as NSIndexPath).section == 0 {
         
             return 30.0 * scaleForDevice
         } else {
         
             var text = ""
             var detailedText = ""
-            if indexPath.section == 1 {
-                text = exampleSearchArray[indexPath.row].generateDescriptionString().string
-                detailedText = exampleSearchArray[indexPath.row].meaning! + " " + exampleSearchArray[indexPath.row].note!.removeReferenceSubstring()
+            if (indexPath as NSIndexPath).section == 1 {
+                text = exampleSearchArray[(indexPath as NSIndexPath).row].generateDescriptionString().string
+                detailedText = exampleSearchArray[(indexPath as NSIndexPath).row].meaning! + " " + exampleSearchArray[(indexPath as NSIndexPath).row].note!.removeReferenceSubstring()
             }
             else { // == .Sentences
-                text = sentenceSearchArray[indexPath.row].replaceExplainedSentence()
-                detailedText = sentenceSearchArray[indexPath.row].meaning!
+                text = sentenceSearchArray[(indexPath as NSIndexPath).row].replaceExplainedSentence()
+                detailedText = sentenceSearchArray[(indexPath as NSIndexPath).row].meaning!
             }
             
             let font = UIFont().appFontOfSize(15.0)
             let detailedFont = UIFont().appFontOfSize(12.0)
-            let constraintsSize = CGSizeMake(tableView.bounds.size.width, CGFloat(MAXFLOAT))
-            let labelSize = text.boundingRectWithSize(constraintsSize, options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: [NSFontAttributeName: font], context: nil)
-            let detailedLabelSize = detailedText.boundingRectWithSize(constraintsSize, options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: [NSFontAttributeName: detailedFont], context: nil)
+            let constraintsSize = CGSize(width: tableView.bounds.size.width, height: CGFloat(MAXFLOAT))
+            let labelSize = text.boundingRect(with: constraintsSize, options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: [NSFontAttributeName: font], context: nil)
+            let detailedLabelSize = detailedText.boundingRect(with: constraintsSize, options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: [NSFontAttributeName: detailedFont], context: nil)
             
             return labelSize.height + detailedLabelSize.height + 20.0
         
@@ -129,7 +129,7 @@ class PRSearchKanjiViewController: UIViewController, UITableViewDelegate, UITabl
         
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         if section == 0
         {
@@ -144,12 +144,12 @@ class PRSearchKanjiViewController: UIViewController, UITableViewDelegate, UITabl
             return sentenceSearchArray.count
         }
     }
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int
+    func numberOfSections(in tableView: UITableView) -> Int
     {
         return 3
     }
     
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         
         switch section
         {
@@ -165,7 +165,7 @@ class PRSearchKanjiViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
     {
         switch section
         {
@@ -181,7 +181,7 @@ class PRSearchKanjiViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     
-    func searchBarSearchButtonClicked(searchBar: UISearchBar)
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar)
     {
         
         characterSearchArray = PRDatabaseHelper().fetchObjectsContainingPhrase("Kanji", phrase: searchBar.text!) as! [Kanji]
@@ -191,9 +191,9 @@ class PRSearchKanjiViewController: UIViewController, UITableViewDelegate, UITabl
         searchBar.resignFirstResponder()
     }
     
-    func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+    func titleforEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
         let str = "Możliwe tryby wyszukiwania"
-        let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)]
+        let attrs = [NSFontAttributeName: UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline)]
         return NSAttributedString(string: str, attributes: attrs)
     }
     
@@ -202,7 +202,7 @@ class PRSearchKanjiViewController: UIViewController, UITableViewDelegate, UITabl
         "Wyszukiwanie na postawie kany: かね, たべる, れんらく \n" +
         "Wyszukiwanie na podstawie czytania fonetycznego: kane, taberu, renraku \n" +
         "Wyszukiwanie znaczeń: pieniądze, jeść, kontakt \n"
-        let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleBody)]
+        let attrs = [NSFontAttributeName: UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)]
         return NSAttributedString(string: str, attributes: attrs)
     }
 

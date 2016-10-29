@@ -15,19 +15,19 @@ let kPRKanjiJigokuFalseAnswerAmount = 3
 
 class PRDatabaseHelper
 {
-    func getSelectedObjects(name: String, level: Int, lesson: Int) -> NSArray
+    func getSelectedObjects(_ name: String, level: Int, lesson: Int) -> NSArray
     {
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext!
         
-        let fetchRequest : NSFetchRequest = NSFetchRequest(entityName: name)        
+        let fetchRequest : NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: name)
         if name == "Kanji" {
-            
             let sortDescriptor = NSSortDescriptor(key: "kanjiId", ascending: true)
             fetchRequest.sortDescriptors = [sortDescriptor]
             
             fetchRequest.predicate = NSPredicate(format: "level=\(level) AND lesson=\(lesson)")
         } else {
+                        let fetchRequest : NSFetchRequest<Kanji> = NSFetchRequest(entityName: name)
             var predicates = [NSPredicate(format: "character.level=\(level)"), NSPredicate(format: "character.lesson=\(lesson)"), NSPredicate(format: "NOT (reading CONTAINS '-')")]
             if !PRStateSingleton.sharedInstance.extraMaterial {
             
@@ -38,29 +38,29 @@ class PRDatabaseHelper
                 predicates.append(NSPredicate(format: "meaning!=''"))
                 predicates.append(NSPredicate(format: "meaning!=nil"))
             }
-            fetchRequest.predicate = NSCompoundPredicate(type: NSCompoundPredicateType.AndPredicateType, subpredicates: predicates)
+            fetchRequest.predicate = NSCompoundPredicate(type: NSCompoundPredicate.LogicalType.and, subpredicates: predicates)
         }
-        let outArray: NSArray = try! managedContext.executeFetchRequest(fetchRequest)
+        let outArray: NSArray = try! managedContext.fetch(fetchRequest) as NSArray
         return outArray
     }
     
-    func getLessonArray(currentLevel : Int) -> [Int]
+    func getLessonArray(_ currentLevel : Int) -> [Int]
     {
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext!
         
-        let fetchRequest : NSFetchRequest = NSFetchRequest(entityName: "Kanji")
+        let fetchRequest : NSFetchRequest<Kanji> = NSFetchRequest(entityName: "Kanji")
         fetchRequest.propertiesToFetch = ["lesson"]
         fetchRequest.returnsDistinctResults = true
         fetchRequest.predicate = NSPredicate(format: "level=\(currentLevel)")
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "lesson", ascending: true)]
-        fetchRequest.resultType = .DictionaryResultType;
-        let outResponse: NSArray = try! managedContext.executeFetchRequest(fetchRequest)
+        fetchRequest.resultType = .dictionaryResultType;
+        let outResponse = try! managedContext.fetch(fetchRequest)
     
         var outArray = [Int]()
         for object in outResponse
         {
-            outArray += [object["lesson"] as! Int]
+            outArray.append(Int(object.lesson))
         }
         return outArray
     }
@@ -68,28 +68,28 @@ class PRDatabaseHelper
 
         func getLevelArray() -> [Int] {
             
-            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
             let managedContext = appDelegate.managedObjectContext!
             
-            let fetchRequest :NSFetchRequest = NSFetchRequest(entityName: "Kanji")
+            let fetchRequest :NSFetchRequest<Kanji> = NSFetchRequest(entityName: "Kanji")
             fetchRequest.propertiesToFetch = ["level"]
             fetchRequest.sortDescriptors = [NSSortDescriptor(key: "level", ascending: true)]
             fetchRequest.returnsDistinctResults = true
-            fetchRequest.resultType = .DictionaryResultType;
-            let outResponse : NSArray = try! managedContext.executeFetchRequest(fetchRequest)
+            fetchRequest.resultType = .dictionaryResultType;
+            let outResponse = try! managedContext.fetch(fetchRequest)
             var outArray = [Int]()
             for object in outResponse {
-                 outArray += [object["level"] as! Int]
+                 outArray.append(Int(object.level))
             }
             return outArray
     }
     
-    func fetchFalseAnswers(object: String, property: String, properAnswer: String, partOfSpeechIndex: Int, maxLevel: Int, maxLesson: Int) -> [String]
+    func fetchFalseAnswers(_ object: String, property: String, properAnswer: String, partOfSpeechIndex: Int, maxLevel: Int, maxLesson: Int) -> [String]
     {
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext!
         
-        let fetchRequest :NSFetchRequest = NSFetchRequest(entityName: object)
+        let fetchRequest :NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: object)
         var predicate : NSPredicate
         if object == "Kanji" {
             predicate = NSPredicate(format: "level <= \(maxLevel) AND lesson <= \(maxLesson)")
@@ -103,7 +103,7 @@ class PRDatabaseHelper
         }
         fetchRequest.propertiesToFetch = [property]
         fetchRequest.predicate = predicate
-        let outResponse = try! managedContext.executeFetchRequest(fetchRequest) //as! [String]
+        let outResponse = try! managedContext.fetch(fetchRequest) //as! [String]
 
         var newResponse: [String] = [String]()
         var objectId : Int = generateRandomIdsArray(1, arrayCount: outResponse.count)[0]
@@ -111,11 +111,12 @@ class PRDatabaseHelper
         
         while  newResponse.count < kPRKanjiJigokuFalseAnswerAmount {
             let object = outResponse[objectId] as! NSManagedObject
-            let proposedValue : String = object.valueForKey(property) as! String
+            let proposedValue : String = object.value(forKey: property) as! String
             if proposedValue != properAnswer && !(newResponse.contains(proposedValue)) {
                 newResponse.append(proposedValue)
             }
-            if ++loopCount > 100 {
+            loopCount += 1
+            if loopCount > 100 {
                 break
             }
             objectId = generateRandomIdsArray(1, arrayCount: outResponse.count)[0]
@@ -123,7 +124,7 @@ class PRDatabaseHelper
         return newResponse
     }
 
-    func generateRandomIdsArray(limit: Int, arrayCount: Int) -> [Int]
+    func generateRandomIdsArray(_ limit: Int, arrayCount: Int) -> [Int]
     {
         var randomInts = [Int]()
         let count : UInt32 = UInt32(arrayCount)
@@ -139,27 +140,27 @@ class PRDatabaseHelper
     // we need to fetch additional example containing given word MINUS:
     // - the ones that are already in kanji related examples
     // -
-    func fetchAdditionalExamples(kanji : String) -> [Example]
+    func fetchAdditionalExamples(_ kanji : String) -> [Example]
     {
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext!
 
-        let chFetchRequest :NSFetchRequest = NSFetchRequest(entityName: "Kanji")
+        let chFetchRequest :NSFetchRequest<Kanji> = NSFetchRequest(entityName: "Kanji")
         chFetchRequest.predicate = NSPredicate(format: "kanji = '\(kanji)'")
         do {
-            let characters = try managedContext.executeFetchRequest(chFetchRequest)
-            let character = characters[0] as! Kanji
+            let characters = try managedContext.fetch(chFetchRequest)
+            let character = characters[0]
             
-            let inList = character.examples!.valueForKeyPath("example") as! NSSet
+            let inList = character.examples!.value(forKeyPath: "example") as! NSSet
             let inListArray = inList.allObjects
             
-            let fetchRequest :NSFetchRequest = NSFetchRequest(entityName: "Example")
+            let fetchRequest :NSFetchRequest<Example> = NSFetchRequest(entityName: "Example")
             fetchRequest.predicate = NSPredicate(format: "example CONTAINS '\(kanji)' AND NOT (example IN %@)", inListArray)
             //  AND example.example NOT IN \(character.examples)
             // create list of examples separated by comma, remove comma after the last element
-            let examples = try managedContext.executeFetchRequest(fetchRequest)
+            let examples = try managedContext.fetch(fetchRequest)
             let mutSet = NSMutableSet(array: examples)
-            mutSet.minusSet(character.examples! as Set<NSObject>)
+            mutSet.minus(character.examples! as Set<NSObject>)
             return mutSet.allObjects as! [Example]
             
         } catch {
@@ -167,21 +168,22 @@ class PRDatabaseHelper
         }
     }
 
-    func fetchRelatedKanjis(kanji: Kanji) -> [Kanji]
+    func fetchRelatedKanjis(_ kanji: Kanji) -> [Kanji]
     {
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext!
-        let fetchRequest :NSFetchRequest = NSFetchRequest(entityName: "Kanji")
+        let fetchRequest :NSFetchRequest<Kanji> = NSFetchRequest(entityName: "Kanji")
         fetchRequest.predicate = NSPredicate(format: "relatedKanji='\(kanji.relatedKanji)' AND (NOT kanji='\(kanji.kanji)')")
-        return (try! managedContext.executeFetchRequest(fetchRequest)) as! [Kanji]
+        return (try! managedContext.fetch(fetchRequest))
     }
     
     
-    func fetchObjectsContainingPhrase(object: String, var phrase: String) -> [NSManagedObject]
+    func fetchObjectsContainingPhrase(_ object: String, phrase: String) -> [NSManagedObject]
     {
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        var phrase = phrase
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext!
-        let fetchRequest :NSFetchRequest = NSFetchRequest(entityName: object)
+        let fetchRequest :NSFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: object)
         var predicates = [NSPredicate]()
         /*
         we are looking for a match in 3 places:
@@ -194,9 +196,9 @@ class PRDatabaseHelper
         let kanjiPhrase = phrase
         
         if phrase.isRomaji() {
-            hiraganaPhrase = PRRomajiKanaConverter().convert(phrase, from: AlphabetType.Romaji, to: AlphabetType.Hiragana)
-            katakanaPhrase = PRRomajiKanaConverter().convert(phrase, from: AlphabetType.Romaji, to: AlphabetType.Katakana)
-            phrase = phrase.stringByFoldingWithOptions(.DiacriticInsensitiveSearch, locale: NSLocale(localeIdentifier: "pl")).substituteRemainingPolishChars()
+            hiraganaPhrase = PRRomajiKanaConverter().convert(phrase, from: AlphabetType.romaji, to: AlphabetType.hiragana)
+            katakanaPhrase = PRRomajiKanaConverter().convert(phrase, from: AlphabetType.romaji, to: AlphabetType.katakana)
+            phrase = phrase.folding(options: .diacriticInsensitive, locale: Locale(identifier: "pl")).substituteRemainingPolishChars()
         }
         switch object {
         case "Kanji":
@@ -210,24 +212,20 @@ class PRDatabaseHelper
             predicates = [NSPredicate]()
         }
         // generate compound predicate based on the specific phrase type
-        fetchRequest.predicate = NSCompoundPredicate(type: NSCompoundPredicateType.OrPredicateType, subpredicates: predicates)
+        fetchRequest.predicate = NSCompoundPredicate(type: NSCompoundPredicate.LogicalType.or, subpredicates: predicates)
         
-        return (try! managedContext.executeFetchRequest(fetchRequest)) as! [NSManagedObject]
+        return (try! managedContext.fetch(fetchRequest)) as! [NSManagedObject]
     }
     
-    func fetchSingleKanji(kanji: String) -> Kanji? {
+    func fetchSingleKanji(_ kanji: String) -> Kanji? {
 
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext!
-        let fetchRequest :NSFetchRequest = NSFetchRequest(entityName: "Kanji")
+        let fetchRequest :NSFetchRequest<Kanji> = NSFetchRequest(entityName: "Kanji")
         fetchRequest.predicate = NSPredicate(format: "kanji='\(kanji)'")
         fetchRequest.fetchLimit = 1
-        let object = (try! managedContext.executeFetchRequest(fetchRequest)) as! [NSManagedObject]
-        if object.count > 0 {
-            return object.first as? Kanji
-        } else {
-            return nil
-        }
+        let objects = (try! managedContext.fetch(fetchRequest))
+        return objects.count > 0 ? objects.first : nil
     }
 
     
@@ -235,24 +233,24 @@ class PRDatabaseHelper
     
         let appState = PRStateSingleton.sharedInstance
         
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext!
         
-        let entity = NSEntityDescription.entityForName("Settings", inManagedObjectContext: managedContext)!
+        let entity = NSEntityDescription.entity(forEntityName: "Settings", in: managedContext)!
 
-        let fetchRequest :NSFetchRequest = NSFetchRequest(entityName: "Settings")
+        let fetchRequest :NSFetchRequest<Settings> = NSFetchRequest(entityName: "Settings")
         fetchRequest.fetchLimit = 1
-        let objects = (try! managedContext.executeFetchRequest(fetchRequest)) as! [NSManagedObject]
+        let objects = (try! managedContext.fetch(fetchRequest))
         
         
-        let settings = (objects.count == 1) ? objects.first as! Settings : NSManagedObject(entity: entity, insertIntoManagedObjectContext: managedContext) as! Settings
+        let settings = (objects.count == 1) ? objects.first! : NSManagedObject(entity: entity, insertInto: managedContext) as! Settings
         
-        settings.currentLevel = appState.currentLevel
-        settings.currentLesson = appState.currentLesson
-        settings.filterLevel = appState.filterLevel
-        settings.filterLesson = appState.filterLesson
-        settings.filterOn = appState.filterOn
-        settings.extraMaterial = appState.extraMaterial
+        settings.currentLevel = appState.currentLevel as NSNumber?
+        settings.currentLesson = appState.currentLesson as NSNumber?
+        settings.filterLevel = appState.filterLevel as NSNumber?
+        settings.filterLesson = appState.filterLesson as NSNumber?
+        settings.filterOn = appState.filterOn as NSNumber?
+        settings.extraMaterial = appState.extraMaterial as NSNumber?
         
         do {
             try managedContext.save()
@@ -265,23 +263,23 @@ class PRDatabaseHelper
         
         let appState = PRStateSingleton.sharedInstance
         
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext!
         
-        let fetchRequest :NSFetchRequest = NSFetchRequest(entityName: "Settings")
+        let fetchRequest :NSFetchRequest<Settings> = NSFetchRequest(entityName: "Settings")
         fetchRequest.fetchLimit = 1
-        let objects = (try! managedContext.executeFetchRequest(fetchRequest)) as! [NSManagedObject]
+        let objects = (try! managedContext.fetch(fetchRequest))
         
         if objects.count == 1 {
         
-            let settings = objects.first as! Settings
-            
-            appState.currentLevel = settings.currentLevel!.integerValue
-            appState.currentLesson = settings.currentLesson!.integerValue
-            appState.filterLevel = settings.filterLevel!.integerValue
-            appState.filterLesson = settings.filterLesson!.integerValue
-            appState.filterOn = settings.filterOn!.boolValue
-            appState.extraMaterial = settings.extraMaterial!.boolValue
+            if let settings = objects.first {
+                appState.currentLevel = settings.currentLevel!.intValue
+                appState.currentLesson = settings.currentLesson!.intValue
+                appState.filterLevel = settings.filterLevel!.intValue
+                appState.filterLesson = settings.filterLesson!.intValue
+                appState.filterOn = settings.filterOn!.boolValue
+                appState.extraMaterial = settings.extraMaterial!.boolValue
+            }
         }
     }
 }

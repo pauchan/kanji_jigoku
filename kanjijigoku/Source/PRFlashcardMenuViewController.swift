@@ -25,7 +25,7 @@ override func viewDidLoad() {
     
     self.navigationItem.title = "Fiszki"
     
-    if let path = NSBundle.mainBundle().pathForResource("flashcardItems", ofType: "plist") {
+    if let path = Bundle.main.path(forResource: "flashcardItems", ofType: "plist") {
         self._tableItems = NSArray(contentsOfFile: path)!
     }
     else
@@ -34,57 +34,57 @@ override func viewDidLoad() {
     }
     //self.tableView.keyboardDismissMode = .OnDrag
     
-    self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "SettingsIcon"), style: .Plain,  target: self, action: "prKanjiJigokuRightBarItemShowSettings:")
+    self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "SettingsIcon"), style: .plain,  target: self, action: "prKanjiJigokuRightBarItemShowSettings:")
     self.navigationItem.title = "Fiszki"
     // Do any additional setup after loading the view, typically from a nib.
     let nib : UINib = UINib(nibName: "PRHeaderViewCell", bundle: nil)
-    self.tableView.registerNib(nib, forCellReuseIdentifier: "PRHeaderViewCell")
-    self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "PRFlashcardCell")
+    self.tableView.register(nib, forCellReuseIdentifier: "PRHeaderViewCell")
+    self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "PRFlashcardCell")
     self.tableView.tableFooterView = UIView()
     
 }
     
-    override func viewWillAppear(animated: Bool)
+    override func viewWillAppear(_ animated: Bool)
     {
         super.viewDidAppear(animated)
         self._headerCoordinator?.updateHeaderState()
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         
-    if(indexPath.section == 0)
+    if((indexPath as NSIndexPath).section == 0)
     {
-        let cell = tableView.dequeueReusableCellWithIdentifier("PRHeaderViewCell", forIndexPath: indexPath) as! PRHeaderViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PRHeaderViewCell", for: indexPath) as! PRHeaderViewCell
         _headerCoordinator = PRHeaderCoordinator(headerCell: cell)
-        cell.contentView.userInteractionEnabled = false
-        cell.selectionStyle = .None
+        cell.contentView.isUserInteractionEnabled = false
+        cell.selectionStyle = .none
         return cell
         
     }
         else
     {
-        let cell = tableView.dequeueReusableCellWithIdentifier("PRFlashcardCell", forIndexPath: indexPath) 
-        cell.textLabel?.text = _tableItems[indexPath.row] as? String
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PRFlashcardCell", for: indexPath) 
+        cell.textLabel?.text = _tableItems[(indexPath as NSIndexPath).row] as? String
         cell.textLabel?.font = UIFont().appFontOfSize(20.0)
-        cell.textLabel?.textAlignment = .Center
+        cell.textLabel?.textAlignment = .center
         return cell
     }
     }
 
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
-        if indexPath.section != 0
+        if (indexPath as NSIndexPath).section != 0
         {
             let charactersArray = PRDatabaseHelper().getSelectedObjects("Kanji", level: PRStateSingleton.sharedInstance.currentLevel, lesson: PRStateSingleton.sharedInstance.currentLesson)
             var flashcardsArray : [Flashcard]
-            if(indexPath.row == kKunyomiOption || indexPath.row == kOnyomiOption)
+            if((indexPath as NSIndexPath).row == kKunyomiOption || (indexPath as NSIndexPath).row == kOnyomiOption)
             {
-                flashcardsArray = self.generateFlashcardsArrayForReadings(charactersArray as! [Kanji], option: indexPath.row)
+                flashcardsArray = self.generateFlashcardsArrayForReadings(charactersArray as! [Kanji], option: (indexPath as NSIndexPath).row)
             }
-            else if(indexPath.row == kExamplesOption || indexPath.row == kSentenceOption)
+            else if((indexPath as NSIndexPath).row == kExamplesOption || (indexPath as NSIndexPath).row == kSentenceOption)
             {
-                flashcardsArray = self.generateFlashcardsArrayForExamples(charactersArray as! [Kanji], option: indexPath.row)
+                flashcardsArray = self.generateFlashcardsArrayForExamples(charactersArray as! [Kanji], option: (indexPath as NSIndexPath).row)
             }
             else // customFlashcardToImplement
             {
@@ -103,16 +103,16 @@ override func viewDidLoad() {
         }
     }
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
-        if(indexPath.section == 0) {
+        if((indexPath as NSIndexPath).section == 0) {
             return 90.0*scaleForDevice
         } else {
             return 80.0*scaleForDevice
         }
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
     if(section == 0) {
         return 1
@@ -120,28 +120,28 @@ override func viewDidLoad() {
         return _tableItems.count
     }
 }
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
     
-    func generateFlashcardsArrayForReadings(characters: [Kanji], option: Int) -> [Flashcard]
+    func generateFlashcardsArrayForReadings(_ characters: [Kanji], option: Int) -> [Flashcard]
     {
         
         var returnArray : [Flashcard] = [Flashcard]()
         for kanji in characters
         {
             if(option == kOnyomiOption){
-                returnArray.append(Flashcard(text: kanji.kanji!, reading: kanji.generateReadingString(kanji.onyomis!), meaning: kanji.meaning!, type: .Onyomi))
+                returnArray.append(Flashcard(text: kanji.kanji!, reading: kanji.generateReadingString(kanji.onyomis!), meaning: kanji.meaning!, type: .onyomi))
             }
             else // option == kKunyomiOption
             {
-                returnArray.append(Flashcard(text: kanji.kanji!, reading: kanji.generateReadingString(kanji.kunyomis!), meaning: kanji.meaning!, type: .Kunyomi))
+                returnArray.append(Flashcard(text: kanji.kanji!, reading: kanji.generateReadingString(kanji.kunyomis!), meaning: kanji.meaning!, type: .kunyomi))
             }
         }
         return returnArray
     }
     
-    func generateFlashcardsArrayForExamples(characters: [Kanji], option : Int) -> [Flashcard] {
+    func generateFlashcardsArrayForExamples(_ characters: [Kanji], option : Int) -> [Flashcard] {
         
         var returnArray : [Flashcard] = [Flashcard]()
         for character in characters {
@@ -149,7 +149,7 @@ override func viewDidLoad() {
                 for e in character.examples! {
                     let example = e as! Example
                     if example.obligatory {
-                        let flashcard = Flashcard(text: example.example!, reading: example.reading!, meaning: example.meaning!, type: .Example)
+                        let flashcard = Flashcard(text: example.example!, reading: example.reading!, meaning: example.meaning!, type: .example)
                         // in case filtering distinct flashcards is needed
                         //let array = returnArray.filter({(f: Flashcard) in f.text == flashcard.text && f.reading == flashcard.reading})
                         returnArray.append(flashcard)
@@ -163,7 +163,7 @@ override func viewDidLoad() {
                 {
                     let sentence = s as! Sentence
                     if sentence.obligatory {
-                        let flashcard = Flashcard(text: sentence.sentence!, reading: sentence.sentence!, meaning: sentence.meaning!, type: .Sentence)
+                        let flashcard = Flashcard(text: sentence.sentence!, reading: sentence.sentence!, meaning: sentence.meaning!, type: .sentence)
                         returnArray.append(flashcard)
                     }
                 }
@@ -172,15 +172,16 @@ override func viewDidLoad() {
         return returnArray
     }
     
-    func randomizeFlashcardsOrder(var flashcards : [Flashcard]) -> [Flashcard] {
+    func randomizeFlashcardsOrder(_ flashcards : [Flashcard]) -> [Flashcard] {
+        var flashcards = flashcards
         
         var newArray: [Flashcard] = [Flashcard]()
         var oldCount = flashcards.count
         while oldCount > 0 {
             let newCount = Int(arc4random_uniform(UInt32(oldCount)))
             newArray.append(flashcards[newCount])
-            flashcards.removeAtIndex(newCount)
-            oldCount--
+            flashcards.remove(at: newCount)
+            oldCount -= 1
         }
         return newArray
     }

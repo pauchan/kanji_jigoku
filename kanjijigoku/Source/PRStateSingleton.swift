@@ -12,10 +12,12 @@ import CoreData
 
 class PRStateSingleton {
 
+    static let sharedInstance = PRStateSingleton()
+    
     var currentLevel = 1
     var currentLesson : Int = 1{
         didSet{        
-            NSNotificationCenter.defaultCenter().postNotificationName("PRKanjiJigokuLessonUpdated", object: nil)
+            NotificationCenter.default.post(name: Notification.Name(rawValue: "PRKanjiJigokuLessonUpdated"), object: nil)
         }
     }
     
@@ -26,17 +28,4 @@ class PRStateSingleton {
     var filterLesson : Int = 1
     var filterLevel : Int = 1
     var extraMaterial: Bool = false
-        
-    class var sharedInstance: PRStateSingleton {
-        struct Static {
-            static var instance: PRStateSingleton?
-            static var token: dispatch_once_t = 0
-        }
-        
-        dispatch_once(&Static.token) {
-            Static.instance = PRStateSingleton()
-        }
-        
-        return Static.instance!
-    }
 }

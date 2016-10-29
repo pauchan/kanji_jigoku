@@ -14,13 +14,13 @@ extension String
     
     func removeReferenceSubstring() -> String {
         
-        let regex = try? NSRegularExpression(pattern: "\\|.*?\\|" , options: .CaseInsensitive)
-        let regex2 = try? NSRegularExpression(pattern: "[\\[\\]]" , options: .CaseInsensitive)
+        let regex = try? NSRegularExpression(pattern: "\\|.*?\\|" , options: .caseInsensitive)
+        let regex2 = try? NSRegularExpression(pattern: "[\\[\\]]" , options: .caseInsensitive)
         
         let  mutString : NSMutableString = NSMutableString(string: self)
         
-        regex!.replaceMatchesInString(mutString, options: [], range: NSMakeRange(0, self.characters.count), withTemplate: "")
-        regex2!.replaceMatchesInString(mutString, options: [], range: NSMakeRange(0, mutString.length), withTemplate: "")
+        regex!.replaceMatches(in: mutString, options: [], range: NSMakeRange(0, self.characters.count), withTemplate: "")
+        regex2!.replaceMatches(in: mutString, options: [], range: NSMakeRange(0, mutString.length), withTemplate: "")
         return mutString as String
     }
     
@@ -45,12 +45,12 @@ extension String
         return isAlhpabetWithCharacters("[一-龠]")
     }
     
-    func isAlhpabetWithCharacters(characters: String) -> Bool {
+    func isAlhpabetWithCharacters(_ characters: String) -> Bool {
         
-        let regex = try? NSRegularExpression(pattern: characters , options: .CaseInsensitive)
+        let regex = try? NSRegularExpression(pattern: characters , options: .caseInsensitive)
         let  mutString : NSMutableString = NSMutableString(string: self)
         
-        regex!.replaceMatchesInString(mutString, options: [], range: NSMakeRange(0, self.characters.count), withTemplate: "")
+        regex!.replaceMatches(in: mutString, options: [], range: NSMakeRange(0, self.characters.count), withTemplate: "")
         if mutString.length == 0 {
             
             return true
@@ -59,19 +59,19 @@ extension String
         }
     }
     
-    func generateFuriganaString(baseString: String, furiganaString: String) -> NSAttributedString
+    func generateFuriganaString(_ baseString: String, furiganaString: String) -> NSAttributedString
     {
         
         let test1 = baseString as NSString
-        let test2 = furiganaString as NSString
+        let test2 = furiganaString as CFString
         
-        var text = [.passRetained(test2) as Unmanaged<CFStringRef>?, .None, .None, .None]
-        let annotation = CTRubyAnnotationCreate(.Auto, .Auto, 0.5, &text) as CTRubyAnnotationRef
+        var unmanaged = Unmanaged.passUnretained(test2)
+        let annotation = CTRubyAnnotationCreate(.auto, .auto, 0.5, &unmanaged) as CTRubyAnnotation
         
-        var alignment = CTTextAlignment.Center
-        var wrap = CTLineBreakMode.ByTruncatingTail
+        var alignment = CTTextAlignment.center
+        var wrap = CTLineBreakMode.byTruncatingTail
         
-        let settings = [CTParagraphStyleSetting(spec: .Alignment, valueSize: Int(sizeofValue(alignment)), value: &alignment),CTParagraphStyleSetting(spec: .LineBreakMode, valueSize: Int(sizeofValue(wrap)), value: &wrap)]
+        let settings = [CTParagraphStyleSetting(spec: .alignment, valueSize: Int(MemoryLayout.size(ofValue: alignment)), value: &alignment),CTParagraphStyleSetting(spec: .lineBreakMode, valueSize: Int(MemoryLayout.size(ofValue: wrap)), value: &wrap)]
         let style = CTParagraphStyleCreate(settings, 1)
         
         
@@ -91,9 +91,9 @@ extension String
         
         var sentence2 = self
         
-        while let group :NSTextCheckingResult = regex?.firstMatchInString(sentence2, options: [], range: range)
+        while let group :NSTextCheckingResult = regex?.firstMatch(in: sentence2, options: [], range: range)
         {
-            attributedString.replaceCharactersInRange(group.range, withAttributedString: generateFuriganaString(parsedSentence.substringWithRange(group.rangeAtIndex(1)), furiganaString: parsedSentence.substringWithRange(group.rangeAtIndex(2))))
+            attributedString.replaceCharacters(in: group.range, with: generateFuriganaString(parsedSentence.substring(with: group.rangeAt(1)), furiganaString: parsedSentence.substring(with: group.rangeAt(2))))
             parsedSentence = NSString(string: attributedString.string)
             sentence2 = String(parsedSentence)
             range = NSMakeRange(0, sentence2.characters.count)
@@ -112,9 +112,9 @@ extension String
         
         var sentence2 = self
         
-        while let group :NSTextCheckingResult = regex?.firstMatchInString(sentence2, options: [], range: range)
+        while let group :NSTextCheckingResult = regex?.firstMatch(in: sentence2, options: [], range: range)
         {
-            attributedString.replaceCharactersInRange(group.range, withAttributedString: NSAttributedString(string: parsedSentence.substringWithRange(group.rangeAtIndex(1))))
+            attributedString.replaceCharacters(in: group.range, with: NSAttributedString(string: parsedSentence.substring(with: group.rangeAt(1))))
             parsedSentence = NSString(string: attributedString.string)
             sentence2 = String(parsedSentence)
             range = NSMakeRange(0, sentence2.characters.count)
@@ -122,17 +122,17 @@ extension String
         return attributedString
     }
     
-    func kanjiWithOkurigana(kanji: String) -> String
+    func kanjiWithOkurigana(_ kanji: String) -> String
         {
             do {
-                let regexp = try NSRegularExpression(pattern: ".*（", options: [NSRegularExpressionOptions.CaseInsensitive])
+                let regexp = try NSRegularExpression(pattern: ".*（", options: [NSRegularExpression.Options.caseInsensitive])
                 let mutReading = NSMutableString(string: self)
-                let matches = regexp.replaceMatchesInString(mutReading, options: [], range: NSRange(location: 0,length: mutReading.length), withTemplate: kanji)
+                let matches = regexp.replaceMatches(in: mutReading, options: [], range: NSRange(location: 0,length: mutReading.length), withTemplate: kanji)
                 if matches == 0 {
                     return kanji
                 } else {
-                    let fullWidthBracketesSet = NSCharacterSet(charactersInString: "（）")
-                    return mutReading.stringByTrimmingCharactersInSet(fullWidthBracketesSet)
+                    let fullWidthBracketesSet = CharacterSet(charactersIn: "（）")
+                    return mutReading.trimmingCharacters(in: fullWidthBracketesSet)
                 }
             } catch {
                 print("Error while regexping string. Return default value.")
@@ -143,16 +143,16 @@ extension String
     
     func plainHiragana() -> String
         {
-            return self.stringByReplacingOccurrencesOfString("（", withString: "").stringByReplacingOccurrencesOfString("）", withString: "")
+            return self.replacingOccurrences(of: "（", with: "").replacingOccurrences(of: "）", with: "")
     }
     
     func replaceBracketWithHalfWidth() -> String
     {
-        return self.stringByReplacingOccurrencesOfString("（", withString: "(").stringByReplacingOccurrencesOfString("）", withString: ")")
+        return self.replacingOccurrences(of: "（", with: "(").replacingOccurrences(of: "）", with: ")")
     }
     
     func substituteRemainingPolishChars() -> String {
-        return self.stringByReplacingOccurrencesOfString("ł", withString: "l", options: NSStringCompareOptions.CaseInsensitiveSearch, range: self.rangeOfString(self))
+        return self.replacingOccurrences(of: "ł", with: "l", options: NSString.CompareOptions.caseInsensitive, range: self.range(of: self))
     }
 }
 

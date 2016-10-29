@@ -4,7 +4,7 @@
 use_frameworks!
 source 'https://github.com/CocoaPods/Specs.git'
 
-pod 'ChameleonFramework/Swift'
+pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git'
 pod 'FMDB'
 pod 'Fabric'
 pod 'Crashlytics'

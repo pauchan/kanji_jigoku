@@ -15,19 +15,19 @@ class PRSettingsViewController: UITableViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        self.tableView = UITableView(frame: self.view.frame, style:  UITableViewStyle.Grouped)
+        self.tableView = UITableView(frame: self.view.frame, style:  UITableViewStyle.grouped)
         let nib = UINib(nibName: "PRFilterCell", bundle: nil)
-        self.tableView.registerNib(nib, forCellReuseIdentifier: "PRFilterCell")
+        self.tableView.register(nib, forCellReuseIdentifier: "PRFilterCell")
         self.navigationItem.title = "Ustawienia"
         self.filterController = PRFilterController()
     }
     
     // MARK: - Table view data source
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return 3
         } else {
@@ -35,7 +35,7 @@ class PRSettingsViewController: UITableViewController {
         }
     }
 
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 0 {
             return "Baza danych"
         } else {
@@ -43,69 +43,69 @@ class PRSettingsViewController: UITableViewController {
         }
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if indexPath.section == 1 {
-            let cell = tableView.dequeueReusableCellWithIdentifier("PRFilterCell", forIndexPath: indexPath) as! PRFilterCell
-            cell.contentView.userInteractionEnabled = false
+        if (indexPath as NSIndexPath).section == 1 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "PRFilterCell", for: indexPath) as! PRFilterCell
+            cell.contentView.isUserInteractionEnabled = false
             self.filterController.updateWithCell(cell)
             self.filterController?.updateFilterCell(PRStateSingleton.sharedInstance.filterOn)
             return cell
         } else {
-            switch(indexPath.row) {
+            switch((indexPath as NSIndexPath).row) {
             case 0:
-                var cell : UITableViewCell? = tableView.dequeueReusableCellWithIdentifier("PRSettingsCell") as UITableViewCell!
+                var cell : UITableViewCell? = tableView.dequeueReusableCell(withIdentifier: "PRSettingsCell") as UITableViewCell!
                 if cell == nil {
-                    cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "PRSettingsCell")
-                    cell!.selectionStyle = UITableViewCellSelectionStyle.None
-                    cell!.contentView.userInteractionEnabled = false
+                    cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "PRSettingsCell")
+                    cell!.selectionStyle = UITableViewCellSelectionStyle.none
+                    cell!.contentView.isUserInteractionEnabled = false
                     cell!.textLabel?.text = "Aktualizacja bazy danych"
                 }
                 return cell!
             case 1:
-                var cell : UITableViewCell? = tableView.dequeueReusableCellWithIdentifier("PRSettingsCell") as UITableViewCell!
+                var cell : UITableViewCell? = tableView.dequeueReusableCell(withIdentifier: "PRSettingsCell") as UITableViewCell!
                 if cell == nil {
-                    cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "PRSettingsCell")
-                    cell!.selectionStyle = UITableViewCellSelectionStyle.Blue
+                    cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "PRSettingsCell")
+                    cell!.selectionStyle = UITableViewCellSelectionStyle.blue
                     
-                    cell!.contentView.userInteractionEnabled = false
-                    cell!.tintColor = UIColor.whiteColor()
+                    cell!.contentView.isUserInteractionEnabled = false
+                    cell!.tintColor = UIColor.white
                     
                     let checkmark = UIImageView(image: generateCheckmarkImage())
                     cell!.accessoryView = checkmark
-                    cell!.accessoryType = UITableViewCellAccessoryType.Checkmark
+                    cell!.accessoryType = UITableViewCellAccessoryType.checkmark
                     cell!.textLabel?.text = "Automatyczne aktualizacje"
                     cell!.detailTextLabel?.text = "Automatycznie sprawdzaj aktualizacje bazy po uruchomieniu aplikacji, jesli urzadzenie jest polaczone z internetem."
-                    cell!.detailTextLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                    cell!.detailTextLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
                     cell!.detailTextLabel?.numberOfLines = 0
                 }   
-                cell!.accessoryView?.hidden = !NSUserDefaults.standardUserDefaults().boolForKey("PRKanjiJigokuAutoDbUpdate")
+                cell!.accessoryView?.isHidden = !UserDefaults.standard.bool(forKey: "PRKanjiJigokuAutoDbUpdate")
                 return cell!
             case 2:
-                var cell : UITableViewCell? = tableView.dequeueReusableCellWithIdentifier("PRSettingsCell") as UITableViewCell!
+                var cell : UITableViewCell? = tableView.dequeueReusableCell(withIdentifier: "PRSettingsCell") as UITableViewCell!
                 if cell == nil
                 {
-                    cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "PRSettingsCell")
-                    cell!.selectionStyle = UITableViewCellSelectionStyle.None
+                    cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "PRSettingsCell")
+                    cell!.selectionStyle = UITableViewCellSelectionStyle.none
                     cell!.textLabel?.text = "Reset Aplikacji"
                     cell!.detailTextLabel?.text = "Ustawienia aplikacji zostana zresetowane, a baza danych ponownie zaladowana do sieci."
-                    cell!.contentView.userInteractionEnabled = false
-                    cell!.detailTextLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                    cell!.contentView.isUserInteractionEnabled = false
+                    cell!.detailTextLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
                     cell!.detailTextLabel?.numberOfLines = 0
                 }
                 return cell!
             default:
-                let cell : UITableViewCell? = tableView.dequeueReusableCellWithIdentifier("PRSettingsCell") as UITableViewCell!
+                let cell : UITableViewCell? = tableView.dequeueReusableCell(withIdentifier: "PRSettingsCell") as UITableViewCell!
                 return cell!
             }
         }
         
     }
         
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         
-        if indexPath.section == 0
+        if (indexPath as NSIndexPath).section == 0
         {
             return 70.0
         }
@@ -116,29 +116,29 @@ class PRSettingsViewController: UITableViewController {
     }
 
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if indexPath.section == 0 {
-            if indexPath.row == 0 {
+        if (indexPath as NSIndexPath).section == 0 {
+            if (indexPath as NSIndexPath).row == 0 {
                 updateDb()
             }
-            else if indexPath.row == 1 {
+            else if (indexPath as NSIndexPath).row == 1 {
                 
-                if let cell = tableView.cellForRowAtIndexPath(indexPath) {
-                    if NSUserDefaults.standardUserDefaults().boolForKey("PRKanjiJigokuAutoDbUpdate") {
-                        NSUserDefaults.standardUserDefaults().setBool(false, forKey: "PRKanjiJigokuAutoDbUpdate")
-                        cell.accessoryView?.hidden = true
+                if let cell = tableView.cellForRow(at: indexPath) {
+                    if UserDefaults.standard.bool(forKey: "PRKanjiJigokuAutoDbUpdate") {
+                        UserDefaults.standard.set(false, forKey: "PRKanjiJigokuAutoDbUpdate")
+                        cell.accessoryView?.isHidden = true
                     } else {
-                        cell.accessoryView?.hidden = false
-                        NSUserDefaults.standardUserDefaults().setBool(true, forKey: "PRKanjiJigokuAutoDbUpdate")
+                        cell.accessoryView?.isHidden = false
+                        UserDefaults.standard.set(true, forKey: "PRKanjiJigokuAutoDbUpdate")
                     }
-                    NSUserDefaults.standardUserDefaults().synchronize()
+                    UserDefaults.standard.synchronize()
                     tableView.reloadData()
                 }
             }
             else { // row == 2
-                let appDomain = NSBundle.mainBundle().bundleIdentifier
-                NSUserDefaults.standardUserDefaults().removePersistentDomainForName(appDomain!)
+                let appDomain = Bundle.main.bundleIdentifier
+                UserDefaults.standard.removePersistentDomain(forName: appDomain!)
                 updateDb()
             }
         }
@@ -149,22 +149,22 @@ class PRSettingsViewController: UITableViewController {
     }
 
     func updateDb() {
-        let backgroundView = UIView(frame: UIScreen.mainScreen().bounds)
+        let backgroundView = UIView(frame: UIScreen.main.bounds)
         backgroundView.backgroundColor = UIColor(colorLiteralRed: 0, green: 0, blue: 0, alpha: 0.5)
-        let indicator = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
+        let indicator = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
         indicator.center = self.tableView.center
         backgroundView.addSubview(indicator)
         indicator.startAnimating()
-        UIApplication.sharedApplication().keyWindow!.addSubview(backgroundView)
+        UIApplication.shared.keyWindow!.addSubview(backgroundView)
             // do some task
             //PRDatabaseHelper().syncDatabase()
-            let operationQueue = NSOperationQueue()
+            let operationQueue = OperationQueue()
         let importOperation = ImportOperation(remoteImport: false)
             importOperation.completionBlock = {
-                    dispatch_async(dispatch_get_main_queue(), {
+                    DispatchQueue.main.async(execute: {
                         backgroundView.removeFromSuperview()
                         PRDatabaseHelper().loadAppSettings()
-                        self.navigationController?.popToRootViewControllerAnimated(false)
+                        self.navigationController?.popToRootViewController(animated: false)
                         })
             }
             operationQueue.addOperation(importOperation)

@@ -15,7 +15,7 @@ class PRFlashcardPageViewController : UIPageViewController, UIPageViewController
     
     init(flashcardSet : [Flashcard]) {
         self.flashcardSet = flashcardSet
-        super.init(transitionStyle: .PageCurl, navigationOrientation: .Horizontal, options: nil)
+        super.init(transitionStyle: .pageCurl, navigationOrientation: .horizontal, options: nil)
     }
 
     required init?(coder: NSCoder) {
@@ -31,26 +31,34 @@ class PRFlashcardPageViewController : UIPageViewController, UIPageViewController
             vc.flashcard = flashcard
             self.flashcardViewControllers.append(vc)
         }
-        self.setViewControllers([self.flashcardViewControllers.first!], direction: .Forward, animated: false, completion: nil)
+        self.setViewControllers([self.flashcardViewControllers.first!], direction: .forward, animated: false, completion: nil)
     }
     
-    func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         
-        var pageIndex = self.flashcardViewControllers.indexOf(viewController as! PRFlashcardViewController)
-        if pageIndex == 0 {
-            return nil
+        if var pageIndex = self.flashcardViewControllers.index(of: viewController as! PRFlashcardViewController) {
+            if pageIndex == 0 {
+                return nil
+            } else {
+                pageIndex -= 1
+                return self.flashcardViewControllers[pageIndex]
+            }
         } else {
-            return self.flashcardViewControllers[--pageIndex!]
+            return nil
         }
     }
     
-    func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         
-        var pageIndex = self.flashcardViewControllers.indexOf(viewController as! PRFlashcardViewController)
-        if pageIndex == self.flashcardSet.count - 1 {
-            return nil
+        if var pageIndex = self.flashcardViewControllers.index(of: viewController as! PRFlashcardViewController) {
+            if pageIndex == self.flashcardSet.count - 1 {
+                return nil
+            } else {
+                pageIndex += 1
+                return self.flashcardViewControllers[pageIndex]
+            }
         } else {
-            return self.flashcardViewControllers[++pageIndex!]
+            return nil
         }
     }
 }

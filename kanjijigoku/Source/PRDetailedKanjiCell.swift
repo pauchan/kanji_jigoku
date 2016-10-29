@@ -14,13 +14,13 @@ class PRDetailedKanjiCell: UITableViewCell {
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         
-        super.init(style: UITableViewCellStyle.Subtitle, reuseIdentifier: reuseIdentifier)
-        self.selectionStyle = UITableViewCellSelectionStyle.None
+        super.init(style: UITableViewCellStyle.subtitle, reuseIdentifier: reuseIdentifier)
+        self.selectionStyle = UITableViewCellSelectionStyle.none
         self.textLabel?.numberOfLines = 0
         self.detailTextLabel?.numberOfLines = 0
         
         self.textLabel?.font = UIFont().appFontOfSize(15.0)
-        self.detailTextLabel?.font = UIFont.systemFontOfSize(12.0)
+        self.detailTextLabel?.font = UIFont.systemFont(ofSize: 12.0)
         
     }
 

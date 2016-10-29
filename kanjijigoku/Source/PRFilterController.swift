@@ -21,21 +21,21 @@ class PRFilterController: NSObject, UIPickerViewDataSource, UIPickerViewDelegate
         lessonPickerView.delegate = self
     }
     
-    func updateWithCell(filterCell: PRFilterCell) {
+    func updateWithCell(_ filterCell: PRFilterCell) {
         self.filterCell = filterCell
         
         self.filterCell.levelComboBox?.inputView = levelPickerView
         self.filterCell.lessonComboBox?.inputView = lessonPickerView
-        self.filterCell.filterSwitch?.addTarget(self, action: "filterSwitch:", forControlEvents: UIControlEvents.ValueChanged)
+        self.filterCell.filterSwitch?.addTarget(self, action: #selector(PRFilterController.filterSwitch(_:)), for: UIControlEvents.valueChanged)
     }
     
-    func filterSwitch(sender: UISwitch) {
+    func filterSwitch(_ sender: UISwitch) {
         
-        PRStateSingleton.sharedInstance.filterOn = sender.on
+        PRStateSingleton.sharedInstance.filterOn = sender.isOn
         self.updateFilterCell(PRStateSingleton.sharedInstance.filterOn)
     }
     
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if pickerView == levelPickerView {
             return PRStateSingleton.sharedInstance.levelArray.count
         }
@@ -44,12 +44,12 @@ class PRFilterController: NSObject, UIPickerViewDataSource, UIPickerViewDelegate
         }
     }
     
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
     
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView == levelPickerView {
             
             self.filterCell.levelComboBox?.text = "Poziom \(PRStateSingleton.sharedInstance.levelArray[row])"
@@ -63,7 +63,7 @@ class PRFilterController: NSObject, UIPickerViewDataSource, UIPickerViewDelegate
         }
     }
     
-    func generateLessonSummaryString(level: Int, lesson: Int) -> String {
+    func generateLessonSummaryString(_ level: Int, lesson: Int) -> String {
         
         let arr : [Kanji]  = PRDatabaseHelper().getSelectedObjects("Kanji", level: level, lesson: lesson) as! [Kanji]
         let bla : String =  arr.map {
@@ -74,13 +74,13 @@ class PRFilterController: NSObject, UIPickerViewDataSource, UIPickerViewDelegate
         return bla
     }
     
-    func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView?) -> UIView {
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         
         var labView : UILabel? = view as? UILabel
         
         if labView == nil {
             labView = UILabel()
-            labView?.textAlignment = NSTextAlignment.Center
+            labView?.textAlignment = NSTextAlignment.center
             if pickerView == lessonPickerView {
                 labView!.font = UIFont().appFontOfSize(14.0)
             }
@@ -94,10 +94,10 @@ class PRFilterController: NSObject, UIPickerViewDataSource, UIPickerViewDelegate
         return labView!
     }
     
-    func updateFilterCell(filterEnabled: Bool) {
-        filterCell.filterSwitch.on = filterEnabled
-        filterCell.levelComboBox.enabled = filterEnabled
-        filterCell.lessonComboBox.enabled = filterEnabled
+    func updateFilterCell(_ filterEnabled: Bool) {
+        filterCell.filterSwitch.isOn = filterEnabled
+        filterCell.levelComboBox.isEnabled = filterEnabled
+        filterCell.lessonComboBox.isEnabled = filterEnabled
         if filterEnabled {
             PRStateSingleton.sharedInstance.filterLevel = PRStateSingleton.sharedInstance.filterLevel
             PRStateSingleton.sharedInstance.filterLesson = PRStateSingleton.sharedInstance.filterLesson

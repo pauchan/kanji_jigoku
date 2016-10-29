@@ -12,19 +12,20 @@ import CoreText
 
 class Sentence: BaseEntity {
 
-    func generateFuriganaString(baseString: String, furiganaString: String) -> NSAttributedString
+    func generateFuriganaString(_ baseString: String, furiganaString: String) -> NSAttributedString
     {
         
         let test1 = baseString as NSString
-        let test2 = furiganaString as NSString
+        let test2 = furiganaString as CFString
         
-        var text = [.passRetained(test2) as Unmanaged<CFStringRef>?, .None, .None, .None]
-        let annotation = CTRubyAnnotationCreate(.Auto, .Auto, 0.5, &text) as CTRubyAnnotationRef
+        var x = Unmanaged.passUnretained(test2)
         
-        var alignment = CTTextAlignment.Center
-        var wrap = CTLineBreakMode.ByTruncatingTail
+        let annotation = CTRubyAnnotationCreate(.auto, .auto, 0.5, &x) as CTRubyAnnotation
         
-        let settings = [CTParagraphStyleSetting(spec: .Alignment, valueSize: Int(sizeofValue(alignment)), value: &alignment),CTParagraphStyleSetting(spec: .LineBreakMode, valueSize: Int(sizeofValue(wrap)), value: &wrap)]
+        var alignment = CTTextAlignment.center
+        var wrap = CTLineBreakMode.byTruncatingTail
+        
+        let settings = [CTParagraphStyleSetting(spec: .alignment, valueSize: Int(MemoryLayout.size(ofValue: alignment)), value: &alignment),CTParagraphStyleSetting(spec: .lineBreakMode, valueSize: Int(MemoryLayout.size(ofValue: wrap)), value: &wrap)]
         let style = CTParagraphStyleCreate(settings, 1)
         
         
@@ -43,9 +44,9 @@ class Sentence: BaseEntity {
         let mutString = NSMutableString(string: self.sentence!)
         let regex = try? NSRegularExpression(pattern:"\\{(.*?);(.*?)\\}", options: [])
         
-        while let group :NSTextCheckingResult = regex?.firstMatchInString(tempSentence, options: [], range: range) {
+        while let group :NSTextCheckingResult = regex?.firstMatch(in: tempSentence, options: [], range: range) {
             
-            mutString.replaceCharactersInRange(group.range, withString: mutString.substringWithRange(group.rangeAtIndex(1)))
+            mutString.replaceCharacters(in: group.range, with: mutString.substring(with: group.rangeAt(1)))
             tempSentence = String(mutString)
             range = NSMakeRange(0, tempSentence.characters.count)
         }

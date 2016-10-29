@@ -8,28 +8,28 @@
 
 import UIKit
 
-func generateKanjiImage(color: UIColor) -> UIImage {
+func generateKanjiImage(_ color: UIColor) -> UIImage {
     
     let kanjiFont = UIFont(name: "HiraKakuProN-W3", size: 20.0)
     let kanji :NSAttributedString = NSAttributedString(string: "漢字", attributes: [NSFontAttributeName : kanjiFont!, NSForegroundColorAttributeName : color])
     UIGraphicsBeginImageContextWithOptions(kanji.size(), false, 0.0)
     
-    kanji.drawAtPoint(CGPointMake(0.0, 0.0))
+    kanji.draw(at: CGPoint(x: 0.0, y: 0.0))
     let img = UIGraphicsGetImageFromCurrentImageContext()
     UIGraphicsEndImageContext()
-    return img
+    return img!
 }
 
 
 func generateCheckmarkImage() -> UIImage {
 
-    let kanji :NSAttributedString = NSAttributedString(string: "\u{2713}", attributes: [NSFontAttributeName : UIFont().appFontOfSize(20.0), NSForegroundColorAttributeName : UIColor.blackColor()])
+    let kanji :NSAttributedString = NSAttributedString(string: "\u{2713}", attributes: [NSFontAttributeName : UIFont().appFontOfSize(20.0), NSForegroundColorAttributeName : UIColor.black])
     UIGraphicsBeginImageContextWithOptions(kanji.size(), false, 0.0)
     
-    kanji.drawAtPoint(CGPointMake(0.0, 0.0))
+    kanji.draw(at: CGPoint(x: 0.0, y: 0.0))
     let img = UIGraphicsGetImageFromCurrentImageContext()
     UIGraphicsEndImageContext()
-    return img
+    return img!
     
     
 }

@@ -23,7 +23,7 @@ class PRFlashcardViewController : UIViewController, UIGestureRecognizerDelegate 
     
     override func viewDidLoad() {
         
-        let tap : UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "tapReceived:")
+        let tap : UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(PRFlashcardViewController.tapReceived(_:)))
         tap.delegate = self
         self.view.addGestureRecognizer(tap)
         textLabel?.text = flashcard.text
@@ -31,28 +31,28 @@ class PRFlashcardViewController : UIViewController, UIGestureRecognizerDelegate 
         readingLabel?.furiganaText = flashcard.text.furiganaExtractedSentence()
         meaningLabel?.text = flashcard.meaning
         
-        if flashcard.type == .Sentence {
-            textLabel.hidden = true
-            spellingLabel.hidden = true
+        if flashcard.type == .sentence {
+            textLabel.isHidden = true
+            spellingLabel.isHidden = true
         } else {
             readingLabel.removeFromSuperview()
         }
     }
 
-    func tapReceived(sender: UITapGestureRecognizer) {
+    func tapReceived(_ sender: UITapGestureRecognizer) {
         
-        tapCount++
+        tapCount += 1
         if tapCount == 1 {
-            if flashcard.type == .Sentence {
+            if flashcard.type == .sentence {
                 //readingLabel?.furiganaText = flashcard.furiganaReading
                 readingLabel?.furiganaText = flashcard.text.furiganaExplainedSentence()
                 readingLabel?.setNeedsDisplay()
             } else {
-                spellingLabel.hidden = false
+                spellingLabel.isHidden = false
             }
         }
         else if tapCount == 2 {
-            meaningLabel?.hidden = false
+            meaningLabel?.isHidden = false
         }
         else {
             // do nothing
@@ -63,7 +63,7 @@ class PRFlashcardViewController : UIViewController, UIGestureRecognizerDelegate 
         
         super.viewDidLayoutSubviews()
 //        characterLabel.font = characterLabel.fontSizeToFitView(UIFont().appFontOfSize(36.0), text: flashcard.text)
-        meaningLabel?.font = meaningLabel.fontSizeToFitView(UIFont.systemFontOfSize(22.0), text: flashcard.meaning)
+        meaningLabel?.font = meaningLabel.fontSizeToFitView(UIFont.systemFont(ofSize: 22.0), text: flashcard.meaning)
 
     }
     

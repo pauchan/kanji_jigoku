@@ -16,60 +16,60 @@ class PRKanjiMenuViewController: UITableViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "SettingsIcon"), style: .Plain,  target: self, action: "prKanjiJigokuRightBarItemShowSettings:")
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "SettingsIcon"), style: .plain,  target: self, action: "prKanjiJigokuRightBarItemShowSettings:")
         self.navigationItem.title = "Słownik"
         
         let nib : UINib = UINib(nibName: "PRHeaderViewCell", bundle: nil)
-        self.tableView.registerNib(nib, forCellReuseIdentifier: "PRHeaderViewCell")
-        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "PRKanjiCell")
+        self.tableView.register(nib, forCellReuseIdentifier: "PRHeaderViewCell")
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "PRKanjiCell")
         self.tableView.tableFooterView = UIView()
                 
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "lessonUpdated:", name: "PRKanjiJigokuLessonUpdated", object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(PRKanjiMenuViewController.lessonUpdated(_:)), name: NSNotification.Name(rawValue: "PRKanjiJigokuLessonUpdated"), object: nil)
 }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self._headerCoordinator?.updateHeaderState()
     }
 
-override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
 {
-    if indexPath.section == 0 {
-        let cell = tableView.dequeueReusableCellWithIdentifier("PRHeaderViewCell", forIndexPath: indexPath) as! PRHeaderViewCell
+    if (indexPath as NSIndexPath).section == 0 {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PRHeaderViewCell", for: indexPath) as! PRHeaderViewCell
         _headerCoordinator = PRHeaderCoordinator(headerCell: cell)
-        cell.contentView.userInteractionEnabled = false
-        cell.selectionStyle = .None
+        cell.contentView.isUserInteractionEnabled = false
+        cell.selectionStyle = .none
         return cell
     } else {
-        let cell = tableView.dequeueReusableCellWithIdentifier("PRKanjiCell", forIndexPath: indexPath) 
-        cell.textLabel?.text = _kanjiTable[indexPath.row].kanji
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PRKanjiCell", for: indexPath) 
+        cell.textLabel?.text = _kanjiTable[(indexPath as NSIndexPath).row].kanji
         cell.textLabel?.font = UIFont().appFontOfSize(12.0)
-        cell.selectionStyle = .None
+        cell.selectionStyle = .none
         return cell
     }
 }
 
-override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
 {
-    if indexPath.section != 0 {
+    if (indexPath as NSIndexPath).section != 0 {
         let vc = PRKanjiPageViewController()
         vc._kanjiTable = _kanjiTable
-        vc._selectedIndex = indexPath.row
+        vc._selectedIndex = (indexPath as NSIndexPath).row
         navigationController?.pushViewController(vc, animated: false)
     }
 }
 
 
-override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
+override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
 {
-    if indexPath.section == 0 && indexPath.row == 0 {
+    if (indexPath as NSIndexPath).section == 0 && (indexPath as NSIndexPath).row == 0 {
         return 90.0 * scaleForDevice
     } else {
         return 45.0 * scaleForDevice
     }
 }
 
-override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
 {
     if(section == 0) {
         return 1
@@ -77,12 +77,12 @@ override func tableView(tableView: UITableView, numberOfRowsInSection section: I
         return _kanjiTable.count
     }
 }
-override func numberOfSectionsInTableView(tableView: UITableView) -> Int
+override func numberOfSections(in tableView: UITableView) -> Int
 {
     return 2
 }
 
-func lessonUpdated(notification: NSNotification)
+func lessonUpdated(_ notification: Notification)
 {
         print("notification called")
         _kanjiTable = PRDatabaseHelper().getSelectedObjects("Kanji", level: PRStateSingleton.sharedInstance.currentLevel, lesson: PRStateSingleton.sharedInstance.currentLesson) as! [Kanji]

@@ -17,21 +17,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
 
     var window: UIWindow?
 
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         Fabric.with([Crashlytics.self])
         Fabric.sharedSDK().debug = true
         
-        Chameleon.setGlobalThemeUsingPrimaryColor(appColor, withContentStyle: UIContentStyle.Dark)
+        Chameleon.setGlobalThemeUsingPrimaryColor(appColor, with: UIContentStyle.dark)
         
         UITabBar.appearance().barTintColor = appColor
         
-        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.blackColor()], forState: UIControlState.Normal)
-        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.whiteColor()], forState: UIControlState.Selected)
+        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.black], for: UIControlState())
+        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.white], for: UIControlState.selected)
         
         self.initDb()
         
-        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.rootViewController = self.tabBarController()
         self.window?.makeKeyAndVisible()
         
@@ -39,12 +39,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
     }
     
     func initDb() {
-        guard !NSUserDefaults.standardUserDefaults().boolForKey("PRKanjiJigokuDBLoaded") else { return }
+        guard !UserDefaults.standard.bool(forKey: "PRKanjiJigokuDBLoaded") else { return }
         
-        let operationQueue = NSOperationQueue()
+        let operationQueue = OperationQueue()
         let importOperation = ImportOperation(remoteImport: false)
         importOperation.completionBlock = {
-            NSUserDefaults.standardUserDefaults().setBool(true, forKey:"PRKanjiJigokuDBLoaded")
+            UserDefaults.standard.set(true, forKey:"PRKanjiJigokuDBLoaded")
             let stateSingleton : PRStateSingleton = PRStateSingleton.sharedInstance
             stateSingleton.levelArray = PRDatabaseHelper().getLevelArray()
             stateSingleton.lessonArray = PRDatabaseHelper().getLessonArray(stateSingleton.currentLevel)
@@ -64,39 +64,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
         let kanjiNavigationController : UINavigationController = UINavigationController(rootViewController: kanjiViewController)
         let searchNavigationController : UINavigationController = UINavigationController(rootViewController: PRSearchKanjiViewController(nibName: "PRSearchKanjiViewController" ,bundle: nil))
         let testsNavigationController : UINavigationController = UINavigationController(rootViewController: PRTestMenuViewController())
-        let flashcardController : UINavigationController = UINavigationController(rootViewController: PRFlashcardMenuViewController(style: UITableViewStyle.Plain))
+        let flashcardController : UINavigationController = UINavigationController(rootViewController: PRFlashcardMenuViewController(style: UITableViewStyle.plain))
         
-        kanjiNavigationController.tabBarItem = UITabBarItem(title: "Lekcja", image: generateKanjiImage(UIColor.blackColor()).imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal) , tag: 0)
-        kanjiNavigationController.tabBarItem.selectedImage = generateKanjiImage(UIColor.whiteColor()).imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
-        searchNavigationController.tabBarItem = UITabBarItem(title: "Szukaj", image: UIImage(named: "SearchIcon")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), tag: 1)
-        searchNavigationController.tabBarItem.selectedImage = UIImage(named: "SearchIconWhite")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
-        testsNavigationController.tabBarItem = UITabBarItem(title: "Testy", image: UIImage(named: "TestIcon")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), tag: 2)
-        testsNavigationController.tabBarItem.selectedImage = UIImage(named: "TestIconWhite")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
-        flashcardController.tabBarItem = UITabBarItem(title: "Fiszki", image: UIImage(named: "FlashcardIcon")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), tag: 3)
-        flashcardController.tabBarItem.selectedImage = UIImage(named: "FlashcardIconWhite")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+        kanjiNavigationController.tabBarItem = UITabBarItem(title: "Lekcja", image: generateKanjiImage(UIColor.black).withRenderingMode(UIImageRenderingMode.alwaysOriginal) , tag: 0)
+        kanjiNavigationController.tabBarItem.selectedImage = generateKanjiImage(UIColor.white).withRenderingMode(UIImageRenderingMode.alwaysOriginal)
+        searchNavigationController.tabBarItem = UITabBarItem(title: "Szukaj", image: UIImage(named: "SearchIcon")?.withRenderingMode(UIImageRenderingMode.alwaysOriginal), tag: 1)
+        searchNavigationController.tabBarItem.selectedImage = UIImage(named: "SearchIconWhite")?.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
+        testsNavigationController.tabBarItem = UITabBarItem(title: "Testy", image: UIImage(named: "TestIcon")?.withRenderingMode(UIImageRenderingMode.alwaysOriginal), tag: 2)
+        testsNavigationController.tabBarItem.selectedImage = UIImage(named: "TestIconWhite")?.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
+        flashcardController.tabBarItem = UITabBarItem(title: "Fiszki", image: UIImage(named: "FlashcardIcon")?.withRenderingMode(UIImageRenderingMode.alwaysOriginal), tag: 3)
+        flashcardController.tabBarItem.selectedImage = UIImage(named: "FlashcardIconWhite")?.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
         
         tabBarController.viewControllers = [kanjiNavigationController, searchNavigationController, testsNavigationController, flashcardController]
         
         for vc in tabBarController.viewControllers as! [UINavigationController] {
-            if vc.respondsToSelector("interactivePopGestureRecognizer") {
-                vc.interactivePopGestureRecognizer!.enabled = false
+            if vc.responds(to: #selector(getter: UINavigationController.interactivePopGestureRecognizer)) {
+                vc.interactivePopGestureRecognizer!.isEnabled = false
             }
         }
         return tabBarController
     }
 
-    func applicationDidEnterBackground(application: UIApplication) {
+    func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
         PRDatabaseHelper().saveAppSettings()
     }
 
-    func applicationWillEnterForeground(application: UIApplication) {
+    func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as! part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
         PRDatabaseHelper().loadAppSettings()
     }
 
-    func applicationWillTerminate(application: UIApplication) {
+    func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
         self.saveContext()
@@ -104,27 +104,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
 
     // MARK: - Core Data stack
 
-    lazy var applicationDocumentsDirectory: NSURL = {
+    lazy var applicationDocumentsDirectory: URL = {
         // The directory the application uses to store the Core Data store file. This code uses a directory named "com.pawel.rusin.kanjijigoku" in the application's documents Application Support directory.
-        let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
+        let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         return urls[urls.count-1] 
     }()
 
     lazy var managedObjectModel: NSManagedObjectModel = {
         // The managed object model for the application. This property is not optional. It is a fatal error for the application not to be able to find and load its model.
-        let modelURL = NSBundle.mainBundle().URLForResource("kanjijigoku", withExtension: "momd")!
-        return NSManagedObjectModel(contentsOfURL: modelURL)!
+        let modelURL = Bundle.main.url(forResource: "kanjijigoku", withExtension: "momd")!
+        return NSManagedObjectModel(contentsOf: modelURL)!
     }()
 
     lazy var persistentStoreCoordinator: NSPersistentStoreCoordinator? = {
         // The persistent store coordinator for the application. This implementation creates and return a coordinator, having added the store for the application to it. This property is optional since there are legitimate error conditions that could cause the creation of the store to fail.
         // Create the coordinator and store
         var coordinator: NSPersistentStoreCoordinator? = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
-        let url = self.applicationDocumentsDirectory.URLByAppendingPathComponent("kanjijigoku.sqlite")
+        let url = self.applicationDocumentsDirectory.appendingPathComponent("kanjijigoku.sqlite")
         var error: NSError? = nil
         var failureReason = "There was an error creating or loading the application's saved data."
         do {
-            try coordinator!.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: nil)
+            try coordinator!.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: url, options: nil)
         } catch var error1 as NSError {
             error = error1
             coordinator = nil
@@ -148,7 +148,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
         if coordinator == nil {
             return nil
         }
-        var managedObjectContext = NSManagedObjectContext(concurrencyType: NSManagedObjectContextConcurrencyType.PrivateQueueConcurrencyType)
+        var managedObjectContext = NSManagedObjectContext(concurrencyType: NSManagedObjectContextConcurrencyType.privateQueueConcurrencyType)
         managedObjectContext.persistentStoreCoordinator = coordinator
         return managedObjectContext
     }()
@@ -171,11 +171,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
         }
     }
     
-    func tabBarController(tabBarController: UITabBarController, didSelectViewController viewController: UIViewController) {
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         
-        if viewController.isKindOfClass(UINavigationController) {
+        if viewController.isKind(of: UINavigationController.self) {
             let navController = viewController as! UINavigationController
-            navController.popToRootViewControllerAnimated(false)
+            navController.popToRootViewController(animated: false)
         }
     }
 }

@@ -11,7 +11,7 @@ import UIKit
 extension UIViewController
 {
     
-    func prKanjiJigokuRightBarItemShowSettings(sender: AnyObject)
+    func prKanjiJigokuRightBarItemShowSettings(_ sender: AnyObject)
     {
         self.navigationController?.pushViewController(PRSettingsViewController(), animated: false)
     }

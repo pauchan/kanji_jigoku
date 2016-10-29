@@ -18,7 +18,7 @@ class PRKanjiPageViewController: UIViewController, UIPageViewControllerDelegate,
     override func viewDidLoad()
     {
         
-        pageViewController = UIPageViewController(transitionStyle: UIPageViewControllerTransitionStyle.PageCurl, navigationOrientation: UIPageViewControllerNavigationOrientation.Horizontal, options: nil)
+        pageViewController = UIPageViewController(transitionStyle: UIPageViewControllerTransitionStyle.pageCurl, navigationOrientation: UIPageViewControllerNavigationOrientation.horizontal, options: nil)
         
         pageViewController.dataSource = self
         pageViewController.delegate = self
@@ -33,7 +33,7 @@ class PRKanjiPageViewController: UIViewController, UIPageViewControllerDelegate,
         
         self.navigationItem.title = vc.kanji.kanji
         
-        pageViewController.setViewControllers(vcArray, direction: .Forward, animated: false, completion: nil)
+        pageViewController.setViewControllers(vcArray, direction: .forward, animated: false, completion: nil)
         self.view.addSubview(pageViewController.view)
         
         self.view.gestureRecognizers = self.pageViewController.gestureRecognizers;
@@ -51,7 +51,7 @@ class PRKanjiPageViewController: UIViewController, UIPageViewControllerDelegate,
     }
     
     
-    func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         
         if _selectedIndex == 0 {
             return nil
@@ -64,7 +64,7 @@ class PRKanjiPageViewController: UIViewController, UIPageViewControllerDelegate,
         }
     }
     
-    func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
 
         if _selectedIndex == _kanjiTable.count - 1
         {
@@ -80,7 +80,7 @@ class PRKanjiPageViewController: UIViewController, UIPageViewControllerDelegate,
         }
     }
     
-    func pageViewController(pageViewController: UIPageViewController, willTransitionToViewControllers pendingViewControllers: [UIViewController]) {
+    func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
         let nextKanjiPage = pendingViewControllers[0] as! PRKanjiTableViewController
         self.navigationItem.title = nextKanjiPage.kanji.kanji
         _selectedIndex = nextKanjiPage.currentPage
@@ -88,12 +88,12 @@ class PRKanjiPageViewController: UIViewController, UIPageViewControllerDelegate,
     }
     
     
-    func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
+    func presentationCount(for pageViewController: UIPageViewController) -> Int {
         
         return _kanjiTable.count
     }
     
-    func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
+    func presentationIndex(for pageViewController: UIPageViewController) -> Int {
         
         return _selectedIndex
     }

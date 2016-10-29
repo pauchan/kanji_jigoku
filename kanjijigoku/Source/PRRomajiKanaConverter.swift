@@ -10,39 +10,30 @@ import Foundation
 
 public enum AlphabetType: Int {
     
-    case Romaji = 0, Hiragana, Katakana
+    case romaji = 0, hiragana, katakana
 }
 
-public class PRRomajiKanaConverter {
+open class PRRomajiKanaConverter {
     
-    public lazy var referenceArray = Array<Array<String>>()
+    static let sharedInstance = PRRomajiKanaConverter()
     
-    class var sharedInstance: PRRomajiKanaConverter {
-        struct Static {
-            static var instance: PRRomajiKanaConverter?
-            static var token: dispatch_once_t = 0
-        }
-        
-        dispatch_once(&Static.token) {
-            Static.instance = PRRomajiKanaConverter()
+    init() {
+        let bundle = Bundle.main
+        if let path = bundle.path(forResource: "RomajiKanaConversionArray", ofType: "plist") {
             
-            let bundle = NSBundle.mainBundle()
-            if let path = bundle.pathForResource("RomajiKanaConversionArray", ofType: "plist") {
+            let rootArray = NSArray(contentsOfFile: path)!
+            var tempArray = Array<Array<String>>()
+            for child in rootArray {
                 
-                let rootArray = NSArray(contentsOfFile: path)!
-                var tempArray = Array<Array<String>>()
-                for child in rootArray {
-                
-                    tempArray.append(child as! Array<String>)
-                }
-                Static.instance!.referenceArray = tempArray
+                tempArray.append(child as! Array<String>)
             }
+            referenceArray = tempArray
         }
-        
-        return Static.instance!
     }
     
-    public func convert(string: String, from: AlphabetType, to: AlphabetType) -> String {
+    open lazy var referenceArray = Array<Array<String>>()
+    
+    open func convert(_ string: String, from: AlphabetType, to: AlphabetType) -> String {
         
         let fromIndex = from.rawValue
         let toIndex = to.rawValue
@@ -50,7 +41,7 @@ public class PRRomajiKanaConverter {
         
         for conversion in PRRomajiKanaConverter.sharedInstance.referenceArray {
             
-            outString = outString.stringByReplacingOccurrencesOfString(conversion[fromIndex], withString: conversion[toIndex], options: NSStringCompareOptions.CaseInsensitiveSearch)            
+            outString = outString.replacingOccurrences(of: conversion[fromIndex], with: conversion[toIndex], options: NSString.CompareOptions.caseInsensitive)            
         }
         return outString
     }

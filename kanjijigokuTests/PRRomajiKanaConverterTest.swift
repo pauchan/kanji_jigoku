@@ -23,40 +23,40 @@ class PRRomajiKanaConverterTest: XCTestCase {
 
     func testRomajiToHiragara() {
         // This is an example of a functional test case.
-        let conversion = PRRomajiKanaConverter().convert("Kaiwa", from: AlphabetType.Romaji, to: AlphabetType.Hiragana)
+        let conversion = PRRomajiKanaConverter().convert("Kaiwa", from: AlphabetType.romaji, to: AlphabetType.hiragana)
         XCTAssertEqual(conversion, "かいわ", "converting Kaiwa to かいわ")
     }
 
     func testEmptyString() {
         // This is an example of a functional test case.
-        let conversion = PRRomajiKanaConverter().convert("", from: AlphabetType.Romaji, to: AlphabetType.Hiragana)
+        let conversion = PRRomajiKanaConverter().convert("", from: AlphabetType.romaji, to: AlphabetType.hiragana)
         XCTAssertEqual(conversion, "", "converting empty string")
     }
     
     func testHiraganaToRomaji() {
         // This is an example of a functional test case.
-        let conversion = PRRomajiKanaConverter().convert("かいわ", from: AlphabetType.Hiragana, to: AlphabetType.Romaji)
+        let conversion = PRRomajiKanaConverter().convert("かいわ", from: AlphabetType.hiragana, to: AlphabetType.romaji)
         XCTAssertEqual(conversion, "kaiwa", "converting かいわ to kaiwa")
     }
     
     func testImproperRomajiToHiragana() {
     
         // This is an example of a functional test case.
-        let conversion = PRRomajiKanaConverter().convert("klops", from: AlphabetType.Romaji, to: AlphabetType.Hiragana)
+        let conversion = PRRomajiKanaConverter().convert("klops", from: AlphabetType.romaji, to: AlphabetType.hiragana)
         XCTAssertEqual(conversion, "klおps", "converting klops to klおps")
     }
 
     func testAIUEOToHiragana() {
         
         // This is an example of a functional test case.
-        let conversion = PRRomajiKanaConverter().convert("AIUEO", from: AlphabetType.Romaji, to: AlphabetType.Hiragana)
+        let conversion = PRRomajiKanaConverter().convert("AIUEO", from: AlphabetType.romaji, to: AlphabetType.hiragana)
         XCTAssertEqual(conversion, "あいうえお", "converting AIUEO to あいうえお")
     }
     
     func testAIUEOToKatakana() {
         
         // This is an example of a functional test case.
-        let conversion = PRRomajiKanaConverter().convert("AIUEO", from: AlphabetType.Romaji, to: AlphabetType.Katakana)
+        let conversion = PRRomajiKanaConverter().convert("AIUEO", from: AlphabetType.romaji, to: AlphabetType.katakana)
         XCTAssertEqual(conversion, "アイウエオ", "converting AIUEO to アイウエオ")
     }
     

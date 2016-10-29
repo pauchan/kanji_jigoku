@@ -10,7 +10,7 @@ import Foundation
 
 enum FlashcardType: Int {
     
-    case Kunyomi = 0, Onyomi, Example, Sentence
+    case kunyomi = 0, onyomi, example, sentence
 }
 
 class Flashcard

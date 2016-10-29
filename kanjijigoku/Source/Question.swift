@@ -22,14 +22,14 @@ class Question
         self.properAnswerIndex = Int(arc4random_uniform(3))
         self.question = question
         self.meaning = meaning
-        self.options = [String](count: 4, repeatedValue: correctOption)
+        self.options = [String](repeating: correctOption, count: 4)
         var j = 0
         for i in 0...3
         {
             if i != self.properAnswerIndex
             {
                 options[i] = falseOptions[j]
-                j++
+                j += 1
             }
         }
     }

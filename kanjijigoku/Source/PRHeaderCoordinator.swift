@@ -23,7 +23,7 @@ class PRHeaderCoordinator: NSObject, UIPickerViewDataSource, UIPickerViewDelegat
         self.headerCell.levelComboBox?.inputView = levelPickerView
         self.headerCell.lessonComboBox?.inputView = lessonPickerView
         
-        self.headerCell.extraMaterialSwitch?.addTarget(self, action: "enableMaterial:", forControlEvents: UIControlEvents.ValueChanged)
+        self.headerCell.extraMaterialSwitch?.addTarget(self, action: #selector(PRHeaderCoordinator.enableMaterial(_:)), for: UIControlEvents.valueChanged)
         
         self.updateHeaderState()
         
@@ -33,7 +33,7 @@ class PRHeaderCoordinator: NSObject, UIPickerViewDataSource, UIPickerViewDelegat
     }
     
 
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int
     {
         if pickerView == levelPickerView
         {
@@ -45,12 +45,12 @@ class PRHeaderCoordinator: NSObject, UIPickerViewDataSource, UIPickerViewDelegat
         }
     }
     
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
         
         return 1
     }
     
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
     {
         if pickerView == levelPickerView
         {
@@ -68,7 +68,7 @@ class PRHeaderCoordinator: NSObject, UIPickerViewDataSource, UIPickerViewDelegat
         
     }
     
-    func generateLessonSummaryString(level: Int, lesson: Int) -> String
+    func generateLessonSummaryString(_ level: Int, lesson: Int) -> String
     {
     
     let arr : [Kanji]  = PRDatabaseHelper().getSelectedObjects("Kanji", level: level, lesson: lesson) as! [Kanji]
@@ -81,14 +81,14 @@ class PRHeaderCoordinator: NSObject, UIPickerViewDataSource, UIPickerViewDelegat
         return summary
     }
     
-    func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView?) -> UIView {
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         
         var labView : UILabel? = view as? UILabel
         
         if labView == nil
         {
             labView = UILabel()
-            labView?.textAlignment = NSTextAlignment.Center
+            labView?.textAlignment = NSTextAlignment.center
             if pickerView == lessonPickerView
             {
                 labView!.font = UIFont().appFontOfSize(14.0)
@@ -106,16 +106,16 @@ class PRHeaderCoordinator: NSObject, UIPickerViewDataSource, UIPickerViewDelegat
         return labView!
     }
     
-    func enableMaterial(sender: AnyObject) {
+    func enableMaterial(_ sender: AnyObject) {
     
-        PRStateSingleton.sharedInstance.extraMaterial = self.headerCell.extraMaterialSwitch!.on
+        PRStateSingleton.sharedInstance.extraMaterial = self.headerCell.extraMaterialSwitch!.isOn
     }
     
     func updateHeaderState() {
     
         self.headerCell.levelComboBox?.text = "Poziom \(PRStateSingleton.sharedInstance.currentLevel)"
         self.headerCell.lessonComboBox?.text = "Lekcja \(PRStateSingleton.sharedInstance.currentLesson)"
-        self.headerCell.extraMaterialSwitch?.on = PRStateSingleton.sharedInstance.extraMaterial
+        self.headerCell.extraMaterialSwitch?.isOn = PRStateSingleton.sharedInstance.extraMaterial
     }
     
 }

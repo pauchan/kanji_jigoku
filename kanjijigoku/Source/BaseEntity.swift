@@ -15,7 +15,7 @@ class BaseEntity: NSManagedObject {
     var obligatory: Bool {
         
         get {
-            if self.code!.rangeOfString("8") == nil {
+            if self.code!.range(of: "8") == nil {
                 return true
             } else {
                 return false

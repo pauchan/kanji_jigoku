@@ -12,7 +12,7 @@ let kLabelHorizontalMargin: CGFloat = 10.0
 
 protocol FinishedLoadingDelegate {
  
-    func splashDidFinishLoading(message: String?)
+    func splashDidFinishLoading(_ message: String?)
 }
 
 class PRInitController: UIViewController {
@@ -21,23 +21,23 @@ class PRInitController: UIViewController {
     
     override func viewDidLoad() {
         
-        let view = NSBundle.mainBundle().loadNibNamed("LaunchScreen", owner: self, options: nil).first! as! UIView
-        let label = UILabel(frame: CGRectMake(kLabelHorizontalMargin, SCREEN_HEIGHT-100.0*scaleForDevice, SCREEN_WIDTH-2*kLabelHorizontalMargin, 30.0*scaleForDevice))
+        let view = Bundle.main.loadNibNamed("LaunchScreen", owner: self, options: nil)?.first! as! UIView
+        let label = UILabel(frame: CGRect(x: kLabelHorizontalMargin, y: SCREEN_HEIGHT-100.0*scaleForDevice, width: SCREEN_WIDTH-2*kLabelHorizontalMargin, height: 30.0*scaleForDevice))
         label.text = "Trwa aktualizowanie danych..."
         label.font = UIFont().appFontOfSize(20.0)
-        label.textAlignment = .Center
+        label.textAlignment = .center
         
-        UIView.animateWithDuration(3.0, delay: 0.0, options: [.Repeat, .Autoreverse] , animations: { () -> Void in
+        UIView.animate(withDuration: 3.0, delay: 0.0, options: [.repeat, .autoreverse] , animations: { () -> Void in
             
             label.alpha = 0.0
             }, completion: nil)
 
         view.addSubview(label)
         
-        let explanationLabel = UILabel(frame: CGRectMake(kLabelHorizontalMargin, SCREEN_HEIGHT-50.0*scaleForDevice, SCREEN_WIDTH-2*kLabelHorizontalMargin, 40.0*scaleForDevice))
+        let explanationLabel = UILabel(frame: CGRect(x: kLabelHorizontalMargin, y: SCREEN_HEIGHT-50.0*scaleForDevice, width: SCREEN_WIDTH-2*kLabelHorizontalMargin, height: 40.0*scaleForDevice))
         explanationLabel.text = "(W zależności od połączenia internetowego ładowanie może potrwać do kilku minut)"
-        explanationLabel.textAlignment = .Center
-        explanationLabel.lineBreakMode = .ByWordWrapping
+        explanationLabel.textAlignment = .center
+        explanationLabel.lineBreakMode = .byWordWrapping
         explanationLabel.numberOfLines = 0
         explanationLabel.font = UIFont().appFontOfSize(10.0)
         view.addSubview(explanationLabel)
@@ -45,7 +45,7 @@ class PRInitController: UIViewController {
         self.view = view
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         
 
     }

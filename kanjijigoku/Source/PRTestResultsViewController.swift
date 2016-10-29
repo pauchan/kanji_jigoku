@@ -22,35 +22,35 @@ class PRTestResultsViewController: UITableViewController {
         
         self.navigationItem.title = "Wyniki testu"
         
-        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "PRTestResultCell")
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "PRTestResultCell")
         self.tableView.tableFooterView = UIView()
         
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         
-        if(indexPath.section == 0)
+        if((indexPath as NSIndexPath).section == 0)
         {
-            let cell = tableView.dequeueReusableCellWithIdentifier("PRTestResultCell", forIndexPath: indexPath) 
-            cell.selectionStyle = UITableViewCellSelectionStyle.None
+            let cell = tableView.dequeueReusableCell(withIdentifier: "PRTestResultCell", for: indexPath) 
+            cell.selectionStyle = UITableViewCellSelectionStyle.none
             cell.textLabel?.text = "\(descriptionText) : \(correctAnswers)/\(questions.count)"
             return cell
             
         }
         else
         {
-            let cell = tableView.dequeueReusableCellWithIdentifier("PRTestResultCell", forIndexPath: indexPath) 
-            cell.selectionStyle = UITableViewCellSelectionStyle.None
-            cell.textLabel?.attributedText = questions[indexPath.row].questionSummaryString
+            let cell = tableView.dequeueReusableCell(withIdentifier: "PRTestResultCell", for: indexPath) 
+            cell.selectionStyle = UITableViewCellSelectionStyle.none
+            cell.textLabel?.attributedText = questions[(indexPath as NSIndexPath).row].questionSummaryString
             return cell
         }
     }
 
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
-        if indexPath.section == 0
+        if (indexPath as NSIndexPath).section == 0
         {
             return 60.0
         }
@@ -61,7 +61,7 @@ class PRTestResultsViewController: UITableViewController {
         
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         if(section == 0)
         {
@@ -72,14 +72,14 @@ class PRTestResultsViewController: UITableViewController {
             return questions.count
         }
     }
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         
         return 2
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         
-        self.navigationController?.popToRootViewControllerAnimated(false)
+        self.navigationController?.popToRootViewController(animated: false)
         super.viewWillDisappear(animated)
     }
 
