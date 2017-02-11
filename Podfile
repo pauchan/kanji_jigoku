@@ -9,7 +9,6 @@ pod 'FMDB'
 pod 'Fabric'
 pod 'Crashlytics'
 pod 'DZNEmptyDataSet'
-pod 'FlatUIKit'
 
 target 'kanjijigoku' do
     

@@ -24,7 +24,7 @@ let IS_IPHONE_5 = (IS_IPHONE && SCREEN_MAX_LENGTH == 568.0)
 let IS_IPHONE_6 = (IS_IPHONE && SCREEN_MAX_LENGTH == 667.0)
 let IS_IPHONE_6P = (IS_IPHONE && SCREEN_MAX_LENGTH == 736.0)
 
-let appColor = UIColor.flatGreenDark
+let appColor = UIColor.green
 
 let kPRstarCharacter: Character = "\u{2B50}"
 

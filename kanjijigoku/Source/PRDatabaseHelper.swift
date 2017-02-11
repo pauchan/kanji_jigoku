@@ -76,9 +76,10 @@ class PRDatabaseHelper
             fetchRequest.sortDescriptors = [NSSortDescriptor(key: "level", ascending: true)]
             fetchRequest.returnsDistinctResults = true
             fetchRequest.resultType = .dictionaryResultType;
-            let outResponse = try! managedContext.fetch(fetchRequest)
+            let outResponse = try? managedContext.fetch(fetchRequest)
             var outArray = [Int]()
-            for object in outResponse {
+            guard let outr = outResponse else { return outArray }
+            for object in outr {
                  outArray.append(Int(object.level))
             }
             return outArray

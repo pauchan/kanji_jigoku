@@ -6,7 +6,6 @@ PODS:
     - Fabric (~> 1.6.3)
   - DZNEmptyDataSet (1.8.1)
   - Fabric (1.6.11)
-  - FlatUIKit (1.6.2)
   - FMDB (2.6.2):
     - FMDB/standard (= 2.6.2)
   - FMDB/standard (2.6.2)
@@ -16,7 +15,6 @@ DEPENDENCIES:
   - Crashlytics
   - DZNEmptyDataSet
   - Fabric
-  - FlatUIKit
   - FMDB
 
 EXTERNAL SOURCES:
@@ -25,7 +23,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   ChameleonFramework:
-    :commit: 7b4abe069fbd8a07c7d4ee5da482eb41518bb0e9
+    :commit: dcf98f9bf3a632a7f40679b7da46f09681e48526
     :git: https://github.com/ViccAlexander/Chameleon.git
 
 SPEC CHECKSUMS:
@@ -33,9 +31,8 @@ SPEC CHECKSUMS:
   Crashlytics: 2b6dbe138a42395577cfa73dfa1aa7248cadf39e
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
-  FlatUIKit: 1b41f0d4952ce8d970d8479ce79df54a960242c4
   FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
 
-PODFILE CHECKSUM: 48290e34e5c46248702a65fa1b9e459b16640ca1
+PODFILE CHECKSUM: b4000f6e9cb600e65d30406e96e6154d32f5aefe
 
 COCOAPODS: 1.1.1
