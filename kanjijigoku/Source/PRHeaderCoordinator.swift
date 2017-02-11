@@ -37,6 +37,7 @@ class PRHeaderCoordinator: NSObject, UIPickerViewDataSource, UIPickerViewDelegat
     {
         if pickerView == levelPickerView
         {
+            let vav = PRStateSingleton.sharedInstance.levelArray
             return PRStateSingleton.sharedInstance.levelArray.count
         }
         else

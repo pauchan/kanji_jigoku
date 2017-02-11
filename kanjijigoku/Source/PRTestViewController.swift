@@ -10,7 +10,6 @@ import UIKit
 import ChameleonFramework
 import Fabric
 import Crashlytics
-import FlatUIKit
 
 class PRTestViewController: UIViewController, UIAlertViewDelegate {
     
@@ -32,7 +31,6 @@ class PRTestViewController: UIViewController, UIAlertViewDelegate {
         
         super.viewDidLoad()
         descriptionLabel.text = descriptionText
-        testProgressLabel.configureFlatProgressView(withTrackColor: UIColor.silver(), progressColor: UIColor.alizarin())
         loadQuestion(0)
     }
     
