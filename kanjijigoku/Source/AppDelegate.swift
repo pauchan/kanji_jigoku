@@ -48,6 +48,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
             let stateSingleton : PRStateSingleton = PRStateSingleton.sharedInstance
             stateSingleton.levelArray = PRDatabaseHelper().getLevelArray()
             stateSingleton.lessonArray = PRDatabaseHelper().getLessonArray(stateSingleton.currentLevel)
+            stateSingleton.currentLevel = 1
+            stateSingleton.currentLesson = 1
         }
         operationQueue.addOperation(importOperation)
     }
