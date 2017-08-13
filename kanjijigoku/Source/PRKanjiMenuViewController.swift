@@ -42,7 +42,7 @@ override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexP
         return cell
     } else {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PRKanjiCell", for: indexPath) 
-        cell.textLabel?.text = _kanjiTable[(indexPath as NSIndexPath).row].kanji
+        cell.textLabel?.text = _kanjiTable[(indexPath as NSIndexPath).row].kanji //  "\u{2B1B}"  //
         cell.textLabel?.font = UIFont().appFontOfSize(12.0)
         cell.selectionStyle = .none
         return cell

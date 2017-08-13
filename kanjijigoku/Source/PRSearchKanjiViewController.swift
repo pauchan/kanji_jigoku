@@ -191,13 +191,13 @@ class PRSearchKanjiViewController: UIViewController, UITableViewDelegate, UITabl
         searchBar.resignFirstResponder()
     }
     
-    func titleforEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
         let str = "Możliwe tryby wyszukiwania"
         let attrs = [NSFontAttributeName: UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline)]
         return NSAttributedString(string: str, attributes: attrs)
     }
     
-    func descriptionForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+    func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
         let str = "Wyszukiwanie znaków: 金, 食べる, 連絡 \n" +
         "Wyszukiwanie na postawie kany: かね, たべる, れんらく \n" +
         "Wyszukiwanie na podstawie czytania fonetycznego: kane, taberu, renraku \n" +

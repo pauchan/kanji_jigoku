@@ -12,10 +12,10 @@ import UIKit
 
 extension UIView {
 
-    func fontSizeToFitView(_ desiredFont: UIFont, text: String) -> UIFont {
+    func fontSizeToFitView(_ desiredFont: UIFont, text: String?) -> UIFont {
         
         let constraintsSize = CGSize(width: self.bounds.size.width, height: CGFloat(MAXFLOAT))
-        let requiredSize = text.boundingRect(with: constraintsSize, options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: [NSFontAttributeName: desiredFont], context: nil)
+        let requiredSize = text?.boundingRect(with: constraintsSize, options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: [NSFontAttributeName: desiredFont], context: nil) ?? CGRect.zero
         debugLog("Reqired size is: \(requiredSize.height) Actual size is: \(self.bounds.size.height)")
         if requiredSize.height < self.bounds.size.height {
             
