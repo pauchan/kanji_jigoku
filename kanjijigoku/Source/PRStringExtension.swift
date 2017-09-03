@@ -58,28 +58,39 @@ extension String
             return false
         }
     }
+
+    // old code, used to work for the Swift2 api
+    // ref: https://www.raywenderlich.com/148569/unsafe-swift
+    
+//        func generateFuriganaString(_ baseString: String, furiganaString: String) -> NSAttributedString
+//        {
+//    
+//            let test1 = baseString as NSString
+//            let test2 = furiganaString as CFString
+//    
+//            var x = Unmanaged.passUnretained(test2)
+//    
+//            let annotation = CTRubyAnnotationCreate(.auto, .auto, 0.5, &x) as CTRubyAnnotation
+//    
+//            var alignment = CTTextAlignment.center
+//            var wrap = CTLineBreakMode.byTruncatingTail
+//    
+//            let settings = [CTParagraphStyleSetting(spec: .alignment, valueSize: Int(MemoryLayout.size(ofValue: alignment)), value: &alignment),CTParagraphStyleSetting(spec: .lineBreakMode, valueSize: Int(MemoryLayout.size(ofValue: wrap)), value: &wrap)]
+//            let style = CTParagraphStyleCreate(settings, 1)
+//    
+//    
+//            return NSAttributedString(string: test1 as String, attributes: [
+//                kCTRubyAnnotationAttributeName as String: annotation,
+//                kCTParagraphStyleAttributeName as String: style
+//                ])
+//            
+//        }
     
     func generateFuriganaString(_ baseString: String, furiganaString: String) -> NSAttributedString
     {
+        var text: [Unmanaged<CFString>?] = [Unmanaged<CFString>.passRetained(furiganaString as CFString) as Unmanaged<CFString>, .none, .none, .none]
         
-        let test1 = baseString as NSString
-        let test2 = furiganaString as CFString
-        
-        var furigana: UnsafeMutablePointer<CFTypeRef> = UnsafeMutablePointer<CFTypeRef>.allocate(capacity: 4)
-        
-        defer {
-            furigana.deallocate(capacity: 4) // don't forget to clean up
-        }
-        furigana.initialize(to: kCFNull, count: 4)
-        furigana[0] = test2 as CFTypeRef
-        
-        var annotation: CTRubyAnnotation!
-        furigana.withMemoryRebound(to: Unmanaged<CFString>.self, capacity: 4) { ptr in
-            print("called!")
-            annotation = CTRubyAnnotationCreate(CTRubyAlignment.auto, CTRubyOverhang.auto, 0.5, ptr)
-        }
-        print("called2!")
-        //let annotation = CTRubyAnnotationCreate(.auto, .auto, 0.5, &furigana)
+        let annotation = CTRubyAnnotationCreate(.auto, .auto, 0.5, &text[0]!)
         
         var alignment = CTTextAlignment.center
         var wrap = CTLineBreakMode.byTruncatingTail
@@ -87,11 +98,11 @@ extension String
         let settings = [CTParagraphStyleSetting(spec: .alignment, valueSize: Int(MemoryLayout.size(ofValue: alignment)), value: &alignment),CTParagraphStyleSetting(spec: .lineBreakMode, valueSize: Int(MemoryLayout.size(ofValue: wrap)), value: &wrap)]
         let style = CTParagraphStyleCreate(settings, 1)
         
-        print("called3!")
-        return NSAttributedString(string: test1 as String, attributes: [
-            kCTRubyAnnotationAttributeName as String: annotation,
-            kCTParagraphStyleAttributeName as String: style
-            ])
+        let attString = NSMutableAttributedString(string: baseString)
+        attString.addAttribute(kCTRubyAnnotationAttributeName as String , value: annotation, range: NSRange(location: 0,length: attString.length))
+        attString.addAttribute(kCTParagraphStyleAttributeName as String , value: style, range: NSRange(location: 0,length: attString.length))
+        
+        return attString.copy() as! NSAttributedString
         
     }
     

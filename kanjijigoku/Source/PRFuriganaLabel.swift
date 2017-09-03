@@ -19,42 +19,33 @@ class PRFuriganaLabel : UIView
 
         let context = UIGraphicsGetCurrentContext()
         
-        let attributedText = furiganaText as? NSMutableAttributedString
-        print(attributedText?.string)
-        print("text: \(furiganaText?.string)")
-        let fontSize = self.fontSizeForCharacterCount(attributedText?.length)
-        let newFont = self.fontSizeToFitView(UIFont().appFontOfSize(fontSize), text: furiganaText?.string)
-        attributedText?.removeAttribute(NSFontAttributeName, range: NSRange(location: 0, length: furiganaText?.length ?? 0))
-        attributedText?.addAttribute(NSFontAttributeName, value: newFont, range: NSRange(location: 0,length: furiganaText?.length ?? 0))
+        guard let attributedText = furiganaText as? NSMutableAttributedString else { return }
+        let fontSize = self.fontSizeForCharacterCount(attributedText.length)
+        let newFont = self.fontSizeToFitView(UIFont().appFontOfSize(fontSize), text: attributedText.string)
+        attributedText.removeAttribute(NSFontAttributeName, range: NSRange(location: 0, length: attributedText.length))
+        attributedText.addAttribute(NSFontAttributeName, value: newFont, range: NSRange(location: 0,length: attributedText.length))
         
         // vertically align text
         let paragraphStyle : NSMutableParagraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = NSTextAlignment.center
-        attributedText?.addAttribute(NSParagraphStyleAttributeName, value: paragraphStyle, range: NSRange(location: 0, length: furiganaText?.length ?? 0))
+        attributedText.addAttribute(NSParagraphStyleAttributeName, value: paragraphStyle, range: NSRange(location: 0, length: attributedText.length))
+
+        let path: CGMutablePath = CGMutablePath()
         
-        if (attributedText != nil) { // this one determines if there is one line or more than one line for text
+        let cfstring = attributedText.copy() as! NSAttributedString
+        
+        let frameSetter : CTFramesetter = CTFramesetterCreateWithAttributedString(cfstring)
+        
+        //flip context is required every time to prevent text beining drawn upside down
+        context!.textMatrix = CGAffineTransform.identity
+        context?.translateBy(x: 0, y: self.bounds.size.height)
+        context?.scaleBy(x: 1.0, y: -1.0)
 
-            let path: CGMutablePath = CGMutablePath()
-            let frameSetter : CTFramesetter = CTFramesetterCreateWithAttributedString(attributedText!)
-            
-            //flip context is required every time to prevent text beining drawn upside down
-            context!.textMatrix = CGAffineTransform.identity
-            context?.translateBy(x: 0, y: self.bounds.size.height)
-            context?.scaleBy(x: 1.0, y: -1.0)
+        path.addRect(CGRect(x: 0, y: -20.0, width: self.frame.size.width, height: self.frame.size.height))
 
-            path.addRect(CGRect(x: 0, y: -20.0, width: self.frame.size.width, height: self.frame.size.height))
-
-            let frame = CTFramesetterCreateFrame(frameSetter, CFRangeMake(0, attributedText?.length ?? 0), path, nil)
-            
-            CTFrameDraw(frame, context!)
-        } else {
-            let line = CTLineCreateWithAttributedString(furiganaText ?? NSAttributedString(string: ""))
-            context!.textMatrix = CGAffineTransform.identity
-            context?.translateBy(x: 0, y: 50.0)
-            context?.scaleBy(x: 1.0, y: -1.0)
-            CTLineDraw(line, context!)
-            
-        }
+        let frame = CTFramesetterCreateFrame(frameSetter, CFRangeMake(0, attributedText.length), path, nil)
+        
+        CTFrameDraw(frame, context!)
     }
     
     func fontSizeForCharacterCount(_ count: Int?) -> CGFloat

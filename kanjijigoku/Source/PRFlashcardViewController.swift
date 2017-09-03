@@ -26,10 +26,10 @@ class PRFlashcardViewController : UIViewController, UIGestureRecognizerDelegate 
         let tap : UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(PRFlashcardViewController.tapReceived(_:)))
         tap.delegate = self
         self.view.addGestureRecognizer(tap)
-        textLabel?.text = flashcard.text
-        spellingLabel?.text = flashcard.reading
-        readingLabel?.furiganaText = flashcard.text.furiganaExtractedSentence()
-        meaningLabel?.text = flashcard.meaning
+        textLabel.text = flashcard.text
+        spellingLabel.text = flashcard.reading
+        readingLabel.furiganaText = flashcard.text.furiganaExtractedSentence()
+        meaningLabel.text = flashcard.meaning
         
         if flashcard.type == .sentence {
             textLabel.isHidden = true
