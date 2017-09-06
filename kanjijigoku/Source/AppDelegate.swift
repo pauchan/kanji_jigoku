@@ -34,6 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.rootViewController = self.tabBarController()
         self.window?.makeKeyAndVisible()
+        self.updateState()
         
         return true
     }
@@ -45,13 +46,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
         let importOperation = ImportOperation(remoteImport: false)
         importOperation.completionBlock = {
             UserDefaults.standard.set(true, forKey:"PRKanjiJigokuDBLoaded")
-            let stateSingleton : PRStateSingleton = PRStateSingleton.sharedInstance
-            stateSingleton.levelArray = PRDatabaseHelper().getLevelArray()
-            stateSingleton.lessonArray = PRDatabaseHelper().getLessonArray(stateSingleton.currentLevel)
-            stateSingleton.currentLevel = 1
-            stateSingleton.currentLesson = 1
+            self.updateState()
         }
         operationQueue.addOperation(importOperation)
+    }
+    
+    func updateState() {
+        let stateSingleton : PRStateSingleton = PRStateSingleton.sharedInstance
+        stateSingleton.levelArray = PRDatabaseHelper().getLevelArray()
+        stateSingleton.lessonArray = PRDatabaseHelper().getLessonArray(stateSingleton.currentLevel)
+        stateSingleton.currentLevel = 1
+        stateSingleton.currentLesson = 1
     }
     
     func tabBarController() -> UITabBarController {
