@@ -57,10 +57,6 @@
 		FB67D6F01A861B8A00926E38 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB67D6EE1A861B8A00926E38 /* LaunchScreen.xib */; };
 		FB67D6FC1A861B8B00926E38 /* kanjijigokuTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB67D6FB1A861B8B00926E38 /* kanjijigokuTests.swift */; };
 		FB67D7091A86232E00926E38 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FB67D7081A86232E00926E38 /* libsqlite3.dylib */; };
-		FB6E9BA41E8D3A55004AB9CC /* FuriganaLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6E9BA01E8D3A55004AB9CC /* FuriganaLayoutManager.swift */; };
-		FB6E9BA51E8D3A55004AB9CC /* FuriganaTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6E9BA11E8D3A55004AB9CC /* FuriganaTextView.swift */; };
-		FB6E9BA61E8D3A55004AB9CC /* FuriganaWordKerner.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6E9BA21E8D3A55004AB9CC /* FuriganaWordKerner.swift */; };
-		FB6E9BA71E8D3A55004AB9CC /* StringFuriganaExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6E9BA31E8D3A55004AB9CC /* StringFuriganaExt.swift */; };
 		FB803FE81CC2560A00E75C8B /* PRStateSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D1706D1A89D77B00672203 /* PRStateSingleton.swift */; };
 		FB803FE91CC2560A00E75C8B /* PRImageGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1871527E1AE5F67B008AD647 /* PRImageGenerator.swift */; };
 		FB803FEB1CC2560A00E75C8B /* PRRomajiKanaConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188B81A31B60AB3D00B1543A /* PRRomajiKanaConverter.swift */; };
@@ -203,10 +199,6 @@
 		FB67D6F51A861B8B00926E38 /* kanjijigokuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = kanjijigokuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB67D6FB1A861B8B00926E38 /* kanjijigokuTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kanjijigokuTests.swift; sourceTree = "<group>"; };
 		FB67D7081A86232E00926E38 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
-		FB6E9BA01E8D3A55004AB9CC /* FuriganaLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FuriganaLayoutManager.swift; path = Source/FuriganaLib/FuriganaLayoutManager.swift; sourceTree = "<group>"; };
-		FB6E9BA11E8D3A55004AB9CC /* FuriganaTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FuriganaTextView.swift; path = Source/FuriganaLib/FuriganaTextView.swift; sourceTree = "<group>"; };
-		FB6E9BA21E8D3A55004AB9CC /* FuriganaWordKerner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FuriganaWordKerner.swift; path = Source/FuriganaLib/FuriganaWordKerner.swift; sourceTree = "<group>"; };
-		FB6E9BA31E8D3A55004AB9CC /* StringFuriganaExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringFuriganaExt.swift; path = Source/FuriganaLib/StringFuriganaExt.swift; sourceTree = "<group>"; };
 		FBBA5A561B5A72FE00CAAC92 /* PRInitController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRInitController.swift; path = Source/PRInitController.swift; sourceTree = "<group>"; };
 		FBC6C71C1CCF865F009E5598 /* ImportOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImportOperation.swift; path = Source/fmdb/ImportOperation.swift; sourceTree = "<group>"; };
 		FBD8131F1CA0374400725593 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
@@ -369,7 +361,6 @@
 		FB67D6DF1A861B8A00926E38 /* kanjijigoku */ = {
 			isa = PBXGroup;
 			children = (
-				FB6E9B9F1E8D3A36004AB9CC /* FuriganaLibrary */,
 				FB1713CD1CCCAEDB00525299 /* kanjijigoku-Bridging-Header.h */,
 				FBB1FF781A87252700F323D0 /* Helper */,
 				FBB1FF771A87250700F323D0 /* View */,
@@ -404,17 +395,6 @@
 				FBF399B91CA78FE000D00631 /* PRAuthTest.swift */,
 			);
 			path = kanjijigokuTests;
-			sourceTree = "<group>";
-		};
-		FB6E9B9F1E8D3A36004AB9CC /* FuriganaLibrary */ = {
-			isa = PBXGroup;
-			children = (
-				FB6E9BA01E8D3A55004AB9CC /* FuriganaLayoutManager.swift */,
-				FB6E9BA11E8D3A55004AB9CC /* FuriganaTextView.swift */,
-				FB6E9BA21E8D3A55004AB9CC /* FuriganaWordKerner.swift */,
-				FB6E9BA31E8D3A55004AB9CC /* StringFuriganaExt.swift */,
-			);
-			name = FuriganaLibrary;
 			sourceTree = "<group>";
 		};
 		FBB1FF751A8724DD00F323D0 /* Model */ = {
@@ -756,7 +736,6 @@
 				FB1713D01CCCF09300525299 /* Testable+CoreDataProperties.swift in Sources */,
 				FBD8CB921D72CCB00061DC52 /* PRViewExtension.swift in Sources */,
 				FBF343931C5C8C3E00077C9D /* Flashcard.swift in Sources */,
-				FB6E9BA41E8D3A55004AB9CC /* FuriganaLayoutManager.swift in Sources */,
 				FBF343AA1C5C8FCD00077C9D /* Radical+CoreDataProperties.swift in Sources */,
 				18D0CB141A9C63E80027DD8F /* PRKanjiTableViewHeaderCell.swift in Sources */,
 				18C4948E1A95B7AB00095A7E /* PRKanjiTableViewController.swift in Sources */,
@@ -777,7 +756,6 @@
 				188C73691A9EE6E600D1634C /* PRRelatedKanjiCell.swift in Sources */,
 				FBF343B31C5C8FCD00077C9D /* Sentence.swift in Sources */,
 				1899D5881A9F0F1E006B63B0 /* PRMenuViewExtension.swift in Sources */,
-				FB6E9BA61E8D3A55004AB9CC /* FuriganaWordKerner.swift in Sources */,
 				FBF343AC1C5C8FCD00077C9D /* Reading+CoreDataProperties.swift in Sources */,
 				FBF343AD1C5C8FCD00077C9D /* Reading.swift in Sources */,
 				18D1706E1A89D77B00672203 /* PRStateSingleton.swift in Sources */,
@@ -789,11 +767,9 @@
 				FB1713C41CCB263D00525299 /* Settings+CoreDataProperties.swift in Sources */,
 				FBF343B01C5C8FCD00077C9D /* Onyomi+CoreDataProperties.swift in Sources */,
 				189369431A9D4DFD001DEFC4 /* PRSettingsViewController.swift in Sources */,
-				FB6E9BA51E8D3A55004AB9CC /* FuriganaTextView.swift in Sources */,
 				18C27A0A1AA4332200B8621C /* PRFilterController.swift in Sources */,
 				18C5DA251A92FEF2007FF4A3 /* Question.swift in Sources */,
 				1860524E1A9AF44C0046247B /* PRKanjiHeader.swift in Sources */,
-				FB6E9BA71E8D3A55004AB9CC /* StringFuriganaExt.swift in Sources */,
 				FBD8CB961D72CCC80061DC52 /* PRTestsMenuViewController.swift in Sources */,
 				18648AA71A9DB5EF00B5472D /* PRSearchKanjiViewController.swift in Sources */,
 				1812D5431AA9A35E004C91D0 /* PRNoCursorTextField.swift in Sources */,
