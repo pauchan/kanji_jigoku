@@ -34,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.rootViewController = self.tabBarController()
         self.window?.makeKeyAndVisible()
-        self.updateState()
+        //self.updateState()
         
         return true
     }
@@ -131,7 +131,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
         var error: NSError? = nil
         var failureReason = "There was an error creating or loading the application's saved data."
         do {
-            try coordinator!.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: url, options: nil)
+            try coordinator?.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: url, options: nil)
         } catch var error1 as NSError {
             error = error1
             coordinator = nil
